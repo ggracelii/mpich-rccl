@@ -19,9 +19,11 @@ export WORK=$SCRATCH/rccl-frontier          # all builds + results live here
 mkdir -p "$WORK"
 
 # ---- Versions ------------------------------------------------------------
-# JLSE used 6.3.2; Frontier doesn't have it — 6.3.1 is the closest available
-# (6.4.0/6.4.1/6.4.2 and 7.x also present if 6.3.1 misbehaves).
-export ROCM_VERSION=6.3.1
+# JLSE used 6.3.2. On Frontier the rocm module version MUST match the amd
+# compiler module that PrgEnv-amd loads (default amd/6.2.4), so we use the
+# matching rocm/6.2.4 — also Frontier's default/best-tested ROCm. (To use a
+# different rocm, you'd module-load the matching amd/<ver> too.)
+export ROCM_VERSION=6.2.4
 
 # ---- Install prefixes -----------------------------------------------------
 export MPICH_MINE=$WORK/mpich-rccl/install   # config C: your MPICH+RCCL build
