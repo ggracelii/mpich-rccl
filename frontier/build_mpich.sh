@@ -20,14 +20,21 @@ load_mine                       # modules + ROCM_PATH + RCCL_INC/RCCL_LIB
 
 GFX_ARCH=gfx90a                 # MI250X
 
-# 1) Source (your fork).
-SRC=$WORK/mpich-rccl/src
+# 1) Source: UPSTREAM MPICH. Your RCCL allreduce backend (PR #7493) was merged
+#    into pmodels/mpich main on 2025-09-16 (commit d8176a3), so upstream has an
+#    API-consistent version. Building the fork instead fails: grace_mpich/main is
+#    stale/half-migrated (errflag drift). Pin MPICH_REF for reproducibility.
+MPICH_REF=${MPICH_REF:-main}
+SRC=$WORK/mpich-upstream/src
 mkdir -p "$(dirname "$SRC")"
 if [ ! -d "$SRC/.git" ]; then
-  git clone --recurse-submodules https://github.com/ggracelii/grace_mpich.git "$SRC"
+  git clone --recurse-submodules https://github.com/pmodels/mpich.git "$SRC"
 fi
 cd "$SRC"
+git fetch --tags origin
+git checkout "$MPICH_REF"
 git submodule update --init --recursive
+git rev-parse HEAD | tee "$WORK/mpich-commit.txt"      # exact source, for the paper
 [ -x ./configure ] || ./autogen.sh 2>&1 | tee "$WORK/mpich-autogen.log"
 
 # 2) Confirm RCCL is actually in the rocm module before configuring.
