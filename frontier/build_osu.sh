@@ -19,10 +19,13 @@ case "$STACK" in
   *) echo "unknown stack: $STACK" >&2; exit 1 ;;
 esac
 
+# Use the omb/ that ships in this same grace_suli checkout (next to frontier/),
+# so we don't re-clone. Copy it to a per-stack build tree.
+REPO=$(cd "$HERE/.." && pwd)              # .../grace_suli
 SRC=$WORK/osu-$STACK/src
 if [ ! -d "$SRC" ]; then
-  git clone https://github.com/ggracelii/grace_suli.git "$WORK/grace_suli" 2>/dev/null || true
-  cp -r "$WORK/grace_suli/omb" "$SRC"
+  mkdir -p "$(dirname "$SRC")"
+  cp -r "$REPO/omb" "$SRC"
 fi
 cd "$SRC"
 [ -x ./configure ] || ./autogen.sh 2>/dev/null || autoreconf -fi
