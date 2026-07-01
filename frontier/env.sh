@@ -36,7 +36,10 @@ export RCCL_TESTS=$WORK/rccl-tests            # config E ceiling
 # into the cc/CC compiler wrappers and is required for GPU-aware Cray MPICH.
 load_base_modules() {
   module reset                                        # [verify OLCF]
-  module load PrgEnv-gnu                               # or PrgEnv-amd
+  # PrgEnv-amd => cc/CC wrap amdclang/amdclang++, which accept --offload-arch
+  # (PrgEnv-gnu's g++ rejects it -> "C++ compiler does not work"). Matches the
+  # clang++ toolchain your JLSE build.sh used.
+  module load PrgEnv-amd
   module load rocm/${ROCM_VERSION}
   module load craype-accel-amd-gfx90a
   module load libfabric                                # provides the CXI provider
