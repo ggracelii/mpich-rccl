@@ -67,6 +67,7 @@ MPIR_CVAR_DEVICE_COLLECTIVES=all \
 
 # ---- C: MPICH + RCCL backend (your run_mpichccl_multi.sh) ------------------
 load_mine
+module load rccl-net-plugin   # aws-ofi-rccl: RCCL uses libfabric/CXI (not TCP) inter-node + OLCF-tuned FI_CXI/NCCL settings. Loaded ONLY for RCCL configs so A/B baselines stay on default MPICH networking.
 echo "=== C_mpich_rccl : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/C_mpich_rccl.txt"
 MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
   $MPIEXEC "$BIND" "$OSU_MINE_BIN" $GPU_ARGS 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt"
@@ -82,6 +83,7 @@ MPICH_GPU_SUPPORT_ENABLED=1 \
 # ---- E: pure RCCL ceiling (only meaningful up to a few nodes) --------------
 if [ "$NODES" -le 8 ]; then
   load_mine
+  module load rccl-net-plugin
   echo "=== E_rccl_tests : N=$NODES ===" | tee "$RESULTS/E_rccl_tests.txt"
   $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 \
     2>&1 | tee -a "$RESULTS/E_rccl_tests.txt"
