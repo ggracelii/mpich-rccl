@@ -68,6 +68,7 @@ mkdir -p "$SRC/build" && cd "$SRC/build"
   --with-ch4-shmmods=posix \
   --enable-fast=all,O2 \
   --disable-fortran \
+  --disable-weak-symbols \
   CC="$CC_BIN" CXX="$CXX_BIN" HIPCC="$ROCM_PATH/bin/hipcc" \
   CXXFLAGS="--offload-arch=$GFX_ARCH" \
   HIPCCFLAGS="--offload-arch=$GFX_ARCH" \
