@@ -39,7 +39,7 @@ run_case() {  # $1=label  $2=bytes  $3=type-flag  $4=cvars(as string)
 }
 
 B_CVARS="MPIR_CVAR_DEVICE_COLLECTIVES=all"
-C_CVARS="MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_DEVICE_COLLECTIVES=none"
+C_CVARS="MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none"
 
 for BYTES in 1024 1048576; do
   for T in --int --float --double; do

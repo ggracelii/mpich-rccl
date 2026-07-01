@@ -60,7 +60,7 @@ MPIR_CVAR_DEVICE_COLLECTIVES=all \
 # ---- C: MPICH + RCCL backend (your run_mpichccl_multi.sh) ------------------
 load_mine
 echo "=== C_mpich_rccl : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/C_mpich_rccl.txt"
-MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
+MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
   $MPIEXEC "$BIND" "$OSU_MINE_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt"
 
 # ---- D: Cray MPICH GPU-aware (production baseline) — uses srun -------------
