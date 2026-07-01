@@ -19,7 +19,12 @@
 set -o pipefail
 
 GPU_MAP=(4 5 2 3 6 7 0 1)                                    # [verify OLCF]
-LID=${SLURM_LOCALID:-${MPI_LOCALRANKID:-${PMI_LOCALRANKID:-0}}}
+# Prefer MPI_LOCALRANKID: under `mpiexec -bootstrap slurm`, Hydra runs ONE srun
+# proxy per node and forks all ranks from it, so SLURM_LOCALID is 0 for every
+# rank (they'd all map to the same GCD -> RCCL "Duplicate GPU" crash). Hydra's
+# MPI_LOCALRANKID is the correct per-rank id. SLURM_LOCALID is the fallback for
+# direct srun launches.
+LID=${MPI_LOCALRANKID:-${SLURM_LOCALID:-${PMI_LOCALRANKID:-0}}}
 export ROCR_VISIBLE_DEVICES=${GPU_MAP[$((LID % 8))]}
 
 exec "$@"

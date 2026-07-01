@@ -4,6 +4,7 @@
 #SBATCH -N 2
 #SBATCH -t 00:15:00
 #SBATCH -q debug
+#SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 # validate.sbatch — Tier-0 CORRECTNESS GATE. Run this ONCE and confirm it passes
 # before spending any node-hours on timed runs. Uses your correctness benchmark
