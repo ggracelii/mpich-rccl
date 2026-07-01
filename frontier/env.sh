@@ -6,8 +6,11 @@
 # /soft/compilers/rocm/rocm-6.3.2; on Frontier we get ROCm + libfabric(CXI)
 # from modules instead. Everything marked [verify OLCF] must be confirmed on a
 # Frontier login node against the current user guide before the first run.
-
-set -euo pipefail
+#
+# NOTE: intentionally NO `set -euo pipefail` here — this file is meant to be
+# sourced (into scripts AND interactive shells), and errexit would kill your
+# login shell on the first non-zero command. The build/run scripts set it
+# themselves before sourcing this.
 
 # ---- Project / filesystem -------------------------------------------------
 export PROJ=csc678                         # ends 2026-07-31 — watch the clock
@@ -22,7 +25,8 @@ export ROCM_VERSION=6.3.1
 
 # ---- Install prefixes -----------------------------------------------------
 export MPICH_MINE=$WORK/mpich-rccl/install   # config C: your MPICH+RCCL build
-export RCCL_BASE=$WORK/rccl/build/release     # if building RCCL from source; else use module
+# RCCL ships inside the rocm module on Frontier (no source build needed).
+# RCCL_INC/RCCL_LIB are derived from ROCM_PATH inside load_mine() below.
 export OSU_MINE=$WORK/osu-mine/install        # OSU built against YOUR MPICH
 export OSU_CRAY=$WORK/osu-cray/install        # OSU built against Cray MPICH
 export RCCL_TESTS=$WORK/rccl-tests            # config E ceiling
@@ -42,11 +46,13 @@ load_base_modules() {
 # ---- Config C/B/A: YOUR MPICH ---------------------------------------------
 load_mine() {
   load_base_modules
+  export RCCL_INC=$ROCM_PATH/include/rccl               # rccl.h
+  export RCCL_LIB=$ROCM_PATH/lib                         # librccl.so
   export PATH=$MPICH_MINE/bin:$PATH
-  export LD_LIBRARY_PATH=$MPICH_MINE/lib:$RCCL_BASE:$ROCM_PATH/lib:${LD_LIBRARY_PATH:-}
+  export LD_LIBRARY_PATH=$MPICH_MINE/lib:$ROCM_PATH/lib:${LD_LIBRARY_PATH:-}
   export MPICC=$MPICH_MINE/bin/mpicc
   export MPICXX=$MPICH_MINE/bin/mpicxx
-  export FI_PROVIDER=cxi                                # force Slingshot provider
+  export FI_PROVIDER=cxi                                # Slingshot-11 provider
 }
 
 # ---- Config D: Cray MPICH (production baseline) ---------------------------

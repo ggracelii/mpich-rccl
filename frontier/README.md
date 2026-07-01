@@ -3,42 +3,48 @@
 Port of the JLSE `grace_suli/omb` pipeline to OLCF Frontier (MI250X / Slingshot-11),
 testing the MPICH RCCL allreduce backend (PR pmodels/mpich#7493) at scale.
 
-**Drop this folder into `grace_suli/frontier/`** (same submodule, same benchmarks).
+**Deadline: 2026-07-31, no renewal.** 9,984 node-hours available (not the constraint —
+calendar time is). Priority: comprehensive MAIN allreduce numbers first; ML proxy is a
+stretch goal; all analysis/plots happen off-cluster later.
 
-## The five configs compared (all sweep 0 B → 1 GiB, `-d rocm`, fp32)
+## The five configs compared (sweep 0 B → 1 GiB)
 
-| ID | What | How it's selected |
-|----|------|-------------------|
-| A | MPICH CPU, host buffers | your MPICH, no `-d rocm` |
-| B | MPICH CPU algo, device buffers | `MPIR_CVAR_DEVICE_COLLECTIVES=all` |
-| **C** | **MPICH + RCCL backend** | `MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl` + `DEVICE_COLLECTIVES=none` |
-| D | Cray MPICH GPU-aware | `cray-mpich` + `MPICH_GPU_SUPPORT_ENABLED=1` |
-| E | pure RCCL ceiling | `rccl-tests all_reduce_perf` |
+| ID | What | How it's selected | Launcher |
+|----|------|-------------------|----------|
+| A | MPICH CPU, host buffers | your MPICH, no `-d rocm` | mpiexec |
+| B | MPICH CPU algo, device buffers | `MPIR_CVAR_DEVICE_COLLECTIVES=all` | mpiexec |
+| **C** | **MPICH + RCCL backend** | `MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl` + `DEVICE_COLLECTIVES=none` | mpiexec |
+| D | Cray MPICH GPU-aware | `cray-mpich` + `MPICH_GPU_SUPPORT_ENABLED=1` | **srun** |
+| E | pure RCCL ceiling | `rccl-tests all_reduce_perf` | mpiexec |
+
+Your MPICH is built `--with-pm=hydra`, so A/B/C/E launch with `mpiexec -bootstrap slurm`
+(matching your JLSE `run_*_multi.sh`). Only Cray MPICH (D) uses `srun`. GPU pinning for
+all configs is done by `bind_frontier.sh`.
 
 ## Order of operations
 
 ```bash
-# 0. Confirm the allocation actually has hours (ends 2026-07-31!)
-showusage
+# 1. Verify [verify OLCF] markers on a login node (module names, RCCL path, binding).
+vim env.sh bind_frontier.sh
 
-# 1. Edit env.sh — verify every [verify OLCF] path/module on a login node.
-vim env.sh
-
-# 2. Build (debug queue / login node). CRITICAL PATH = build_mpich.sh.
-./build_mpich.sh          # your MPICH + RCCL over CXI  <-- highest risk
+# 2. Build. CRITICAL PATH = build_mpich.sh. Run plainly so you SEE output (also tees to $WORK).
+./build_mpich.sh          # your MPICH + RCCL over ch4:ofi/CXI   <-- highest risk
 ./build_osu.sh mine       # OSU vs your MPICH  (A/B/C)
 ./build_osu.sh cray       # OSU vs Cray MPICH  (D)
 ./build_rccl_tests.sh     # ceiling (E)
+./build_bench.sh          # correctness validator (Tier 0)
 
-# 3. PROVE IT on 2 nodes before spending hours (correctness + nonzero inter-node BW):
+# 3. CORRECTNESS GATE — must pass before any timed run:
+sbatch validate.sbatch
+#   -> tail the *.out: "ALL VALIDATION PASSED" across int/float/double for B & C,
+#      and the corruption self-test correctly reports "Validation failed".
+
+# 4. Smoke + binding check on 2 nodes:
 sbatch -N 2 -q debug run_allreduce.sbatch
-#   -> check results/N2_job*/C_mpich_rccl.txt has sane latencies
+#   -> results/N2_job*/C_mpich_rccl.txt has sane latencies; 1-node intra-node BW
+#      should approach XGMI peak. If not, the bind_frontier.sh GCD map is wrong.
 
-# 4. Validate GCD binding on 1 node (intra-node BW should hit XGMI peak).
-#   If --gpu-bind=closest looks wrong, switch the SRUN line in run_allreduce.sbatch
-#   to wrap ranks with ./bind_frontier.sh and re-check.
-
-# 5. Full scaling study.
+# 5. Full comprehensive scaling study (the main result):
 ./submit_scaling.sh
 ```
 
@@ -46,16 +52,21 @@ sbatch -N 2 -q debug run_allreduce.sbatch
 
 | JLSE (grace_suli/omb) | Frontier (here) |
 |---|---|
-| `mpiexec --hostfile hosts.txt -ppn 4` (Hydra) | `srun --mpi=pmix -N.. -n.. --gpus-per-node=8` (Slurm) |
-| ROCm at `/soft/compilers/rocm/rocm-6.3.2` | `module load rocm/6.3.2` |
-| `map_rank_to_gpu` (MV2 localrank + CUDA_VISIBLE_DEVICES) | `bind_frontier.sh` (SLURM_LOCALID + ROCR_VISIBLE_DEVICES, non-linear GCD map) |
+| `--with-device=ch4:ucx` + UCX (InfiniBand) | `--with-device=ch4:ofi` + libfabric **CXI** (Slingshot) |
+| `--with-rccl-include/lib` from source RCCL build | same flags, RCCL from `rocm/6.3.1` module |
+| clang + explicit UCX/HIP paths | Cray `cc`/`CC` wrappers (auto libfabric + gfx90a) |
+| `mpiexec --hostfile hosts.txt -ppn 4` | `mpiexec -bootstrap slurm -ppn 8` (A/B/C/E); `srun` (D) |
+| ROCm at `/soft/compilers/rocm/rocm-6.3.2` | `module load rocm/6.3.1` |
+| `map_rank_to_gpu` (MV2 + CUDA_VISIBLE_DEVICES) | `bind_frontier.sh` (SLURM_LOCALID/MPI_LOCALRANKID + ROCR_VISIBLE_DEVICES, non-linear GCD map) |
 | 4 GPUs/node | 8 GCDs/node |
 | no vendor-MPI baseline | + config D (Cray MPICH GPU-aware) |
 
 ## ⚠️ Things that will bite you (in priority order)
-1. **`build_mpich.sh` over CXI** — non-vendor MPICH on Slingshot via `ch4:ofi` +
-   libfabric CXI + `--mpi=pmix`. If it won't launch, this is why. Debug on 2 nodes first.
-2. **GCD binding map** — `bind_frontier.sh` map is `[verify OLCF]`. Wrong = silent 2-3x error.
-3. **Allocation clock** — CSC678 ends 2026-07-31. Do dev in `-q debug`; ask the PI about renewal.
+1. **`build_mpich.sh` over CXI** — non-vendor MPICH on Slingshot via `ch4:ofi` + Cray
+   `cc` wrappers + hydra. If it won't build/launch, this is why. Debug on 2 nodes first.
+2. **GCD binding map** — `bind_frontier.sh` map `[4 5 2 3 6 7 0 1]` is `[verify OLCF]`.
+   Wrong = silent 2-3x error. This is why step 4 checks intra-node bandwidth.
+3. **Calendar** — hard stop 2026-07-31, no renewal. Do dev in `-q debug`; launch the big
+   sweeps early so reruns fit before the cutoff.
 
 All `[verify OLCF]` markers = confirm against docs.olcf.ornl.gov/systems/frontier_user_guide.html.

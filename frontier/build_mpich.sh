@@ -1,54 +1,67 @@
 #!/bin/bash
-# build_mpich.sh — build YOUR MPICH (PR pmodels/mpich#7493, fork grace_mpich)
-# with the RCCL allreduce backend, on Frontier, over Slingshot-11.
+# build_mpich.sh — build YOUR MPICH (grace_mpich, PR pmodels/mpich#7493) with the
+# RCCL allreduce backend on Frontier.
 #
-# THIS IS THE CRITICAL-PATH / HIGHEST-RISK STEP. A non-vendor MPICH must talk to
-# Slingshot through the libfabric CXI provider (ch4:ofi) and must speak a PMI
-# that Slurm's srun provides (pmix). If this doesn't build+run on 2 nodes, the
-# whole comparison is blocked — do it first, in the debug queue.
+# Ported from grace_mpich/build.sh (JLSE). The JLSE build used ch4:ucx + UCX
+# (InfiniBand). Frontier's Slingshot-11 has no native UCX transport, so the ONE
+# structural change is the transport: ch4:ofi + libfabric CXI. The Cray compiler
+# wrappers (cc/CC) inject libfabric+CXI and the gfx90a GPU flags automatically —
+# so, unlike the JLSE build, we set NO explicit UCX/libfabric paths. RCCL comes
+# from the rocm module. Everything else (RCCL flags, offload-arch, -DENABLE_RCCL,
+# -lrccl -lamdhip64, hydra, yaksa=embedded) matches your working build.
 #
-# Usage:  ./build_mpich.sh            # clone (if needed) + configure + make + install
+# CRITICAL PATH: prove this launches on 2 nodes (debug queue) before scaling.
+# Run it plainly so you SEE output live (it also tees to $WORK/mpich-*.log):
+#     ./build_mpich.sh
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
-load_mine
+load_mine                       # modules + ROCM_PATH + RCCL_INC/RCCL_LIB
 
+GFX_ARCH=gfx90a                 # MI250X
+
+# 1) Source (your fork).
 SRC=$WORK/mpich-rccl/src
 mkdir -p "$(dirname "$SRC")"
-
-# 1) Source: your fork with the RCCL backend (submodule of grace_suli).
-if [ ! -d "$SRC" ]; then
+if [ ! -d "$SRC/.git" ]; then
   git clone --recurse-submodules https://github.com/ggracelii/grace_mpich.git "$SRC"
 fi
 cd "$SRC"
 git submodule update --init --recursive
-./autogen.sh                                  # generates configure from git checkout
+[ -x ./configure ] || ./autogen.sh 2>&1 | tee "$WORK/mpich-autogen.log"
 
-# 2) libfabric with the CXI provider — the Slingshot-11 transport on Frontier.
-#    Use the SYSTEM cray libfabric, not MPICH's embedded copy.
-LIBFABRIC_DIR=${OLCF_LIBFABRIC_ROOT:-/opt/cray/libfabric/$CRAY_LIBFABRIC_VERSION}  # [verify OLCF]
+# 2) Confirm RCCL is actually in the rocm module before configuring.
+if [ ! -f "$RCCL_INC/rccl.h" ]; then
+  echo "ERROR: rccl.h not found at $RCCL_INC — check that the rocm module ships RCCL"
+  echo "  try: find \$ROCM_PATH -name rccl.h" ; exit 1
+fi
 
-# 3) Configure.
-#    --with-device=ch4:ofi + --with-libfabric  -> Slingshot via CXI
-#    --with-hip / gfx90a                        -> MI250X device buffers
-#    --with-rccl                                -> YOUR allreduce backend (PR #7493)
-#    --with-pmi=pmix                            -> launchable by `srun --mpi=pmix`
-#    CC=cc CXX=CC                               -> Cray wrappers pull in craype flags
+# 3) Configure (out-of-tree). cc/CC == Cray wrappers -> libfabric+CXI+gfx90a.
 mkdir -p "$SRC/build" && cd "$SRC/build"
 ../configure \
   --prefix="$MPICH_MINE" \
   --with-device=ch4:ofi \
-  --with-libfabric="$LIBFABRIC_DIR" \
   --with-hip="$ROCM_PATH" \
-  --with-rccl="$RCCL_BASE" \
-  --with-pmi=pmix --with-pmix=/usr \
-  --enable-fast=O2 --disable-fortran \
-  CC=cc CXX=CC \
+  --with-rccl-include="$RCCL_INC" \
+  --with-rccl-lib="$RCCL_LIB" \
+  --with-pm=hydra \
+  --with-yaksa=embedded \
+  --with-ch4-shmmods=posix \
+  --enable-fast=all,O2 \
+  --disable-fortran \
+  CC=cc CXX=CC HIPCC="$ROCM_PATH/bin/hipcc" \
+  CXXFLAGS="--offload-arch=$GFX_ARCH" \
+  HIPCCFLAGS="--offload-arch=$GFX_ARCH" \
+  CPPFLAGS="-DENABLE_CCLCOMM -DENABLE_RCCL -I$ROCM_PATH/include -I$RCCL_INC" \
+  CFLAGS="-I$ROCM_PATH/include" \
+  LDFLAGS="-L$RCCL_LIB -L$ROCM_PATH/lib -Wl,-rpath,$RCCL_LIB -Wl,-rpath,$ROCM_PATH/lib" \
+  LIBS="-lrccl -lamdhip64" \
   2>&1 | tee "$WORK/mpich-configure.log"
 
-# 4) Build + install.
-make -j$(nproc)   2>&1 | tee "$WORK/mpich-make.log"
-make install      2>&1 | tee "$WORK/mpich-install.log"
+# 4) Build + install. -j16 (not nproc) to be a good citizen on the shared login
+#    node; move to an salloc compute node if OLCF throttles it.
+make -j16    2>&1 | tee "$WORK/mpich-make.log"
+make install 2>&1 | tee "$WORK/mpich-install.log"
 
-echo "[build_mpich] installed to $MPICH_MINE"
+echo "[build_mpich] installed -> $MPICH_MINE"
 "$MPICH_MINE/bin/mpichversion" || true

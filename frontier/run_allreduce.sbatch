@@ -3,23 +3,28 @@
 #SBATCH -J rccl-allreduce
 #SBATCH -t 00:20:00
 #SBATCH -o %x-%j.out
-# NOTE: submit with node count on the CLI so one script scales:
-#   sbatch -N 2 run_allreduce.sbatch          (debug for <=8 nodes: add -q debug)
-# Runs configs A/B/C/D back-to-back on the SAME allocation (same dragonfly
-# placement) sweeping message sizes, so every comparison is apples-to-apples.
+# Submit with node count on the CLI so one script scales:
+#   sbatch -N 2 -q debug run_allreduce.sbatch      (debug for small counts)
+#   sbatch -N 512        run_allreduce.sbatch
 #
-# 8 GCDs/node = 8 ranks/node, 1 rank per GCD. -c7 leaves core 0 of each L3
-# reserved (Frontier low-noise). [verify OLCF] the exact -c/--gpu-bind recipe.
-
+# Runs configs A/B/C/D(/E) back-to-back on the SAME allocation (same dragonfly
+# placement) so every comparison is apples-to-apples.
+#
+# Launcher split: your MPICH is built --with-pm=hydra, so configs A/B/C/E use
+# mpiexec (matching your JLSE run_*_multi.sh). Cray MPICH (D) uses srun. GPU
+# pinning is done by bind_frontier.sh under either launcher (see [verify OLCF]).
+#
+# NOTE: no `set -e` — one config failing must not abort the rest.
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
+BIND="$HERE/bind_frontier.sh"
 
 NODES=${SLURM_JOB_NUM_NODES:?submit with sbatch -N <nodes>}
 PPN=8
 NRANKS=$((NODES * PPN))
-SIZES="0:1073741824"          # 0 B -> 1 GiB, OSU steps by powers of 2
-ITERS=1000                    # OSU -i; drop for the 1 GiB tail if it's slow
+SIZES="0:1073741824"          # 0 B -> 1 GiB (OSU steps by powers of 2)
+ITERS=1000                    # OSU -i
 WARMUP=200                    # OSU -x
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
@@ -30,44 +35,48 @@ mkdir -p "$RESULTS"
   echo "nodelist=$SLURM_JOB_NODELIST"; module list; rocm-smi --showdriverversion; } \
   > "$RESULTS/env.txt" 2>&1
 
-SRUN="srun -N $NODES -n $NRANKS --ntasks-per-node=$PPN --gpus-per-node=8 \
-      --gpu-bind=closest -c7 --mpi=pmix"     # [verify OLCF]; swap in bind_frontier.sh if closest misbinds
+# Hydra launcher for YOUR MPICH. -bootstrap slurm makes Hydra spawn its proxies
+# via srun (no inter-node ssh needed). -bind-to numa gives coarse CPU locality;
+# bind_frontier.sh handles the (critical) GPU pinning.
+MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
+
 OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 OSU_CRAY_BIN=$OSU_CRAY/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
-OSU_ARGS="-m $SIZES -i $ITERS -x $WARMUP -d rocm -f"
-
-run_cfg() {  # $1=label  $2=osu_binary  (env/CVARs set by caller)
-  echo "=== config $1 : $NODES nodes / $NRANKS ranks ===" | tee -a "$RESULTS/$1.txt"
-  $SRUN "$2" $OSU_ARGS 2>&1 | tee -a "$RESULTS/$1.txt"
-}
+DEV_ARGS="-m $SIZES -i $ITERS -x $WARMUP -d rocm -f"
+HOST_ARGS="-m $SIZES -i $ITERS -x $WARMUP -f"
 
 # ---- A: MPICH CPU, HOST buffers (traditional MPI, no GPU awareness) --------
 load_mine
+echo "=== A_mpich_host : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/A_mpich_host.txt"
 MPIR_CVAR_DEVICE_COLLECTIVES=none \
-  $SRUN "$OSU_MINE_BIN" -m "$SIZES" -i $ITERS -x $WARMUP -f \
-  2>&1 | tee "$RESULTS/A_mpich_host.txt"   # note: no -d rocm -> host buffers
+  $MPIEXEC "$OSU_MINE_BIN" $HOST_ARGS 2>&1 | tee -a "$RESULTS/A_mpich_host.txt"
 
 # ---- B: MPICH CPU algorithm, DEVICE buffers (your run_mpich_multi.sh) -------
 load_mine
+echo "=== B_mpich_dev : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/B_mpich_dev.txt"
 MPIR_CVAR_DEVICE_COLLECTIVES=all \
-  run_cfg B_mpich_dev "$OSU_MINE_BIN"
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/B_mpich_dev.txt"
 
-# ---- C: MPICH + RCCL backend  (your run_mpichccl_multi.sh) -----------------
+# ---- C: MPICH + RCCL backend (your run_mpichccl_multi.sh) ------------------
 load_mine
-MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl \
-MPIR_CVAR_DEVICE_COLLECTIVES=none \
-  run_cfg C_mpich_rccl "$OSU_MINE_BIN"
+echo "=== C_mpich_rccl : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/C_mpich_rccl.txt"
+MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt"
 
-# ---- D: Cray MPICH GPU-aware (production baseline) -------------------------
+# ---- D: Cray MPICH GPU-aware (production baseline) — uses srun -------------
 load_cray
+echo "=== D_cray_gpuaware : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/D_cray_gpuaware.txt"
 MPICH_GPU_SUPPORT_ENABLED=1 \
-  run_cfg D_cray_gpuaware "$OSU_CRAY_BIN"
+  srun -N "$NODES" -n "$NRANKS" --ntasks-per-node=$PPN --gpus-per-node=8 \
+       --gpu-bind=closest -c7 \
+       "$OSU_CRAY_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/D_cray_gpuaware.txt"   # [verify OLCF] -c/--gpu-bind
 
 # ---- E: pure RCCL ceiling (only meaningful up to a few nodes) --------------
 if [ "$NODES" -le 8 ]; then
   load_mine
-  $SRUN "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 \
-    2>&1 | tee "$RESULTS/E_rccl_tests.txt"
+  echo "=== E_rccl_tests : N=$NODES ===" | tee "$RESULTS/E_rccl_tests.txt"
+  $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 \
+    2>&1 | tee -a "$RESULTS/E_rccl_tests.txt"
 fi
 
 echo "[run] done -> $RESULTS"

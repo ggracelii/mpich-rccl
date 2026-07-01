@@ -6,12 +6,13 @@
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
-load_mine   # just needs ROCm + an MPI launcher for the multi-GPU driver
+load_mine   # ROCm + RCCL (from module) + an MPI launcher for the multi-node driver
 
 if [ ! -d "$RCCL_TESTS" ]; then
   git clone https://github.com/ROCm/rccl-tests.git "$RCCL_TESTS"
 fi
 cd "$RCCL_TESTS"
 # MPI=1 lets one all_reduce_perf span multiple nodes via MPI bootstrap.
-make MPI=1 MPI_HOME="$MPICH_MINE" HIP_HOME="$ROCM_PATH" NCCL_HOME="$RCCL_BASE" -j$(nproc)
+# RCCL ("NCCL_HOME") comes from the rocm module, same as the MPICH build.
+make MPI=1 MPI_HOME="$MPICH_MINE" HIP_HOME="$ROCM_PATH" NCCL_HOME="$ROCM_PATH" -j16
 echo "[build_rccl_tests] -> $RCCL_TESTS/build/all_reduce_perf"
