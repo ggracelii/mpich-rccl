@@ -1,13 +1,13 @@
 #!/bin/bash
-# build_osu.sh — build the OSU Micro-Benchmarks (your grace_suli/omb fork, which
-# has the ROCm/RCCL additions) against a chosen MPI stack.
+# build_osu.sh — build OSU Micro-Benchmarks against a chosen MPI stack.
 #
-# We build TWICE, into separate prefixes, so config C (your MPICH) and config D
-# (Cray MPICH) each get an osu_allreduce linked against the right MPI:
+# Uses UPSTREAM OSU (complete, with full ROCm support). The grace_suli/omb fork
+# is incomplete in this checkout (only Makefile.am files, no .c sources), and we
+# don't need its custom bits: configs A-D just run `osu_allreduce -d rocm`, and
+# the RCCL backend is picked by MPICH CVARs at RUNTIME, not by OSU code.
+#
 #     ./build_osu.sh mine     # -> $OSU_MINE  (configs A/B/C)
 #     ./build_osu.sh cray     # -> $OSU_CRAY  (config D)
-#
-# Compile flags ported verbatim from grace_suli/omb/build.sh.
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
@@ -19,23 +19,16 @@ case "$STACK" in
   *) echo "unknown stack: $STACK" >&2; exit 1 ;;
 esac
 
-# Use the omb/ that ships in this same grace_suli checkout (next to frontier/),
-# so we don't re-clone. Copy it to a per-stack build tree.
-REPO=$(cd "$HERE/.." && pwd)              # .../grace_suli
-SRC=$WORK/osu-$STACK/src
+OSU_VER=${OSU_VER:-7.5}
+BASE=$WORK/osu-$STACK
+SRC=$BASE/osu-micro-benchmarks-$OSU_VER
+mkdir -p "$BASE"
 if [ ! -d "$SRC" ]; then
-  mkdir -p "$(dirname "$SRC")"
-  cp -r "$REPO/omb" "$SRC"
+  cd "$BASE"
+  curl -L -O "https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-${OSU_VER}.tar.gz"
+  tar xzf "osu-micro-benchmarks-${OSU_VER}.tar.gz"
 fi
 cd "$SRC"
-[ -x ./configure ] || ./autogen.sh 2>/dev/null || autoreconf -fi
-
-# ROCm/RCCL compile flags (from grace_suli/omb/build.sh). For -d rocm allreduce
-# only --enable-rocm is strictly required; the RCCL defines are kept for the
-# xccl variants you added.
-export CPPFLAGS="-DENABLE_CCLCOMM -DENABLE_RCCL -D_ENABLE_ROCM -DROCM_ENABLED=1 -I${ROCM_PATH}/include"
-export LDFLAGS="-L${ROCM_PATH}/lib"
-export LIBS="-lamdhip64"
 
 ./configure \
   CC="$MPICC" CXX="$MPICXX" \
@@ -43,6 +36,6 @@ export LIBS="-lamdhip64"
   --prefix="$PREFIX" \
   2>&1 | tee "$WORK/osu-$STACK-configure.log"
 
-make -j$(nproc)
+make -j16
 make install
 echo "[build_osu:$STACK] -> $PREFIX/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce"
