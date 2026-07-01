@@ -15,7 +15,7 @@
 # pinning is done by bind_frontier.sh under either launcher (see [verify OLCF]).
 #
 # NOTE: no `set -e` — one config failing must not abort the rest.
-set -uo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 BIND="$HERE/bind_frontier.sh"

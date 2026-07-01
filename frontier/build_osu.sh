@@ -8,7 +8,7 @@
 #     ./build_osu.sh cray     # -> $OSU_CRAY  (config D)
 #
 # Compile flags ported verbatim from grace_suli/omb/build.sh.
-set -euo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 

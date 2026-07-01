@@ -14,7 +14,7 @@
 # detects bad data. Exits non-zero if anything is wrong.
 #
 #   sbatch validate.sbatch
-set -uo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 load_mine

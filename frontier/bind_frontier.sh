@@ -16,7 +16,7 @@
 # Usage (wrap the ranked binary under either launcher):
 #   mpiexec ... ./bind_frontier.sh ./osu_allreduce -d rocm ...
 #   srun    ... ./bind_frontier.sh ./osu_allreduce -d rocm ...
-set -euo pipefail
+set -o pipefail
 
 GPU_MAP=(4 5 2 3 6 7 0 1)                                    # [verify OLCF]
 LID=${SLURM_LOCALID:-${MPI_LOCALRANKID:-${PMI_LOCALRANKID:-0}}}

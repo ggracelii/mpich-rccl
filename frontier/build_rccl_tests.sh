@@ -3,7 +3,7 @@
 # rccl-tests is the AMD analog of nccl-tests; all_reduce_perf is the reference.
 # (Your grace_suli/benchmark/allreduce_benchmark_rccl.c does the same job; this
 #  is the standard tool reviewers expect for the ceiling number.)
-set -euo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 load_mine   # ROCm + RCCL (from module) + an MPI launcher for the multi-node driver

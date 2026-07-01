@@ -9,7 +9,7 @@
 # Each rep is a fresh allocation -> captures dragonfly placement variance
 # (report median-of-medians across reps). Small counts go to the debug queue
 # to conserve the CSC678 allocation (ends 2026-07-31).
-set -euo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 
 # 9984 node-hrs available; ladder below costs well under that even at 3 reps.

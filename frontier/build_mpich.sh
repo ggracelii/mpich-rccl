@@ -13,7 +13,7 @@
 # CRITICAL PATH: prove this launches on 2 nodes (debug queue) before scaling.
 # Run it plainly so you SEE output live (it also tees to $WORK/mpich-*.log):
 #     ./build_mpich.sh
-set -euo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 load_mine                       # modules + ROCM_PATH + RCCL_INC/RCCL_LIB

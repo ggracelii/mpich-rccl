@@ -4,7 +4,7 @@
 # buffer with its rank id, allreduces SUM, and checks every element equals
 # (P-1)*P/2. The SAME binary validates config B and config C — the RCCL backend
 # is selected at RUNTIME via CVARs (see validate.sbatch), so one build covers both.
-set -euo pipefail
+set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 source "$HERE/env.sh"
 load_mine                       # your MPICH mpicc + ROCm hipcc + RCCL
