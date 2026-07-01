@@ -51,6 +51,11 @@ load_base_modules() {
 # ---- Config C/B/A: YOUR MPICH ---------------------------------------------
 load_mine() {
   load_base_modules
+  # Unload Cray MPICH so its libmpi.so doesn't shadow OURS at runtime. With
+  # --enable-new-dtags the build's rpath is a RUNPATH (searched AFTER
+  # LD_LIBRARY_PATH), so a loaded cray-mpich would hijack every config-C run
+  # and we'd unknowingly benchmark Cray MPICH instead of the RCCL backend.
+  module unload cray-mpich 2>/dev/null
   export RCCL_INC=$ROCM_PATH/include/rccl               # rccl.h
   export RCCL_LIB=$ROCM_PATH/lib                         # librccl.so
   export PATH=$MPICH_MINE/bin:$PATH
