@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A csc678
 #SBATCH -J rccl-allreduce
-#SBATCH -t 00:20:00
+#SBATCH -t 00:40:00
 #SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 # Submit with node count on the CLI so one script scales:
@@ -25,8 +25,8 @@ NODES=${SLURM_JOB_NUM_NODES:?submit with sbatch -N <nodes>}
 PPN=8
 NRANKS=$((NODES * PPN))
 SIZES="0:1073741824"          # 0 B -> 1 GiB (OSU steps by powers of 2)
-ITERS=1000                    # OSU -i
-WARMUP=200                    # OSU -x
+ITERS=100                     # OSU -i (100 is plenty for a stable median; 1000 was too slow at GiB sizes)
+WARMUP=20                     # OSU -x
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
