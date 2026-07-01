@@ -15,7 +15,7 @@
 #
 #   sbatch validate.sbatch
 set -o pipefail
-HERE=$(cd "$(dirname "$0")" && pwd)
+HERE=${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}
 source "$HERE/env.sh"
 load_mine
 BIND="$HERE/bind_frontier.sh"
