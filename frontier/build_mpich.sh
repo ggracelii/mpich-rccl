@@ -20,6 +20,17 @@ load_mine                       # modules + ROCM_PATH + RCCL_INC/RCCL_LIB
 
 GFX_ARCH=gfx90a                 # MI250X
 
+# Build with amdclang DIRECTLY, not the Cray `cc` wrapper. cc links Cray MPICH
+# (libmpi_amd / GTL) into our libmpi so Cray's version symbols win and every run
+# would secretly be Cray MPICH. amdclang + explicit SYSTEM libfabric (which
+# carries the Slingshot CXI provider; embedded libfabric may not) gives a clean,
+# self-contained MPICH. Mirrors your JLSE clang build.
+CC_BIN=$ROCM_PATH/llvm/bin/amdclang
+CXX_BIN=$ROCM_PATH/llvm/bin/amdclang++
+LIBFABRIC_DIR=$(pkg-config --variable=prefix libfabric 2>/dev/null || true)
+[ -n "$LIBFABRIC_DIR" ] || LIBFABRIC_DIR=/opt/cray/libfabric/2.3.1   # [verify OLCF]
+echo "[build_mpich] CC=$CC_BIN  libfabric=$LIBFABRIC_DIR"
+
 # 1) Source: UPSTREAM MPICH. Your RCCL allreduce backend (PR #7493) was merged
 #    into pmodels/mpich main on 2025-09-16 (commit d8176a3), so upstream has an
 #    API-consistent version. Building the fork instead fails: grace_mpich/main is
@@ -48,6 +59,7 @@ mkdir -p "$SRC/build" && cd "$SRC/build"
 ../configure \
   --prefix="$MPICH_MINE" \
   --with-device=ch4:ofi \
+  --with-libfabric="$LIBFABRIC_DIR" \
   --with-hip="$ROCM_PATH" \
   --with-rccl-include="$RCCL_INC" \
   --with-rccl-lib="$RCCL_LIB" \
@@ -56,7 +68,7 @@ mkdir -p "$SRC/build" && cd "$SRC/build"
   --with-ch4-shmmods=posix \
   --enable-fast=all,O2 \
   --disable-fortran \
-  CC=cc CXX=CC HIPCC="$ROCM_PATH/bin/hipcc" \
+  CC="$CC_BIN" CXX="$CXX_BIN" HIPCC="$ROCM_PATH/bin/hipcc" \
   CXXFLAGS="--offload-arch=$GFX_ARCH" \
   HIPCCFLAGS="--offload-arch=$GFX_ARCH" \
   CPPFLAGS="-DENABLE_CCLCOMM -DENABLE_RCCL -I$ROCM_PATH/include -I$RCCL_INC" \
