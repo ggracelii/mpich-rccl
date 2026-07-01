@@ -24,9 +24,15 @@ BIND="$HERE/bind_frontier.sh"
 NODES=${SLURM_JOB_NUM_NODES:?submit with sbatch -N <nodes>}
 PPN=8
 NRANKS=$((NODES * PPN))
-SIZES="0:1073741824"          # 0 B -> 1 GiB (OSU steps by powers of 2)
-ITERS=100                     # OSU -i (100 is plenty for a stable median; 1000 was too slow at GiB sizes)
 WARMUP=20                     # OSU -x
+# CPU configs (A,B) are catastrophically slow at large sizes (device->host
+# staging + CPU algorithm): ~6 s/op at 512 MiB inter-node, which blows the
+# walltime. Cap them at 32 MiB with few iters. GPU configs (C,D,E) are fast, so
+# they sweep the full range to 1 GiB.
+CPU_MAX=33554432              # 32 MiB
+CPU_ITERS=50
+GPU_MAX=1073741824            # 1 GiB
+GPU_ITERS=100
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
@@ -43,8 +49,9 @@ MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
 
 OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 OSU_CRAY_BIN=$OSU_CRAY/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
-DEV_ARGS="-m $SIZES -i $ITERS -x $WARMUP -d rocm -f"
-HOST_ARGS="-m $SIZES -i $ITERS -x $WARMUP -f"
+HOST_ARGS="-m 0:$CPU_MAX -i $CPU_ITERS -x $WARMUP -f"
+CPUDEV_ARGS="-m 0:$CPU_MAX -i $CPU_ITERS -x $WARMUP -d rocm -f"
+GPU_ARGS="-m 0:$GPU_MAX -i $GPU_ITERS -x $WARMUP -d rocm -f"
 
 # ---- A: MPICH CPU, HOST buffers (traditional MPI, no GPU awareness) --------
 load_mine
@@ -56,13 +63,13 @@ MPIR_CVAR_DEVICE_COLLECTIVES=none \
 load_mine
 echo "=== B_mpich_dev : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/B_mpich_dev.txt"
 MPIR_CVAR_DEVICE_COLLECTIVES=all \
-  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/B_mpich_dev.txt"
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $CPUDEV_ARGS 2>&1 | tee -a "$RESULTS/B_mpich_dev.txt"
 
 # ---- C: MPICH + RCCL backend (your run_mpichccl_multi.sh) ------------------
 load_mine
 echo "=== C_mpich_rccl : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/C_mpich_rccl.txt"
 MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
-  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt"
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $GPU_ARGS 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt"
 
 # ---- D: Cray MPICH GPU-aware (production baseline) — uses srun -------------
 load_cray
@@ -70,7 +77,7 @@ echo "=== D_cray_gpuaware : N=$NODES ranks=$NRANKS ===" | tee "$RESULTS/D_cray_g
 MPICH_GPU_SUPPORT_ENABLED=1 \
   srun -N "$NODES" -n "$NRANKS" --ntasks-per-node=$PPN --gpus-per-node=8 \
        --gpu-bind=closest -c7 \
-       "$OSU_CRAY_BIN" $DEV_ARGS 2>&1 | tee -a "$RESULTS/D_cray_gpuaware.txt"   # [verify OLCF] -c/--gpu-bind
+       "$OSU_CRAY_BIN" $GPU_ARGS 2>&1 | tee -a "$RESULTS/D_cray_gpuaware.txt"   # [verify OLCF] -c/--gpu-bind
 
 # ---- E: pure RCCL ceiling (only meaningful up to a few nodes) --------------
 if [ "$NODES" -le 8 ]; then
