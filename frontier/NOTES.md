@@ -64,6 +64,22 @@ Verified each config does what it claims, not just that it produces numbers:
   known ROCm-6.2 rocprof sqlite bug (tooling, not the config).
 Evidence: `results/confirm_4929423/` (NCCL logs + rocprof stats + SUMMARY.txt).
 
+## Preliminary results — 1–64 node sweep (jobs 4929427–4929448; 3 reps; 10 warmup/50 iters)
+Clean run (no failures in any file). Key finding: the RCCL(C)-vs-Cray(D) winner depends on
+BOTH message size and node count — a crossover *surface*, not a flat result. Avg latency (µs):
+
+| size | N=1 C / D | N=8 C / D | N=64 C / D | crossover vs Cray |
+|---|---|---|---|---|
+| 1 GiB  | 13.7k / 66.5k | 25.9k / 105k | 36.5k / 126k | **none — RCCL wins 3.5–4.8× at all scales** |
+| 16 MiB | 303 / 1029 | 941 / 1584 | 1953 / 1863 | Cray overtakes ~64 nodes |
+| 1 MiB  | 126 / 158 | 385 / 309 | 613 / 410 | Cray overtakes ~4 nodes |
+
+Monotonic: the smaller the message, the fewer nodes before Cray overtakes. Config B (MPICH
+CPU-on-device) is flat-slow (~2.2–2.8 ms at 1 MiB, all scales). Interpretation: RCCL is the
+**large-message / bandwidth champion** (XGMI + tuned rings; ~4× at 1 GiB, holding across
+scale), while Cray-MPICH has **lower fixed/latency overhead and scales better for small–mid
+messages**. The 128–1024 sweep will show where the crossover contour lands at larger scale.
+
 ## `[verify OLCF]` items still to confirm
 - GCD→rank map in `bind_frontier.sh` `[4 5 2 3 6 7 0 1]` (validate via intra-node bandwidth).
 - Config D `--gpu-bind=closest -c7` recipe.
