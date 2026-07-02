@@ -18,8 +18,13 @@
 #
 # NOTE: no `set -e` — one config failing must not abort the rest.
 set -o pipefail
-HERE=${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}
+HERE=${FRONTIER_HOME:-${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}}
+if [ ! -f "$HERE/env.sh" ]; then
+  echo "FATAL: env.sh not found in '$HERE' — submit via submit_scaling.sh, or run sbatch from the frontier/ dir" >&2
+  exit 1
+fi
 source "$HERE/env.sh"
+: "${WORK:?FATAL: env.sh did not set WORK — aborting so we never write to /results}"
 BIND="$HERE/bind_frontier.sh"
 
 NODES=${SLURM_JOB_NUM_NODES:?submit with sbatch -N <nodes>}

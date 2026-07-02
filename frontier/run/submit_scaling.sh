@@ -11,6 +11,7 @@
 # the debug QOS caps queued jobs at ~1-2, which a multi-job sweep blows past.
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
+export FRONTIER_HOME=$(cd "$HERE/.." && pwd)   # dir holding env.sh/bind_frontier.sh; propagated to the job so submit CWD never matters
 
 # Staged for safety (3 reps everywhere; override with REPS=n). Node-hr estimates:
 #   default 1-64 ................................. ~95
