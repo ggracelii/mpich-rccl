@@ -26,9 +26,10 @@ reps_for() {                      # 3 reps at every scale: placement/network var
 
 for N in $LADDER; do
   R=$(reps_for "$N")
+  WT=""; [ "$N" -ge 2048 ] && WT="-t 01:00:00"   # giants get more walltime (no backfill downside); small jobs keep the short 30m default
   for r in $(seq 1 "$R"); do
-    echo "submitting N=$N rep=$r/$R"
-    sbatch -N "$N" "$HERE/run_allreduce.sbatch"
+    echo "submitting N=$N rep=$r/$R $WT"
+    sbatch $WT -N "$N" "$HERE/run_allreduce.sbatch"
     sleep 1
   done
 done
