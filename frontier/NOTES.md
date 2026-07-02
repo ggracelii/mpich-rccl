@@ -52,6 +52,18 @@ Built with `build_mpich.sh`. Key choices (each forced by a failure below):
 - **The OFI plugin is essential**: without `rccl-net-plugin`, RCCL uses TCP sockets and is ~4× *slower* than Cray inter-node (1 GiB: 308 ms → 19 ms with the plugin, a 16× jump).
 - Correctness validated (int/float/double + corruption self-test) before timed runs.
 
+## Mechanism confirmation (confirm.sbatch, job 4929423, 1 MiB, 2 nodes)
+Verified each config does what it claims, not just that it produces numbers:
+- **B ≠ RCCL**: NCCL_DEBUG "RCCL banner count = 0". Kernel trace: `B.stats.csv` empty (no GPU
+  compute kernel); `B.copy_stats.csv` = CopyHostToDevice + CopyDeviceToHost → host-staged CPU
+  reduction on device buffers, exactly as labeled.
+- **C = RCCL over CXI**: NCCL_DEBUG shows `NET/OFI Initializing aws-ofi-nccl 1.19.2` +
+  `Using Libfabric version 2.3`; kernel trace `ncclDevKernel_Generic` = 99% of GPU time.
+- **A = host CPU**: only HIP-API calls, no GPU kernels.
+- **D = Cray**: confirmed via `ldd` (links /opt/cray `libmpi_amd`); rocprof-under-srun hit a
+  known ROCm-6.2 rocprof sqlite bug (tooling, not the config).
+Evidence: `results/confirm_4929423/` (NCCL logs + rocprof stats + SUMMARY.txt).
+
 ## `[verify OLCF]` items still to confirm
 - GCD→rank map in `bind_frontier.sh` `[4 5 2 3 6 7 0 1]` (validate via intra-node bandwidth).
 - Config D `--gpu-bind=closest -c7` recipe.

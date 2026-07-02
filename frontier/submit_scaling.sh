@@ -12,10 +12,11 @@
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 
-# Default sweep is 1->1024 (~1.8k node-hrs, ~18% of budget). Stage the big runs
-# separately after reviewing results: ./submit_scaling.sh "2048 4096"
+# Staged for safety. Default = small end (1-64, ~95 node-hrs) to validate first.
+# Then:  ./submit_scaling.sh "128 256 512 1024"   (~1.7k node-hrs)
+# Then:  ./submit_scaling.sh "2048 4096"           (~1.8k node-hrs)
 # Reps taper by node count (3 <=1024, 2 at 2048, 1 at 4096) via reps_for below.
-LADDER=${1:-"1 2 4 8 16 32 64 128 256 512 1024"}
+LADDER=${1:-"1 2 4 8 16 32 64"}
 
 reps_for() {                      # taper reps by node count
   local n=$1
