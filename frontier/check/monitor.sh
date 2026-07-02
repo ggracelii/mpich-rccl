@@ -20,7 +20,7 @@ sacct -X -S today -n -o State 2>/dev/null | sort | uniq -c
 
 echo; echo "== NON-OK finished jobs (investigate) =="
 sacct -X -S today -o JobID,JobName%16,NNodes,State,Elapsed 2>/dev/null \
-  | grep -viE "COMPLETED|RUNNING|PENDING|^JobID|^---" || echo "  (none)"
+  | grep -viE "COMPLETED|RUNNING|PENDING|CANCELLED|^JobID|^---" || echo "  (none)"
 
 echo; echo "== result completeness (config files per N dir) =="
 for d in "$WORK"/results/N*/; do
