@@ -27,7 +27,7 @@ reps_for() {                      # 3 reps at every scale: placement/network var
 
 for N in $LADDER; do
   R=$(reps_for "$N")
-  WT=""; [ "$N" -ge 2048 ] && WT="-t 01:00:00"   # giants get more walltime (no backfill downside); small jobs keep the short 30m default
+  WT=""; [ "$N" -ge 2048 ] && WT="-t 00:20:00"   # giants: launch + RCCL comm-init at 2048/4096 nodes adds a few min over the ~2-min run; 20m = ~2-3x margin, far better backfill than the old 60m
   for r in $(seq 1 "$R"); do
     echo "submitting N=$N rep=$r/$R $WT"
     sbatch $WT -N "$N" "$HERE/run_allreduce.sbatch"
