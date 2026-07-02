@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A csc678
 #SBATCH -J rccl-allreduce
-#SBATCH -t 00:30:00
+#SBATCH -t 00:10:00
 #SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 # Submit with node count on the CLI so one script scales:
