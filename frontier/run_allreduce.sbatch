@@ -5,8 +5,9 @@
 #SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 # Submit with node count on the CLI so one script scales:
-#   sbatch -N 2 -q debug run_allreduce.sbatch      (debug for small counts)
-#   sbatch -N 512        run_allreduce.sbatch
+#   sbatch -N 2   run_allreduce.sbatch
+#   sbatch -N 512 run_allreduce.sbatch
+# (submit_scaling.sh fans this across node counts; all via the normal batch queue)
 #
 # Runs configs A/B/C/D(/E) back-to-back on the SAME allocation (same dragonfly
 # placement) so every comparison is apples-to-apples.
@@ -24,15 +25,12 @@ BIND="$HERE/bind_frontier.sh"
 NODES=${SLURM_JOB_NUM_NODES:?submit with sbatch -N <nodes>}
 PPN=8
 NRANKS=$((NODES * PPN))
-WARMUP=20                     # OSU -x
-# CPU configs (A,B) are catastrophically slow at large sizes (device->host
-# staging + CPU algorithm): ~6 s/op at 512 MiB inter-node, which blows the
-# walltime. Cap them at 32 MiB with few iters. GPU configs (C,D,E) are fast, so
-# they sweep the full range to 1 GiB.
+WARMUP=10                     # OSU -x (covers one-time RCCL comm init + clock ramp; 5 is the floor)
+ITERS=50                      # OSU -i, uniform across all configs (allreduce is low-variance; min/med/max reported)
+# CPU configs (A,B) are catastrophically slow at large sizes (~6 s/op at 512 MiB
+# inter-node), so cap them at 32 MiB. GPU configs (C,D,E) sweep to 1 GiB.
 CPU_MAX=33554432              # 32 MiB
-CPU_ITERS=50
 GPU_MAX=1073741824            # 1 GiB
-GPU_ITERS=100
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
@@ -49,9 +47,9 @@ MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
 
 OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 OSU_CRAY_BIN=$OSU_CRAY/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
-HOST_ARGS="-m 0:$CPU_MAX -i $CPU_ITERS -x $WARMUP -f"
-CPUDEV_ARGS="-m 0:$CPU_MAX -i $CPU_ITERS -x $WARMUP -d rocm -f"
-GPU_ARGS="-m 0:$GPU_MAX -i $GPU_ITERS -x $WARMUP -d rocm -f"
+HOST_ARGS="-m 0:$CPU_MAX -i $ITERS -x $WARMUP -f"
+CPUDEV_ARGS="-m 0:$CPU_MAX -i $ITERS -x $WARMUP -d rocm -f"
+GPU_ARGS="-m 0:$GPU_MAX -i $ITERS -x $WARMUP -d rocm -f"
 
 # ---- A: MPICH CPU, HOST buffers (traditional MPI, no GPU awareness) --------
 load_mine
@@ -85,7 +83,7 @@ if [ "$NODES" -le 8 ]; then
   load_mine
   module load rccl-net-plugin
   echo "=== E_rccl_tests : N=$NODES ===" | tee "$RESULTS/E_rccl_tests.txt"
-  $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 \
+  $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 -n $ITERS -w $WARMUP \
     2>&1 | tee -a "$RESULTS/E_rccl_tests.txt"
 fi
 
