@@ -1,0 +1,5 @@
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)
+1048576              2505.67

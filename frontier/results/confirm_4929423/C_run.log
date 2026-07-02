@@ -1,0 +1,143 @@
+RPL: on '260701_215841' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-mine/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-d" "rocm" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215841_2390014'
+RPL: on '260701_215841' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: result dir '/tmp/rpl_data_260701_215841_2390014/input_results_260701_215841'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-mine/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-d" "rocm" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215841_1462505'
+RPL: result dir '/tmp/rpl_data_260701_215841_1462505/input_results_260701_215841'
+ROCtracer (2390057):
+ROCtracer (1462548):
+    HIP-trace(*)
+    HIP-trace(*)
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)
+1048576               183.06
+hsa_copy_deps: 0
+Traceback (most recent call last):
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 1129, in <module>
+    hip_trace_found = fill_api_db("HIP", db, indir, "hip", HIP_PID, OPS_PID, [], {}, 1)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 516, in fill_api_db
+    table_handle = db.add_table(table_name, api_table_descr)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/sqlitedb.py", line 52, in add_table
+    cursor.execute(stm)
+sqlite3.OperationalError: table HIP already exists
+Profiling data corrupted: '/tmp/rpl_data_260701_215841_2390014/input_results_260701_215841/'
+hsa_copy_deps: 0
+scan hip API data 0:4230                                                                                                    scan hip API data 100:4230                                                                                                    scan hip API data 200:4230                                                                                                    scan hip API data 300:4230                                                                                                    scan hip API data 400:4230                                                                                                    scan hip API data 500:4230                                                                                                    scan hip API data 600:4230                                                                                                    scan hip API data 700:4230                                                                                                    scan hip API data 800:4230                                                                                                    scan hip API data 900:4230                                                                                                    scan hip API data 1000:4230                                                                                                    scan hip API data 1100:4230                                                                                                    scan hip API data 1200:4230                                                                                                    scan hip API data 1300:4230                                                                                                    scan hip API data 1400:4230                                                                                                    scan hip API data 1500:4230                                                                                                    scan hip API data 1600:4230                                                                                                    scan hip API data 1700:4230                                                                                                    scan hip API data 1800:4230                                                                                                    scan hip API data 1900:4230                                                                                                    scan hip API data 2000:4230                                                                                                    scan hip API data 2100:4230                                                                                                    scan hip API data 2200:4230                                                                                                    scan hip API data 2300:4230                                                                                                    scan hip API data 2400:4230                                                                                                    scan hip API data 2500:4230                                                                                                    scan hip API data 2600:4230                                                                                                    scan hip API data 2700:4230                                                                                                    scan hip API data 2800:4230                                                                                                    scan hip API data 2900:4230                                                                                                    scan hip API data 3000:4230                                                                                                    scan hip API data 3100:4230                                                                                                    scan hip API data 3200:4230                                                                                                    scan hip API data 3300:4230                                                                                                    scan hip API data 3400:4230                                                                                                    scan hip API data 3500:4230                                                                                                    scan hip API data 3600:4230                                                                                                    scan hip API data 3700:4230                                                                                                    scan hip API data 3800:4230                                                                                                    scan hip API data 3900:4230                                                                                                    scan hip API data 4000:4230                                                                                                    scan hip API data 4100:4230                                                                                                    scan hip API data 4200:4230                                                                                                    scan hip API data 4229:4230                                                                                                    scan ops data 0:630                                                                                                    scan ops data 100:630                                                                                                    scan ops data 200:630                                                                                                    scan ops data 300:630                                                                                                    from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+scan ops data 400:630                                                                                                    from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+scan ops data 500:630                                                                                                    from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+from_val(-1, 6, 1462589)
+scan ops data 600:630                                                                                                    from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+from_val(-1, 2, 1462548)
+scan ops data 629:630                                                                                                    File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.copy_stats.csv' is generating
+dump json 0:518                                                                                                    dump json 517:518                                                                                                    
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.json' is generating
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.hip_stats.csv' is generating
+dump json 0:4230                                                                                                    dump json 1000:4230                                                                                                    dump json 2000:4230                                                                                                    dump json 3000:4230                                                                                                    dump json 4000:4230                                                                                                    dump json 4229:4230                                                                                                    
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.json' is generating
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.stats.csv' is generating
+dump json 0:10                                                                                                    dump json 9:10                                                                                                    
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/C.json' is generating

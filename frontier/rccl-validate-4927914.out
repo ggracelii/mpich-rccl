@@ -1,0 +1,59 @@
+[env] PROJ=csc678 WORK=/lustre/orion/csc678/scratch/graceli/rccl-frontier ROCM=6.2.4
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== B_mpich_dev (bytes=1024 --int) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1024 --int) ===
+  PASS C_mpich_rccl
+=== B_mpich_dev (bytes=1024 --float) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1024 --float) ===
+  PASS C_mpich_rccl
+=== B_mpich_dev (bytes=1024 --double) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1024 --double) ===
+  PASS C_mpich_rccl
+=== B_mpich_dev (bytes=1048576 --int) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1048576 --int) ===
+  PASS C_mpich_rccl
+=== B_mpich_dev (bytes=1048576 --float) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1048576 --float) ===
+  PASS C_mpich_rccl
+=== B_mpich_dev (bytes=1048576 --double) ===
+  PASS B_mpich_dev
+=== C_mpich_rccl (bytes=1048576 --double) ===
+  PASS C_mpich_rccl
+=== corruption self-test (expect 'Validation failed') ===
+  PASS checker-detects-corruption
+-----
+ALL VALIDATION PASSED -> safe to run timed sweeps
+log: /lustre/orion/csc678/scratch/graceli/rccl-frontier/results/validate_job4927914.log

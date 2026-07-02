@@ -1,0 +1,20 @@
+==== CONFIRMATION SUMMARY (job 4929423, size 1048576) ====
+
+-- B should NOT invoke RCCL --
+  RCCL banner count (want 0): 0
+
+-- C should invoke RCCL over OFI/CXI --
+  RCCL version 2.20.5+hip6.2 HEAD:612add2+
+  frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+  frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+  frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+
+-- Kernel-level (rank 0) — grep for nccl / hipMemcpy in *.stats.csv --
+  [A]
+    (no stats file)
+  [B]
+    (no stats file)
+  [C]
+    "ncclDevKernel_Generic(ncclDevComm*, channelMasks, ncclWork*)",7,4877796,696828,99.02831256250434
+  [D]
+    (no stats file)

@@ -1,0 +1,244 @@
+[env] PROJ=csc678 WORK=/lustre/orion/csc678/scratch/graceli/rccl-frontier ROCM=6.2.4
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== A_mpich_host : N=64 ranks=512 ===
+
+# OSU MPI Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                      57.29             51.79             63.98          50
+8                     102.37             64.28            155.71          50
+16                     57.04             50.94             63.71          50
+32                     56.83             50.50             63.16          50
+64                     57.18             51.13             63.63          50
+128                    59.11             52.61             65.93          50
+256                    75.48             71.11             81.77          50
+512                    76.39             71.91             81.99          50
+1024                   78.03             73.31             83.83          50
+2048                  109.58            105.24            114.15          50
+4096                  115.80            110.58            121.63          50
+8192                  123.12            118.58            129.41          50
+16384                 138.18            132.91            144.53          50
+32768                 159.97            154.56            167.55          50
+65536                 190.49            183.95            199.19          50
+131072                233.74            224.92            242.84          50
+262144                318.80            295.82            332.04          50
+524288                499.91            451.61            537.75          50
+1048576               895.40            789.82            978.15          50
+2097152              1747.18           1525.53           1926.55          50
+4194304              3613.42           3261.19           3986.44          50
+8388608              6874.80           6428.88           7326.85          50
+16777216            11079.11          10775.31          11525.36          50
+33554432            34822.32          34048.86          36444.61          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== B_mpich_dev : N=64 ranks=512 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                      76.78             73.70             81.04          50
+8                      76.90             74.05             81.32          50
+16                     76.90             73.73             81.04          50
+32                     76.98             74.09             81.22          50
+64                     76.96             73.98             81.42          50
+128                    79.70             75.92             85.38          50
+256                   113.32            109.67            117.95          50
+512                   118.02            113.76            123.25          50
+1024                  124.34            120.35            129.10          50
+2048                  130.82            126.93            135.54          50
+4096                  140.02            136.33            144.49          50
+8192                  151.72            147.70            156.62          50
+16384                 175.08            170.80            179.01          50
+32768                 209.26            203.48            214.33          50
+65536                 300.68            291.52            308.30          50
+131072                472.01            458.56            482.46          50
+262144                812.09            794.19            831.63          50
+524288               1472.85           1436.75           1513.00          50
+1048576              2849.95           2779.36           2952.10          50
+2097152             25215.94          24768.12          25635.41          50
+4194304             50367.48          48039.50          57079.06          50
+8388608             99342.64          96335.14         105826.92          50
+16777216           197582.49         192955.33         201091.76          50
+33554432           403991.05         395356.54         412486.97          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== C_mpich_rccl : N=64 ranks=512 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                     120.78             83.35            135.19          50
+8                     111.33             74.56            125.72          50
+16                     98.75             62.93            112.47          50
+32                     99.44             63.20            113.22          50
+64                    107.51             67.45            122.38          50
+128                   162.00             96.84            183.20          50
+256                   166.10             99.47            188.12          50
+512                   171.51            102.71            194.58          50
+1024                  179.20            107.25            202.94          50
+2048                  197.82            119.05            223.41          50
+4096                  200.45            124.03            223.53          50
+8192                  199.80            124.38            222.62          50
+16384                 203.06            126.51            225.17          50
+32768                 220.81            210.33            230.00          50
+65536                 259.13            247.15            269.14          50
+131072                326.64            314.62            336.53          50
+262144                455.63            442.54            466.75          50
+524288                508.20            494.55            522.31          50
+1048576               610.62            596.04            622.82          50
+2097152               493.10            469.86            522.95          50
+4194304               675.20            643.66            717.84          50
+8388608              1245.54           1137.03           1359.31          50
+16777216             1676.79           1619.02           1751.62          50
+33554432             3041.07           2924.87           3155.14          50
+67108864             6149.46           5722.45           6433.26          50
+134217728            5672.43           5143.73           6017.33          50
+268435456           10610.55          10329.78          11151.25          50
+536870912           20002.72          19201.56          20371.69          50
+1073741824          36778.51          35840.92          37375.41          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== D_cray_gpuaware : N=64 ranks=512 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                      34.60             31.77             38.05          50
+8                      34.38             31.55             38.55          50
+16                     34.22             31.80             36.57          50
+32                     34.55             32.01             37.33          50
+64                     34.77             31.62             38.85          50
+128                    36.17             33.45             38.38          50
+256                    59.16             57.43             61.16          50
+512                    58.30             56.89             60.57          50
+1024                   60.64             58.46             64.17          50
+2048                   63.84             61.25             66.14          50
+4096                   89.10             85.07             91.94          50
+8192                  121.65            118.01            124.86          50
+16384                 130.84            127.22            133.87          50
+32768                 146.56            142.70            151.16          50
+65536                 185.90            179.47            191.65          50
+131072                320.54            317.06            323.52          50
+262144                332.79            329.41            336.96          50
+524288                369.20            362.81            374.40          50
+1048576               409.75            403.90            415.32          50
+2097152               489.00            483.29            493.34          50
+4194304               635.83            629.30            641.54          50
+8388608               927.61            918.53            945.89          50
+16777216             1897.83           1888.98           1914.01          50
+33554432             4359.14           4348.42           4389.10          50
+67108864            12324.15          12282.37          12362.19          50
+134217728           18558.69          18550.00          18595.00          50
+268435456           31054.53          31046.15          31066.91          50
+536870912           62361.78          62353.10          62374.51          50
+1073741824         125926.76         125918.84         125940.08          50
+[run] done -> /lustre/orion/csc678/scratch/graceli/rccl-frontier/results/N64_job4929448

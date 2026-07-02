@@ -1,0 +1,33 @@
+RPL: on '260701_215827' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: on '260701_215827' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-mine/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215827_1462042'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-mine/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215827_2389734'
+RPL: result dir '/tmp/rpl_data_260701_215827_1462042/input_results_260701_215827'
+RPL: result dir '/tmp/rpl_data_260701_215827_2389734/input_results_260701_215827'
+ROCtracer (1462085):
+ROCtracer (2389777):
+    HIP-trace(*)
+    HIP-trace(*)
+
+# OSU MPI Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)
+1048576              1227.34
+hsa_copy_deps: 0
+Traceback (most recent call last):
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 1129, in <module>
+    hip_trace_found = fill_api_db("HIP", db, indir, "hip", HIP_PID, OPS_PID, [], {}, 1)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 516, in fill_api_db
+    table_handle = db.add_table(table_name, api_table_descr)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/sqlitedb.py", line 52, in add_table
+    cursor.execute(stm)
+sqlite3.OperationalError: table HIP already exists
+Profiling data corrupted: '/tmp/rpl_data_260701_215827_2389734/input_results_260701_215827/'
+hsa_copy_deps: 0
+scan hip API data 0:1032                                                                                                    scan hip API data 100:1032                                                                                                    scan hip API data 200:1032                                                                                                    scan hip API data 300:1032                                                                                                    scan hip API data 400:1032                                                                                                    scan hip API data 500:1032                                                                                                    scan hip API data 600:1032                                                                                                    scan hip API data 700:1032                                                                                                    scan hip API data 800:1032                                                                                                    scan hip API data 900:1032                                                                                                    scan hip API data 1000:1032                                                                                                    scan hip API data 1031:1032                                                                                                    scan ops data 0:8                                                                                                    scan ops data 7:8                                                                                                    File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/A.hip_stats.csv' is generating
+dump json 0:1032                                                                                                    dump json 1000:1032                                                                                                    dump json 1031:1032                                                                                                    
+File '/lustre/orion/csc678/scratch/graceli/rccl-frontier/results/confirm_4929423/A.json' is generating

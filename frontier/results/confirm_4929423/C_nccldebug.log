@@ -1,0 +1,1514 @@
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)
+frontier09286:1461765:1461765 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461765:1461765 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461765:1461765 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461765:1461765 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461765:1461765 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461765:1461765 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461765:1461765 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+RCCL version 2.20.5+hip6.2 HEAD:612add2+
+frontier09286:1461766:1461766 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461766:1461766 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461768:1461768 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461768:1461768 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461766:1461766 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461768:1461768 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461767:1461767 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461767:1461767 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461769:1461769 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461769:1461769 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461767:1461767 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461771:1461771 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461771:1461771 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461772:1461772 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461772:1461772 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461766:1461766 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461767:1461767 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461768:1461768 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461771:1461771 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461772:1461772 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461769:1461769 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461770:1461770 [0] NCCL INFO ROCr version 1.14
+frontier09286:1461770:1461770 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09286:1461770:1461770 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09286:1461766:1461766 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461766:1461766 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461766:1461766 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461767:1461767 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461767:1461767 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461767:1461767 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461769:1461769 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461770:1461770 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461771:1461771 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461772:1461772 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.44<0>
+frontier09286:1461768:1461768 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461768:1461768 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461768:1461768 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461771:1461771 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461771:1461771 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461771:1461771 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461770:1461770 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461770:1461770 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461770:1461770 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461772:1461772 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461772:1461772 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461772:1461772 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461769:1461769 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09286:1461769:1461769 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09286:1461769:1461769 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389554:2389554 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389554:2389554 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389557:2389557 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389557:2389557 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389556:2389556 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389556:2389556 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389551:2389551 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389551:2389551 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389556:2389556 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389551:2389551 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389557:2389557 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389558:2389558 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389558:2389558 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389553:2389553 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389553:2389553 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389558:2389558 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389553:2389553 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389555:2389555 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389555:2389555 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389554:2389554 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389555:2389555 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389552:2389552 [0] NCCL INFO ROCr version 1.14
+frontier09288:2389552:2389552 [0] NCCL INFO Dmabuf feature disabled without NCCL_DMABUF_ENABLE=1
+frontier09288:2389552:2389552 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1,hsn2,hsn3
+frontier09288:2389551:2389551 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389556:2389556 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389557:2389557 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389552:2389552 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389553:2389553 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389554:2389554 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389555:2389555 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389558:2389558 [0] NCCL INFO Bootstrap : Using hsn0:10.128.145.52<0>
+frontier09288:2389551:2389551 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389551:2389551 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389552:2389552 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389552:2389552 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389555:2389555 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389555:2389555 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389555:2389555 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389558:2389558 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389558:2389558 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389558:2389558 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389551:2389551 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389553:2389553 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389553:2389553 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389553:2389553 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389552:2389552 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389556:2389556 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389556:2389556 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389556:2389556 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389557:2389557 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389557:2389557 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389557:2389557 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09288:2389554:2389554 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+frontier09288:2389554:2389554 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+frontier09288:2389554:2389554 [0] NCCL INFO Kernel version: 6.4.0-150700.53.52-default
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.19.2
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Using Libfabric version 2.3
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Using HIP driver version 60241134 with runtime 60241134
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461770:1461770 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461770:1461770 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461770:1461770 [0] NCCL INFO Using network Libfabric
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389558:2389558 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389558:2389558 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389558:2389558 [0] NCCL INFO Using network Libfabric
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461768:1461768 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461768:1461768 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461768:1461768 [0] NCCL INFO Using network Libfabric
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389551:2389551 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389551:2389551 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389551:2389551 [0] NCCL INFO Using network Libfabric
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389555:2389555 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389555:2389555 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389555:2389555 [0] NCCL INFO Using network Libfabric
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461771:1461771 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461771:1461771 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461771:1461771 [0] NCCL INFO Using network Libfabric
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389553:2389553 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389553:2389553 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389553:2389553 [0] NCCL INFO Using network Libfabric
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461769:1461769 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09286:1461769:1461769 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461769:1461769 [0] NCCL INFO Using network Libfabric
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461766:1461766 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461765:1461765 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461766:1461766 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461766:1461766 [0] NCCL INFO Using network Libfabric
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461767:1461767 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09286:1461772:1461772 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09286:1461765:1461765 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461765:1461765 [0] NCCL INFO Using network Libfabric
+frontier09286:1461767:1461767 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461767:1461767 [0] NCCL INFO Using network Libfabric
+frontier09286:1461772:1461772 [0] NCCL INFO Using non-device net plugin version 0
+frontier09286:1461772:1461772 [0] NCCL INFO Using network Libfabric
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389557:2389557 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389557:2389557 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389557:2389557 [0] NCCL INFO Using network Libfabric
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Plugin selected platform: Default
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI No eligible providers were found
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Selected provider is cxi, fabric is cxi (found 4 nics)
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389556:2389556 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389554:2389554 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389556:2389556 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389556:2389556 [0] NCCL INFO Using network Libfabric
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Support for global registrations: false
+frontier09288:2389552:2389552 [0] NCCL INFO NET/OFI Support for DMA-BUF registrations: true
+frontier09288:2389554:2389554 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389554:2389554 [0] NCCL INFO Using network Libfabric
+frontier09288:2389552:2389552 [0] NCCL INFO Using non-device net plugin version 0
+frontier09288:2389552:2389552 [0] NCCL INFO Using network Libfabric
+frontier09286:1461765:1461765 [0] NCCL INFO comm 0x7b3c10 rank 0 nranks 16 cudaDev 0 busId d1000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461766:1461766 [0] NCCL INFO comm 0x7b3c10 rank 1 nranks 16 cudaDev 0 busId d6000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389551:2389551 [0] NCCL INFO comm 0x7b3c10 rank 8 nranks 16 cudaDev 0 busId d1000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461767:1461767 [0] NCCL INFO comm 0x7b3c10 rank 2 nranks 16 cudaDev 0 busId c9000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389552:2389552 [0] NCCL INFO comm 0x7b3c10 rank 9 nranks 16 cudaDev 0 busId d6000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461768:1461768 [0] NCCL INFO comm 0x7b3c10 rank 3 nranks 16 cudaDev 0 busId ce000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389553:2389553 [0] NCCL INFO comm 0x7b3c10 rank 10 nranks 16 cudaDev 0 busId c9000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461769:1461769 [0] NCCL INFO comm 0x7b3c10 rank 4 nranks 16 cudaDev 0 busId d9000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389554:2389554 [0] NCCL INFO comm 0x7b3c10 rank 11 nranks 16 cudaDev 0 busId ce000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461770:1461770 [0] NCCL INFO comm 0x7b3c10 rank 5 nranks 16 cudaDev 0 busId de000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389555:2389555 [0] NCCL INFO comm 0x7b3c10 rank 12 nranks 16 cudaDev 0 busId d9000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461771:1461771 [0] NCCL INFO comm 0x7b3c10 rank 6 nranks 16 cudaDev 0 busId c1000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389556:2389556 [0] NCCL INFO comm 0x7b3c10 rank 13 nranks 16 cudaDev 0 busId de000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461772:1461772 [0] NCCL INFO comm 0x7b3c10 rank 7 nranks 16 cudaDev 0 busId c6000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389557:2389557 [0] NCCL INFO comm 0x7b3c10 rank 14 nranks 16 cudaDev 0 busId c1000 commId 0x3da6c13976fee21b - Init START
+frontier09288:2389558:2389558 [0] NCCL INFO comm 0x7b3c10 rank 15 nranks 16 cudaDev 0 busId c6000 commId 0x3da6c13976fee21b - Init START
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461771:1461771 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461766:1461766 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461770:1461770 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461765:1461765 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461768:1461768 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461769:1461769 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 344057918799146225; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 768570134938377937; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 1593654316856345515; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 3211536279323010568; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 4608094570844965273; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 5346795923965126436; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 6073235427759253183; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09286:1461772:1461772 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 11993720591863042510; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389551:2389551 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389552:2389552 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389553:2389553 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389554:2389554 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389555:2389555 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389556:2389556 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389557:2389557 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 4; gpu_id = 63582; unique_id = 1330584902596776897; location_id = 49408; bdf = 49408; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 9; gpu_id = 1553; unique_id = 5357442965517643508; location_id = 54784; bdf = 54784; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 7; gpu_id = 3099; unique_id = 10030305939210530939; location_id = 52736; bdf = 52736; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 5; gpu_id = 51740; unique_id = 11329511029088264540; location_id = 50688; bdf = 50688; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 6; gpu_id = 15961; unique_id = 12141514705891273567; location_id = 51456; bdf = 51456; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 11; gpu_id = 49174; unique_id = 12633949546901506130; location_id = 56832; bdf = 56832; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 10; gpu_id = 62036; unique_id = 16067845991957977795; location_id = 55552; bdf = 55552; domain = 0; partition = 0], 
+frontier09288:2389558:2389558 [0] NCCL INFO [node_id = 8; gpu_id = 13395; unique_id = 16990047820200317773; location_id = 53504; bdf = 53504; domain = 0; partition = 0], 
+frontier09286:1461767:1461767 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461771:1461771 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461766:1461766 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461768:1461768 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461770:1461770 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461765:1461765 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461769:1461769 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461772:1461772 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389551:2389551 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389553:2389553 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389554:2389554 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389555:2389555 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389557:2389557 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389558:2389558 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389552:2389552 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09288:2389556:2389556 [0] NCCL INFO initialized internal alternative rsmi functionality
+frontier09286:1461767:1461767 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461767:1461767 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461771:1461771 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461771:1461771 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461768:1461768 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461772:1461772 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461766:1461766 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461770:1461770 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461765:1461765 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461769:1461769 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09286:1461772:1461772 [0] NCCL INFO Setting affinity for GPU 1 to fefe0000,00000000,fefe0000,00000000
+frontier09286:1461768:1461768 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461772:1461772 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461765:1461765 [0] NCCL INFO Setting affinity for GPU 4 to fefe,00000000,0000fefe
+frontier09286:1461766:1461766 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461770:1461770 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461765:1461765 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461769:1461769 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389551:2389551 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389552:2389552 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389553:2389553 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389553:2389553 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389554:2389554 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389554:2389554 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389555:2389555 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389556:2389556 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389557:2389557 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389557:2389557 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389558:2389558 [0] NCCL INFO NCCL_NET_GDR_LEVEL set by environment to PHB
+frontier09288:2389558:2389558 [0] NCCL INFO Setting affinity for GPU 1 to fefe0000,00000000,fefe0000,00000000
+frontier09288:2389558:2389558 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389551:2389551 [0] NCCL INFO Setting affinity for GPU 4 to fefe,00000000,0000fefe
+frontier09288:2389555:2389555 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389551:2389551 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389552:2389552 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09288:2389556:2389556 [0] NCCL INFO NCCL_CROSS_NIC set by environment to 1.
+frontier09286:1461765:1461765 [0] NCCL INFO comm 0x7b3c10 rank 0 nRanks 16 nNodes 2 localRanks 8 localRank 0 MNNVL 0
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 00/16 :    0   4   5   3   2  14  15   9   8  12  13  11  10   6   7   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 01/16 :    0   1   7   6  10  11  13  12   8   9  15  14   2   3   5   4
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 02/16 :    0   1  13  12  14  15  11  10   8   9   5   4   6   7   3   2
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 03/16 :    0   2   3   7   6   4   5   9   8  10  11  15  14  12  13   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 04/16 :    0   4   5   3   2  14  15   9   8  12  13  11  10   6   7   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 05/16 :    0   1   7   6  10  11  13  12   8   9  15  14   2   3   5   4
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 06/16 :    0   1  13  12  14  15  11  10   8   9   5   4   6   7   3   2
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 07/16 :    0   2   3   7   6   4   5   9   8  10  11  15  14  12  13   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 08/16 :    0   4   5   3   2  14  15   9   8  12  13  11  10   6   7   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 09/16 :    0   1   7   6  10  11  13  12   8   9  15  14   2   3   5   4
+frontier09286:1461766:1461766 [0] NCCL INFO comm 0x7b3c10 rank 1 nRanks 16 nNodes 2 localRanks 8 localRank 1 MNNVL 0
+frontier09286:1461766:1461766 [0] NCCL INFO Trees [0] 0/-1/-1->1->7 [1] 7/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] 0/9/-1->1->-1 [4] 0/-1/-1->1->7 [5] 7/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] 0/9/-1->1->-1 [8] 0/-1/-1->1->7 [9] 7/-1/-1->1->0 [10] -1/-1/-1->1->0 [11] 0/-1/-1->1->9 [12] 0/-1/-1->1->7 [13] 7/-1/-1->1->0 [14] -1/-1/-1->1->0 [15] 0/-1/-1->1->9 comm 0x7b3c10 nRanks 16 busId d6000
+frontier09286:1461766:1461766 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461767:1461767 [0] NCCL INFO comm 0x7b3c10 rank 2 nRanks 16 nNodes 2 localRanks 8 localRank 2 MNNVL 0
+frontier09286:1461767:1461767 [0] NCCL INFO Trees [0] -1/-1/-1->2->3 [1] 3/10/-1->2->-1 [2] 0/-1/-1->2->3 [3] 3/-1/-1->2->0 [4] -1/-1/-1->2->3 [5] 3/10/-1->2->-1 [6] 0/-1/-1->2->3 [7] 3/-1/-1->2->0 [8] -1/-1/-1->2->3 [9] 3/-1/-1->2->10 [10] 0/-1/-1->2->3 [11] 3/-1/-1->2->0 [12] -1/-1/-1->2->3 [13] 3/-1/-1->2->10 [14] 0/-1/-1->2->3 [15] 3/-1/-1->2->0 comm 0x7b3c10 nRanks 16 busId c9000
+frontier09286:1461767:1461767 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461769:1461769 [0] NCCL INFO comm 0x7b3c10 rank 4 nRanks 16 nNodes 2 localRanks 8 localRank 4 MNNVL 0
+frontier09286:1461769:1461769 [0] NCCL INFO Trees [0] 5/-1/-1->4->0 [1] 0/-1/-1->4->5 [2] 6/-1/-1->4->5 [3] 5/-1/-1->4->6 [4] 5/-1/-1->4->0 [5] 0/-1/-1->4->5 [6] 6/-1/-1->4->5 [7] 5/-1/-1->4->6 [8] 5/-1/-1->4->0 [9] 0/-1/-1->4->5 [10] 6/-1/-1->4->5 [11] 5/-1/-1->4->6 [12] 5/-1/-1->4->0 [13] 0/-1/-1->4->5 [14] 6/-1/-1->4->5 [15] 5/-1/-1->4->6 comm 0x7b3c10 nRanks 16 busId d9000
+frontier09286:1461769:1461769 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389551:2389551 [0] NCCL INFO comm 0x7b3c10 rank 8 nRanks 16 nNodes 2 localRanks 8 localRank 0 MNNVL 0
+frontier09288:2389551:2389551 [0] NCCL INFO Trees [0] 12/-1/-1->8->9 [1] 9/-1/-1->8->12 [2] 9/-1/-1->8->10 [3] 10/-1/-1->8->9 [4] 12/-1/-1->8->9 [5] 9/-1/-1->8->12 [6] 9/-1/-1->8->10 [7] 10/-1/-1->8->9 [8] 12/-1/-1->8->9 [9] 9/-1/-1->8->12 [10] 9/-1/-1->8->10 [11] 10/-1/-1->8->9 [12] 12/-1/-1->8->9 [13] 9/-1/-1->8->12 [14] 9/-1/-1->8->10 [15] 10/-1/-1->8->9 comm 0x7b3c10 nRanks 16 busId d1000
+frontier09288:2389551:2389551 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461770:1461770 [0] NCCL INFO comm 0x7b3c10 rank 5 nRanks 16 nNodes 2 localRanks 8 localRank 5 MNNVL 0
+frontier09286:1461770:1461770 [0] NCCL INFO Trees [0] 3/-1/-1->5->4 [1] 4/-1/-1->5->3 [2] 4/13/-1->5->-1 [3] -1/-1/-1->5->4 [4] 3/-1/-1->5->4 [5] 4/-1/-1->5->3 [6] 4/13/-1->5->-1 [7] -1/-1/-1->5->4 [8] 3/-1/-1->5->4 [9] 4/-1/-1->5->3 [10] 4/-1/-1->5->13 [11] -1/-1/-1->5->4 [12] 3/-1/-1->5->4 [13] 4/-1/-1->5->3 [14] 4/-1/-1->5->13 [15] -1/-1/-1->5->4 comm 0x7b3c10 nRanks 16 busId de000
+frontier09286:1461770:1461770 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389552:2389552 [0] NCCL INFO comm 0x7b3c10 rank 9 nRanks 16 nNodes 2 localRanks 8 localRank 1 MNNVL 0
+frontier09288:2389552:2389552 [0] NCCL INFO Trees [0] 8/-1/-1->9->15 [1] 15/-1/-1->9->8 [2] -1/-1/-1->9->8 [3] 8/-1/-1->9->1 [4] 8/-1/-1->9->15 [5] 15/-1/-1->9->8 [6] -1/-1/-1->9->8 [7] 8/-1/-1->9->1 [8] 8/-1/-1->9->15 [9] 15/-1/-1->9->8 [10] -1/-1/-1->9->8 [11] 8/1/-1->9->-1 [12] 8/-1/-1->9->15 [13] 15/-1/-1->9->8 [14] -1/-1/-1->9->8 [15] 8/1/-1->9->-1 comm 0x7b3c10 nRanks 16 busId d6000
+frontier09288:2389552:2389552 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461771:1461771 [0] NCCL INFO comm 0x7b3c10 rank 6 nRanks 16 nNodes 2 localRanks 8 localRank 6 MNNVL 0
+frontier09286:1461771:1461771 [0] NCCL INFO Trees [0] 7/14/-1->6->-1 [1] -1/-1/-1->6->7 [2] 7/-1/-1->6->4 [3] 4/-1/-1->6->7 [4] 7/14/-1->6->-1 [5] -1/-1/-1->6->7 [6] 7/-1/-1->6->4 [7] 4/-1/-1->6->7 [8] 7/-1/-1->6->14 [9] -1/-1/-1->6->7 [10] 7/-1/-1->6->4 [11] 4/-1/-1->6->7 [12] 7/-1/-1->6->14 [13] -1/-1/-1->6->7 [14] 7/-1/-1->6->4 [15] 4/-1/-1->6->7 comm 0x7b3c10 nRanks 16 busId c1000
+frontier09286:1461771:1461771 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389553:2389553 [0] NCCL INFO comm 0x7b3c10 rank 10 nRanks 16 nNodes 2 localRanks 8 localRank 2 MNNVL 0
+frontier09288:2389553:2389553 [0] NCCL INFO Trees [0] -1/-1/-1->10->11 [1] 11/-1/-1->10->2 [2] 8/-1/-1->10->11 [3] 11/-1/-1->10->8 [4] -1/-1/-1->10->11 [5] 11/-1/-1->10->2 [6] 8/-1/-1->10->11 [7] 11/-1/-1->10->8 [8] -1/-1/-1->10->11 [9] 11/2/-1->10->-1 [10] 8/-1/-1->10->11 [11] 11/-1/-1->10->8 [12] -1/-1/-1->10->11 [13] 11/2/-1->10->-1 [14] 8/-1/-1->10->11 [15] 11/-1/-1->10->8 comm 0x7b3c10 nRanks 16 busId c9000
+frontier09288:2389553:2389553 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461772:1461772 [0] NCCL INFO comm 0x7b3c10 rank 7 nRanks 16 nNodes 2 localRanks 8 localRank 7 MNNVL 0
+frontier09286:1461772:1461772 [0] NCCL INFO Trees [0] 1/-1/-1->7->6 [1] 6/-1/-1->7->1 [2] 3/-1/-1->7->6 [3] 6/-1/-1->7->3 [4] 1/-1/-1->7->6 [5] 6/-1/-1->7->1 [6] 3/-1/-1->7->6 [7] 6/-1/-1->7->3 [8] 1/-1/-1->7->6 [9] 6/-1/-1->7->1 [10] 3/-1/-1->7->6 [11] 6/-1/-1->7->3 [12] 1/-1/-1->7->6 [13] 6/-1/-1->7->1 [14] 3/-1/-1->7->6 [15] 6/-1/-1->7->3 comm 0x7b3c10 nRanks 16 busId c6000
+frontier09286:1461772:1461772 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389554:2389554 [0] NCCL INFO comm 0x7b3c10 rank 11 nRanks 16 nNodes 2 localRanks 8 localRank 3 MNNVL 0
+frontier09288:2389554:2389554 [0] NCCL INFO Trees [0] 10/-1/-1->11->13 [1] 13/-1/-1->11->10 [2] 10/-1/-1->11->15 [3] 15/-1/-1->11->10 [4] 10/-1/-1->11->13 [5] 13/-1/-1->11->10 [6] 10/-1/-1->11->15 [7] 15/-1/-1->11->10 [8] 10/-1/-1->11->13 [9] 13/-1/-1->11->10 [10] 10/-1/-1->11->15 [11] 15/-1/-1->11->10 [12] 10/-1/-1->11->13 [13] 13/-1/-1->11->10 [14] 10/-1/-1->11->15 [15] 15/-1/-1->11->10 comm 0x7b3c10 nRanks 16 busId ce000
+frontier09288:2389554:2389554 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 10/16 :    0   1  13  12  14  15  11  10   8   9   5   4   6   7   3   2
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 11/16 :    0   2   3   7   6   4   5   9   8  10  11  15  14  12  13   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 12/16 :    0   4   5   3   2  14  15   9   8  12  13  11  10   6   7   1
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 13/16 :    0   1   7   6  10  11  13  12   8   9  15  14   2   3   5   4
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 14/16 :    0   1  13  12  14  15  11  10   8   9   5   4   6   7   3   2
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 15/16 :    0   2   3   7   6   4   5   9   8  10  11  15  14  12  13   1
+frontier09286:1461765:1461765 [0] NCCL INFO Trees [0] 4/-1/-1->0->1 [1] 1/-1/-1->0->4 [2] 1/-1/-1->0->2 [3] 2/-1/-1->0->1 [4] 4/-1/-1->0->1 [5] 1/-1/-1->0->4 [6] 1/-1/-1->0->2 [7] 2/-1/-1->0->1 [8] 4/-1/-1->0->1 [9] 1/-1/-1->0->4 [10] 1/-1/-1->0->2 [11] 2/-1/-1->0->1 [12] 4/-1/-1->0->1 [13] 1/-1/-1->0->4 [14] 1/-1/-1->0->2 [15] 2/-1/-1->0->1 comm 0x7b3c10 nRanks 16 busId d1000
+frontier09286:1461765:1461765 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389555:2389555 [0] NCCL INFO comm 0x7b3c10 rank 12 nRanks 16 nNodes 2 localRanks 8 localRank 4 MNNVL 0
+frontier09288:2389555:2389555 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 8/-1/-1->12->13 [2] 14/-1/-1->12->13 [3] 13/-1/-1->12->14 [4] 13/-1/-1->12->8 [5] 8/-1/-1->12->13 [6] 14/-1/-1->12->13 [7] 13/-1/-1->12->14 [8] 13/-1/-1->12->8 [9] 8/-1/-1->12->13 [10] 14/-1/-1->12->13 [11] 13/-1/-1->12->14 [12] 13/-1/-1->12->8 [13] 8/-1/-1->12->13 [14] 14/-1/-1->12->13 [15] 13/-1/-1->12->14 comm 0x7b3c10 nRanks 16 busId d9000
+frontier09288:2389555:2389555 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461768:1461768 [0] NCCL INFO comm 0x7b3c10 rank 3 nRanks 16 nNodes 2 localRanks 8 localRank 3 MNNVL 0
+frontier09286:1461768:1461768 [0] NCCL INFO Trees [0] 2/-1/-1->3->5 [1] 5/-1/-1->3->2 [2] 2/-1/-1->3->7 [3] 7/-1/-1->3->2 [4] 2/-1/-1->3->5 [5] 5/-1/-1->3->2 [6] 2/-1/-1->3->7 [7] 7/-1/-1->3->2 [8] 2/-1/-1->3->5 [9] 5/-1/-1->3->2 [10] 2/-1/-1->3->7 [11] 7/-1/-1->3->2 [12] 2/-1/-1->3->5 [13] 5/-1/-1->3->2 [14] 2/-1/-1->3->7 [15] 7/-1/-1->3->2 comm 0x7b3c10 nRanks 16 busId ce000
+frontier09286:1461768:1461768 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389556:2389556 [0] NCCL INFO comm 0x7b3c10 rank 13 nRanks 16 nNodes 2 localRanks 8 localRank 5 MNNVL 0
+frontier09288:2389556:2389556 [0] NCCL INFO Trees [0] 11/-1/-1->13->12 [1] 12/-1/-1->13->11 [2] 12/-1/-1->13->5 [3] -1/-1/-1->13->12 [4] 11/-1/-1->13->12 [5] 12/-1/-1->13->11 [6] 12/-1/-1->13->5 [7] -1/-1/-1->13->12 [8] 11/-1/-1->13->12 [9] 12/-1/-1->13->11 [10] 12/5/-1->13->-1 [11] -1/-1/-1->13->12 [12] 11/-1/-1->13->12 [13] 12/-1/-1->13->11 [14] 12/5/-1->13->-1 [15] -1/-1/-1->13->12 comm 0x7b3c10 nRanks 16 busId de000
+frontier09288:2389556:2389556 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389557:2389557 [0] NCCL INFO comm 0x7b3c10 rank 14 nRanks 16 nNodes 2 localRanks 8 localRank 6 MNNVL 0
+frontier09288:2389557:2389557 [0] NCCL INFO Trees [0] 15/-1/-1->14->6 [1] -1/-1/-1->14->15 [2] 15/-1/-1->14->12 [3] 12/-1/-1->14->15 [4] 15/-1/-1->14->6 [5] -1/-1/-1->14->15 [6] 15/-1/-1->14->12 [7] 12/-1/-1->14->15 [8] 15/6/-1->14->-1 [9] -1/-1/-1->14->15 [10] 15/-1/-1->14->12 [11] 12/-1/-1->14->15 [12] 15/6/-1->14->-1 [13] -1/-1/-1->14->15 [14] 15/-1/-1->14->12 [15] 12/-1/-1->14->15 comm 0x7b3c10 nRanks 16 busId c1000
+frontier09288:2389557:2389557 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09288:2389558:2389558 [0] NCCL INFO comm 0x7b3c10 rank 15 nRanks 16 nNodes 2 localRanks 8 localRank 7 MNNVL 0
+frontier09288:2389558:2389558 [0] NCCL INFO Trees [0] 9/-1/-1->15->14 [1] 14/-1/-1->15->9 [2] 11/-1/-1->15->14 [3] 14/-1/-1->15->11 [4] 9/-1/-1->15->14 [5] 14/-1/-1->15->9 [6] 11/-1/-1->15->14 [7] 14/-1/-1->15->11 [8] 9/-1/-1->15->14 [9] 14/-1/-1->15->9 [10] 11/-1/-1->15->14 [11] 14/-1/-1->15->11 [12] 9/-1/-1->15->14 [13] 14/-1/-1->15->9 [14] 11/-1/-1->15->14 [15] 14/-1/-1->15->11 comm 0x7b3c10 nRanks 16 busId c6000
+frontier09288:2389558:2389558 [0] NCCL INFO P2P Chunksize set to 131072
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 01/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 00/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 01/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 00/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 02/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 03/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 02/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 02/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 03/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 02/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 03/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 03/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 05/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 04/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 05/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 06/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 07/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 04/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 06/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 06/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 07/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 06/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 07/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 09/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 08/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 07/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 09/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 10/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 11/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 10/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 08/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 11/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 10/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 10/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 13/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 11/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 12/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 13/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 11/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 14/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 15/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 14/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 14/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 15/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 12/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 14/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 03/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 15/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 02/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 15/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 03/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 01/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 07/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 06/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 01/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 07/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 11/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 02/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 05/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 10/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 11/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 15/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 06/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 05/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 14/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 15/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 10/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 09/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 09/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 14/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 00/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 13/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 13/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 04/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 00/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 03/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 08/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 04/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 03/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 07/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 12/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 08/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 07/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 11/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 01/0 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 05/0 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 12/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 09/0 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 13/0 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 11/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 01/0 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 01/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 15/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 05/0 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 03/0 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 09/0 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 13/0 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 07/0 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 11/0 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 01/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 15/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 15/0 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 03/0 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 07/0 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 11/0 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 05/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 15/0 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 05/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 09/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 09/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 13/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 13/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/0 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/0 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/0 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/0 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 01/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 05/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/0 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/0 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/0 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/0 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/0 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/0 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/0 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/0 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 09/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 01/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 00/0 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 04/0 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 08/0 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 13/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 12/0 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/0 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/0 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/0 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 05/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/0 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 00/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 00/0 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 04/0 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 09/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 08/0 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 12/0 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 04/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 13/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 08/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 00/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 12/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 04/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 02/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 02/0 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 08/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 06/0 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 10/0 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 14/0 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 06/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 12/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 10/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 02/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 02/0 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 06/0 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 10/0 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 14/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 14/0 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 06/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 01/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 10/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 03/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 14/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 05/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 01/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 07/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 03/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 09/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 05/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 11/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 07/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 13/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 09/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 15/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 11/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 13/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 15/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/0 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/0 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/0 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/0 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/0 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/0 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 03/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/0 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 02/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/0 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 00/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 00/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 07/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 06/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/0 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/0 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 04/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/0 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/0 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 11/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 00/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 10/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 00/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/0 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 08/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/0 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 04/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/0 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 15/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 14/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/0 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 03/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 02/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 12/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 04/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 04/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 08/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 08/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 00/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 01/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 07/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 06/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 12/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 02/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 11/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 10/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 12/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 05/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 08/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 00/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 01/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 04/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 14/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 15/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 06/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 02/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 09/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 12/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 05/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 08/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 04/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 10/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 13/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 06/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 12/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 09/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 08/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 14/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 10/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 13/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 12/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 14/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 01/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 01/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 00/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 00/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 02/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 03/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 02/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 02/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 03/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 02/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 03/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 03/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 05/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 05/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 04/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 06/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 04/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 07/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 06/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 07/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 07/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 06/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 06/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 07/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 09/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 08/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 10/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 09/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 08/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 11/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 10/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 11/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 11/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 10/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 11/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 13/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 10/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 12/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 14/2 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 13/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 15/2 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 14/2 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 12/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 15/2 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 15/2 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 14/2 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 15/2 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 03/2 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/2 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 14/2 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/2 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 02/2 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/2 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 03/2 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 01/2 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/2 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/2 : 5[de000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 07/2 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/2 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 02/2 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/2 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/2 : 13[de000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 07/2 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 05/2 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 06/2 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 11/2 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 06/2 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 11/2 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 01/2 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 09/2 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 10/2 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 15/2 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 10/2 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 15/2 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 13/2 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 14/2 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 05/2 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 14/2 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 00/2 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/2 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 03/2 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 09/2 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 03/2 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 01/2 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/2 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 05/2 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 07/2 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 09/2 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/2 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 11/2 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 13/2 : 14[c1000] -> 2[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/2 : 6[c1000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 15/2 : 13[de000] -> 1[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 01/2 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 04/2 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 07/2 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/2 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 13/2 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/2 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/2 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 00/2 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/2 : 1[d6000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/2 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 01/2 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/2 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 08/2 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 05/2 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 11/2 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 05/2 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 09/2 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/2 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 13/2 : 6[c1000] -> 10[c9000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/2 : 14[c1000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 04/2 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 03/2 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 03/2 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 00/2 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/2 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 12/2 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 07/2 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 00/2 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/2 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 15/2 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 04/2 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 04/2 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/2 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/2 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 09/2 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 08/2 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 08/2 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/2 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 11/2 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/2 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 15/2 : 5[de000] -> 9[d6000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 08/2 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 12/2 : 2[c9000] -> 14[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/2 : 10[c9000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 12/2 : 10[c9000] -> 6[c1000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/2 : 2[c9000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 07/2 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 01/2 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 03/2 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 02/2 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 02/2 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/2 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 03/2 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/2 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 01/2 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 13/2 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/2 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 12/2 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/2 : 9[d6000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 11/2 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 06/2 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 07/2 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 06/2 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 05/2 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 07/2 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 05/2 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 15/2 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 10/2 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 11/2 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 09/2 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 10/2 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 09/2 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 01/2 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 11/2 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 15/2 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 14/2 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 13/2 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 05/2 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 13/2 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 14/2 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 15/2 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 09/2 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 00/2 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 13/2 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 04/2 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 00/2 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 08/2 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 04/2 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 12/2 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 08/2 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 02/2 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 02/2 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 06/2 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 10/2 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 14/2 : 9[d6000] -> 5[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 12/2 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 00/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 00/2 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 06/2 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 10/2 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 04/2 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 02/2 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 02/2 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 06/2 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 04/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 10/2 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 14/2 : 1[d6000] -> 13[de000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 14/2 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 06/2 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 00/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 00/2 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 08/2 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 10/2 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 01/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 04/2 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 08/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 12/2 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 04/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 14/2 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 03/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 08/2 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 05/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 01/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 12/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 12/2 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 08/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 07/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/2 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 03/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 09/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 05/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 01/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 00/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 11/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 12/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 07/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 02/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 13/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/2 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 09/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 05/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 04/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 15/2 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 11/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d1000
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 00/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 00/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 06/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 01/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 13/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 09/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 03/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 08/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 02/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 15/2 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 04/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 10/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d1000
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 00/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 05/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 04/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 07/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 13/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 12/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 03/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c6000
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 06/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 08/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/2 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 14/2 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 04/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 08/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 09/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 11/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 07/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 10/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 12/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c6000
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 08/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 15/0 : 8[d1000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 13/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 12/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 11/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/2 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d9000
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 01/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 14/2 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId ce000
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 12/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 02/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 15/0 : 0[d1000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 05/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 06/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 09/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId ce000
+frontier09286:1461769:1461769 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d9000
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 01/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 10/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 02/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 13/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 05/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 14/0 : 12[d9000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 06/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId de000
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 09/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c1000
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 01/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d6000
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 10/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c9000
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 00/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 03/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 13/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 02/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 14/0 : 4[d9000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 05/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 04/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c1000
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 01/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 07/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 06/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 03/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId de000
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 09/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId c9000
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 00/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Connected all rings comm 0x7b3c10 nRanks 16 busId d6000
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 08/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 05/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 02/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 11/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 10/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 07/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 04/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 09/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 12/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 13/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 03/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 02/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 06/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 00/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 11/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 14/0 : 10[c9000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 15/0 : 6[c1000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 07/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 04/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 08/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 13/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 06/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 00/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 11/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 08/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 15/0 : 14[c1000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 10/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 10/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 15/0 : 12[d9000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 04/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 12/0 : 1[d6000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 12/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 14/0 : 0[d1000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 14/0 : 2[c9000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 08/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 02/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 00/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 12/0 : 11[ce000] -> 13[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 00/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 04/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 03/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 06/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 02/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/0 : 5[de000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/0 : 5[de000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 08/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 04/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/0 : 5[de000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/0 : 5[de000] -> 13[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 07/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 10/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 02/0 : 13[de000] -> 5[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 06/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 06/0 : 13[de000] -> 5[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 10/0 : 13[de000] -> 5[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/0 : 6[c1000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/0 : 6[c1000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 12/0 : 9[d6000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 14/0 : 13[de000] -> 5[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/0 : 6[c1000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 14/0 : 8[d1000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/0 : 6[c1000] -> 14[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 08/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 11/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 00/0 : 14[c1000] -> 6[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 10/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 04/0 : 14[c1000] -> 6[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 08/0 : 14[c1000] -> 6[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 12/0 : 14[c1000] -> 6[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 12/0 : 3[ce000] -> 5[de000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 15/0 : 4[d9000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 01/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 01/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 14/0 : 11[ce000] -> 15[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/0 : 2[c9000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/0 : 10[c9000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/0 : 10[c9000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/0 : 2[c9000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/0 : 10[c9000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/0 : 2[c9000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/0 : 10[c9000] -> 2[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/0 : 2[c9000] -> 10[c9000] [receive] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 01/0 : 2[c9000] -> 10[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 05/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 01/0 : 10[c9000] -> 2[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 05/0 : 2[c9000] -> 10[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 05/0 : 10[c9000] -> 2[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 05/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 09/0 : 2[c9000] -> 10[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 09/0 : 10[c9000] -> 2[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 02/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/0 : 14[c1000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 13/0 : 2[c9000] -> 10[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/0 : 14[c1000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 13/0 : 10[c9000] -> 2[c9000] [send] via NET/Libfabric/1/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/0 : 13[de000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 03/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/0 : 14[c1000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 03/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/0 : 14[c1000] -> 6[c1000] [receive] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/0 : 13[de000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 09/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 00/0 : 6[c1000] -> 14[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/0 : 13[de000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 09/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 04/0 : 6[c1000] -> 14[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/0 : 13[de000] -> 5[de000] [receive] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 08/0 : 6[c1000] -> 14[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 06/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 02/0 : 5[de000] -> 13[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 12/0 : 6[c1000] -> 14[c1000] [send] via NET/Libfabric/0/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 06/0 : 5[de000] -> 13[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 07/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 02/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 10/0 : 5[de000] -> 13[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389551:2389551 [0] NCCL INFO Channel 13/0 : 8[d1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 07/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 02/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Channel 13/0 : 0[d1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 14/0 : 5[de000] -> 13[de000] [send] via NET/Libfabric/3/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 01/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 01/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 10/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 11/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 06/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 11/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 06/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 00/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 14/0 : 3[ce000] -> 7[c6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 05/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 05/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 04/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 10/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389553:2389553 [0] NCCL INFO Channel 15/0 : 10[c9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461767:1461767 [0] NCCL INFO Channel 15/0 : 2[c9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 10/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 01/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/0 : 1[d6000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 00/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/0 : 1[d6000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 09/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 09/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/0 : 1[d6000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 08/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389557:2389557 [0] NCCL INFO Channel 14/0 : 14[c1000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/0 : 1[d6000] -> 9[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 03/0 : 9[d6000] -> 1[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 05/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 07/0 : 9[d6000] -> 1[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461771:1461771 [0] NCCL INFO Channel 14/0 : 6[c1000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 11/0 : 9[d6000] -> 1[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 04/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389555:2389555 [0] NCCL INFO Channel 12/0 : 12[d9000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 13/0 : 5[de000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 13/0 : 13[de000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 15/0 : 9[d6000] -> 1[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 09/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 08/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 13/0 : 15[c6000] -> 9[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461769:1461769 [0] NCCL INFO Channel 12/0 : 4[d9000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 01/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/0 : 9[d6000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/0 : 9[d6000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/0 : 9[d6000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/0 : 9[d6000] -> 1[d6000] [receive] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 03/0 : 1[d6000] -> 9[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 07/0 : 1[d6000] -> 9[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 05/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 11/0 : 1[d6000] -> 9[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 15/0 : 1[d6000] -> 9[d6000] [send] via NET/Libfabric/2/GDRDMA comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 09/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 13/0 : 7[c6000] -> 1[d6000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 03/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 01/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 01/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 03/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 02/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 07/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 02/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 07/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 05/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 11/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 05/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 11/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 06/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 15/0 : 7[c6000] -> 3[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 06/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 09/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 15/0 : 15[c6000] -> 11[ce000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 00/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 09/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 10/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 00/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 02/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 10/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 13/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 02/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 13/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 04/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461766:1461766 [0] NCCL INFO Channel 14/0 : 1[d6000] -> 0[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 04/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389552:2389552 [0] NCCL INFO Channel 14/0 : 9[d6000] -> 8[d1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 06/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 06/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 08/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 00/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 08/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 01/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 10/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 00/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 01/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 10/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 03/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 12/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 03/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 03/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 12/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 03/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461772:1461772 [0] NCCL INFO Channel 14/0 : 7[c6000] -> 6[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 05/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 04/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 05/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389558:2389558 [0] NCCL INFO Channel 14/0 : 15[c6000] -> 14[c1000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 04/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 07/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 07/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 07/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 07/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 09/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 08/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 09/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 08/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 11/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 11/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 11/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 11/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 13/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 13/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 12/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 12/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461768:1461768 [0] NCCL INFO Channel 15/0 : 3[ce000] -> 2[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389554:2389554 [0] NCCL INFO Channel 15/0 : 11[ce000] -> 10[c9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461770:1461770 [0] NCCL INFO Channel 15/0 : 5[de000] -> 4[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09288:2389556:2389556 [0] NCCL INFO Channel 15/0 : 13[de000] -> 12[d9000] via P2P/IPC comm 0x7b3c10 nRanks 16
+frontier09286:1461765:1461765 [0] NCCL INFO Connected all trees
+frontier09286:1461766:1461766 [0] NCCL INFO Connected all trees
+frontier09286:1461766:1461766 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461766:1461766 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389551:2389551 [0] NCCL INFO Connected all trees
+frontier09288:2389551:2389551 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389551:2389551 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461765:1461765 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461765:1461765 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389552:2389552 [0] NCCL INFO Connected all trees
+frontier09288:2389552:2389552 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389552:2389552 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461771:1461771 [0] NCCL INFO Connected all trees
+frontier09286:1461771:1461771 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461771:1461771 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389557:2389557 [0] NCCL INFO Connected all trees
+frontier09288:2389557:2389557 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389557:2389557 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461772:1461772 [0] NCCL INFO Connected all trees
+frontier09286:1461772:1461772 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461772:1461772 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389558:2389558 [0] NCCL INFO Connected all trees
+frontier09288:2389558:2389558 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389558:2389558 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461770:1461770 [0] NCCL INFO Connected all trees
+frontier09288:2389554:2389554 [0] NCCL INFO Connected all trees
+frontier09286:1461767:1461767 [0] NCCL INFO Connected all trees
+frontier09286:1461767:1461767 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461767:1461767 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389555:2389555 [0] NCCL INFO Connected all trees
+frontier09288:2389555:2389555 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389555:2389555 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461769:1461769 [0] NCCL INFO Connected all trees
+frontier09288:2389553:2389553 [0] NCCL INFO Connected all trees
+frontier09288:2389553:2389553 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389553:2389553 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461770:1461770 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461770:1461770 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389554:2389554 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389554:2389554 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461768:1461768 [0] NCCL INFO Connected all trees
+frontier09286:1461768:1461768 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461768:1461768 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09288:2389556:2389556 [0] NCCL INFO Connected all trees
+frontier09288:2389556:2389556 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09288:2389556:2389556 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461769:1461769 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 256 | 256
+frontier09286:1461769:1461769 [0] NCCL INFO 16 coll channels, 0 collnet channels, 0 nvls channels, 16 p2p channels, 2 p2p channels per peer
+frontier09286:1461765:1461765 [0] NCCL INFO comm 0x7b3c10 rank 0 nranks 16 cudaDev 0 busId d1000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09286:1461766:1461766 [0] NCCL INFO comm 0x7b3c10 rank 1 nranks 16 cudaDev 0 busId d6000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09286:1461767:1461767 [0] NCCL INFO comm 0x7b3c10 rank 2 nranks 16 cudaDev 0 busId c9000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09286:1461768:1461768 [0] NCCL INFO comm 0x7b3c10 rank 3 nranks 16 cudaDev 0 busId ce000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09286:1461769:1461769 [0] NCCL INFO comm 0x7b3c10 rank 4 nranks 16 cudaDev 0 busId d9000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09286:1461770:1461770 [0] NCCL INFO comm 0x7b3c10 rank 5 nranks 16 cudaDev 0 busId de000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09286:1461771:1461771 [0] NCCL INFO comm 0x7b3c10 rank 6 nranks 16 cudaDev 0 busId c1000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09286:1461772:1461772 [0] NCCL INFO comm 0x7b3c10 rank 7 nranks 16 cudaDev 0 busId c6000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09288:2389551:2389551 [0] NCCL INFO comm 0x7b3c10 rank 8 nranks 16 cudaDev 0 busId d1000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09288:2389552:2389552 [0] NCCL INFO comm 0x7b3c10 rank 9 nranks 16 cudaDev 0 busId d6000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09288:2389553:2389553 [0] NCCL INFO comm 0x7b3c10 rank 10 nranks 16 cudaDev 0 busId c9000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09288:2389554:2389554 [0] NCCL INFO comm 0x7b3c10 rank 11 nranks 16 cudaDev 0 busId ce000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09288:2389555:2389555 [0] NCCL INFO comm 0x7b3c10 rank 12 nranks 16 cudaDev 0 busId d9000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+frontier09288:2389556:2389556 [0] NCCL INFO comm 0x7b3c10 rank 13 nranks 16 cudaDev 0 busId de000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09288:2389557:2389557 [0] NCCL INFO comm 0x7b3c10 rank 14 nranks 16 cudaDev 0 busId c1000 commId 0x3da6c13976fee21b localSize 296 used 450650336 bytes - Init COMPLETE
+frontier09288:2389558:2389558 [0] NCCL INFO comm 0x7b3c10 rank 15 nranks 16 cudaDev 0 busId c6000 commId 0x3da6c13976fee21b localSize 296 used 436494560 bytes - Init COMPLETE
+1048576               178.04
+frontier09288:2389557:2389557 [0] NCCL INFO comm 0x7b3c10 rank 14 nranks 16 cudaDev 0 busId c1000 - Destroy COMPLETE
+frontier09286:1461766:1461766 [0] NCCL INFO comm 0x7b3c10 rank 1 nranks 16 cudaDev 0 busId d6000 - Destroy COMPLETE
+frontier09286:1461770:1461770 [0] NCCL INFO comm 0x7b3c10 rank 5 nranks 16 cudaDev 0 busId de000 - Destroy COMPLETE
+frontier09286:1461767:1461767 [0] NCCL INFO comm 0x7b3c10 rank 2 nranks 16 cudaDev 0 busId c9000 - Destroy COMPLETE
+frontier09286:1461771:1461771 [0] NCCL INFO comm 0x7b3c10 rank 6 nranks 16 cudaDev 0 busId c1000 - Destroy COMPLETE
+frontier09286:1461765:1461765 [0] NCCL INFO comm 0x7b3c10 rank 0 nranks 16 cudaDev 0 busId d1000 - Destroy COMPLETE
+frontier09286:1461772:1461772 [0] NCCL INFO comm 0x7b3c10 rank 7 nranks 16 cudaDev 0 busId c6000 - Destroy COMPLETE
+frontier09288:2389552:2389552 [0] NCCL INFO comm 0x7b3c10 rank 9 nranks 16 cudaDev 0 busId d6000 - Destroy COMPLETE
+frontier09286:1461768:1461768 [0] NCCL INFO comm 0x7b3c10 rank 3 nranks 16 cudaDev 0 busId ce000 - Destroy COMPLETE
+frontier09286:1461769:1461769 [0] NCCL INFO comm 0x7b3c10 rank 4 nranks 16 cudaDev 0 busId d9000 - Destroy COMPLETE
+frontier09288:2389556:2389556 [0] NCCL INFO comm 0x7b3c10 rank 13 nranks 16 cudaDev 0 busId de000 - Destroy COMPLETE
+frontier09288:2389553:2389553 [0] NCCL INFO comm 0x7b3c10 rank 10 nranks 16 cudaDev 0 busId c9000 - Destroy COMPLETE
+frontier09288:2389551:2389551 [0] NCCL INFO comm 0x7b3c10 rank 8 nranks 16 cudaDev 0 busId d1000 - Destroy COMPLETE
+frontier09288:2389558:2389558 [0] NCCL INFO comm 0x7b3c10 rank 15 nranks 16 cudaDev 0 busId c6000 - Destroy COMPLETE
+frontier09288:2389554:2389554 [0] NCCL INFO comm 0x7b3c10 rank 11 nranks 16 cudaDev 0 busId ce000 - Destroy COMPLETE
+frontier09288:2389555:2389555 [0] NCCL INFO comm 0x7b3c10 rank 12 nranks 16 cudaDev 0 busId d9000 - Destroy COMPLETE

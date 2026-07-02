@@ -1,0 +1,3 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+"ncclDevKernel_Generic(ncclDevComm*, channelMasks, ncclWork*)",7,4877796,696828,99.02831256250434
+"<barrier packet>",3,47862,15954,0.9716874374956604

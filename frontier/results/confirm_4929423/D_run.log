@@ -1,0 +1,34 @@
+RPL: on '260701_215852' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-cray/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-d" "rocm" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215852_1462765'
+RPL: result dir '/tmp/rpl_data_260701_215852_1462765/input_results_260701_215852'
+RPL: on '260701_215852' from '/opt/rocm-6.2.4' in '/lustre/orion/csc678/scratch/graceli/grace_suli/frontier'
+RPL: profiling '"/lustre/orion/csc678/scratch/graceli/rccl-frontier/osu-cray/install/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce" "-d" "rocm" "-m" "1048576:1048576" "-i" "5" "-x" "2"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_260701_215852_2390189'
+RPL: result dir '/tmp/rpl_data_260701_215852_2390189/input_results_260701_215852'
+ROCtracer (1462794):
+ROCtracer (2390219):
+    HIP-trace(*)
+    HIP-trace(*)
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)
+1048576               288.33
+hsa_copy_deps: 0
+Traceback (most recent call last):
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 1129, in <module>
+    hip_trace_found = fill_api_db("HIP", db, indir, "hip", HIP_PID, OPS_PID, [], {}, 1)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/tblextr.py", line 516, in fill_api_db
+    table_handle = db.add_table(table_name, api_table_descr)
+  File "/opt/rocm-6.2.4/libexec/rocprofiler/sqlitedb.py", line 52, in add_table
+    cursor.execute(stm)
+sqlite3.OperationalError: table HIP already exists
+Profiling data corrupted: '/tmp/rpl_data_260701_215852_2390189/input_results_260701_215852/'
+srun: error: frontier09288: task 8: Exited with exit code 1
+srun: Terminating StepId=4929423.5
+[2026-07-01T21:58:54.901] error: *** STEP 4929423.5 ON frontier09286 CANCELLED AT 2026-07-01T21:58:54 DUE TO TASK FAILURE ***
+srun: error: frontier09286: task 0: Terminated
+srun: Force Terminated StepId=4929423.5
