@@ -12,18 +12,16 @@
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 
-# Staged for safety. Default = small end (1-64, ~95 node-hrs) to validate first.
-# Then:  ./submit_scaling.sh "128 256 512 1024"   (~1.7k node-hrs)
-# Then:  ./submit_scaling.sh "2048 4096"           (~1.8k node-hrs)
-# Reps taper by node count (3 <=1024, 2 at 2048, 1 at 4096) via reps_for below.
+# Staged for safety (3 reps everywhere; override with REPS=n). Node-hr estimates:
+#   default 1-64 ................................. ~95
+#   ./submit_scaling.sh "128 256 512 1024" ....... ~1.7k
+#   ./submit_scaling.sh "2048" ................... ~2.0k
+#   ./submit_scaling.sh "4096" ................... ~4.0k   (REPS=1 -> ~1.4k)
 LADDER=${1:-"1 2 4 8 16 32 64"}
 
-reps_for() {                      # taper reps by node count
-  local n=$1
-  if   [ "$n" -le 1024 ]; then echo 3
-  elif [ "$n" -le 2048 ]; then echo 2
-  else                         echo 1
-  fi
+reps_for() {                      # 3 reps at every scale: placement/network variance is
+  [ -n "$REPS" ] && { echo "$REPS"; return; }   # present at ALL multi-node scales (not less at 4096).
+  echo 3                          # REPS=n overrides (e.g. REPS=1 at 4096 purely to save budget)
 }
 
 for N in $LADDER; do
