@@ -8,6 +8,13 @@ source "$(dirname "$0")/../env.sh" >/dev/null 2>&1
 echo "== queue (mine) =="
 squeue --me -o "%.10i %.14j %.5D %.4t %.11M %R"
 
+# estimated start times — only shown if there are pending jobs
+pend=$(squeue --me --start -h -t PENDING 2>/dev/null)
+if [ -n "$pend" ]; then
+  echo; echo "== estimated start times (pending) =="
+  squeue --me --start -t PENDING -o "%.10i %.14j %.5D %.20S %R"
+fi
+
 echo; echo "== finished-job state tally (today) =="
 sacct -X -S today -n -o State 2>/dev/null | sort | uniq -c
 
