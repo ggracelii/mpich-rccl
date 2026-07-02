@@ -3,7 +3,7 @@
 # Shows: queued/running jobs, a tally of finished states, any non-OK jobs to
 # investigate, and how many config files each result dir has (should reach 5,
 # or 4 for N>8 where config E is skipped).
-source "$(dirname "$0")/env.sh" >/dev/null 2>&1
+source "$(dirname "$0")/../env.sh" >/dev/null 2>&1
 
 echo "== queue (mine) =="
 squeue --me -o "%.10i %.14j %.5D %.4t %.11M %R"

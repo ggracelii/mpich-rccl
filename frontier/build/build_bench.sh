@@ -6,11 +6,11 @@
 # is selected at RUNTIME via CVARs (see validate.sbatch), so one build covers both.
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
-source "$HERE/env.sh"
+source "$HERE/../env.sh"
 load_mine                       # your MPICH mpicc + ROCm hipcc + RCCL
 
 # Source lives in the grace_suli checkout this script was cloned from.
-REPO=$(cd "$HERE/.." && pwd)    # .../grace_suli
+REPO=$(cd "$HERE/../.." && pwd)    # .../grace_suli
 BSRC=$REPO/benchmark
 BENCH=$WORK/bench
 mkdir -p "$BENCH"

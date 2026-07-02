@@ -10,7 +10,7 @@
 #     ./build_osu.sh cray     # -> $OSU_CRAY  (config D)
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
-source "$HERE/env.sh"
+source "$HERE/../env.sh"
 
 STACK=${1:?usage: build_osu.sh <mine|cray>}
 case "$STACK" in

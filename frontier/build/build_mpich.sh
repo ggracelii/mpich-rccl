@@ -15,7 +15,7 @@
 #     ./build_mpich.sh
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
-source "$HERE/env.sh"
+source "$HERE/../env.sh"
 load_mine                       # modules + ROCM_PATH + RCCL_INC/RCCL_LIB
 
 GFX_ARCH=gfx90a                 # MI250X

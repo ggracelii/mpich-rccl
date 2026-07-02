@@ -5,7 +5,7 @@
 #  is the standard tool reviewers expect for the ceiling number.)
 set -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
-source "$HERE/env.sh"
+source "$HERE/../env.sh"
 load_mine   # ROCm + RCCL (from module) + an MPI launcher for the multi-node driver
 
 if [ ! -d "$RCCL_TESTS" ]; then
