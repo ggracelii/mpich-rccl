@@ -84,14 +84,18 @@ messages**. The 128–1024 sweep will show where the crossover contour lands at 
 - GCD→rank map in `bind_frontier.sh` `[4 5 2 3 6 7 0 1]` (validate via intra-node bandwidth).
 - Config D `--gpu-bind=closest -c7` recipe.
 
-## How to run
+## How to run (all commands from the `frontier/` directory)
 ```
-./build_mpich.sh ; ./build_osu.sh mine ; ./build_osu.sh cray ; ./build_rccl_tests.sh ; ./build_bench.sh
-sbatch validate.sbatch            # correctness gate
-sbatch confirm.sbatch             # mechanism check (NCCL_DEBUG + rocprof)
-sbatch -N 2 run_allreduce.sbatch  # smoke
-./submit_scaling.sh               # main sweep 1->1024 (x3/2/1 reps)
-./submit_scaling.sh "2048 4096"   # big scaling points (after reviewing)
+./build/build_mpich.sh
+./build/build_osu.sh mine ; ./build/build_osu.sh cray
+./build/build_rccl_tests.sh ; ./build/build_bench.sh
+sbatch check/validate.sbatch             # correctness gate
+sbatch check/confirm.sbatch              # mechanism check (NCCL_DEBUG + rocprof)
+sbatch -N 2 run/run_allreduce.sbatch     # smoke
+./run/submit_scaling.sh                  # sweep 1-64 (default ladder)
+./run/submit_scaling.sh "128 256 512 1024"
+./run/submit_scaling.sh "2048 4096"      # REPS=n overrides the default 3 reps
+watch -n 30 ./check/monitor.sh           # live health ; ./check/check_results.sh to scan
 ```
 
 ## Results provenance
