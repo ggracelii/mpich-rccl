@@ -4,8 +4,8 @@ Reference copies of the source files I contributed to MPICH to add an RCCL
 (AMD GPU) backend for `MPI_Allreduce`, merged upstream in
 [pmodels/mpich#7493](https://github.com/pmodels/mpich/pull/7493).
 
-These are **read-only reference copies** — kept here so the backend is browsable
-in this repo (and counts toward its language stats). The canonical, buildable
+These are **read-only reference copies**, kept here so the backend is browsable
+in this repo). The canonical, buildable
 versions live in the `mpich/` submodule and in upstream MPICH; build from there,
 not from this folder.
 
