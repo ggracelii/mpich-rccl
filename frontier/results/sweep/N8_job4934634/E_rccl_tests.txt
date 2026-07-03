@@ -1,0 +1,110 @@
+=== E_rccl_tests : N=8 ===
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 8 maxBytes 4294967296 step: 2(factor) warmup iters: 10 iters: 50 agg iters: 1 validation: 1 graph: 0
+#
+rccl-tests: Version develop_deprecated:40b1b17
+# Using devices
+#  Rank  0 Group  0 Pid 2671585 on frontier03028 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank  1 Group  0 Pid 2671586 on frontier03028 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank  2 Group  0 Pid 2671587 on frontier03028 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank  3 Group  0 Pid 2671588 on frontier03028 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank  4 Group  0 Pid 2671589 on frontier03028 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank  5 Group  0 Pid 2671590 on frontier03028 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank  6 Group  0 Pid 2671591 on frontier03028 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank  7 Group  0 Pid 2671592 on frontier03028 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank  8 Group  0 Pid 3157245 on frontier03029 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank  9 Group  0 Pid 3157246 on frontier03029 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 10 Group  0 Pid 3157247 on frontier03029 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 11 Group  0 Pid 3157248 on frontier03029 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 12 Group  0 Pid 3157249 on frontier03029 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 13 Group  0 Pid 3157250 on frontier03029 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 14 Group  0 Pid 3157251 on frontier03029 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 15 Group  0 Pid 3157252 on frontier03029 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 16 Group  0 Pid 2543176 on frontier03030 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 17 Group  0 Pid 2543177 on frontier03030 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 18 Group  0 Pid 2543178 on frontier03030 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 19 Group  0 Pid 2543179 on frontier03030 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 20 Group  0 Pid 2543180 on frontier03030 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 21 Group  0 Pid 2543181 on frontier03030 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 22 Group  0 Pid 2543182 on frontier03030 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 23 Group  0 Pid 2543183 on frontier03030 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 24 Group  0 Pid 1386883 on frontier03031 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 25 Group  0 Pid 1386884 on frontier03031 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 26 Group  0 Pid 1386885 on frontier03031 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 27 Group  0 Pid 1386886 on frontier03031 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 28 Group  0 Pid 1386887 on frontier03031 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 29 Group  0 Pid 1386888 on frontier03031 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 30 Group  0 Pid 1386889 on frontier03031 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 31 Group  0 Pid 1386890 on frontier03031 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 32 Group  0 Pid 972245 on frontier03032 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 33 Group  0 Pid 972246 on frontier03032 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 34 Group  0 Pid 972247 on frontier03032 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 35 Group  0 Pid 972248 on frontier03032 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 36 Group  0 Pid 972249 on frontier03032 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 37 Group  0 Pid 972250 on frontier03032 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 38 Group  0 Pid 972251 on frontier03032 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 39 Group  0 Pid 972252 on frontier03032 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 40 Group  0 Pid 753160 on frontier03033 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 41 Group  0 Pid 753161 on frontier03033 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 42 Group  0 Pid 753162 on frontier03033 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 43 Group  0 Pid 753163 on frontier03033 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 44 Group  0 Pid 753164 on frontier03033 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 45 Group  0 Pid 753165 on frontier03033 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 46 Group  0 Pid 753166 on frontier03033 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 47 Group  0 Pid 753167 on frontier03033 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 48 Group  0 Pid 965825 on frontier03034 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 49 Group  0 Pid 965826 on frontier03034 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 50 Group  0 Pid 965827 on frontier03034 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 51 Group  0 Pid 965828 on frontier03034 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 52 Group  0 Pid 965829 on frontier03034 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 53 Group  0 Pid 965830 on frontier03034 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 54 Group  0 Pid 965831 on frontier03034 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 55 Group  0 Pid 965832 on frontier03034 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank 56 Group  0 Pid 1393828 on frontier03035 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank 57 Group  0 Pid 1393829 on frontier03035 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 58 Group  0 Pid 1393830 on frontier03035 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 59 Group  0 Pid 1393831 on frontier03035 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 60 Group  0 Pid 1393832 on frontier03035 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 61 Group  0 Pid 1393833 on frontier03035 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 62 Group  0 Pid 1393834 on frontier03035 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 63 Group  0 Pid 1393835 on frontier03035 device  0 [0000:c6:00] AMD Instinct MI250X
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong                               
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)                                      
+           8             2     float     sum      -1    53.98    0.00    0.00      0    47.95    0.00    0.00      0
+          16             4     float     sum      -1    45.40    0.00    0.00      0    45.15    0.00    0.00      0
+          32             8     float     sum      -1    45.36    0.00    0.00      0    44.91    0.00    0.00      0
+          64            16     float     sum      -1    49.71    0.00    0.00      0    49.82    0.00    0.00      0
+         128            32     float     sum      -1    62.04    0.00    0.00      0    61.78    0.00    0.00      0
+         256            64     float     sum      -1    64.47    0.00    0.01      0    63.44    0.00    0.01      0
+         512           128     float     sum      -1    68.35    0.01    0.01      0    68.47    0.01    0.01      0
+        1024           256     float     sum      -1    72.62    0.01    0.03      0    72.36    0.01    0.03      0
+        2048           512     float     sum      -1    80.95    0.03    0.05      0    80.66    0.03    0.05      0
+        4096          1024     float     sum      -1    81.01    0.05    0.10      0    81.03    0.05    0.10      0
+        8192          2048     float     sum      -1    79.76    0.10    0.20      0    78.37    0.10    0.21      0
+       16384          4096     float     sum      -1    82.17    0.20    0.39      0    81.99    0.20    0.39      0
+       32768          8192     float     sum      -1    85.27    0.38    0.76      0    83.53    0.39    0.77      0
+       65536         16384     float     sum      -1    101.5    0.65    1.27      0    103.1    0.64    1.25      0
+      131072         32768     float     sum      -1    137.2    0.96    1.88      0    137.0    0.96    1.88      0
+      262144         65536     float     sum      -1    206.0    1.27    2.51      0    204.0    1.29    2.53      0
+      524288        131072     float     sum      -1    248.5    2.11    4.15      0    248.6    2.11    4.15      0
+     1048576        262144     float     sum      -1    339.9    3.08    6.07      0    340.6    3.08    6.06      0
+     2097152        524288     float     sum      -1    295.9    7.09   13.95      0    278.9    7.52   14.81      0
+     4194304       1048576     float     sum      -1    468.8    8.95   17.61      0    412.9   10.16   20.00      0
+     8388608       2097152     float     sum      -1    615.3   13.63   26.84      0    625.0   13.42   26.42      0
+    16777216       4194304     float     sum      -1    800.4   20.96   41.27      0    802.4   20.91   41.16      0
+    33554432       8388608     float     sum      -1   1284.3   26.13   51.44      0   1136.1   29.54   58.15      0
+    67108864      16777216     float     sum      -1   2023.0   33.17   65.31      0   2355.7   28.49   56.09      0
+   134217728      33554432     float     sum      -1   3804.9   35.28   69.45      0   3759.0   35.71   70.30      0
+   268435456      67108864     float     sum      -1   5748.7   46.70   91.93      0   5748.8   46.69   91.93      0
+   536870912     134217728     float     sum      -1    11489   46.73   92.00      0    11466   46.82   92.19      0
+  1073741824     268435456     float     sum      -1    23064   46.55   91.65      0    23024   46.64   91.81      0
+  2147483648     536870912     float     sum      -1    46119   46.56   91.67      0    46125   46.56   91.66      0
+  4294967296    1073741824     float     sum      -1    92161   46.60   91.75      0    92149   46.61   91.76      0
+# Errors with asterisks indicate errors that have exceeded the maximum threshold.
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 25.4342 
+#
+# Collective test concluded: all_reduce_perf
+

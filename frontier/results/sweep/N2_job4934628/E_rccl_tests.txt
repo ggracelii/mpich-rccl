@@ -1,0 +1,62 @@
+=== E_rccl_tests : N=2 ===
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 1 minBytes 8 maxBytes 4294967296 step: 2(factor) warmup iters: 10 iters: 50 agg iters: 1 validation: 1 graph: 0
+#
+rccl-tests: Version develop_deprecated:40b1b17
+# Using devices
+#  Rank  0 Group  0 Pid 1928854 on frontier09317 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank  1 Group  0 Pid 1928855 on frontier09317 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank  2 Group  0 Pid 1928856 on frontier09317 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank  3 Group  0 Pid 1928857 on frontier09317 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank  4 Group  0 Pid 1928858 on frontier09317 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank  5 Group  0 Pid 1928859 on frontier09317 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank  6 Group  0 Pid 1928860 on frontier09317 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank  7 Group  0 Pid 1928861 on frontier09317 device  0 [0000:c6:00] AMD Instinct MI250X
+#  Rank  8 Group  0 Pid 2342430 on frontier09318 device  0 [0000:d1:00] AMD Instinct MI250X
+#  Rank  9 Group  0 Pid 2342431 on frontier09318 device  0 [0000:d6:00] AMD Instinct MI250X
+#  Rank 10 Group  0 Pid 2342432 on frontier09318 device  0 [0000:c9:00] AMD Instinct MI250X
+#  Rank 11 Group  0 Pid 2342433 on frontier09318 device  0 [0000:ce:00] AMD Instinct MI250X
+#  Rank 12 Group  0 Pid 2342434 on frontier09318 device  0 [0000:d9:00] AMD Instinct MI250X
+#  Rank 13 Group  0 Pid 2342435 on frontier09318 device  0 [0000:de:00] AMD Instinct MI250X
+#  Rank 14 Group  0 Pid 2342436 on frontier09318 device  0 [0000:c1:00] AMD Instinct MI250X
+#  Rank 15 Group  0 Pid 2342437 on frontier09318 device  0 [0000:c6:00] AMD Instinct MI250X
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong                               
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)                                      
+           8             2     float     sum      -1    36.02    0.00    0.00      0    29.45    0.00    0.00      0
+          16             4     float     sum      -1    27.39    0.00    0.00      0    27.38    0.00    0.00      0
+          32             8     float     sum      -1    27.47    0.00    0.00      0    27.49    0.00    0.00      0
+          64            16     float     sum      -1    29.55    0.00    0.00      0    29.24    0.00    0.00      0
+         128            32     float     sum      -1    33.91    0.00    0.01      0    33.67    0.00    0.01      0
+         256            64     float     sum      -1    35.54    0.01    0.01      0    35.78    0.01    0.01      0
+         512           128     float     sum      -1    37.90    0.01    0.03      0    37.72    0.01    0.03      0
+        1024           256     float     sum      -1    39.51    0.03    0.05      0    39.74    0.03    0.05      0
+        2048           512     float     sum      -1    42.43    0.05    0.09      0    42.34    0.05    0.09      0
+        4096          1024     float     sum      -1    43.80    0.09    0.18      0    43.41    0.09    0.18      0
+        8192          2048     float     sum      -1    41.07    0.20    0.37      0    39.85    0.21    0.39      0
+       16384          4096     float     sum      -1    41.78    0.39    0.74      0    41.63    0.39    0.74      0
+       32768          8192     float     sum      -1    45.48    0.72    1.35      0    45.34    0.72    1.36      0
+       65536         16384     float     sum      -1    50.99    1.29    2.41      0    51.73    1.27    2.38      0
+      131072         32768     float     sum      -1    63.35    2.07    3.88      0    64.80    2.02    3.79      0
+      262144         65536     float     sum      -1    91.33    2.87    5.38      0    85.62    3.06    5.74      0
+      524288        131072     float     sum      -1    128.8    4.07    7.63      0    127.5    4.11    7.71      0
+     1048576        262144     float     sum      -1    143.9    7.29   13.67      0    144.1    7.28   13.64      0
+     2097152        524288     float     sum      -1    175.7   11.94   22.38      0    175.3   11.96   22.43      0
+     4194304       1048576     float     sum      -1    239.9   17.48   32.78      0    239.3   17.53   32.86      0
+     8388608       2097152     float     sum      -1    344.4   24.36   45.67      0    344.7   24.34   45.63      0
+    16777216       4194304     float     sum      -1    524.0   32.02   60.03      0    524.4   32.00   59.99      0
+    33554432       8388608     float     sum      -1    873.9   38.40   72.00      0    876.0   38.30   71.82      0
+    67108864      16777216     float     sum      -1   1516.1   44.26   83.00      0   1519.3   44.17   82.82      0
+   134217728      33554432     float     sum      -1   2757.8   48.67   91.25      0   2764.6   48.55   91.03      0
+   268435456      67108864     float     sum      -1   5153.9   52.08   97.66      0   5170.2   51.92   97.35      0
+   536870912     134217728     float     sum      -1   9955.1   53.93  101.12      0   9973.2   53.83  100.93      0
+  1073741824     268435456     float     sum      -1    19060   56.33  105.63      0    19081   56.27  105.51      0
+  2147483648     536870912     float     sum      -1    37315   57.55  107.91      0    37320   57.54  107.89      0
+  4294967296    1073741824     float     sum      -1    73897   58.12  108.98      0    73838   58.17  109.06      0
+# Errors with asterisks indicate errors that have exceeded the maximum threshold.
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 32.1271 
+#
+# Collective test concluded: all_reduce_perf
+

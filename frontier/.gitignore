@@ -1,0 +1,6 @@
+# transient Frontier run artifacts — never commit
+/core
+/gpucore.*
+/rccl_debug.log
+/rccl-allreduce-*.out
+/run/rccl-allreduce-*.out
