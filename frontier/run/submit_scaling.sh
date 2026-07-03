@@ -27,7 +27,12 @@ reps_for() {                      # 3 reps at every scale: placement/network var
 
 for N in $LADDER; do
   R=$(reps_for "$N")
-  WT=""; [ "$N" -ge 2048 ] && WT="-t 00:20:00"   # giants: launch + RCCL comm-init at 2048/4096 nodes adds a few min over the ~2-min run; 20m = ~2-3x margin, far better backfill than the old 60m
+  # Runs are ~2-3 min, but launch + RCCL comm-init across thousands of GCDs
+  # occasionally stalls; a too-tight cap clips those reps (seen: 512/1024 TIMEOUTs
+  # at 10m while siblings finished in 2.5m). Tier the walltime to absorb slow starts.
+  WT=""                                    # N<512: sbatch default (10m)
+  [ "$N" -ge 512 ]  && WT="-t 00:20:00"    # 512/1024
+  [ "$N" -ge 2048 ] && WT="-t 00:30:00"    # 2048/4096: biggest launch/init overhead
   for r in $(seq 1 "$R"); do
     echo "submitting N=$N rep=$r/$R $WT"
     sbatch $WT -N "$N" "$HERE/run_allreduce.sbatch"
