@@ -33,9 +33,9 @@ NRANKS=$((NODES * PPN))
 WARMUP=10                     # OSU -x (covers one-time RCCL comm init + clock ramp; 5 is the floor)
 ITERS=50                      # OSU -i, uniform across all configs (allreduce is low-variance; min/med/max reported)
 # CPU configs (A,B) are catastrophically slow at large sizes (~6 s/op at 512 MiB
-# inter-node), so cap them at 32 MiB. GPU configs (C,D,E) sweep to 1 GiB.
+# inter-node), so cap them at 32 MiB. GPU configs (C,D,E) sweep to 4 GiB.
 CPU_MAX=33554432              # 32 MiB
-GPU_MAX=1073741824            # 1 GiB
+GPU_MAX=4294967296            # 4 GiB  (8 GiB send+recv per GCD; fits the 64 GB HBM easily)
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
@@ -88,7 +88,7 @@ if [ "$NODES" -le 8 ]; then
   load_mine
   module load rccl-net-plugin
   echo "=== E_rccl_tests : N=$NODES ===" | tee "$RESULTS/E_rccl_tests.txt"
-  $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 1G -f 2 -g 1 -n $ITERS -w $WARMUP \
+  $MPIEXEC "$BIND" "$RCCL_TESTS/build/all_reduce_perf" -b 8 -e 4G -f 2 -g 1 -n $ITERS -w $WARMUP \
     2>&1 | tee -a "$RESULTS/E_rccl_tests.txt"
 fi
 
