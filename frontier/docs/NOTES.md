@@ -80,6 +80,54 @@ CPU-on-device) is flat-slow (~2.2–2.8 ms at 1 MiB, all scales). Interpretation
 scale), while Cray-MPICH has **lower fixed/latency overhead and scales better for small–mid
 messages**. The 128–1024 sweep will show where the crossover contour lands at larger scale.
 
+## Full sweep — 1–4096 nodes (jobs 4934xxx + reruns; 3 reps, 2 at 4096)
+Ran the full ladder 1→4096. Two hard limits surfaced, both worth recording as methods/results.
+
+### OSU caps at 1 GiB (32-bit message size)
+Tried to extend the GPU range to 4 GiB (`GPU_MAX=4 GiB`, `-m 0:4294967296`), but OSU silently
+stops at **1 GiB**: its message-size loop variable is a 32-bit `int`, so 2 GiB (2^31) overflows
+and the loop exits at 1 GiB. Confirmed — every `C_mpich_rccl.txt` ends at exactly `1073741824`,
+no error and no 2 GiB row. Measuring >1 GiB would need OSU patched to 64-bit sizes and rebuilt.
+Decision: **cap the study at 1 GiB** (real allreduce workloads rarely exceed ~1 GiB; the size
+trend is already clear across ~8 orders of magnitude). Note: Slurm also snapshots the batch
+script at *submit* time, so the 4 GiB `GPU_MAX` edit didn't take until a resubmit — irrelevant
+once the OSU cap was understood.
+
+### Cray MPICH GPU allreduce FAULTS above 4 MiB at ≥1024 nodes — the headline scale result
+At **≥1024 nodes, Cray MPICH's default GPU-aware `MPI_Allreduce` (config D) crashes with a GPU
+memory access fault for messages larger than 4 MiB**, while the MPICH-RCCL backend (C) completes
+the full 8 B→1 GiB range at every scale up to 4096 nodes.
+- Last size Cray completes: **4 MiB** (`4194304`); the 8 MiB op faults. **Uniform cutoff — the
+  same 4 MiB at 1024, 2048, and 4096** (not scale-dependent). Cray reaches **1 GiB** cleanly at
+  ≤512 nodes, so the fault threshold sits **between 512 and 1024 nodes**.
+- Error (config D, N=2048, job 4934659): `Memory access fault by GPU ... on address
+  0x7ffb89e00000. Reason: Unknown.` → `task 8191: Aborted (core dumped)` →
+  `STEP 4934659.3 CANCELLED ... DUE TO TASK FAILURE`. (These crashes produced the `gpucore.*`
+  dumps — now gitignored.)
+- **Not a harness/binding artifact:** config C runs the *same* OSU program, buffers, and GPU
+  binding to 1 GiB without fault; the fault is inside Cray's large-message GPU allreduce path
+  (a host-range address touched by the GPU → a pointer not device-accessible at scale).
+- **Not a walltime artifact:** the job `COMPLETED` in ~2:48 (D died fast, the script continued) —
+  a crash, not a timeout. Reproducible across all ≥1024-node reps.
+- Scope: this is the **production default** GPU-aware Cray (`MPICH_GPU_SUPPORT_ENABLED=1`); the
+  RCCL comparison uses the identical harness — a fair comparison. (Untested: whether a Cray
+  algorithm CVAR dodges the fault; the default-config result stands on its own.)
+
+**Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
+1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
+≥1024 nodes is bounded by where Cray survives. Reps kept: 3 each at 1–1024, 3 at 2048, 2 at 4096
+(all with complete RCCL data); jobs that hung during config C or startup were discarded.
+
+### Giant-scale run hygiene (lessons)
+- Real run times are tiny (~2 min ≤1024, ~3–4 min at 2048/4096); a hung/faulting job otherwise
+  burns to the walltime. Set the walltime to **8 min for ≥512 nodes** so a stall dies fast
+  (a 4096 hang at 8 min ≈ 550 node-hrs vs ~2000 at 30 min). ~3,400 node-hrs were lost to hangs
+  before this cap — watch the giants and `scancel` a job sitting past ~5 min.
+- **Submit from `frontier/`.** `run_allreduce.sbatch` sources `$SLURM_SUBMIT_DIR/env.sh`;
+  submitting from elsewhere ran with `$WORK` unset (results → `/results`, every config failed
+  in ~5 s but exited 0). Hardened: the sbatch now aborts loudly if `env.sh`/`WORK` don't load,
+  and `submit_scaling.sh` exports `FRONTIER_HOME` so submit location no longer matters.
+
 ## `[verify OLCF]` items still to confirm
 - GCD→rank map in `bind_frontier.sh` `[4 5 2 3 6 7 0 1]` (validate via intra-node bandwidth).
 - Config D `--gpu-bind=closest -c7` recipe.
