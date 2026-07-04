@@ -52,7 +52,7 @@ closes the gap to native RCCL."* That is true, useful, and defensible.
 **Workloads = real model gradient sizes:**
 | Model | Params | fp32 grad | fp16 grad |
 |---|---|---|---|
-| ResNet-50 | 25.5 M | 102 MiB | 51 MiB |
+| ResNet-50 | 25.6 M | 102 MB | 51 MB |
 | BERT-Large | 340 M | 1.36 GiB | 680 MiB |
 | GPT-2 XL | 1.5 B | (bucketed) | (bucketed) |
 | DDP bucket | — | 25 MiB (PyTorch default) | 25 MiB |
@@ -88,14 +88,21 @@ Reuses the sweep infra; only ~3 model sizes × {fp32,fp16} × configs B/C/D, wea
 Much of it is also derivable from the main sweep at the corresponding sizes (≈ free). Fits easily
 in the remaining budget after the main sweep.
 
-## 7. Sources
-- The Big Send-off: Collectives for DL on GPU supercomputers — https://arxiv.org/pdf/2504.18658
-- Optimizing Distributed Training on Frontier for LLMs — https://arxiv.org/html/2312.12705v2
-- Scaling LLM Training on Frontier w/ Low-Bandwidth Partitioning — https://arxiv.org/html/2501.04266v1
-- Collective Comm Perf Eval for Distributed DL Training (MDPI) — https://www.mdpi.com/2076-3417/14/12/5100
-- FP8-LM: Training FP8 LLMs — https://arxiv.org/html/2310.18313v2
-- ZeRO-3 vs FSDP (RS+AG decomposition) — https://denny.hashnode.dev/understanding-reduce-scatter-all-gather-and-all-reduce-in-distributed-computing-for-llm-training
-- GPU-aware MPI Allreduce via direct sendrecv (ICPP'25) — https://dl.acm.org/doi/10.1145/3754598.3754666
+## 7. Sources (titles/links verified 2026-07-04)
+Collectives / distributed-training literature:
+- Singh et al., *The Big Send-off: Scalable and Performant Collectives for Deep Learning*, arXiv:2504.18658 — https://arxiv.org/abs/2504.18658  (PCCL; up to 10× all-reduce over RCCL on 2048 GCDs of Frontier; documents RCCL/Cray-MPICH limits — direct motivation)
+- Dash et al., *Optimizing Distributed Training on Frontier for Large Language Models*, arXiv:2312.12705 — https://arxiv.org/abs/2312.12705
+- Xu et al., *Scaling Large Language Model Training on Frontier with Low-Bandwidth Partitioning*, arXiv:2501.04266 — https://arxiv.org/abs/2501.04266
+- *Collective Communication Performance Evaluation for Distributed Deep Learning Training*, MDPI Applied Sciences 14(12):5100 (2024), doi:10.3390/app14125100 — https://www.mdpi.com/2076-3417/14/12/5100
+- Peng et al., *FP8-LM: Training FP8 Large Language Models*, arXiv:2310.18313 — https://arxiv.org/abs/2310.18313
+- Rajbhandari et al., *ZeRO: Memory Optimizations Toward Training Trillion Parameter Models*, arXiv:1910.02054 — https://arxiv.org/abs/1910.02054  (RS+AG / FSDP-ZeRO reference — cite this, not a blog)
+- Chen et al., *Design and Optimization of GPU-Aware MPI Allreduce Using Direct Sendrecv Communication*, ICPP '25, doi:10.1145/3754598.3754666 — https://dl.acm.org/doi/10.1145/3754598.3754666
+
+Model specs (gradient bytes = params × bytes/element):
+- ResNet-50 — **25,557,032 params (≈25.6 M)** — He et al., *Deep Residual Learning for Image Recognition*, arXiv:1512.03385
+- BERT-Large — **340 M params** — Devlin et al., *BERT*, arXiv:1810.04805
+- GPT-2 XL — **1.5 B params** — Radford et al., *Language Models are Unsupervised Multitask Learners* (2019)
+- DDP 25 MiB gradient bucket — PyTorch `DistributedDataParallel` `bucket_cap_mb=25` (MiB) default — https://docs.pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html
 
 ## 8. Implementation (as built)
 Harness added under `run/`:

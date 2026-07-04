@@ -37,7 +37,7 @@ WARMUP=${WARMUP:-10}
 # model : gradient bytes  (weak scaling => fixed per-rank size, node count grows)
 ML=(
   "ddp_bucket_25MiB:26214400"      # PyTorch/Horovod default gradient bucket
-  "resnet50_fp32:102000000"        # 25.5 M params x 4 B
+  "resnet50_fp32:102228128"        # 25,557,032 params x 4 B (~25.6 M)
   "bert_large_fp16:680000000"      # 340 M params x 2 B (fp16 gradient, byte-proxy)
 )
 # (GPT-2 XL etc. sync many 25 MiB buckets -> per-bucket time x bucket count; use ddp_bucket.)
