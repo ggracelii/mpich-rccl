@@ -115,8 +115,24 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
 
 **Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
 1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
-≥1024 nodes is bounded by where Cray survives. Reps kept: 3 each at 1–1024, 3 at 2048, 2 at 4096
-(all with complete RCCL data); jobs that hung during config C or startup were discarded.
+≥1024 nodes is bounded by where Cray survives.
+
+**Rep status (final):** 3 reps each at **1–2048**, **2 at 4096**. **Top scale = 4096 nodes = 32,768 GCDs.**
+All kept reps have complete RCCL (C) data to 1 GiB; jobs that hung during config C or at startup were discarded.
+(The loader averages over whatever reps exist per size and records `nreps`, so the 2-rep 4096 point is handled — just noisier.)
+
+### 8192 attempted, abandoned (near-full-machine limit)
+Both 8192-node jobs (65,536 GCDs) timed out at 12 min. Config C printed its OSU header but completed
+**zero sizes** — the *first* allreduce (8 B) stalled in **RCCL communicator init across 65,536 GCDs** and
+never returned. Two compounding causes:
+- **CPU baselines starve the fast config.** Run order is A→B→C→D, and at 65,536 ranks the CPU allreduce is
+  catastrophic (**config B = 445 ms/op at 32 MiB**), so A+B consumed much of the walltime before C ran.
+- **RCCL comm-init does not complete in a practical walltime at 65,536 GCDs.** A run long enough for C to
+  finish would have exceeded the remaining csc678 allocation, so 8192 was dropped.
+- **Lesson if ever retried:** run **C-only** (or C first) at extreme scale so the RCCL bootstrap gets the full
+  walltime — don't let the slow CPU baselines run ahead of it. Each 8192 timeout costs ~1,640 node-hrs.
+This is itself a result: the RCCL backend completes 8 B→1 GiB at 4096 nodes, but its communicator bootstrap
+hits a practical wall at 8192 (near-full Frontier) within a 12-min budget.
 
 ### Giant-scale run hygiene (lessons)
 - Real run times are tiny (~2 min ≤1024, ~3–4 min at 2048/4096); a hung/faulting job otherwise
