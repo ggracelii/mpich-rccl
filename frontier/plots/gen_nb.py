@@ -224,10 +224,10 @@ def plot_crossover(baseline="D", annotate=True, vmax=None):
 # nearest power-of-2 sweep size proxies each model's gradient (32 MiB<->25 MiB DDP bucket,
 # 128 MiB<->ResNet-50 ~102 MB, 512 MiB<->BERT-Large fp16 ~680 MB). Weak scaling: per-rank
 # gradient size fixed, node count grows. (Path 2 / run_ml_sync.sbatch measures exact sizes.)
-ML_MODELS = [   # (label, gradient bytes, line color)
-    ("DDP bucket (25 MiB)",       33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
-    ("ResNet-50 (~102 MB fp32)",  134217728,  "#009988"),   # 25.6 M params x 4 B
-    ("BERT-Large (~680 MB fp16)", 536870912,  "#aa3377"),   # 340 M params x 2 B
+ML_MODELS = [   # (label, gradient bytes = nearest power-of-2 actually measured, line color)
+    ("DDP bucket 25 MiB (~32 MiB)",       33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
+    ("ResNet-50 102 MB (~128 MiB)",       134217728,  "#009988"),   # 25.6 M params x 4 B
+    ("BERT-Large fp16 680 MB (~512 MiB)", 536870912,  "#aa3377"),   # 340 M params x 2 B
 ]
 
 def ml_sync_table(baseline="D"):
@@ -261,16 +261,11 @@ def plot_ml_sync(baseline="D"):
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x,_: f"{int(x)}"))
     ax.set_xlabel("Nodes (weak scaling)")
     ylabel2(ax, "Per-step gradient-sync (ms, log)", "lower is better", "left")
-    ax.set_title(f"Gradient-allreduce at model scales: {LABEL['C']} vs {LABEL[baseline]}")
+    ax.set_title(f"Gradient-allreduce at model scales: {LABEL['C']} (solid) vs {LABEL[baseline]} (dashed)")
     ax.grid(True, which="both", ls="--", alpha=0.4)
-    # two legends: model (color) + library (line style)
+    # single legend, by model (color); solid=RCCL / dashed=baseline is stated in the title
     mh = [Line2D([0],[0], color=col, lw=2) for _,_,col in ML_MODELS]
-    leg1 = ax.legend(mh, [m[0] for m in ML_MODELS], title="model gradient", loc="upper left", framealpha=1)
-    ax.add_artist(leg1)
-    sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
-          Line2D([0],[0], color="#444444", lw=2, ls="--", marker="s")]
-    ax.legend(sh, [LABEL['C'], f"{LABEL[baseline]} (ends where it faults, >4 MiB)"],
-              title="library", loc="lower right", framealpha=1)
+    ax.legend(mh, [m[0] for m in ML_MODELS], title="model gradient (weak-scaled)", loc="upper left", framealpha=1)
     finish(fig)
     return df''')
 

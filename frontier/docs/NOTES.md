@@ -117,9 +117,11 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
 1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
 ≥1024 nodes is bounded by where Cray survives.
 
-**Rep status (final):** 3 reps each at **1–2048**, **2 at 4096**. **Top scale = 4096 nodes = 32,768 GCDs.**
+**Rep status (final):** **3 reps at every node count, 1–4096.** **Top scale = 4096 nodes = 32,768 GCDs.**
 All kept reps have complete RCCL (C) data to 1 GiB; jobs that hung during config C or at startup were discarded.
-(The loader averages over whatever reps exist per size and records `nreps`, so the 2-rep 4096 point is handled — just noisier.)
+The 3rd 4096 rep (job 4939751) is RCCL-complete to 1 GiB; its Cray (D) reached only 2 MiB (Cray faulted *at*
+4 MiB that allocation vs 8 MiB in the other two — the fault threshold varies around ~4 MiB). **8192 not pursued**
+(comm-init wall + budget — see below). The loader averages over whatever reps exist per size and records `nreps`.
 
 ### 8192 attempted, abandoned (near-full-machine limit)
 Both 8192-node jobs (65,536 GCDs) timed out at 12 min. Config C printed its OSU header but completed
