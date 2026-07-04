@@ -224,42 +224,53 @@ def plot_crossover(baseline="D", annotate=True, vmax=None):
 # nearest power-of-2 sweep size proxies each model's gradient (32 MiB<->25 MiB DDP bucket,
 # 128 MiB<->ResNet-50 ~102 MB, 512 MiB<->BERT-Large fp16 ~680 MB). Weak scaling: per-rank
 # gradient size fixed, node count grows. (Path 2 / run_ml_sync.sbatch measures exact sizes.)
-ML_MODELS = [
-    ("DDP bucket (25 MiB)",       33554432),    # PyTorch DDP default bucket_cap_mb=25
-    ("ResNet-50 (~102 MB fp32)",  134217728),   # 25.6 M params x 4 B
-    ("BERT-Large (~680 MB fp16)", 536870912),   # 340 M params x 2 B
+ML_MODELS = [   # (label, gradient bytes, line color)
+    ("DDP bucket (25 MiB)",       33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
+    ("ResNet-50 (~102 MB fp32)",  134217728,  "#009988"),   # 25.6 M params x 4 B
+    ("BERT-Large (~680 MB fp16)", 536870912,  "#aa3377"),   # 340 M params x 2 B
 ]
 
-def ml_sync_table():
+def ml_sync_table(baseline="D"):
     r = []
-    for label, sz in ML_MODELS:
+    for label, sz, _ in ML_MODELS:
         for n in sorted(data.nodes.unique()):
             def lat(cfg):
                 d = data[(data.nodes==n) & (data.config==cfg) & (data["size"]==sz)]
                 return float(d.avg.iloc[0]) if len(d) else np.nan
-            c, b, dd = lat("C"), lat("B"), lat("D")
+            c, base, b = lat("C"), lat(baseline), lat("B")
             r.append(dict(model=label, nodes=n,
-                          sync_ms = c/1000.0,                                    # per-step RCCL allreduce
-                          eff_GBps = (sz/(c*1e-6))/1e9 if c == c else np.nan,     # effective bus bandwidth
-                          vs_MPICH = b/c if (c == c and b == b) else np.nan,      # C/B speedup
-                          vs_Cray  = dd/c if (c == c and dd == dd) else np.nan))  # C/D speedup (<=512 only)
+                          rccl_ms  = c/1000.0,                                       # MPICH-RCCL per-step sync
+                          base_ms  = base/1000.0,                                    # baseline per-step sync
+                          eff_GBps = (sz/(c*1e-6))/1e9 if c == c else np.nan,         # RCCL effective bus BW
+                          speedup  = base/c if (c == c and base == base) else np.nan, # baseline / RCCL
+                          vs_MPICH = b/c if (c == c and b == b) else np.nan))         # C/B (device-CPU)
     return pd.DataFrame(r)
 
-def plot_ml_sync():
-    df = ml_sync_table()
+def plot_ml_sync(baseline="D"):
+    from matplotlib.lines import Line2D
+    df = ml_sync_table(baseline)
     fig, ax = plt.subplots(figsize=(16,10))
-    for label, sz in ML_MODELS:
-        s = df[df.model == label].dropna(subset=["sync_ms"]).sort_values("nodes")
-        if len(s):
-            ax.plot(s.nodes, s.sync_ms, marker="o", lw=2, markersize=6, label=label)
+    for label, sz, col in ML_MODELS:
+        s = df[df.model == label].sort_values("nodes")
+        rc = s.dropna(subset=["rccl_ms"])
+        if len(rc): ax.plot(rc.nodes, rc.rccl_ms, marker="o", ls="-",  lw=2, ms=6, color=col)   # RCCL: solid
+        bs = s.dropna(subset=["base_ms"])
+        if len(bs): ax.plot(bs.nodes, bs.base_ms, marker="s", ls="--", lw=2, ms=6, color=col)   # baseline: dashed
     ax.set_xscale("log", base=2); ax.set_yscale("log")
     ax.set_xticks(sorted(data.nodes.unique()))
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x,_: f"{int(x)}"))
     ax.set_xlabel("Nodes (weak scaling)")
     ylabel2(ax, "Per-step gradient-sync (ms, log)", "lower is better", "left")
-    ax.set_title(f"{LABEL['C']} gradient-allreduce time at model scales")
+    ax.set_title(f"Gradient-allreduce at model scales: {LABEL['C']} vs {LABEL[baseline]}")
     ax.grid(True, which="both", ls="--", alpha=0.4)
-    ax.legend(title="model gradient (weak-scaled)", framealpha=1)
+    # two legends: model (color) + library (line style)
+    mh = [Line2D([0],[0], color=col, lw=2) for _,_,col in ML_MODELS]
+    leg1 = ax.legend(mh, [m[0] for m in ML_MODELS], title="model gradient", loc="upper left", framealpha=1)
+    ax.add_artist(leg1)
+    sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
+          Line2D([0],[0], color="#444444", lw=2, ls="--", marker="s")]
+    ax.legend(sh, [LABEL['C'], f"{LABEL[baseline]} (ends where it faults, >4 MiB)"],
+              title="library", loc="lower right", framealpha=1)
     finish(fig)
     return df''')
 
@@ -267,8 +278,8 @@ code('''plot_latency_vs_size(1)          # node count: 1, 2, 4, 8, ... 1024, 204
 code('''plot_speedup_vs_size("D")        # baseline: "D"=Cray, "B"=MPICH (device)''')
 code('''plot_scaling("1MiB")             # size: "1KiB", "16MiB", "1GiB", "2GiB", "4GiB", ... (raw bytes also ok)''')
 code('''plot_crossover("D")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
-code('''# ML gradient-sync proxy: per-step allreduce time at model scales (weak scaling)
-df_ml = plot_ml_sync(); df_ml.round(3)   # table: sync_ms, effective GB/s, C/B & C/D speedup''')
+code('''# ML gradient-sync: solid = MPICH-RCCL, dashed = baseline (Cray, ends where it faults >4 MiB at >=1024)
+df_ml = plot_ml_sync("D"); df_ml.round(3)   # baseline: "D"=Cray, "B"=MPICH-device''')
 
 nb = {"cells": [], "metadata": {"kernelspec": {"display_name":"Python 3","language":"python","name":"python3"},
       "language_info": {"name":"python"}}, "nbformat": 4, "nbformat_minor": 5}
