@@ -96,3 +96,27 @@ in the remaining budget after the main sweep.
 - FP8-LM: Training FP8 LLMs — https://arxiv.org/html/2310.18313v2
 - ZeRO-3 vs FSDP (RS+AG decomposition) — https://denny.hashnode.dev/understanding-reduce-scatter-all-gather-and-all-reduce-in-distributed-computing-for-llm-training
 - GPU-aware MPI Allreduce via direct sendrecv (ICPP'25) — https://dl.acm.org/doi/10.1145/3754598.3754666
+
+## 8. Implementation (as built)
+Harness added under `run/`:
+- **`run/run_ml_sync.sbatch`** — runs configs **B / C / D** at real model-gradient byte sizes
+  (`ddp_bucket` 25 MiB, `resnet50` 102 MB, `bert_large_fp16` 680 MB) at a given `-N`, writing
+  `results_ml/N<nodes>_job<id>/{B,C,D}_*.txt` (same OSU format the notebook loader already parses).
+- **`run/submit_ml.sh`** — weak-scales it across a node ladder (default `1 8 64 512 1024`, 3 reps).
+  Run from anywhere (`chmod +x` or `bash run/submit_ml.sh`); it exports `FRONTIER_HOME`.
+
+Decisions baked in (all honesty-preserving):
+- **Byte-proxy for precision.** Comm cost is byte-bound, so we measure at the gradient's byte
+  count with the default 4-byte element. A 680 MB allreduce proxies BERT's fp16 gradient exactly
+  (same bytes on the wire); this sidesteps OSU/MPI having no fp16 type. State it as such in the paper.
+- **Cray (D) only at ≤512 nodes** — it faults >4 MiB at ≥1024, and every ML size exceeds 4 MiB, so
+  at scale the ML comparison is **C (MPICH-RCCL) vs B (MPICH-CPU)**; C-vs-Cray holds only ≤512.
+- **Weak scaling** — fixed per-rank gradient size, growing node count (data-parallel replica model).
+
+**Cheapest path first (recommended):** most of this is already in the main sweep. The gradient-sync
+story can be told **for free** by reading the main-sweep latencies at the nearest power-of-2 sizes
+(**32 MiB ≈ bucket, 128 MiB ≈ ResNet, 512 MiB–1 GiB ≈ BERT**) and reframing them as per-step comm
+time + speedup. Only run `submit_ml.sh` if you want the *exact* model sizes; keep the ladder short
+(`1 8 64 512`) to stay well inside the remaining budget. Metrics to report from either path:
+per-step gradient-allreduce time (ms), effective bus bandwidth, C/B and C/D speedup, and comm-fraction
+of a step using a representative compute time.
