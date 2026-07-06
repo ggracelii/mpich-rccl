@@ -1,0 +1,62 @@
+#!/bin/bash
+#SBATCH -A csc678
+#SBATCH -J rccl-csel-auto
+#SBATCH -t 00:15:00
+#SBATCH --network=single_node_vni
+#SBATCH -o %x-%j.out
+#
+# Validate JSON-driven automatic backend selection (csel):
+# tuning/allreduce_rccl_auto.json routes allreduce with built-in ops and
+# avg_msg_size >= 64 KiB to the CCL/RCCL algorithm, below that to MPICH's
+# stock algorithms (64 KiB = measured RCCL-vs-MPICH crossover).
+#
+# Three runs on device buffers, same sizes (1 KiB..256 MiB):
+#   1. AUTO_default : auto selection, stock tree (no JSON)   -> CPU-path everywhere
+#   2. AUTO_json    : auto selection + our JSON              -> CPU-path <64 KiB, RCCL >=64 KiB
+#   3. C_forced     : forced ccl/rccl reference              -> RCCL everywhere
+# Success signature: AUTO_json tracks AUTO_default below 64 KiB and C_forced
+# at/above it (large sizes orders of magnitude faster than AUTO_default).
+
+set -o pipefail
+HERE=${FRONTIER_HOME:-${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}}
+[ -f "$HERE/env.sh" ] || { echo "FATAL: env.sh not found in '$HERE'" >&2; exit 1; }
+source "$HERE/env.sh"
+: "${WORK:?FATAL: env.sh did not set WORK}"
+BIND="$HERE/bind_frontier.sh"
+JSON="$HERE/tuning/allreduce_rccl_auto.json"
+[ -f "$JSON" ] || { echo "FATAL: $JSON missing" >&2; exit 1; }
+
+NODES=${SLURM_JOB_NUM_NODES:?}
+PPN=8; NRANKS=$((NODES * PPN))
+ARGS="-m 1024:268435456 -i 30 -x 10 -d rocm -f"   # 1 KiB..256 MiB straddles the 64 KiB threshold
+
+RESULTS=$WORK/results_csel/N${NODES}_job${SLURM_JOB_ID}
+mkdir -p "$RESULTS"
+{ echo "date=$(date -u +%FT%TZ)"; echo "nodes=$NODES ranks=$NRANKS"; echo "json=$JSON";
+  module list; } > "$RESULTS/env.txt" 2>&1
+cp "$JSON" "$RESULTS/"    # snapshot the exact tree used
+
+load_mine
+MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
+OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
+
+# 1. stock auto (no JSON, no rccl-net-plugin => untouched baseline networking)
+echo "=== AUTO_default (stock tree) ===" | tee "$RESULTS/AUTO_default.txt"
+MPIR_CVAR_DEVICE_COLLECTIVES=none \
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_default.txt" || true
+
+# RCCL runs need the OFI plugin
+module load rccl-net-plugin
+
+# 2. auto + our tuning JSON => csel switches to RCCL at >=64 KiB automatically
+echo "=== AUTO_json (RCCL >=64 KiB via csel) ===" | tee "$RESULTS/AUTO_json.txt"
+MPIR_CVAR_DEVICE_COLLECTIVES=none \
+MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE="$JSON" \
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_json.txt" || true
+
+# 3. forced RCCL reference
+echo "=== C_forced (rccl everywhere) ===" | tee "$RESULTS/C_forced.txt"
+MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/C_forced.txt" || true
+
+echo "[csel] done -> $RESULTS"
