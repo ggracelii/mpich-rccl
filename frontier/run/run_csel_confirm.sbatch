@@ -18,6 +18,7 @@ HERE=${FRONTIER_HOME:-${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}}
 [ -f "$HERE/env.sh" ] || { echo "FATAL: env.sh not found in '$HERE'" >&2; exit 1; }
 source "$HERE/env.sh"
 : "${WORK:?}"; : "${PROBE_SPLIT:?}"; : "${MRANGE:?}"; : "${JSON_CH4_P:?}"; : "${JSON_MPIR_P:?}"
+[ -f "$JSON_CH4_P" ] && [ -f "$JSON_MPIR_P" ] || { echo "FATAL: probe JSONs missing ($JSON_CH4_P / $JSON_MPIR_P)" >&2; exit 1; }
 BIND="$HERE/bind_frontier.sh"
 
 NODES=${SLURM_JOB_NUM_NODES:?}
