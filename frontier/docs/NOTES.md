@@ -136,6 +136,41 @@ never returned. Two compounding causes:
 This is itself a result: the RCCL backend completes 8 B→1 GiB at 4096 nodes, but its communicator bootstrap
 hits a practical wall at 8192 (near-full Frontier) within a 12-min budget.
 
+## 2–4 GiB extension (patched OSU) — the win grows with size
+OSU's silent 1 GiB cap was a **32-bit `int` size loop** in `osu_allreduce.c` (`size *= 2`
+overflows at 2^31 and exits); `-m` parsing was already 64-bit. Patched `size` (and
+`print_stats`/`print_stats_validate`) to `size_t`, rebuilt both OSU stacks, and measured
+**only the new points** (2 GiB, 4 GiB; plus BERT-fp32 1.36 GB for ML): they merge into the
+existing dataset as extra rows. 4 GiB is the practical ceiling (2^30 4-byte elements just
+fits MPI's 32-bit count). Findings (2 nodes; ladder in progress):
+- **RCCL is bandwidth-flat past 1 GiB**: 2 GiB = 37.6 ms, 4 GiB = 74.5 ms (clean 2×/4× of 1 GiB).
+- **Cray survives 2–4 GiB at small scale** (160/321 ms at 2 nodes) → its >4 MiB crash at ≥1024
+  nodes is **scale-triggered, not size-triggered**.
+- **RCCL vs Cray at 4 GiB: 4.3×** — the headline speedup grows with message size.
+
+## csel: JSON-driven automatic backend selection (the summer "auto" TODO, closed)
+MPICH's collective selection (csel) natively supports the CCL leaf:
+`"algorithm=MPIR_Allreduce_intra_ccl": {"ccl=rccl": {}}`. We generated a tuning tree
+(`tuning/allreduce_rccl_auto.json`, from `maint/tuning/coll/mpir/generic.json`) and pointed
+`MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE` at it with `MPIR_CVAR_DEVICE_COLLECTIVES=none`.
+- **v1 validation (2 nodes, job 4948886):** with a 64 KiB threshold, `auto` tracks the stock
+  algorithms below the threshold and sits exactly on forced-RCCL above it — **47× at 256 MiB
+  from a JSON file alone**, zero switching overhead.
+- **Threshold study (1–512 nodes, jobs 4949326–4949335):** the selector's true baseline is the
+  **stock csel tree under `DEVICE_COLLECTIVES=none`** — NOT config B (`=all`, the CH4 composition
+  path); at 2 nodes the stock path is ~3× faster than B, so thresholds derived from C-vs-B would
+  be wrong. Measured against the right baseline, **RCCL wins the entire measured range
+  (1 KiB–256 MiB) at every node count** — 2.3–4.7× even at 1 KiB, 18–50× at 256 MiB. Sub-1 KiB
+  tail + 1024–4096 confirmation runs pending; v2 JSON (route all built-in-op device allreduce to
+  ccl, runtime requirements-check falls back for host buffers/unsupported ops) to follow.
+- **Why there is no crossover here (though there is one vs Cray):** MPICH's stock algorithms pay
+  a per-operation host-staging floor on device buffers (~330 µs even at 1 KiB), while RCCL's
+  floor is ~60 µs — two flat floors, one above the other. **MPICH's small-message device path is
+  so slow that RCCL always wins; a faster small-message path (like Cray's, ~60 µs floor, which
+  beats RCCL below ~16 KiB) would re-introduce a real crossover and move the threshold.**
+  Improving MPICH's small-message device path is future work that would make the selection
+  genuinely size-dependent.
+
 ### Giant-scale run hygiene (lessons)
 - Real run times are tiny (~2 min ≤1024, ~3–4 min at 2048/4096); a hung/faulting job otherwise
   burns to the walltime. Set the walltime to **8 min for ≥512 nodes** so a stall dies fast
