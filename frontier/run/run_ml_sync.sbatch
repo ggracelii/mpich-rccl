@@ -52,27 +52,26 @@ MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
 OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 OSU_CRAY_BIN=$OSU_CRAY/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 
-osu_at() {  # binary size -> one exact size (min=max), rocm buffers, full min/med/max
-  local bin=$1 sz=$2
-  "$bin" -m ${sz}:${sz} -i "$ITERS" -x "$WARMUP" -d rocm -f
-}
-
 # ---- C: MPICH + RCCL backend (run FIRST so it's captured even if the slow CPU
 #         baseline below hits the walltime; each block resets modules so order is safe) ----
 load_mine
 module load rccl-net-plugin
 for e in "${ML[@]}"; do
-  echo "### model=${e%%:*} bytes=${e##*:} N=$NODES" | tee -a "$RESULTS/C_mpich_rccl.txt"
+  sz=${e##*:}
+  echo "### model=${e%%:*} bytes=$sz N=$NODES" | tee -a "$RESULTS/C_mpich_rccl.txt"
   MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
-    $MPIEXEC "$BIND" $(osu_at "$OSU_MINE_BIN" "${e##*:}") 2>&1 | tee -a "$RESULTS/C_mpich_rccl.txt" || true
+    $MPIEXEC "$BIND" "$OSU_MINE_BIN" -m ${sz}:${sz} -i "$ITERS" -x "$WARMUP" -d rocm -f 2>&1 \
+    | tee -a "$RESULTS/C_mpich_rccl.txt" || true
 done
 
 # ---- B: MPICH CPU-on-device (host-staged) — slow at large sizes; may be clipped at scale ----
 load_mine
 for e in "${ML[@]}"; do
-  echo "### model=${e%%:*} bytes=${e##*:} N=$NODES" | tee -a "$RESULTS/B_mpich_dev.txt"
+  sz=${e##*:}
+  echo "### model=${e%%:*} bytes=$sz N=$NODES" | tee -a "$RESULTS/B_mpich_dev.txt"
   MPIR_CVAR_DEVICE_COLLECTIVES=all \
-    $MPIEXEC "$BIND" $(osu_at "$OSU_MINE_BIN" "${e##*:}") 2>&1 | tee -a "$RESULTS/B_mpich_dev.txt" || true
+    $MPIEXEC "$BIND" "$OSU_MINE_BIN" -m ${sz}:${sz} -i "$ITERS" -x "$WARMUP" -d rocm -f 2>&1 \
+    | tee -a "$RESULTS/B_mpich_dev.txt" || true
 done
 
 # ---- D: Cray GPU-aware (only <=512 nodes; faults >4 MiB at >=1024) ----
