@@ -66,4 +66,18 @@ echo "=== C_forced (rccl everywhere) ===" | tee "$RESULTS/C_forced.txt"
 MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
   $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/C_forced.txt" || true
 
+# 4. TWO-LEVEL HYBRID: CH4 tree = alpha (one-shot host staging) <=32 KiB, beta above;
+#    beta delegates down to the MPIR tree = ccl/RCCL for built-in ops.
+#    Expected: tracks the fast staged path at small sizes, RCCL at large — best of both.
+JSON_CH4="$HERE/tuning/allreduce_ch4_hybrid.json"
+if [ -f "$JSON_CH4" ]; then
+  echo "=== AUTO_hybrid (ch4: alpha<=32K / beta->MPIR->rccl) ===" | tee "$RESULTS/AUTO_hybrid.txt"
+  cp "$JSON_CH4" "$RESULTS/"
+  MPIR_CVAR_DEVICE_COLLECTIVES=all \
+  MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE="$JSON_CH4" \
+  MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE_GPU="$JSON_CH4" \
+  MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE="$JSON" \
+    $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_hybrid.txt" || true
+fi
+
 echo "[csel] done -> $RESULTS"
