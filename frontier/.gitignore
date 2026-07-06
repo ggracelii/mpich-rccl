@@ -2,5 +2,5 @@
 /core
 /gpucore.*
 /rccl_debug.log
-/rccl-allreduce-*.out
-/run/rccl-allreduce-*.out
+/*.out
+/run/*.out
