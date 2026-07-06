@@ -1,0 +1,7 @@
+=== D_cray_gpuaware ext4g : N=16 ranks=128 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+2147483648         225586.92         225577.70         225598.17          50
+4294967296         441194.70         441185.16         441206.67          50

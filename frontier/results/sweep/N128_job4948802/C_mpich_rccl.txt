@@ -1,0 +1,7 @@
+=== C_mpich_rccl ext4g : N=128 ranks=1024 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+2147483648          70663.80          69087.01          72004.12          50
+4294967296          92969.35          92715.45          93286.30          50

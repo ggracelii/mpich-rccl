@@ -1,0 +1,7 @@
+### model=bert_large_fp32 bytes=1360000000 N=32
+srun: Step created for StepId=4948796.3
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+1360000000         168746.41         168742.93         168750.07          30
