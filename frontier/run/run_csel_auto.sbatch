@@ -28,7 +28,7 @@ JSON="$HERE/tuning/allreduce_rccl_auto.json"
 
 NODES=${SLURM_JOB_NUM_NODES:?}
 PPN=8; NRANKS=$((NODES * PPN))
-ARGS="-m 1024:268435456 -i 30 -x 10 -d rocm -f"   # 1 KiB..256 MiB straddles the 64 KiB threshold
+ARGS="-m 8:268435456 -i 30 -x 10 -d rocm -f"   # 8 B..256 MiB — full range incl. the sub-1 KiB tail (crossover check)
 
 RESULTS=$WORK/results_csel/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
