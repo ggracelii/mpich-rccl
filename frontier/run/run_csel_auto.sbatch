@@ -70,13 +70,15 @@ MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_D
 #    beta delegates down to the MPIR tree = ccl/RCCL for built-in ops.
 #    Expected: tracks the fast staged path at small sizes, RCCL at large — best of both.
 JSON_CH4="$HERE/tuning/allreduce_ch4_hybrid.json"
-if [ -f "$JSON_CH4" ]; then
-  echo "=== AUTO_hybrid (ch4: alpha<=32K / beta->MPIR->rccl) ===" | tee "$RESULTS/AUTO_hybrid.txt"
-  cp "$JSON_CH4" "$RESULTS/"
+JSON_MPIR_HYB="$HERE/tuning/allreduce_mpir_hybrid.json"   # threshold tree: the all-ccl v2 tree
+# recurses under =all (host-swapped small msgs: ccl requirements fail -> allcomm_auto -> ccl -> ...)
+if [ -f "$JSON_CH4" ] && [ -f "$JSON_MPIR_HYB" ]; then
+  echo "=== AUTO_hybrid (ch4: alpha<=32K / beta->MPIR(>32K)->rccl) ===" | tee "$RESULTS/AUTO_hybrid.txt"
+  cp "$JSON_CH4" "$JSON_MPIR_HYB" "$RESULTS/"
   MPIR_CVAR_DEVICE_COLLECTIVES=all \
   MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE="$JSON_CH4" \
   MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE_GPU="$JSON_CH4" \
-  MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE="$JSON" \
+  MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE="$JSON_MPIR_HYB" \
     $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_hybrid.txt" || true
 fi
 
