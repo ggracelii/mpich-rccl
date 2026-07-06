@@ -251,6 +251,7 @@ ML_MODELS = [   # (label, exact gradient bytes, nearest power-of-2 in main sweep
     ("DDP bucket: 25 MiB",       26214400,   33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
     ("ResNet-50: 102 MB",        102228128,  134217728,  "#009988"),   # 25.6 M params x 4 B
     ("BERT-Large fp16: 680 MB",  680000000,  536870912,  "#aa3377"),   # 340 M params x 2 B
+    ("BERT-Large fp32: 1.36 GB",  1360000000, 1073741824, "#4477aa"),   # 340 M params x 4 B (near: ~1 GiB)
 ]
 
 def ml_sync_table(baseline="D", source="exact"):
@@ -275,7 +276,8 @@ def ml_sync_table(baseline="D", source="exact"):
 # speedup-line colors: lighter-but-bright (neon) counterparts of each model color
 SPD_NEON = {"#ee7733": "#ffb424",    # orange  -> bright amber
             "#009988": "#00e6c3",    # teal    -> neon aqua
-            "#aa3377": "#ff64c8"}    # magenta -> hot pink
+            "#aa3377": "#ff64c8",    # magenta -> hot pink
+            "#4477aa": "#55c8ff"}    # blue    -> bright sky
 
 def plot_ml_sync(baseline="D", source="exact"):
     from matplotlib.lines import Line2D
