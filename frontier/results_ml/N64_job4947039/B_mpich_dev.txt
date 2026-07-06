@@ -1,0 +1,18 @@
+### model=ddp_bucket_25MiB bytes=26214400 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400           308222.57         301047.28         314037.51          30
+### model=resnet50_fp32 bytes=102228128 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128         1250272.01        1229385.00        1270666.97          30
+### model=bert_large_fp16 bytes=680000000 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+[2026-07-06T10:01:54.025] error: *** STEP 4947039.8 ON frontier00039 CANCELLED AT 2026-07-06T10:01:54 DUE TO TIME LIMIT ***
