@@ -45,6 +45,13 @@ echo "=== AUTO_default (stock tree) ===" | tee "$RESULTS/AUTO_default.txt"
 MPIR_CVAR_DEVICE_COLLECTIVES=none \
   $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_default.txt" || true
 
+# 1b. stock auto + GPU-direct RDMA (FI_HMEM): MPICH's NO-STAGING device path (off by
+#     default). The fair "MPICH without staging vs RCCL" small-message comparison —
+#     may error if the provider/MR support is incomplete in this build; || true captures it.
+echo "=== AUTO_hmem (stock tree + FI_HMEM GPU-direct RDMA) ===" | tee "$RESULTS/AUTO_hmem.txt"
+MPIR_CVAR_DEVICE_COLLECTIVES=none MPIR_CVAR_CH4_OFI_ENABLE_HMEM=1 MPIR_CVAR_CH4_OFI_ENABLE_MR_HMEM=1 \
+  $MPIEXEC "$BIND" "$OSU_MINE_BIN" $ARGS 2>&1 | tee -a "$RESULTS/AUTO_hmem.txt" || true
+
 # RCCL runs need the OFI plugin
 module load rccl-net-plugin
 

@@ -79,19 +79,6 @@
                     "algorithm=MPIR_Allreduce_intra_recursive_doubling": {}
                 }
             },
-            "avg_msg_size<=65536": {
-                "is_op_built_in=no": {
-                    "algorithm=MPIR_Allreduce_intra_recursive_doubling": {}
-                },
-                "is_op_built_in=yes": {
-                    "count<pow2": {
-                        "algorithm=MPIR_Allreduce_intra_recursive_doubling": {}
-                    },
-                    "count=any": {
-                        "algorithm=MPIR_Allreduce_intra_reduce_scatter_allgather": {}
-                    }
-                }
-            },
             "avg_msg_size=any": {
                 "is_op_built_in=no": {
                     "algorithm=MPIR_Allreduce_intra_recursive_doubling": {}
