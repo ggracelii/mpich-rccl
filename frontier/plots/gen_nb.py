@@ -9,17 +9,21 @@ def code(s): cells.append(("code", s))
 
 md('''# Frontier RCCL-Allreduce — Plots
 
-Raw data = OSU text output under `results/sweep/N<nodes>_job<id>/{A,B,C,D}_*.txt`,
-parsed in **cell 1** into a tidy DataFrame `data`. **Cell 2** defines the styling and
-all plot functions (collapse it to hide the code). Every cell after that is a **one-line
-call** — run it and tweak the argument.
+Raw data = OSU text output under `results/sweep/N<nodes>_job<id>/{A,B,C,D}_*.txt` (main sweep)
+and `results_ml/` (ML gradient-sync at exact model sizes), parsed in **cell 1** into DataFrames
+`data` and `data_ml`. Each point is the **median across reps** (3 reps at 1–2048 nodes, 2 at 4096;
+each rep = mean over 50 iterations, 10 warm-ups). **Cell 2** defines the styling and all plot
+functions (collapse it to hide the code). Every cell after that is a **one-line call**.
 
 Each axis shows a small italic "lower/higher is better" note beside its label. Configs:
 MPICH (host CPU) / MPICH (device) / **MPICH-RCCL** / Cray MPICH.
 
-Message sizes span **8 B \\u2192 4 GiB** for the GPU paths (MPICH-RCCL, Cray). The CPU
-paths (A/B) are capped at **32 MiB** \\u2014 host reductions are prohibitively slow at large
-sizes \\u2014 so their curves intentionally stop short of the GPU ones (not a data gap).''')
+Message-size coverage (intentional, not data gaps):
+- **MPICH-RCCL (C): 8 B \\u2192 1 GiB at every node count (1\\u20134096).** 1 GiB is OSU's ceiling (32-bit message size).
+- **Cray MPICH (D): to 1 GiB at \\u2264512 nodes, but only to 4 MiB at \\u22651024** \\u2014 Cray's GPU-aware
+  allreduce crashes (GPU memory access fault) above 4 MiB at scale, so its curves stop there
+  (gray cells in the heatmap).
+- **CPU paths (A/B): capped at 32 MiB** \\u2014 host reductions are prohibitively slow at large sizes.''')
 
 code('''# === Cell 1: load & clean the sweep data =================================
 import os, re, glob
@@ -59,9 +63,27 @@ for d in sorted(glob.glob(os.path.join(RESULTS, "N*_job*"))):
 
 raw = pd.DataFrame(rows); raw = raw[raw["avg"] > 0]
 data = (raw.groupby(["nodes","config","size"], as_index=False)
-           .agg(avg=("avg","mean"), std=("avg","std"), nreps=("job","nunique")))
-print("configs:", sorted(data.config.unique()), "| nodes:", sorted(data.nodes.unique()),
-      "| sizes:", data["size"].nunique())
+           .agg(avg=("avg","median"), std=("avg","std"), nreps=("job","nunique")))   # median across reps: robust to one bad-placement rep
+
+# Path-2 ML data (exact model-gradient sizes) if results_ml/ is present; else plot_ml_sync uses Path 1.
+ML_RESULTS = "results_ml" if os.path.isdir("results_ml") else "../results_ml"
+ml_rows = []
+for d in sorted(glob.glob(os.path.join(ML_RESULTS, "N*_job*"))):
+    m = re.match(r"N(\\d+)_job(\\d+)", os.path.basename(d))
+    if not m:
+        continue
+    for cfg, fn in OSU_FILES.items():
+        fp = os.path.join(d, fn)
+        if os.path.exists(fp):
+            for s, a, mn, mx in parse_osu(fp):
+                ml_rows.append(dict(nodes=int(m.group(1)), job=int(m.group(2)), config=cfg, size=s, avg=a))
+_mlraw = pd.DataFrame(ml_rows)
+data_ml = (_mlraw[_mlraw["avg"] > 0]
+           .groupby(["nodes","config","size"], as_index=False)
+           .agg(avg=("avg","median"), nreps=("job","nunique"))) if len(ml_rows) else None
+
+print("main sweep nodes:", sorted(data.nodes.unique()), "| sizes:", data["size"].nunique(),
+      "| ML Path-2:", ("loaded, nodes " + str(sorted(data_ml.nodes.unique()))) if data_ml is not None else "none (uses Path 1)")
 data.head()''')
 
 code('''# === Cell 2: style + plot functions  (collapse this cell to hide the code) =
@@ -131,7 +153,7 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
     ax1.set_xscale("log", base=2); ax1.set_yscale("log")
     ax1.set_xlabel("Message size (bytes, log2)")
     ylabel2(ax1, LAT_MAIN, "lower is better", "left")
-    ax1.set_title(f"Allreduce latency \\u2014 {nodes} node(s)")
+    ax1.set_title(f"Allreduce latency: {nodes} node(s)")
     ax1.yaxis.set_major_formatter(FuncFormatter(sci)); ax1.grid(True, which="both", ls="--", alpha=0.4)
     xc,yc = series(nodes,"C"); xb,yb = series(nodes,speedup_over)
     if len(xc) and len(xb):
@@ -139,7 +161,7 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
         sc = np.array([yb[list(xb).index(s)]/yc[list(xc).index(s)] for s in common])
         ax2 = ax1.twinx()
         ax2.plot(common, sc, marker="o", linestyle="--", color=SPEEDUP_COLOR, lw=2, label=f"{LABEL['C']} speedup vs {LABEL[speedup_over]}")
-        ax2.axhline(1, color="#aaaaaa", ls="--", lw=1); ax2.set_yscale("log", base=2)
+        ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5); ax2.set_yscale("log", base=2)
         ylabel2(ax2, SPD_MAIN(speedup_over), "higher is better", "right")
         ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
         i = int(np.argmax(sc))
@@ -224,48 +246,74 @@ def plot_crossover(baseline="D", annotate=True, vmax=None):
 # nearest power-of-2 sweep size proxies each model's gradient (32 MiB<->25 MiB DDP bucket,
 # 128 MiB<->ResNet-50 ~102 MB, 512 MiB<->BERT-Large fp16 ~680 MB). Weak scaling: per-rank
 # gradient size fixed, node count grows. (Path 2 / run_ml_sync.sbatch measures exact sizes.)
-ML_MODELS = [   # (label, gradient bytes = nearest power-of-2 actually measured, line color)
-    ("DDP bucket 25 MiB (~32 MiB)",       33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
-    ("ResNet-50 102 MB (~128 MiB)",       134217728,  "#009988"),   # 25.6 M params x 4 B
-    ("BERT-Large fp16 680 MB (~512 MiB)", 536870912,  "#aa3377"),   # 340 M params x 2 B
+ML_MODELS = [   # (label, exact gradient bytes, nearest power-of-2 in main sweep, line color)
+    ("DDP bucket: 25 MiB",       26214400,   33554432,   "#ee7733"),   # PyTorch DDP default bucket_cap_mb=25
+    ("ResNet-50: 102 MB",        102228128,  134217728,  "#009988"),   # 25.6 M params x 4 B
+    ("BERT-Large fp16: 680 MB",  680000000,  536870912,  "#aa3377"),   # 340 M params x 2 B
 ]
 
-def ml_sync_table(baseline="D"):
+def ml_sync_table(baseline="D", source="exact"):
+    # source="exact" -> results_ml at exact model sizes; "near" -> main sweep at nearest power-of-2
+    src = data_ml if source == "exact" else data
     r = []
-    for label, sz, _ in ML_MODELS:
-        for n in sorted(data.nodes.unique()):
+    for label, sz_exact, sz_near, _ in ML_MODELS:
+        sz = sz_exact if source == "exact" else sz_near
+        for n in sorted(src.nodes.unique()):
             def lat(cfg):
-                d = data[(data.nodes==n) & (data.config==cfg) & (data["size"]==sz)]
+                d = src[(src.nodes==n) & (src.config==cfg) & (src["size"]==sz)]
                 return float(d.avg.iloc[0]) if len(d) else np.nan
             c, base, b = lat("C"), lat(baseline), lat("B")
             r.append(dict(model=label, nodes=n,
                           rccl_ms  = c/1000.0,                                       # MPICH-RCCL per-step sync
                           base_ms  = base/1000.0,                                    # baseline per-step sync
                           eff_GBps = (sz/(c*1e-6))/1e9 if c == c else np.nan,         # RCCL effective bus BW
-                          speedup  = base/c if (c == c and base == base) else np.nan, # baseline / RCCL
+                          speedup  = base/c if (c == c and base == base) else np.nan, # RCCL speedup vs baseline
                           vs_MPICH = b/c if (c == c and b == b) else np.nan))         # C/B (device-CPU)
     return pd.DataFrame(r)
 
-def plot_ml_sync(baseline="D"):
+# speedup-line colors: lighter-but-bright (neon) counterparts of each model color
+SPD_NEON = {"#ee7733": "#ffb424",    # orange  -> bright amber
+            "#009988": "#00e6c3",    # teal    -> neon aqua
+            "#aa3377": "#ff64c8"}    # magenta -> hot pink
+
+def plot_ml_sync(baseline="D", source="exact"):
     from matplotlib.lines import Line2D
-    df = ml_sync_table(baseline)
-    fig, ax = plt.subplots(figsize=(16,10))
-    for label, sz, col in ML_MODELS:
+    if source == "exact" and data_ml is None:
+        print("no results_ml loaded — call plot_ml_sync(source='near') for the main-sweep estimate"); return
+    src = data_ml if source == "exact" else data
+    df = ml_sync_table(baseline, source)
+    fig, ax = plt.subplots(figsize=(16,10)); ax2 = ax.twinx()   # right axis = RCCL speedup vs baseline
+    labels = []
+    for label, sz_e, sz_n, col in ML_MODELS:
+        labels.append(label if source == "exact" else f"{label} (~{human(sz_n)})")
         s = df[df.model == label].sort_values("nodes")
         rc = s.dropna(subset=["rccl_ms"])
-        if len(rc): ax.plot(rc.nodes, rc.rccl_ms, marker="o", ls="-",  lw=2, ms=6, color=col)   # RCCL: solid
+        if len(rc): ax.plot(rc.nodes, rc.rccl_ms, marker="o", ls="-",  lw=2, ms=6, color=col)            # RCCL: solid circle
         bs = s.dropna(subset=["base_ms"])
-        if len(bs): ax.plot(bs.nodes, bs.base_ms, marker="s", ls="--", lw=2, ms=6, color=col)   # baseline: dashed
+        if len(bs): ax.plot(bs.nodes, bs.base_ms, marker="o", ls="--", lw=2, ms=6, color=col)            # baseline: dashed circle
+        sp = s.dropna(subset=["speedup"])
+        if len(sp): ax2.plot(sp.nodes, sp.speedup, marker="s", ls=":", lw=2, ms=6, color=SPD_NEON.get(col, col))  # speedup: neon, square
     ax.set_xscale("log", base=2); ax.set_yscale("log")
-    ax.set_xticks(sorted(data.nodes.unique()))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda y,_: f"{y:g}"))   # plain 1, 10, 100 (not 10^0)
+    ax2.set_yscale("log", base=2); ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5)
+    ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
+    ax.set_xticks(sorted(src.nodes.unique()))
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x,_: f"{int(x)}"))
     ax.set_xlabel("Nodes (weak scaling)")
     ylabel2(ax, "Per-step gradient-sync (ms, log)", "lower is better", "left")
-    ax.set_title(f"Gradient-allreduce at model scales: {LABEL['C']} (solid) vs {LABEL[baseline]} (dashed)")
+    ylabel2(ax2, SPD_MAIN(baseline), "higher is better", "right")
+    ax.set_title("Gradient-allreduce at model scales")
     ax.grid(True, which="both", ls="--", alpha=0.4)
-    # single legend, by model (color); solid=RCCL / dashed=baseline is stated in the title
-    mh = [Line2D([0],[0], color=col, lw=2) for _,_,col in ML_MODELS]
-    ax.legend(mh, [m[0] for m in ML_MODELS], title="model gradient (weak-scaled)", loc="upper left", framealpha=1)
+    # legend 1: model = color (lower right)
+    mh = [Line2D([0],[0], color=col, lw=2) for _,_,_,col in ML_MODELS]
+    leg1 = ax.legend(mh, labels, title="model gradient", loc="lower right", framealpha=1)
+    ax.add_artist(leg1)
+    # legend 2 (untitled): line meaning (upper left)
+    sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
+          Line2D([0],[0], color="#444444", lw=2, ls="--", marker="o"),
+          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s")]
+    ax.legend(sh, [f"{LABEL['C']}  (solid)", f"{LABEL[baseline]}  (dashed)", "RCCL speedup (right axis)"],
+              loc="upper right", framealpha=1)
     finish(fig)
     return df''')
 
@@ -273,8 +321,10 @@ code('''plot_latency_vs_size(1)          # node count: 1, 2, 4, 8, ... 1024, 204
 code('''plot_speedup_vs_size("D")        # baseline: "D"=Cray, "B"=MPICH (device)''')
 code('''plot_scaling("1MiB")             # size: "1KiB", "16MiB", "1GiB", "2GiB", "4GiB", ... (raw bytes also ok)''')
 code('''plot_crossover("D")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
-code('''# ML gradient-sync: solid = MPICH-RCCL, dashed = baseline (Cray, ends where it faults >4 MiB at >=1024)
-df_ml = plot_ml_sync("D"); df_ml.round(3)   # baseline: "D"=Cray, "B"=MPICH-device''')
+code('''# ML gradient-sync (2 plots). solid=RCCL, dashed=Cray (both circles); light dotted square = RCCL speedup (right axis)
+df_ml = plot_ml_sync("D", source="exact")   # (1) exact model sizes (results_ml)
+# plot_ml_sync("D", source="near")           # (2) nearest power-of-2 estimate (main sweep)
+df_ml.round(3)''')
 
 nb = {"cells": [], "metadata": {"kernelspec": {"display_name":"Python 3","language":"python","name":"python3"},
       "language_info": {"name":"python"}}, "nbformat": 4, "nbformat_minor": 5}
