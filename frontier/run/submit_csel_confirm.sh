@@ -11,10 +11,12 @@ mkdir -p "$TUN"
 # nodes : plot-read bracket upper edge (bytes). Probe split = 4x upper edge.
 #   N=1,2,4: 32-64K | N=8: 64-128K | N=16,32,64: 256-512K
 #   N=128,256: 512K-1M | N=512: 256-512K | N=1024,2048: 32-64K | N=4096: 8-16K
+# round 1 (plot-read B-curve brackets) ran high: direct staged-vs-RCCL measurement puts
+# thresholds at 8-16 KiB for N=1..8 and BELOW the 64K+ windows for N>=16. Round-2 map:
 HI=( [1]=65536 [2]=65536 [4]=65536 [8]=131072
-     [16]=524288 [32]=524288 [64]=524288
-     [128]=1048576 [256]=1048576 [512]=524288
-     [1024]=65536 [2048]=65536 [4096]=16384 )
+     [16]=16384 [32]=16384 [64]=16384
+     [128]=16384 [256]=16384 [512]=16384
+     [1024]=16384 [2048]=16384 [4096]=16384 )
 
 LADDER=${1:-"1 2 4 8 16 32 64 128 256 512 1024 2048 4096"}
 

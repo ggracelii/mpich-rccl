@@ -163,6 +163,18 @@ MPICH's collective selection (csel) natively supports the CCL leaf:
   (1 KiB–256 MiB) at every node count** — 2.3–4.7× even at 1 KiB, 18–50× at 256 MiB. Sub-1 KiB
   tail + 1024–4096 confirmation runs pending; v2 JSON (route all built-in-op device allreduce to
   ccl, runtime requirements-check falls back for host buffers/unsupported ops) to follow.
+- **Integration bug found (upstream-reportable): ccl fallback can infinitely recurse.**
+  `MPIR_Allreduce_intra_ccl`'s requirements-check fallback calls `MPIR_Allreduce_allcomm_auto`,
+  which re-enters csel. If the tuning tree maps that call back to ccl (as the all-ccl v2 tree
+  does), any allreduce that fails the requirements check — e.g. the HOST-swapped small messages
+  that `DEVICE_COLLECTIVES=all` compositions produce — recurses to stack overflow (SIGSEGV,
+  bisected: `=all` + all-ccl MPIR JSON segfaults with no CH4 JSON involved; `=none` is immune
+  because OSU device buffers always pass the check). Fix direction: the fallback should invoke a
+  concrete algorithm, not re-enter auto-selection. Workaround: threshold-gated MPIR tree for the
+  `=all`/hybrid world (`tuning/allreduce_mpir_hybrid.json`).
+- **GPU-direct RDMA (`MPIR_CVAR_CH4_OFI_ENABLE_HMEM=1`) works but is insufficient:** ~13–25%
+  faster than staging at both 2 and 64 nodes, yet still 2.5–3× slower than RCCL at 8 B and ~40×
+  at 256 MiB — even MPICH's no-staging path never beats RCCL at any size.
 - **Why there is no crossover here (though there is one vs Cray):** MPICH's stock algorithms pay
   a per-operation host-staging floor on device buffers (~330 µs even at 1 KiB), while RCCL's
   floor is ~60 µs — two flat floors, one above the other. **MPICH's small-message device path is

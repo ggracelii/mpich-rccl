@@ -147,11 +147,18 @@ def finish(fig):
 
 def plot_latency_vs_size(nodes, speedup_over="D"):
     fig, ax1 = plt.subplots(figsize=(16,10))
+    xall = []
     for cfg in ORDER:
         x,y = series(nodes,cfg)
-        if len(x): ax1.plot(x,y,**STYLE[cfg])
+        if len(x): ax1.plot(x,y,**STYLE[cfg]); xall += [x.min(), x.max()]
     ax1.set_xscale("log", base=2); ax1.set_yscale("log")
-    ax1.set_xlabel("Message size (bytes, log2)")
+    if xall:
+        ax1.set_xlim(min(xall)/1.5, max(xall)*1.5)   # end the axis at the data, not the next tick
+        t, ticks = max(xall), []                      # identical series on all size plots: 4 GiB, 256 MiB, ... 16 B
+        while t >= min(xall): ticks.append(t); t /= 16
+        ax1.set_xticks(ticks)
+    ax1.xaxis.set_major_formatter(FuncFormatter(lambda x,_: human(x) if x >= 1 else ""))
+    ax1.set_xlabel("Message size (log scale)")
     ylabel2(ax1, LAT_MAIN, "lower is better", "left")
     ax1.set_title(f"Allreduce latency: {nodes} node(s)")
     ax1.yaxis.set_major_formatter(FuncFormatter(sci)); ax1.grid(True, which="both", ls="--", alpha=0.4)
@@ -177,16 +184,24 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
 
 def plot_speedup_vs_size(baseline="D"):
     fig, ax = plt.subplots(figsize=(16,10))
+    xall = []
     for n in sorted(data.nodes.unique()):
         xc,yc = series(n,"C"); xb,yb = series(n,baseline)
         common = np.intersect1d(xc,xb)
         if not len(common): continue
         sc = np.array([yb[list(xb).index(s)]/yc[list(xc).index(s)] for s in common])
         ax.plot(common, sc, marker="o", linestyle="-", lw=2, label=f"{n} nodes")
+        xall += [common.min(), common.max()]
     ax.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0)
     ax.set_xscale("log", base=2); ax.set_yscale("log", base=2)
+    if xall:
+        ax.set_xlim(min(xall)/1.5, max(xall)*1.5)
+        t, ticks = max(xall), []
+        while t >= min(xall): ticks.append(t); t /= 16
+        ax.set_xticks(ticks)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
-    ax.set_xlabel("Message size (bytes, log2)")
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda x,_: human(x) if x >= 1 else ""))
+    ax.set_xlabel("Message size (log scale)")
     ylabel2(ax, SPD_MAIN(baseline), "higher is better", "left")
     ax.set_title(f"{LABEL['C']} speedup over {LABEL[baseline]} (per node count)")
     ax.grid(True, which="both", ls="--", alpha=0.4); ax.legend(title="scale", framealpha=1, ncol=2)
