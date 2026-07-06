@@ -99,7 +99,7 @@ SPEEDUP_COLOR = "#2ca02c"          # green reserved for the speedup line only
 LAT_MAIN = "Latency (\\u00b5s, log)"
 SPD_MAIN = lambda base: f"{LABEL['C']} speedup vs {LABEL[base]}"
 STYLE = {   # all data lines uniform: solid, circle markers, same weight (distinguished by color)
-    "A": dict(color="#9e9e9e", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["A"]),
+    "A": dict(color="#616161", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["A"]),
     "B": dict(color="#1f77b4", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["B"]),
     "C": dict(color="#d62728", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["C"]),
     "D": dict(color="#7e4bbd", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["D"]),
@@ -160,8 +160,9 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
         common = np.intersect1d(xc,xb)
         sc = np.array([yb[list(xb).index(s)]/yc[list(xc).index(s)] for s in common])
         ax2 = ax1.twinx()
+        ax1.set_zorder(ax2.get_zorder()+1); ax1.patch.set_visible(False)   # data lines above the ax2 baseline
         ax2.plot(common, sc, marker="o", linestyle="--", color=SPEEDUP_COLOR, lw=2, label=f"{LABEL['C']} speedup vs {LABEL[speedup_over]}")
-        ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5); ax2.set_yscale("log", base=2)
+        ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0); ax2.set_yscale("log", base=2)
         ylabel2(ax2, SPD_MAIN(speedup_over), "higher is better", "right")
         ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
         i = int(np.argmax(sc))
@@ -182,7 +183,7 @@ def plot_speedup_vs_size(baseline="D"):
         if not len(common): continue
         sc = np.array([yb[list(xb).index(s)]/yc[list(xc).index(s)] for s in common])
         ax.plot(common, sc, marker="o", linestyle="-", lw=2, label=f"{n} nodes")
-    ax.axhline(1, color="#aaaaaa", ls="--", lw=1.5)
+    ax.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0)
     ax.set_xscale("log", base=2); ax.set_yscale("log", base=2)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
     ax.set_xlabel("Message size (bytes, log2)")
@@ -283,6 +284,7 @@ def plot_ml_sync(baseline="D", source="exact"):
     src = data_ml if source == "exact" else data
     df = ml_sync_table(baseline, source)
     fig, ax = plt.subplots(figsize=(16,10)); ax2 = ax.twinx()   # right axis = RCCL speedup vs baseline
+    ax.set_zorder(ax2.get_zorder()+1); ax.patch.set_visible(False)   # data lines above the ax2 baseline
     labels = []
     for label, sz_e, sz_n, col in ML_MODELS:
         labels.append(label if source == "exact" else f"{label} (~{human(sz_n)})")
@@ -295,7 +297,7 @@ def plot_ml_sync(baseline="D", source="exact"):
         if len(sp): ax2.plot(sp.nodes, sp.speedup, marker="s", ls=":", lw=2, ms=6, color=SPD_NEON.get(col, col))  # speedup: neon, square
     ax.set_xscale("log", base=2); ax.set_yscale("log")
     ax.yaxis.set_major_formatter(FuncFormatter(lambda y,_: f"{y:g}"))   # plain 1, 10, 100 (not 10^0)
-    ax2.set_yscale("log", base=2); ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5)
+    ax2.set_yscale("log", base=2); ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0)
     ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
     ax.set_xticks(sorted(src.nodes.unique()))
     ax.xaxis.set_major_formatter(FuncFormatter(lambda x,_: f"{int(x)}"))
