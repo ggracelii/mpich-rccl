@@ -1,0 +1,2292 @@
+[env] PROJ=csc678 WORK=/lustre/orion/csc678/scratch/graceli/rccl-frontier ROCM=6.2.4
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== A_mpich_host : N=2048 ranks=16384 ===
+
+# OSU MPI Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                      84.96             77.70             91.99          50
+8                      81.68             74.07             89.63          50
+16                     81.78             74.80             90.06          50
+32                     81.51             74.08             89.59          50
+64                     81.88             74.47             90.19          50
+128                    85.62             79.20             95.12          50
+256                   113.00            102.34            128.04          50
+512                   114.30            102.74            130.36          50
+1024                  116.61            105.18            132.94          50
+2048                  130.40            111.13            146.32          50
+4096                  126.13            113.19            143.81          50
+8192                  149.68            135.82            172.93          50
+16384                 226.23            172.55            474.58          50
+32768                 372.89            316.07            572.28          50
+65536                1240.56           1224.97           1303.43          50
+131072               1710.34           1688.14           1814.85          50
+262144               3198.08           3152.09           3323.14          50
+524288               4408.72           4316.38           4537.96          50
+1048576              5433.08           5256.62           5682.85          50
+2097152              6754.68           6466.83           7016.96          50
+4194304              8678.46           8200.63           9046.57          50
+8388608             10927.09          10344.55          11541.17          50
+16777216            14328.00          13924.77          14934.66          50
+33554432            46504.48          45168.64          48268.27          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== B_mpich_dev : N=2048 ranks=16384 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                     107.20             98.69            114.40          50
+8                     124.32             99.05            181.32          50
+16                    106.72             97.60            114.28          50
+32                    162.51            154.26            169.42          50
+64                    107.81             99.31            114.71          50
+128                   110.80            102.48            120.32          50
+256                   139.17            130.42            159.43          50
+512                   196.38            138.46            222.17          50
+1024                  144.18            135.34            164.03          50
+2048                  147.82            138.00            169.51          50
+4096                  155.25            146.08            216.41          50
+8192                  224.20            210.22            245.14          50
+16384                 242.73            230.30            265.35          50
+32768                 285.72            274.57            305.39          50
+65536                 576.40            559.05            644.18          50
+131072                728.57            707.32            788.55          50
+262144               1782.72           1709.80           1888.75          50
+524288               3361.71           3312.86           3455.90          50
+1048576              4832.73           4743.67           4964.16          50
+2097152             28654.25          27945.97          29139.92          50
+4194304             57564.62          52248.70          62101.66          50
+8388608            109661.36         103280.63         115468.03          50
+16777216           209148.10         201682.84         216079.81          50
+33554432           430154.90         416968.86         439013.79          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== C_mpich_rccl : N=2048 ranks=16384 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                     400.18            332.86            513.82          50
+8                     221.73            151.49            245.35          50
+16                    232.28            150.21            259.13          50
+32                    232.62            151.01            259.76          50
+64                    235.95            164.44            261.77          50
+128                   317.32            213.68            351.36          50
+256                   306.94            200.00            340.36          50
+512                   305.47            194.06            337.60          50
+1024                  314.62            197.26            347.07          50
+2048                  338.15            206.03            371.65          50
+4096                  411.31            289.02            452.05          50
+8192                  395.29            266.88            444.91          50
+16384                 410.73            276.09            458.63          50
+32768                 423.20            335.06            469.94          50
+65536                 490.40            398.47            531.29          50
+131072                614.21            515.23            649.89          50
+262144                884.77            786.21            923.27          50
+524288                940.62            886.98            977.02          50
+1048576              1090.23           1036.48           1119.76          50
+2097152              1651.49           1566.56           1692.67          50
+4194304              2975.19           2866.84           3039.85          50
+8388608              3452.42           3328.95           3521.74          50
+16777216             4595.71           4314.95           4947.38          50
+33554432             7604.75           7336.15           7748.24          50
+67108864             9837.93           9325.94          10362.04          50
+134217728           17139.22          16350.13          17577.94          50
+268435456           19680.95          18792.51          20128.30          50
+536870912           35174.32          33788.08          35601.83          50
+1073741824          47221.78          45829.30          47825.85          50
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+=== D_cray_gpuaware : N=2048 ranks=16384 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                      56.42             53.21             60.07          50
+8                      56.58             54.04             59.70          50
+16                     56.17             53.06             59.63          50
+32                     56.24             53.41             59.75          50
+64                     57.66             54.93             60.67          50
+128                    60.85             57.46             65.10          50
+256                    93.17             89.29             98.97          50
+512                    92.90             88.85             97.89          50
+1024                   95.49             90.86            102.39          50
+2048                  101.13             95.80            110.93          50
+4096                  105.03            101.30            110.96          50
+8192                  142.08            136.48            149.65          50
+16384                 238.29            184.52            382.31          50
+32768                 334.04            296.48            392.80          50
+65536                 437.12            426.97            482.11          50
+131072                854.00            845.03            933.99          50
+262144               1853.98           1845.74           1934.98          50
+524288               2518.79           2502.87           2587.37          50
+1048576              2670.86           2629.56           2777.75          50
+2097152              3161.30           3123.91           3284.09          50
+4194304              3439.54           3355.29           3596.84          50
+Memory access fault by GPU node-5 (Agent handle: 0x373790) on address 0x7ffb89e00000. Reason: Unknown.
+Memory access fault by GPU node-5 (Agent handle: 0x373790) on address 0x7ffb89e00000. Reason: Unknown.
+Memory access fault by GPU node-5 (Agent handle: 0x373790) on address 0x7ffb89e00000. Reason: Unknown.
+Failed to allocate file: Bad file descriptor
+Failed to allocate file: Bad file descriptor
+GPU core dump failed
+GPU core dump failed
+Failed to allocate file: Bad file descriptor
+GPU core dump failed
+srun: error: frontier05607: task 8191: Aborted (core dumped)
+srun: Terminating StepId=4937457.3
+[2026-07-03T16:51:14.970] error: *** STEP 4937457.3 ON frontier00002 CANCELLED AT 2026-07-03T16:51:14 DUE TO TASK FAILURE ***
+srun: error: frontier08797: tasks 14720-14727: Terminated
+srun: error: frontier06629: tasks 10112-10119: Terminated
+srun: error: frontier00210: tasks 432-439: Terminated
+srun: error: frontier07808: tasks 12416-12423: Terminated
+srun: error: frontier05486: tasks 7976-7983: Terminated
+srun: error: frontier03675: tasks 5672-5679: Terminated
+srun: error: frontier01663: tasks 3368-3375: Terminated
+srun: error: frontier08128: tasks 13216-13223: Terminated
+srun: error: frontier09150: tasks 15520-15527: Terminated
+srun: error: frontier07012: tasks 10912-10919: Terminated
+srun: error: frontier01779: tasks 3536-3543: Terminated
+srun: error: frontier07129: tasks 11080-11087: Terminated
+srun: error: frontier02302: tasks 4168-4175: Terminated
+srun: error: frontier05971: tasks 8776-8783: Terminated
+srun: error: frontier04342: tasks 6472-6479: Terminated
+srun: error: frontier10164: tasks 16320-16327: Terminated
+srun: error: frontier00488: tasks 1064-1071: Terminated
+srun: error: frontier00972: tasks 2032-2039: Terminated
+srun: error: frontier08498: tasks 14016-14023: Terminated
+srun: error: frontier07503: tasks 11712-11719: Terminated
+srun: error: frontier02431: tasks 4336-4343: Terminated
+srun: error: frontier06368: tasks 9576-9583: Terminated
+srun: error: frontier03026: tasks 4968-4975: Terminated
+srun: error: frontier08875: tasks 14816-14823: Terminated
+srun: error: frontier00596: tasks 1232-1239: Terminated
+srun: error: frontier04976: tasks 7272-7279: Terminated
+srun: error: frontier01378: tasks 2832-2839: Terminated
+srun: error: frontier06744: tasks 10280-10287: Terminated
+srun: error: frontier06760: tasks 10376-10383: Terminated
+srun: error: frontier00228: tasks 528-535: Terminated
+srun: error: frontier08910: tasks 14984-14991: Terminated
+srun: error: frontier03760: tasks 5768-5775: Terminated
+srun: error: frontier08612: tasks 14184-14191: Terminated
+srun: error: frontier03901: tasks 5936-5943: Terminated
+srun: error: frontier05503: tasks 8072-8079: Terminated
+srun: error: frontier07528: tasks 11880-11887: Terminated
+srun: error: frontier05620: tasks 8240-8247: Terminated
+srun: error: frontier07898: tasks 12680-12687: Terminated
+srun: error: frontier00614: tasks 1328-1335: Terminated
+srun: error: frontier09275: tasks 15784-15791: Terminated
+srun: error: frontier08255: tasks 13480-13487: Terminated
+srun: error: frontier07141: tasks 11176-11183: Terminated
+srun: error: frontier01866: tasks 3632-3639: Terminated
+srun: error: frontier05991: tasks 8872-8879: Terminated
+srun: error: frontier03183: tasks 5136-5143: Terminated
+srun: error: frontier00998: tasks 2128-2135: Terminated
+srun: error: frontier06111: tasks 9040-9047: Terminated
+srun: error: frontier09167: tasks 15616-15623: Terminated
+srun: error: frontier06387: tasks 9672-9679: Terminated
+srun: error: frontier02550: tasks 4432-4439: Terminated
+srun: error: frontier07629: tasks 11976-11983: Terminated
+srun: error: frontier01106: tasks 2296-2303: Terminated
+srun: error: frontier07657: tasks 12144-12151: Terminated
+srun: error: frontier05162: tasks 7536-7543: Terminated
+srun: error: frontier03257: tasks 5232-5239: Terminated
+srun: error: frontier07974: tasks 12776-12783: Terminated
+srun: error: frontier08626: tasks 14280-14287: Terminated
+srun: error: frontier04589: tasks 6736-6743: Terminated
+srun: error: frontier01519: tasks 3096-3103: Terminated
+srun: error: frontier03957: tasks 6032-6039: Terminated
+srun: error: frontier08002: tasks 12944-12951: Terminated
+srun: error: frontier00360: tasks 792-799: Terminated
+srun: error: frontier01918: tasks 3728-3735: Terminated
+srun: error: frontier06884: tasks 10640-10647: Terminated
+srun: error: frontier08996: tasks 15080-15087: Terminated
+srun: error: frontier01399: tasks 2928-2935: Terminated
+srun: error: frontier08349: tasks 13576-13583: Terminated
+srun: error: frontier00747: tasks 1592-1599: Terminated
+srun: error: frontier08373: tasks 13744-13751: Terminated
+srun: error: frontier06132: tasks 9136-9143: Terminated
+srun: error: frontier07273: tasks 11440-11447: Terminated
+srun: error: frontier04649: tasks 6832-6839: Terminated
+srun: error: frontier08644: tasks 14376-14383: Terminated
+srun: error: frontier06495: tasks 9840-9847: Terminated
+srun: error: frontier02797: tasks 4696-4703: Terminated
+srun: error: frontier01129: tasks 2392-2399: Terminated
+srun: error: frontier02046: tasks 3896-3903: Terminated
+srun: error: frontier04780: tasks 7000-7007: Terminated
+srun: error: frontier07758: tasks 12240-12247: Terminated
+srun: error: frontier06522: tasks 9936-9943: Terminated
+srun: error: frontier09289: tasks 15880-15887: Terminated
+srun: error: frontier03455: tasks 5496-5503: Terminated
+srun: error: frontier05358: tasks 7800-7807: Terminated
+srun: error: frontier05716: tasks 8336-8343: Terminated
+srun: error: frontier01597: tasks 3192-3199: Terminated
+srun: error: frontier06908: tasks 10736-10743: Terminated
+srun: error: frontier08103: tasks 13040-13047: Terminated
+srun: error: frontier00064: tasks 88-95: Terminated
+srun: error: frontier00444: tasks 888-895: Terminated
+srun: error: frontier08750: tasks 14544-14551: Terminated
+srun: error: frontier07011: tasks 10904-10911: Terminated
+srun: error: frontier00842: tasks 1688-1695: Terminated
+srun: error: frontier04194: tasks 6296-6303: Terminated
+srun: error: frontier02165: tasks 3992-3999: Terminated
+srun: error: frontier05860: tasks 8600-8607: Terminated
+srun: error: frontier00487: tasks 1056-1063: Terminated
+srun: error: frontier07382: tasks 11536-11543: Terminated
+srun: error: frontier00869: tasks 1856-1863: Terminated
+srun: error: frontier05738: tasks 8432-8439: Terminated
+srun: error: frontier08390: tasks 13840-13847: Terminated
+srun: error: frontier05236: tasks 7632-7639: Terminated
+srun: error: frontier09104: tasks 15344-15351: Terminated
+srun: error: frontier06261: tasks 9400-9407: Terminated
+srun: error: frontier07502: tasks 11704-11711: Terminated
+srun: error: frontier04851: tasks 7096-7103: Terminated
+srun: error: frontier02875: tasks 4792-4799: Terminated
+srun: error: frontier09413: tasks 16144-16151: Terminated
+srun: error: frontier00190: tasks 352-359: Terminated
+srun: error: frontier07770: tasks 12336-12343: Terminated
+srun: error: frontier01258: tasks 2656-2663: Terminated
+srun: error: frontier03022: tasks 4960-4967: Terminated
+srun: error: frontier05370: tasks 7896-7903: Terminated
+srun: error: frontier06649: tasks 10200-10207: Terminated
+srun: error: frontier07873: tasks 12504-12511: Terminated
+srun: error: frontier03566: tasks 5592-5599: Terminated
+srun: error: frontier08118: tasks 13136-13143: Terminated
+srun: error: frontier01748: tasks 3456-3463: Terminated
+srun: error: frontier00579: tasks 1152-1159: Terminated
+srun: error: frontier09140: tasks 15440-15447: Terminated
+srun: error: frontier01218: tasks 2488-2495: Terminated
+srun: error: frontier09166: tasks 15608-15615: Terminated
+srun: error: frontier08219: tasks 13304-13311: Terminated
+srun: error: frontier05878: tasks 8696-8703: Terminated
+srun: error: frontier08770: tasks 14640-14647: Terminated
+srun: error: frontier04265: tasks 6392-6399: Terminated
+srun: error: frontier03712: tasks 5760-5767: Terminated
+srun: error: frontier07040: tasks 11000-11007: Terminated
+srun: error: frontier04363: tasks 6560-6567: Terminated
+srun: error: frontier02409: tasks 4256-4263: Terminated
+srun: error: frontier00962: tasks 1952-1959: Terminated
+srun: error: frontier06329: tasks 9496-9503: Terminated
+srun: error: frontier04912: tasks 7192-7199: Terminated
+srun: error: frontier02656: tasks 4528-4535: Terminated
+srun: error: frontier06386: tasks 9664-9671: Terminated
+srun: error: frontier03119: tasks 5056-5063: Terminated
+srun: error: frontier01368: tasks 2752-2759: Terminated
+srun: error: frontier08512: tasks 14104-14111: Terminated
+srun: error: frontier07516: tasks 11800-11807: Terminated
+srun: error: frontier05031: tasks 7360-7367: Terminated
+srun: error: frontier00212: tasks 448-455: Terminated
+srun: error: frontier08893: tasks 14904-14911: Terminated
+srun: error: frontier07886: tasks 12600-12607: Terminated
+srun: error: frontier00323: tasks 616-623: Terminated
+srun: error: frontier06748: tasks 10296-10303: Terminated
+srun: error: frontier01781: tasks 3552-3559: Terminated
+srun: error: frontier06773: tasks 10464-10471: Terminated
+srun: error: frontier03830: tasks 5856-5863: Terminated
+srun: error: frontier00598: tasks 1248-1255: Terminated
+srun: error: frontier10147: tasks 16240-16247: Terminated
+srun: error: frontier05601: tasks 8160-8167: Terminated
+srun: error: frontier08241: tasks 13400-13407: Terminated
+srun: error: frontier01909: tasks 3720-3727: Terminated
+srun: error: frontier09262: tasks 15704-15711: Terminated
+srun: error: frontier07131: tasks 11096-11103: Terminated
+srun: error: frontier06007: tasks 8960-8967: Terminated
+srun: error: frontier04473: tasks 6656-6663: Terminated
+srun: error: frontier02490: tasks 4352-4359: Terminated
+srun: error: frontier07213: tasks 11264-11271: Terminated
+srun: error: frontier01091: tasks 2216-2223: Terminated
+srun: error: frontier05111: tasks 7456-7463: Terminated
+srun: error: frontier00708: tasks 1416-1423: Terminated
+srun: error: frontier08271: tasks 13568-13575: Terminated
+srun: error: frontier07642: tasks 12064-12071: Terminated
+srun: error: frontier03313: tasks 5320-5327: Terminated
+srun: error: frontier00346: tasks 712-719: Terminated
+srun: error: frontier02651: tasks 4520-4527: Terminated
+srun: error: frontier08924: tasks 15000-15007: Terminated
+srun: error: frontier01491: tasks 3016-3023: Terminated
+srun: error: frontier06870: tasks 10560-10567: Terminated
+srun: error: frontier08643: tasks 14368-14375: Terminated
+srun: error: frontier06482: tasks 9760-9767: Terminated
+srun: error: frontier07987: tasks 12864-12871: Terminated
+srun: error: frontier08614: tasks 14200-14207: Terminated
+srun: error: frontier03188: tasks 5152-5159: Terminated
+srun: error: frontier05622: tasks 8256-8263: Terminated
+srun: error: frontier09278: tasks 15800-15807: Terminated
+srun: error: frontier05737: tasks 8424-8431: Terminated
+srun: error: frontier02025: tasks 3816-3823: Terminated
+srun: error: frontier04065: tasks 6120-6127: Terminated
+srun: error: frontier00731: tasks 1512-1519: Terminated
+srun: error: frontier06113: tasks 9056-9063: Terminated
+srun: error: frontier08363: tasks 13664-13671: Terminated
+srun: error: frontier09388: tasks 15968-15975: Terminated
+srun: error: frontier09012: tasks 15168-15175: Terminated
+srun: error: frontier02732: tasks 4616-4623: Terminated
+srun: error: frontier06228: tasks 9224-9231: Terminated
+srun: error: frontier04726: tasks 6920-6927: Terminated
+srun: error: frontier01113: tasks 2312-2319: Terminated
+srun: error: frontier00044: tasks 8-15: Terminated
+srun: error: frontier00081: tasks 176-183: Terminated
+srun: error: frontier01217: tasks 2480-2487: Terminated
+srun: error: frontier05284: tasks 7720-7727: Terminated
+srun: error: frontier07769: tasks 12328-12335: Terminated
+srun: error: frontier06614: tasks 10024-10031: Terminated
+srun: error: frontier03430: tasks 5416-5423: Terminated
+srun: error: frontier01521: tasks 3112-3119: Terminated
+srun: error: frontier08737: tasks 14464-14471: Terminated
+srun: error: frontier00461: tasks 976-983: Terminated
+srun: error: frontier05753: tasks 8520-8527: Terminated
+srun: error: frontier07258: tasks 11360-11367: Terminated
+srun: error: frontier08117: tasks 13128-13135: Terminated
+srun: error: frontier04091: tasks 6216-6223: Terminated
+srun: error: frontier02106: tasks 3912-3919: Terminated
+srun: error: frontier06999: tasks 10824-10831: Terminated
+srun: error: frontier06499: tasks 9856-9863: Terminated
+srun: error: frontier09402: tasks 16064-16071: Terminated
+srun: error: frontier07660: tasks 12160-12167: Terminated
+srun: error: frontier04222: tasks 6384-6391: Terminated
+srun: error: frontier01645: tasks 3280-3287: Terminated
+srun: error: frontier04813: tasks 7016-7023: Terminated
+srun: error: frontier08486: tasks 13928-13935: Terminated
+srun: error: frontier07393: tasks 11624-11631: Terminated
+srun: error: frontier06250: tasks 9320-9327: Terminated
+srun: error: frontier08752: tasks 14560-14567: Terminated
+srun: error: frontier09029: tasks 15264-15271: Terminated
+srun: error: frontier01238: tasks 2576-2583: Terminated
+srun: error: frontier08004: tasks 12960-12967: Terminated
+srun: error: frontier00174: tasks 272-279: Terminated
+srun: error: frontier02244: tasks 4080-4087: Terminated
+srun: error: frontier07836: tasks 12424-12431: Terminated
+srun: error: frontier00857: tasks 1776-1783: Terminated
+srun: error: frontier02933: tasks 4880-4887: Terminated
+srun: error: frontier06630: tasks 10120-10127: Terminated
+srun: error: frontier04911: tasks 7184-7191: Terminated
+srun: error: frontier00211: tasks 440-447: Terminated
+srun: error: frontier05360: tasks 7816-7823: Terminated
+srun: error: frontier08802: tasks 14728-14735: Terminated
+srun: error: frontier03679: tasks 5680-5687: Terminated
+srun: error: frontier09151: tasks 15528-15535: Terminated
+srun: error: frontier05862: tasks 8616-8623: Terminated
+srun: error: frontier05487: tasks 7984-7991: Terminated
+srun: error: frontier08375: tasks 13760-13767: Terminated
+srun: error: frontier00492: tasks 1072-1079: Terminated
+srun: error: frontier01664: tasks 3376-3383: Terminated
+srun: error: frontier07013: tasks 10920-10927: Terminated
+srun: error: frontier07130: tasks 11088-11095: Terminated
+srun: error: frontier00597: tasks 1240-1247: Terminated
+srun: error: frontier04343: tasks 6480-6487: Terminated
+srun: error: frontier02304: tasks 4176-4183: Terminated
+srun: error: frontier08499: tasks 14024-14031: Terminated
+srun: error: frontier07504: tasks 11720-11727: Terminated
+srun: error: frontier10165: tasks 16328-16335: Terminated
+srun: error: frontier00973: tasks 2040-2047: Terminated
+srun: error: frontier07529: tasks 11888-11895: Terminated
+srun: error: frontier03028: tasks 4976-4983: Terminated
+srun: error: frontier04978: tasks 7280-7287: Terminated
+srun: error: frontier05972: tasks 8784-8791: Terminated
+srun: error: frontier06369: tasks 9584-9591: Terminated
+srun: error: frontier08876: tasks 14824-14831: Terminated
+srun: error: frontier01379: tasks 2840-2847: Terminated
+srun: error: frontier07876: tasks 12520-12527: Terminated
+srun: error: frontier03187: tasks 5144-5151: Terminated
+srun: error: frontier00230: tasks 536-543: Terminated
+srun: error: frontier08129: tasks 13224-13231: Terminated
+srun: error: frontier08923: tasks 14992-14999: Terminated
+srun: error: frontier03765: tasks 5776-5783: Terminated
+srun: error: frontier07903: tasks 12688-12695: Terminated
+srun: error: frontier09175: tasks 15624-15631: Terminated
+srun: error: frontier05504: tasks 8080-8087: Terminated
+srun: error: frontier03914: tasks 5944-5951: Terminated
+srun: error: frontier00615: tasks 1336-1343: Terminated
+srun: error: frontier06761: tasks 10384-10391: Terminated
+srun: error: frontier05993: tasks 8880-8887: Terminated
+srun: error: frontier07142: tasks 11184-11191: Terminated
+srun: error: frontier04390: tasks 6576-6583: Terminated
+srun: error: frontier06112: tasks 9048-9055: Terminated
+srun: error: frontier04590: tasks 6744-6751: Terminated
+srun: error: frontier08256: tasks 13488-13495: Terminated
+srun: error: frontier01886: tasks 3640-3647: Terminated
+srun: error: frontier00999: tasks 2136-2143: Terminated
+srun: error: frontier08627: tasks 14288-14295: Terminated
+srun: error: frontier06389: tasks 9680-9687: Terminated
+srun: error: frontier09276: tasks 15792-15799: Terminated
+srun: error: frontier00002: tasks 0-7: Terminated
+srun: error: frontier06498: tasks 9848-9855: Terminated
+srun: error: frontier05195: tasks 7544-7551: Terminated
+srun: error: frontier03260: tasks 5240-5247: Terminated
+srun: error: frontier01400: tasks 2936-2943: Terminated
+srun: error: frontier06783: tasks 10480-10487: Terminated
+srun: error: frontier07975: tasks 12784-12791: Terminated
+srun: error: frontier02556: tasks 4440-4447: Terminated
+srun: error: frontier00367: tasks 800-807: Terminated
+srun: error: frontier00874: tasks 1872-1879: Terminated
+srun: error: frontier05718: tasks 8344-8351: Terminated
+srun: error: frontier03959: tasks 6040-6047: Terminated
+srun: error: frontier00711: tasks 1432-1439: Terminated
+srun: error: frontier01266: tasks 2672-2679: Terminated
+srun: error: frontier06885: tasks 10648-10655: Terminated
+srun: error: frontier09290: tasks 15888-15895: Terminated
+srun: error: frontier08997: tasks 15088-15095: Terminated
+srun: error: frontier07630: tasks 11984-11991: Terminated
+srun: error: frontier07244: tasks 11280-11287: Terminated
+srun: error: frontier00755: tasks 1600-1607: Terminated
+srun: error: frontier00325: tasks 632-639: Terminated
+srun: error: frontier06138: tasks 9144-9151: Terminated
+srun: error: frontier07282: tasks 11448-11455: Terminated
+srun: error: frontier04685: tasks 6840-6847: Terminated
+srun: error: frontier08374: tasks 13752-13759: Terminated
+srun: error: frontier02801: tasks 4704-4711: Terminated
+srun: error: frontier02658: tasks 4536-4543: Terminated
+srun: error: frontier07763: task 12287: Aborted (core dumped)
+srun: error: frontier01137: tasks 2400-2407: Terminated
+srun: error: frontier08646: tasks 14384-14391: Terminated
+srun: error: frontier08751: tasks 14552-14559: Terminated
+srun: error: frontier00065: tasks 96-103: Terminated
+srun: error: frontier02048: tasks 3904-3911: Terminated
+srun: error: frontier03323: tasks 5336-5343: Terminated
+srun: error: frontier07759: tasks 12248-12255: Terminated
+srun: error: frontier05237: tasks 7640-7647: Terminated
+srun: error: frontier03502: tasks 5504-5511: Terminated
+srun: error: frontier05359: tasks 7808-7815: Terminated
+srun: error: frontier01920: tasks 3736-3743: Terminated
+srun: error: frontier09014: tasks 15184-15191: Terminated
+srun: error: frontier08350: tasks 13584-13591: Terminated
+srun: error: frontier05739: tasks 8440-8447: Terminated
+srun: error: frontier01599: tasks 3200-3207: Terminated
+srun: error: frontier06523: tasks 9944-9951: Terminated
+srun: error: frontier08104: tasks 13048-13055: Terminated
+srun: error: frontier06910: tasks 10744-10751: Terminated
+srun: error: frontier09106: tasks 15352-15359: Terminated
+srun: error: frontier02169: tasks 4000-4007: Terminated
+srun: error: frontier00843: tasks 1696-1703: Terminated
+srun: error: frontier07383: tasks 11544-11551: Terminated
+srun: error: frontier09414: tasks 16152-16159: Terminated
+srun: error: frontier00872: tasks 1864-1871: Terminated
+srun: error: frontier05861: tasks 8608-8615: Terminated
+srun: error: frontier01221: tasks 2496-2503: Terminated
+srun: error: frontier00445: tasks 896-903: Terminated
+srun: error: frontier04852: tasks 7104-7111: Terminated
+srun: error: frontier02881: tasks 4800-4807: Terminated
+srun: error: frontier08772: tasks 14648-14655: Terminated
+srun: error: frontier07771: tasks 12344-12351: Terminated
+srun: error: frontier03567: tasks 5600-5607: Terminated
+srun: error: frontier06650: tasks 10208-10215: Terminated
+srun: error: frontier01259: tasks 2664-2671: Terminated
+srun: error: frontier09390: tasks 15984-15991: Terminated
+srun: error: frontier07875: tasks 12512-12519: Terminated
+srun: error: frontier05410: tasks 7904-7911: Terminated
+srun: error: frontier06230: tasks 9240-9247: Terminated
+srun: error: frontier00580: tasks 1160-1167: Terminated
+srun: error: frontier09141: tasks 15448-15455: Terminated
+srun: error: frontier08391: tasks 13848-13855: Terminated
+srun: error: frontier08119: tasks 13144-13151: Terminated
+srun: error: frontier01749: tasks 3464-3471: Terminated
+srun: error: frontier06263: tasks 9408-9415: Terminated
+srun: error: frontier06616: tasks 10040-10047: Terminated
+srun: error: frontier04266: tasks 6400-6407: Terminated
+srun: error: frontier05879: tasks 8704-8711: Terminated
+srun: error: frontier02284: tasks 4096-4103: Terminated
+srun: error: frontier02410: tasks 4264-4271: Terminated
+srun: error: frontier08489: tasks 13944-13951: Terminated
+srun: error: frontier00963: tasks 1960-1967: Terminated
+srun: error: frontier01647: tasks 3296-3303: Terminated
+srun: error: frontier07070: tasks 11008-11015: Terminated
+srun: error: frontier06337: tasks 9504-9511: Terminated
+srun: error: frontier08220: tasks 13312-13319: Terminated
+srun: error: frontier08513: tasks 14112-14119: Terminated
+srun: error: frontier10149: tasks 16248-16255: Terminated
+srun: error: frontier07517: tasks 11808-11815: Terminated
+srun: error: frontier04951: tasks 7200-7207: Terminated
+srun: error: frontier03129: tasks 5064-5071: Terminated
+srun: error: frontier04206: tasks 6304-6311: Terminated
+srun: error: frontier05057: tasks 7368-7375: Terminated
+srun: error: frontier05491: tasks 8000-8007: Terminated
+srun: error: frontier08894: tasks 14912-14919: Terminated
+srun: error: frontier06749: tasks 10304-10311: Terminated
+srun: error: frontier01369: tasks 2760-2767: Terminated
+srun: error: frontier05602: tasks 8168-8175: Terminated
+srun: error: frontier00599: tasks 1256-1263: Terminated
+srun: error: frontier04387: tasks 6568-6575: Terminated
+srun: error: frontier06778: tasks 10472-10479: Terminated
+srun: error: frontier08242: tasks 13408-13415: Terminated
+srun: error: frontier07132: tasks 11104-11111: Terminated
+srun: error: frontier09263: tasks 15712-15719: Terminated
+srun: error: frontier00324: tasks 624-631: Terminated
+srun: error: frontier06008: tasks 8968-8975: Terminated
+srun: error: frontier00193: tasks 360-367: Terminated
+srun: error: frontier00213: tasks 456-463: Terminated
+srun: error: frontier07234: tasks 11272-11279: Terminated
+srun: error: frontier00979: tasks 2056-2063: Terminated
+srun: error: frontier04474: tasks 6664-6671: Terminated
+srun: error: frontier07534: tasks 11904-11911: Terminated
+srun: error: frontier02491: tasks 4360-4367: Terminated
+srun: error: frontier01092: tasks 2224-2231: Terminated
+srun: error: frontier01785: tasks 3560-3567: Terminated
+srun: error: frontier07887: tasks 12608-12615: Terminated
+srun: error: frontier06483: tasks 9768-9775: Terminated
+srun: error: frontier08615: tasks 14208-14215: Terminated
+srun: error: frontier03189: tasks 5160-5167: Terminated
+srun: error: frontier00710: tasks 1424-1431: Terminated
+srun: error: frontier07643: tasks 12072-12079: Terminated
+srun: error: frontier05112: tasks 7464-7471: Terminated
+srun: error: frontier07936: tasks 12704-12711: Terminated
+srun: error: frontier03319: tasks 5328-5335: Terminated
+srun: error: frontier01492: tasks 3024-3031: Terminated
+srun: error: frontier07989: tasks 12872-12879: Terminated
+srun: error: frontier00347: tasks 720-727: Terminated
+srun: error: frontier09013: tasks 15176-15183: Terminated
+srun: error: frontier06872: tasks 10568-10575: Terminated
+srun: error: frontier05623: tasks 8264-8271: Terminated
+srun: error: frontier03932: tasks 5960-5967: Terminated
+srun: error: frontier09279: tasks 15808-15815: Terminated
+srun: error: frontier02026: tasks 3824-3831: Terminated
+srun: error: frontier00733: tasks 1520-1527: Terminated
+srun: error: frontier07259: tasks 11368-11375: Terminated
+srun: error: frontier04068: tasks 6128-6135: Terminated
+srun: error: frontier08364: tasks 13672-13679: Terminated
+srun: error: frontier04599: tasks 6760-6767: Terminated
+srun: error: frontier08925: tasks 15008-15015: Terminated
+srun: error: frontier06114: tasks 9064-9071: Terminated
+srun: error: frontier03832: tasks 5864-5871: Terminated
+srun: error: frontier02738: tasks 4624-4631: Terminated
+srun: error: frontier01114: tasks 2320-2327: Terminated
+srun: error: frontier06229: tasks 9232-9239: Terminated
+srun: error: frontier06888: tasks 10664-10671: Terminated
+srun: error: frontier08738: tasks 14472-14479: Terminated
+srun: error: frontier00046: tasks 16-23: Terminated
+srun: error: frontier06500: tasks 9864-9871: Terminated
+srun: error: frontier00083: tasks 184-191: Terminated
+srun: error: frontier07661: tasks 12168-12175: Terminated
+srun: error: frontier09389: tasks 15976-15983: Terminated
+srun: error: frontier00369: tasks 816-823: Terminated
+srun: error: frontier05334: tasks 7728-7735: Terminated
+srun: error: frontier03434: tasks 5424-5431: Terminated
+srun: error: frontier08005: tasks 12968-12975: Terminated
+srun: error: frontier01522: tasks 3120-3127: Terminated
+srun: error: frontier06615: tasks 10032-10039: Terminated
+srun: error: frontier09030: tasks 15272-15279: Terminated
+srun: error: frontier00462: tasks 984-991: Terminated
+srun: error: frontier01646: tasks 3288-3295: Terminated
+srun: error: frontier07000: tasks 10832-10839: Terminated
+srun: error: frontier04727: tasks 6928-6935: Terminated
+srun: error: frontier02108: tasks 3920-3927: Terminated
+srun: error: frontier08376: tasks 13768-13775: Terminated
+srun: error: frontier04092: tasks 6224-6231: Terminated
+srun: error: frontier09403: tasks 16072-16079: Terminated
+srun: error: frontier02272: tasks 4088-4095: Terminated
+srun: error: frontier07318: tasks 11464-11471: Terminated
+srun: error: frontier08487: tasks 13936-13943: Terminated
+srun: error: frontier07394: tasks 11632-11639: Terminated
+srun: error: frontier02809: tasks 4720-4727: Terminated
+srun: error: frontier04819: tasks 7024-7031: Terminated
+srun: error: frontier06251: tasks 9328-9335: Terminated
+srun: error: frontier00175: tasks 280-287: Terminated
+srun: error: frontier08753: tasks 14568-14575: Terminated
+srun: error: frontier02934: tasks 4888-4895: Terminated
+srun: error: frontier08806: tasks 14736-14743: Terminated
+srun: error: frontier01239: tasks 2584-2591: Terminated
+srun: error: frontier06631: tasks 10128-10135: Terminated
+srun: error: frontier05361: tasks 7824-7831: Terminated
+srun: error: frontier03507: tasks 5520-5527: Terminated
+srun: error: frontier07849: tasks 12432-12439: Terminated
+srun: error: frontier09128: tasks 15368-15375: Terminated
+srun: error: frontier03696: tasks 5688-5695: Terminated
+srun: error: frontier00493: tasks 1080-1087: Terminated
+srun: error: frontier01723: tasks 3384-3391: Terminated
+srun: error: frontier07014: tasks 10928-10935: Terminated
+srun: error: frontier09153: tasks 15536-15543: Terminated
+srun: error: frontier05973: tasks 8792-8799: Terminated
+srun: error: frontier05864: tasks 8624-8631: Terminated
+srun: error: frontier10166: tasks 16336-16343: Terminated
+srun: error: frontier04344: tasks 6488-6495: Terminated
+srun: error: frontier08130: tasks 13232-13239: Terminated
+srun: error: frontier02354: tasks 4184-4191: Terminated
+srun: error: frontier08500: tasks 14032-14039: Terminated
+srun: error: frontier07506: tasks 11728-11735: Terminated
+srun: error: frontier00875: tasks 1880-1887: Terminated
+srun: error: frontier07531: tasks 11896-11903: Terminated
+srun: error: frontier00976: tasks 2048-2055: Terminated
+srun: error: frontier03052: tasks 4984-4991: Terminated
+srun: error: frontier01267: tasks 2680-2687: Terminated
+srun: error: frontier07877: tasks 12528-12535: Terminated
+srun: error: frontier04979: tasks 7288-7295: Terminated
+srun: error: frontier05490: tasks 7992-7999: Terminated
+srun: error: frontier05754: tasks 8528-8535: Terminated
+srun: error: frontier01383: tasks 2848-2855: Terminated
+srun: error: frontier08878: tasks 14832-14839: Terminated
+srun: error: frontier07935: tasks 12696-12703: Terminated
+srun: error: frontier05537: tasks 8088-8095: Terminated
+srun: error: frontier08229: tasks 13328-13335: Terminated
+srun: error: frontier00248: tasks 544-551: Terminated
+srun: error: frontier06266: tasks 9424-9431: Terminated
+srun: error: frontier06762: tasks 10392-10399: Terminated
+srun: error: frontier06372: tasks 9592-9599: Terminated
+srun: error: frontier03915: tasks 5952-5959: Terminated
+srun: error: frontier03770: tasks 5784-5791: Terminated
+srun: error: frontier08257: tasks 13496-13503: Terminated
+srun: error: frontier07145: tasks 11192-11199: Terminated
+srun: error: frontier01887: tasks 3648-3655: Terminated
+srun: error: frontier05996: tasks 8888-8895: Terminated
+srun: error: frontier00624: tasks 1344-1351: Terminated
+srun: error: frontier00858: tasks 1784-1791: Terminated
+srun: error: frontier04448: tasks 6584-6591: Terminated
+srun: error: frontier04598: tasks 6752-6759: Terminated
+srun: error: frontier02559: tasks 4448-4455: Terminated
+srun: error: frontier08516: tasks 14128-14135: Terminated
+srun: error: frontier07632: tasks 11992-11999: Terminated
+srun: error: frontier01006: tasks 2144-2151: Terminated
+srun: error: frontier05096: tasks 7384-7391: Terminated
+srun: error: frontier09253: tasks 15632-15639: Terminated
+srun: error: frontier05211: tasks 7552-7559: Terminated
+srun: error: frontier03261: tasks 5248-5255: Terminated
+srun: error: frontier05607: tasks 8184-8190: Terminated
+srun: error: frontier06390: tasks 9688-9695: Terminated
+srun: error: frontier01406: tasks 2944-2951: Terminated
+srun: error: frontier07976: tasks 12792-12799: Terminated
+srun: error: frontier06784: tasks 10488-10495: Terminated
+srun: error: frontier06886: tasks 10656-10663: Terminated
+srun: error: frontier03960: tasks 6048-6055: Terminated
+srun: error: frontier00326: tasks 640-647: Terminated
+srun: error: frontier09294: tasks 15896-15903: Terminated
+srun: error: frontier05722: tasks 8352-8359: Terminated
+srun: error: frontier08352: tasks 13592-13599: Terminated
+srun: error: frontier07245: tasks 11288-11295: Terminated
+srun: error: frontier00756: tasks 1608-1615: Terminated
+srun: error: frontier00368: tasks 808-815: Terminated
+srun: error: frontier01751: tasks 3480-3487: Terminated
+srun: error: frontier04704: tasks 6848-6855: Terminated
+srun: error: frontier07645: tasks 12088-12095: Terminated
+srun: error: frontier02802: tasks 4712-4719: Terminated
+srun: error: frontier08647: tasks 14392-14399: Terminated
+srun: error: frontier08998: tasks 15096-15103: Terminated
+srun: error: frontier00066: tasks 104-111: Terminated
+srun: error: frontier07760: tasks 12256-12263: Terminated
+srun: error: frontier01965: tasks 3744-3751: Terminated
+srun: error: frontier06524: tasks 9952-9959: Terminated
+srun: error: frontier00712: tasks 1440-1447: Terminated
+srun: error: frontier03324: tasks 5344-5351: Terminated
+srun: error: frontier09016: tasks 15192-15199: Terminated
+srun: error: frontier03506: tasks 5512-5519: Terminated
+srun: error: frontier05241: tasks 7648-7655: Terminated
+srun: error: frontier01094: tasks 2240-2247: Terminated
+srun: error: frontier06139: tasks 9152-9159: Terminated
+srun: error: frontier05741: tasks 8448-8455: Terminated
+srun: error: frontier08629: tasks 14296-14303: Terminated
+srun: error: frontier00446: tasks 904-911: Terminated
+srun: error: frontier06912: tasks 10752-10759: Terminated
+srun: error: frontier01614: tasks 3208-3215: Terminated
+srun: error: frontier09110: tasks 15360-15367: Terminated
+srun: error: frontier04075: tasks 6144-6151: Terminated
+srun: error: frontier07296: tasks 11456-11463: Terminated
+srun: error: frontier09392: tasks 15992-15999: Terminated
+srun: error: frontier08105: tasks 13056-13063: Terminated
+srun: error: frontier07991: tasks 12888-12895: Terminated
+srun: error: frontier07384: tasks 11552-11559: Terminated
+srun: error: frontier08393: tasks 13856-13863: Terminated
+srun: error: frontier02171: tasks 4008-4015: Terminated
+srun: error: frontier06231: tasks 9248-9255: Terminated
+srun: error: frontier00847: tasks 1704-1711: Terminated
+srun: error: frontier04730: tasks 6944-6951: Terminated
+srun: error: frontier02884: tasks 4808-4815: Terminated
+srun: error: frontier06264: tasks 9416-9423: Terminated
+srun: error: frontier06617: tasks 10048-10055: Terminated
+srun: error: frontier01223: tasks 2504-2511: Terminated
+srun: error: frontier00200: tasks 368-375: Terminated
+srun: error: frontier04853: tasks 7112-7119: Terminated
+srun: error: frontier00092: tasks 200-207: Terminated
+srun: error: frontier06651: tasks 10216-10223: Terminated
+srun: error: frontier04207: tasks 6312-6319: Terminated
+srun: error: frontier03575: tasks 5608-5615: Terminated
+srun: error: frontier01648: tasks 3304-3311: Terminated
+srun: error: frontier02670: tasks 4544-4551: Terminated
+srun: error: frontier00476: tasks 1000-1007: Terminated
+srun: error: frontier09416: tasks 16160-16167: Terminated
+srun: error: frontier09142: tasks 15456-15463: Terminated
+srun: error: frontier01750: tasks 3472-3479: Terminated
+srun: error: frontier00581: tasks 1168-1175: Terminated
+srun: error: frontier08120: tasks 13152-13159: Terminated
+srun: error: frontier07004: tasks 10848-10855: Terminated
+srun: error: frontier08228: tasks 13320-13327: Terminated
+srun: error: frontier04308: tasks 6408-6415: Terminated
+srun: error: frontier07121: tasks 11016-11023: Terminated
+srun: error: frontier02285: tasks 4104-4111: Terminated
+srun: error: frontier05880: tasks 8712-8719: Terminated
+srun: error: frontier07772: tasks 12352-12359: Terminated
+srun: error: frontier08776: tasks 14656-14663: Terminated
+srun: error: frontier08490: tasks 13952-13959: Terminated
+srun: error: frontier00964: tasks 1968-1975: Terminated
+srun: error: frontier05411: tasks 7912-7919: Terminated
+srun: error: frontier06341: tasks 9512-9519: Terminated
+srun: error: frontier07518: tasks 11816-11823: Terminated
+srun: error: frontier02418: tasks 4272-4279: Terminated
+srun: error: frontier02939: tasks 4904-4911: Terminated
+srun: error: frontier08826: tasks 14752-14759: Terminated
+srun: error: frontier00214: tasks 464-471: Terminated
+srun: error: frontier01370: tasks 2768-2775: Terminated
+srun: error: frontier08895: tasks 14920-14927: Terminated
+srun: error: frontier06751: tasks 10312-10319: Terminated
+srun: error: frontier07888: tasks 12616-12623: Terminated
+srun: error: frontier10150: tasks 16256-16263: Terminated
+srun: error: frontier05492: tasks 8008-8015: Terminated
+srun: error: frontier09155: tasks 15552-15559: Terminated
+srun: error: frontier08515: tasks 14120-14127: Terminated
+srun: error: frontier05606: tasks 8176-8183: Terminated
+srun: error: frontier03834: tasks 5872-5879: Terminated
+srun: error: frontier00600: tasks 1264-1271: Terminated
+srun: error: frontier03130: tasks 5072-5079: Terminated
+srun: error: frontier08243: tasks 13416-13423: Terminated
+srun: error: frontier01790: tasks 3568-3575: Terminated
+srun: error: frontier05077: tasks 7376-7383: Terminated
+srun: error: frontier05976: tasks 8808-8815: Terminated
+srun: error: frontier04954: tasks 7208-7215: Terminated
+srun: error: frontier09265: tasks 15720-15727: Terminated
+srun: error: frontier02495: tasks 4368-4375: Terminated
+srun: error: frontier06009: tasks 8976-8983: Terminated
+srun: error: frontier04475: tasks 6672-6679: Terminated
+srun: error: frontier06376: tasks 9608-9615: Terminated
+srun: error: frontier00980: tasks 2064-2071: Terminated
+srun: error: frontier01093: tasks 2232-2239: Terminated
+srun: error: frontier07542: tasks 11912-11919: Terminated
+srun: error: frontier05113: tasks 7472-7479: Terminated
+srun: error: frontier06484: tasks 9776-9783: Terminated
+srun: error: frontier01138: tasks 2408-2415: Terminated
+srun: error: frontier01385: tasks 2864-2871: Terminated
+srun: error: frontier07644: tasks 12080-12087: Terminated
+srun: error: frontier07966: tasks 12712-12719: Terminated
+srun: error: frontier01498: tasks 3032-3039: Terminated
+srun: error: frontier00350: tasks 728-735: Terminated
+srun: error: frontier03192: tasks 5168-5175: Terminated
+srun: error: frontier08927: tasks 15016-15023: Terminated
+srun: error: frontier08616: tasks 14216-14223: Terminated
+srun: error: frontier06873: tasks 10576-10583: Terminated
+srun: error: frontier07990: tasks 12880-12887: Terminated
+srun: error: frontier05625: tasks 8272-8279: Terminated
+srun: error: frontier01890: tasks 3664-3671: Terminated
+srun: error: frontier08259: tasks 13512-13519: Terminated
+srun: error: frontier09280: tasks 15816-15823: Terminated
+srun: error: frontier03934: tasks 5968-5975: Terminated
+srun: error: frontier02027: tasks 3832-3839: Terminated
+srun: error: frontier04600: tasks 6768-6775: Terminated
+srun: error: frontier06117: tasks 9072-9079: Terminated
+srun: error: frontier04071: tasks 6136-6143: Terminated
+srun: error: frontier07260: tasks 11376-11383: Terminated
+srun: error: frontier00734: tasks 1528-1535: Terminated
+srun: error: frontier08365: tasks 13680-13687: Terminated
+srun: error: frontier01115: tasks 2328-2335: Terminated
+srun: error: frontier08741: tasks 14480-14487: Terminated
+srun: error: frontier02745: tasks 4632-4639: Terminated
+srun: error: frontier08633: tasks 14312-14319: Terminated
+srun: error: frontier05224: tasks 7568-7575: Terminated
+srun: error: frontier00084: tasks 192-199: Terminated
+srun: error: frontier04729: tasks 6936-6943: Terminated
+srun: error: frontier07133: tasks 11112-11119: Terminated
+srun: error: frontier06502: tasks 9872-9879: Terminated
+srun: error: frontier07662: tasks 12176-12183: Terminated
+srun: error: frontier03439: tasks 5432-5439: Terminated
+srun: error: frontier01527: tasks 3128-3135: Terminated
+srun: error: frontier05345: tasks 7736-7743: Terminated
+srun: error: frontier00432: tasks 824-831: Terminated
+srun: error: frontier05727: tasks 8368-8375: Terminated
+srun: error: frontier09031: tasks 15280-15287: Terminated
+srun: error: frontier00463: tasks 992-999: Terminated
+srun: error: frontier06889: tasks 10672-10679: Terminated
+srun: error: frontier05755: tasks 8536-8543: Terminated
+srun: error: frontier07003: tasks 10840-10847: Terminated
+srun: error: frontier02109: tasks 3928-3935: Terminated
+srun: error: frontier07321: tasks 11472-11479: Terminated
+srun: error: frontier08037: tasks 12976-12983: Terminated
+srun: error: frontier00859: tasks 1792-1799: Terminated
+srun: error: frontier09404: tasks 16080-16087: Terminated
+srun: error: frontier02811: tasks 4728-4735: Terminated
+srun: error: frontier06252: tasks 9336-9343: Terminated
+srun: error: frontier01140: tasks 2424-2431: Terminated
+srun: error: frontier04093: tasks 6232-6239: Terminated
+srun: error: frontier07398: tasks 11640-11647: Terminated
+srun: error: frontier08754: tasks 14576-14583: Terminated
+srun: error: frontier00758: tasks 1624-1631: Terminated
+srun: error: frontier08377: tasks 13776-13783: Terminated
+srun: error: frontier06633: tasks 10136-10143: Terminated
+srun: error: frontier00176: tasks 288-295: Terminated
+srun: error: frontier03508: tasks 5528-5535: Terminated
+srun: error: frontier07864: tasks 12440-12447: Terminated
+srun: error: frontier08825: tasks 14744-14751: Terminated
+srun: error: frontier04832: tasks 7032-7039: Terminated
+srun: error: frontier01241: tasks 2592-2599: Terminated
+srun: error: frontier05362: tasks 7832-7839: Terminated
+srun: error: frontier07762: tasks 12272-12279: Terminated
+srun: error: frontier09132: tasks 15376-15383: Terminated
+srun: error: frontier00494: tasks 1088-1095: Terminated
+srun: error: frontier01728: tasks 3392-3399: Terminated
+srun: error: frontier10176: task 16383: Aborted (core dumped)
+srun: error: frontier07015: tasks 10936-10943: Terminated
+srun: error: frontier00048: tasks 24-31: Terminated
+srun: error: frontier05865: tasks 8632-8639: Terminated
+srun: error: frontier04215: tasks 6328-6335: Terminated
+srun: error: frontier08131: tasks 13240-13247: Terminated
+srun: error: frontier03699: tasks 5696-5703: Terminated
+srun: error: frontier09419: tasks 16176-16183: Terminated
+srun: error: frontier09154: tasks 15544-15551: Terminated
+srun: error: frontier05974: tasks 8800-8807: Terminated
+srun: error: frontier04345: tasks 6496-6503: Terminated
+srun: error: frontier00877: tasks 1888-1895: Terminated
+srun: error: frontier02359: tasks 4192-4199: Terminated
+srun: error: frontier10168: tasks 16344-16351: Terminated
+srun: error: frontier06375: tasks 9600-9607: Terminated
+srun: error: frontier04980: tasks 7296-7303: Terminated
+srun: error: frontier08501: tasks 14040-14047: Terminated
+srun: error: frontier00203: tasks 384-391: Terminated
+srun: error: frontier03053: tasks 4992-4999: Terminated
+srun: error: frontier01268: tasks 2688-2695: Terminated
+srun: error: frontier07878: tasks 12536-12543: Terminated
+srun: error: frontier00315: tasks 552-559: Terminated
+srun: error: frontier06656: tasks 10232-10239: Terminated
+srun: error: frontier01384: tasks 2856-2863: Terminated
+srun: error: frontier01757: tasks 3488-3495: Terminated
+srun: error: frontier08879: tasks 14840-14847: Terminated
+srun: error: frontier05541: tasks 8096-8103: Terminated
+srun: error: frontier03791: tasks 5792-5799: Terminated
+srun: error: frontier06763: tasks 10400-10407: Terminated
+srun: error: frontier09254: tasks 15640-15647: Terminated
+srun: error: frontier08230: tasks 13336-13343: Terminated
+srun: error: frontier07123: tasks 11032-11039: Terminated
+srun: error: frontier07507: tasks 11736-11743: Terminated
+srun: error: frontier01889: tasks 3656-3663: Terminated
+srun: error: frontier08258: tasks 13504-13511: Terminated
+srun: error: frontier07146: tasks 11200-11207: Terminated
+srun: error: frontier05998: tasks 8896-8903: Terminated
+srun: error: frontier02420: tasks 4288-4295: Terminated
+srun: error: frontier02938: tasks 4896-4903: Terminated
+srun: error: frontier01007: tasks 2152-2159: Terminated
+srun: error: frontier08520: tasks 14136-14143: Terminated
+srun: error: frontier05097: tasks 7392-7399: Terminated
+srun: error: frontier02560: tasks 4456-4463: Terminated
+srun: error: frontier00626: tasks 1352-1359: Terminated
+srun: error: frontier07633: tasks 12000-12007: Terminated
+srun: error: frontier08631: tasks 14304-14311: Terminated
+srun: error: frontier05218: tasks 7560-7567: Terminated
+srun: error: frontier01407: tasks 2952-2959: Terminated
+srun: error: frontier03280: tasks 5256-5263: Terminated
+srun: error: frontier03145: tasks 5088-5095: Terminated
+srun: error: frontier06392: tasks 9696-9703: Terminated
+srun: error: frontier08899: tasks 14936-14943: Terminated
+srun: error: frontier09000: tasks 15104-15111: Terminated
+srun: error: frontier05608: tasks 8192-8199: Terminated
+srun: error: frontier04450: tasks 6592-6599: Terminated
+srun: error: frontier07979: tasks 12800-12807: Terminated
+srun: error: frontier01970: tasks 3752-3759: Terminated
+srun: error: frontier05726: tasks 8360-8367: Terminated
+srun: error: frontier06268: tasks 9432-9439: Terminated
+srun: error: frontier03961: tasks 6056-6063: Terminated
+srun: error: frontier06801: tasks 10496-10503: Terminated
+srun: error: frontier09268: tasks 15736-15743: Terminated
+srun: error: frontier00713: tasks 1448-1455: Terminated
+srun: error: frontier07246: tasks 11296-11303: Terminated
+srun: error: frontier00757: tasks 1616-1623: Terminated
+srun: error: frontier06012: tasks 8992-8999: Terminated
+srun: error: frontier00327: tasks 648-655: Terminated
+srun: error: frontier02671: tasks 4552-4559: Terminated
+srun: error: frontier04705: tasks 6856-6863: Terminated
+srun: error: frontier08353: tasks 13600-13607: Terminated
+srun: error: frontier01095: tasks 2248-2255: Terminated
+srun: error: frontier06488: tasks 9792-9799: Terminated
+srun: error: frontier07646: tasks 12096-12103: Terminated
+srun: error: frontier08649: tasks 14400-14407: Terminated
+srun: error: frontier01139: tasks 2416-2423: Terminated
+srun: error: frontier01501: tasks 3048-3055: Terminated
+srun: error: frontier07761: tasks 12264-12271: Terminated
+srun: error: frontier00067: tasks 112-119: Terminated
+srun: error: frontier05242: tasks 7656-7663: Terminated
+srun: error: frontier03325: tasks 5352-5359: Terminated
+srun: error: frontier06525: tasks 9960-9967: Terminated
+srun: error: frontier09308: tasks 15904-15911: Terminated
+srun: error: frontier09018: tasks 15200-15207: Terminated
+srun: error: frontier00447: tasks 912-919: Terminated
+srun: error: frontier08107: tasks 13064-13071: Terminated
+srun: error: frontier06938: tasks 10760-10767: Terminated
+srun: error: frontier05742: tasks 8456-8463: Terminated
+srun: error: frontier02031: tasks 3848-3855: Terminated
+srun: error: frontier06140: tasks 9160-9167: Terminated
+srun: error: frontier04213: tasks 6320-6327: Terminated
+srun: error: frontier08367: tasks 13696-13703: Terminated
+srun: error: frontier04076: tasks 6152-6159: Terminated
+srun: error: frontier02172: tasks 4016-4023: Terminated
+srun: error: frontier06232: tasks 9256-9263: Terminated
+srun: error: frontier00848: tasks 1712-1719: Terminated
+srun: error: frontier09418: tasks 16168-16175: Terminated
+srun: error: frontier07385: tasks 11560-11567: Terminated
+srun: error: frontier04731: tasks 6952-6959: Terminated
+srun: error: frontier01615: tasks 3216-3223: Terminated
+srun: error: frontier02886: tasks 4816-4823: Terminated
+srun: error: frontier00093: tasks 208-215: Terminated
+srun: error: frontier04854: tasks 7120-7127: Terminated
+srun: error: frontier09393: tasks 16000-16007: Terminated
+srun: error: frontier01225: tasks 2512-2519: Terminated
+srun: error: frontier05351: tasks 7752-7759: Terminated
+srun: error: frontier06618: tasks 10056-10063: Terminated
+srun: error: frontier08778: tasks 14664-14671: Terminated
+srun: error: frontier00477: tasks 1008-1015: Terminated
+srun: error: frontier05434: tasks 7920-7927: Terminated
+srun: error: frontier00201: tasks 376-383: Terminated
+srun: error: frontier03576: tasks 5616-5623: Terminated
+srun: error: frontier01650: tasks 3312-3319: Terminated
+srun: error: frontier09143: tasks 15464-15471: Terminated
+srun: error: frontier00582: tasks 1176-1183: Terminated
+srun: error: frontier08121: tasks 13160-13167: Terminated
+srun: error: frontier07005: tasks 10856-10863: Terminated
+srun: error: frontier06652: tasks 10224-10231: Terminated
+srun: error: frontier04332: tasks 6416-6423: Terminated
+srun: error: frontier07122: tasks 11024-11031: Terminated
+srun: error: frontier00861: tasks 1808-1815: Terminated
+srun: error: frontier07402: tasks 11656-11663: Terminated
+srun: error: frontier08491: tasks 13960-13967: Terminated
+srun: error: frontier00965: tasks 1976-1983: Terminated
+srun: error: frontier10152: tasks 16264-16271: Terminated
+srun: error: frontier07519: tasks 11824-11831: Terminated
+srun: error: frontier06350: tasks 9520-9527: Terminated
+srun: error: frontier07867: tasks 12456-12463: Terminated
+srun: error: frontier03144: tasks 5080-5087: Terminated
+srun: error: frontier02943: tasks 4912-4919: Terminated
+srun: error: frontier00215: tasks 472-479: Terminated
+srun: error: frontier08897: tasks 14928-14935: Terminated
+srun: error: frontier05493: tasks 8016-8023: Terminated
+srun: error: frontier02419: tasks 4280-4287: Terminated
+srun: error: frontier02287: tasks 4112-4119: Terminated
+srun: error: frontier09156: tasks 15560-15567: Terminated
+srun: error: frontier08416: tasks 13864-13871: Terminated
+srun: error: frontier05881: tasks 8720-8727: Terminated
+srun: error: frontier03701: tasks 5712-5719: Terminated
+srun: error: frontier07889: tasks 12624-12631: Terminated
+srun: error: frontier03835: tasks 5880-5887: Terminated
+srun: error: frontier08244: tasks 13424-13431: Terminated
+srun: error: frontier01371: tasks 2776-2783: Terminated
+srun: error: frontier00602: tasks 1272-1279: Terminated
+srun: error: frontier04347: tasks 6512-6519: Terminated
+srun: error: frontier07134: tasks 11120-11127: Terminated
+srun: error: frontier07992: tasks 12896-12903: Terminated
+srun: error: frontier05977: tasks 8816-8823: Terminated
+srun: error: frontier08836: tasks 14760-14767: Terminated
+srun: error: frontier07773: tasks 12360-12367: Terminated
+srun: error: frontier04956: tasks 7216-7223: Terminated
+srun: error: frontier00981: tasks 2072-2079: Terminated
+srun: error: frontier06011: tasks 8984-8991: Terminated
+srun: error: frontier06377: tasks 9616-9623: Terminated
+srun: error: frontier08617: tasks 14224-14231: Terminated
+srun: error: frontier09267: tasks 15728-15735: Terminated
+srun: error: frontier02496: tasks 4376-4383: Terminated
+srun: error: frontier01386: tasks 2872-2879: Terminated
+srun: error: frontier00317: tasks 568-575: Terminated
+srun: error: frontier06765: tasks 10416-10423: Terminated
+srun: error: frontier10173: tasks 16360-16367: Terminated
+srun: error: frontier07967: tasks 12720-12727: Terminated
+srun: error: frontier01499: tasks 3040-3047: Terminated
+srun: error: frontier01900: tasks 3672-3679: Terminated
+srun: error: frontier05114: tasks 7480-7487: Terminated
+srun: error: frontier06875: tasks 10584-10591: Terminated
+srun: error: frontier05626: tasks 8280-8287: Terminated
+srun: error: frontier03937: tasks 5976-5983: Terminated
+srun: error: frontier03193: tasks 5176-5183: Terminated
+srun: error: frontier08260: tasks 13520-13527: Terminated
+srun: error: frontier00351: tasks 736-743: Terminated
+srun: error: frontier04476: tasks 6680-6687: Terminated
+srun: error: frontier07165: tasks 11216-11223: Terminated
+srun: error: frontier09281: tasks 15824-15831: Terminated
+srun: error: frontier06485: tasks 9784-9791: Terminated
+srun: error: frontier00735: tasks 1536-1543: Terminated
+srun: error: frontier07546: tasks 11920-11927: Terminated
+srun: error: frontier06752: tasks 10320-10327: Terminated
+srun: error: frontier02611: tasks 4472-4479: Terminated
+srun: error: frontier04601: tasks 6776-6783: Terminated
+srun: error: frontier08366: tasks 13688-13695: Terminated
+srun: error: frontier06121: tasks 9080-9087: Terminated
+srun: error: frontier08934: tasks 15024-15031: Terminated
+srun: error: frontier01116: tasks 2336-2343: Terminated
+srun: error: frontier00049: tasks 32-39: Terminated
+srun: error: frontier01842: tasks 3576-3583: Terminated
+srun: error: frontier07663: tasks 12184-12191: Terminated
+srun: error: frontier07261: tasks 11384-11391: Terminated
+srun: error: frontier02749: tasks 4640-4647: Terminated
+srun: error: frontier08742: tasks 14488-14495: Terminated
+srun: error: frontier08634: tasks 14320-14327: Terminated
+srun: error: frontier05226: tasks 7576-7583: Terminated
+srun: error: frontier09004: tasks 15120-15127: Terminated
+srun: error: frontier00433: tasks 832-839: Terminated
+srun: error: frontier05349: tasks 7744-7751: Terminated
+srun: error: frontier03282: tasks 5272-5279: Terminated
+srun: error: frontier03441: tasks 5440-5447: Terminated
+srun: error: frontier01529: tasks 3136-3143: Terminated
+srun: error: frontier02030: tasks 3840-3847: Terminated
+srun: error: frontier05729: tasks 8376-8383: Terminated
+srun: error: frontier09032: tasks 15288-15295: Terminated
+srun: error: frontier06890: tasks 10680-10687: Terminated
+srun: error: frontier06503: tasks 9880-9887: Terminated
+srun: error: frontier04094: tasks 6240-6247: Terminated
+srun: error: frontier00759: tasks 1632-1639: Terminated
+srun: error: frontier05756: tasks 8544-8551: Terminated
+srun: error: frontier08095: tasks 12984-12991: Terminated
+srun: error: frontier08379: tasks 13784-13791: Terminated
+srun: error: frontier00860: tasks 1800-1807: Terminated
+srun: error: frontier06142: tasks 9176-9183: Terminated
+srun: error: frontier06253: tasks 9344-9351: Terminated
+srun: error: frontier04833: tasks 7040-7047: Terminated
+srun: error: frontier07326: tasks 11480-11487: Terminated
+srun: error: frontier07400: tasks 11648-11655: Terminated
+srun: error: frontier02812: tasks 4736-4743: Terminated
+srun: error: frontier00177: tasks 296-303: Terminated
+srun: error: frontier01141: tasks 2432-2439: Terminated
+srun: error: frontier08756: tasks 14584-14591: Terminated
+srun: error: frontier01245: tasks 2600-2607: Terminated
+srun: error: frontier02111: tasks 3936-3943: Terminated
+srun: error: frontier03517: tasks 5536-5543: Terminated
+srun: error: frontier05363: tasks 7840-7847: Terminated
+srun: error: frontier09405: tasks 16088-16095: Terminated
+srun: error: frontier01617: tasks 3232-3239: Terminated
+srun: error: frontier09133: tasks 15384-15391: Terminated
+srun: error: frontier01740: tasks 3400-3407: Terminated
+srun: error: frontier03700: tasks 5704-5711: Terminated
+srun: error: frontier00572: tasks 1096-1103: Terminated
+srun: error: frontier05868: tasks 8640-8647: Terminated
+srun: error: frontier00883: tasks 1896-1903: Terminated
+srun: error: frontier07866: tasks 12448-12455: Terminated
+srun: error: frontier08480: tasks 13880-13887: Terminated
+srun: error: frontier08111: tasks 13080-13087: Terminated
+srun: error: frontier07508: tasks 11744-11751: Terminated
+srun: error: frontier10170: tasks 16352-16359: Terminated
+srun: error: frontier04858: tasks 7136-7143: Terminated
+srun: error: frontier07016: tasks 10944-10951: Terminated
+srun: error: frontier02360: tasks 4200-4207: Terminated
+srun: error: frontier06634: tasks 10144-10151: Terminated
+srun: error: frontier08502: tasks 14048-14055: Terminated
+srun: error: frontier04346: tasks 6504-6511: Terminated
+srun: error: frontier01269: tasks 2696-2703: Terminated
+srun: error: frontier06297: tasks 9440-9447: Terminated
+srun: error: frontier04983: tasks 7304-7311: Terminated
+srun: error: frontier00205: tasks 392-399: Terminated
+srun: error: frontier08883: tasks 14848-14855: Terminated
+srun: error: frontier03057: tasks 5000-5007: Terminated
+srun: error: frontier09420: tasks 16184-16191: Terminated
+srun: error: frontier05468: tasks 7936-7943: Terminated
+srun: error: frontier06764: tasks 10408-10415: Terminated
+srun: error: frontier04216: tasks 6336-6343: Terminated
+srun: error: frontier07879: tasks 12544-12551: Terminated
+srun: error: frontier08136: tasks 13248-13255: Terminated
+srun: error: frontier00316: tasks 560-567: Terminated
+srun: error: frontier06675: tasks 10240-10247: Terminated
+srun: error: frontier01764: tasks 3496-3503: Terminated
+srun: error: frontier00584: tasks 1192-1199: Terminated
+srun: error: frontier08233: tasks 13344-13351: Terminated
+srun: error: frontier03792: tasks 5800-5807: Terminated
+srun: error: frontier00627: tasks 1360-1367: Terminated
+srun: error: frontier02424: tasks 4296-4303: Terminated
+srun: error: frontier07156: tasks 11208-11215: Terminated
+srun: error: frontier05999: tasks 8904-8911: Terminated
+srun: error: frontier07521: tasks 11840-11847: Terminated
+srun: error: frontier00967: tasks 1992-1999: Terminated
+srun: error: frontier02606: tasks 4464-4471: Terminated
+srun: error: frontier01008: tasks 2160-2167: Terminated
+srun: error: frontier05583: tasks 8104-8111: Terminated
+srun: error: frontier08521: tasks 14144-14151: Terminated
+srun: error: frontier05100: tasks 7400-7407: Terminated
+srun: error: frontier07124: tasks 11040-11047: Terminated
+srun: error: frontier04460: tasks 6600-6607: Terminated
+srun: error: frontier07891: tasks 12640-12647: Terminated
+srun: error: frontier03146: tasks 5096-5103: Terminated
+srun: error: frontier03281: tasks 5264-5271: Terminated
+srun: error: frontier09255: tasks 15648-15655: Terminated
+srun: error: frontier07634: tasks 12008-12015: Terminated
+srun: error: frontier09002: tasks 15112-15119: Terminated
+srun: error: frontier01464: tasks 2960-2967: Terminated
+srun: error: frontier07980: tasks 12808-12815: Terminated
+srun: error: frontier03837: tasks 5896-5903: Terminated
+srun: error: frontier06804: tasks 10504-10511: Terminated
+srun: error: frontier03964: tasks 6064-6071: Terminated
+srun: error: frontier00714: tasks 1456-1463: Terminated
+srun: error: frontier09269: tasks 15744-15751: Terminated
+srun: error: frontier08900: tasks 14944-14951: Terminated
+srun: error: frontier07247: tasks 11304-11311: Terminated
+srun: error: frontier06013: tasks 9000-9007: Terminated
+srun: error: frontier08354: tasks 13608-13615: Terminated
+srun: error: frontier06398: tasks 9704-9711: Terminated
+srun: error: frontier05609: tasks 8200-8207: Terminated
+srun: error: frontier09343: tasks 15912-15919: Terminated
+srun: error: frontier01979: tasks 3760-3767: Terminated
+srun: error: frontier00333: tasks 656-663: Terminated
+srun: error: frontier04712: tasks 6864-6871: Terminated
+srun: error: frontier04478: tasks 6696-6703: Terminated
+srun: error: frontier02677: tasks 4560-4567: Terminated
+srun: error: frontier06141: tasks 9168-9175: Terminated
+srun: error: frontier07647: tasks 12104-12111: Terminated
+srun: error: frontier06489: tasks 9800-9807: Terminated
+srun: error: frontier08650: tasks 14408-14415: Terminated
+srun: error: frontier00068: tasks 120-127: Terminated
+srun: error: frontier01096: tasks 2256-2263: Terminated
+srun: error: frontier01504: tasks 3056-3063: Terminated
+srun: error: frontier03326: tasks 5360-5367: Terminated
+srun: error: frontier07995: tasks 12904-12911: Terminated
+srun: error: frontier00355: tasks 752-759: Terminated
+srun: error: frontier09019: tasks 15208-15215: Terminated
+srun: error: frontier01616: tasks 3224-3231: Terminated
+srun: error: frontier06877: tasks 10600-10607: Terminated
+srun: error: frontier00450: tasks 920-927: Terminated
+srun: error: frontier04077: tasks 6160-6167: Terminated
+srun: error: frontier06940: tasks 10768-10775: Terminated
+srun: error: frontier02173: tasks 4024-4031: Terminated
+srun: error: frontier02032: tasks 3856-3863: Terminated
+srun: error: frontier09394: tasks 16008-16015: Terminated
+srun: error: frontier00849: tasks 1720-1727: Terminated
+srun: error: frontier08368: tasks 13704-13711: Terminated
+srun: error: frontier08479: tasks 13872-13879: Terminated
+srun: error: frontier04732: tasks 6960-6967: Terminated
+srun: error: frontier06233: tasks 9264-9271: Terminated
+srun: error: frontier01226: tasks 2520-2527: Terminated
+srun: error: frontier08744: tasks 14504-14511: Terminated
+srun: error: frontier08110: tasks 13072-13079: Terminated
+srun: error: frontier00094: tasks 216-223: Terminated
+srun: error: frontier04857: tasks 7128-7135: Terminated
+srun: error: frontier07774: tasks 12368-12375: Terminated
+srun: error: frontier06620: tasks 10064-10071: Terminated
+srun: error: frontier05743: tasks 8464-8471: Terminated
+srun: error: frontier02900: tasks 4824-4831: Terminated
+srun: error: frontier05353: tasks 7760-7767: Terminated
+srun: error: frontier08780: tasks 14672-14679: Terminated
+srun: error: frontier01651: tasks 3320-3327: Terminated
+srun: error: frontier02762: tasks 4656-4663: Terminated
+srun: error: frontier03578: tasks 5624-5631: Terminated
+srun: error: frontier07006: tasks 10864-10871: Terminated
+srun: error: frontier05441: tasks 7928-7935: Terminated
+srun: error: frontier05794: tasks 8560-8567: Terminated
+srun: error: frontier08122: tasks 13168-13175: Terminated
+srun: error: frontier00583: tasks 1184-1191: Terminated
+srun: error: frontier09034: tasks 15304-15311: Terminated
+srun: error: frontier09144: tasks 15472-15479: Terminated
+srun: error: frontier04333: tasks 6424-6431: Terminated
+srun: error: frontier02288: tasks 4120-4127: Terminated
+srun: error: frontier05882: tasks 8728-8735: Terminated
+srun: error: frontier10153: tasks 16272-16279: Terminated
+srun: error: frontier06255: tasks 9360-9367: Terminated
+srun: error: frontier08492: tasks 13968-13975: Terminated
+srun: error: frontier00862: tasks 1816-1823: Terminated
+srun: error: frontier06526: tasks 9968-9975: Terminated
+srun: error: frontier07520: tasks 11832-11839: Terminated
+srun: error: frontier06352: tasks 9528-9535: Terminated
+srun: error: frontier00966: tasks 1984-1991: Terminated
+srun: error: frontier04961: tasks 7224-7231: Terminated
+srun: error: frontier05243: tasks 7664-7671: Terminated
+srun: error: frontier02944: tasks 4920-4927: Terminated
+srun: error: frontier01247: tasks 2616-2623: Terminated
+srun: error: frontier07403: tasks 11664-11671: Terminated
+srun: error: frontier00216: tasks 480-487: Terminated
+srun: error: frontier08868: tasks 14768-14775: Terminated
+srun: error: frontier06754: tasks 10328-10335: Terminated
+srun: error: frontier01372: tasks 2784-2791: Terminated
+srun: error: frontier03703: tasks 5720-5727: Terminated
+srun: error: frontier05494: tasks 8024-8031: Terminated
+srun: error: frontier07890: tasks 12632-12639: Terminated
+srun: error: frontier01742: tasks 3416-3423: Terminated
+srun: error: frontier09157: tasks 15568-15575: Terminated
+srun: error: frontier08162: tasks 13264-13271: Terminated
+srun: error: frontier01845: tasks 3584-3591: Terminated
+srun: error: frontier07386: tasks 11568-11575: Terminated
+srun: error: frontier07868: tasks 12464-12471: Terminated
+srun: error: frontier08245: tasks 13432-13439: Terminated
+srun: error: frontier07135: tasks 11128-11135: Terminated
+srun: error: frontier00608: tasks 1280-1287: Terminated
+srun: error: frontier03836: tasks 5888-5895: Terminated
+srun: error: frontier04348: tasks 6520-6527: Terminated
+srun: error: frontier00984: tasks 2080-2087: Terminated
+srun: error: frontier02528: tasks 4384-4391: Terminated
+srun: error: frontier08504: tasks 14064-14071: Terminated
+srun: error: frontier04477: tasks 6688-6695: Terminated
+srun: error: frontier00478: tasks 1016-1023: Terminated
+srun: error: frontier07547: tasks 11928-11935: Terminated
+srun: error: frontier06378: tasks 9624-9631: Terminated
+srun: error: frontier05115: tasks 7488-7495: Terminated
+srun: error: frontier05978: tasks 8824-8831: Terminated
+srun: error: frontier00318: tasks 576-583: Terminated
+srun: error: frontier01387: tasks 2880-2887: Terminated
+srun: error: frontier04986: tasks 7320-7327: Terminated
+srun: error: frontier05592: tasks 8120-8127: Terminated
+srun: error: frontier00354: tasks 744-751: Terminated
+srun: error: frontier06766: tasks 10424-10431: Terminated
+srun: error: frontier10174: tasks 16368-16375: Terminated
+srun: error: frontier01901: tasks 3680-3687: Terminated
+srun: error: frontier03948: tasks 5984-5991: Terminated
+srun: error: frontier06876: tasks 10592-10599: Terminated
+srun: error: frontier00699: tasks 1376-1383: Terminated
+srun: error: frontier09282: tasks 15832-15839: Terminated
+srun: error: frontier08261: tasks 13528-13535: Terminated
+srun: error: frontier05627: tasks 8288-8295: Terminated
+srun: error: frontier08618: tasks 14232-14239: Terminated
+srun: error: frontier07166: tasks 11224-11231: Terminated
+srun: error: frontier00736: tasks 1544-1551: Terminated
+srun: error: frontier07262: tasks 11392-11399: Terminated
+srun: error: frontier04602: tasks 6784-6791: Terminated
+srun: error: frontier02621: tasks 4480-4487: Terminated
+srun: error: frontier01011: tasks 2176-2183: Terminated
+srun: error: frontier06122: tasks 9088-9095: Terminated
+srun: error: frontier03194: tasks 5184-5191: Terminated
+srun: error: frontier08635: tasks 14328-14335: Terminated
+srun: error: frontier07968: tasks 12728-12735: Terminated
+srun: error: frontier08940: tasks 15032-15039: Terminated
+srun: error: frontier02761: tasks 4648-4655: Terminated
+srun: error: frontier07636: tasks 12024-12031: Terminated
+srun: error: frontier00050: tasks 40-47: Terminated
+srun: error: frontier01117: tasks 2344-2351: Terminated
+srun: error: frontier03295: tasks 5280-5287: Terminated
+srun: error: frontier08743: tasks 14496-14503: Terminated
+srun: error: frontier05230: tasks 7584-7591: Terminated
+srun: error: frontier01530: tasks 3144-3151: Terminated
+srun: error: frontier09005: tasks 15128-15135: Terminated
+srun: error: frontier00437: tasks 840-847: Terminated
+srun: error: frontier06891: tasks 10688-10695: Terminated
+srun: error: frontier03444: tasks 5448-5455: Terminated
+srun: error: frontier07664: tasks 12192-12199: Terminated
+srun: error: frontier09033: tasks 15296-15303: Terminated
+srun: error: frontier05732: tasks 8384-8391: Terminated
+srun: error: frontier03966: tasks 6080-6087: Terminated
+srun: error: frontier08096: tasks 12992-12999: Terminated
+srun: error: frontier00827: tasks 1640-1647: Terminated
+srun: error: frontier07334: tasks 11488-11495: Terminated
+srun: error: frontier06143: tasks 9184-9191: Terminated
+srun: error: frontier04096: tasks 6248-6255: Terminated
+srun: error: frontier02112: tasks 3944-3951: Terminated
+srun: error: frontier09406: tasks 16096-16103: Terminated
+srun: error: frontier04836: tasks 7048-7055: Terminated
+srun: error: frontier09383: tasks 15928-15935: Terminated
+srun: error: frontier06254: tasks 9352-9359: Terminated
+srun: error: frontier02813: tasks 4744-4751: Terminated
+srun: error: frontier08757: tasks 14592-14599: Terminated
+srun: error: frontier07764: tasks 12288-12295: Terminated
+srun: error: frontier06549: tasks 9984-9991: Terminated
+srun: error: frontier01142: tasks 2440-2447: Terminated
+srun: error: frontier00182: tasks 304-311: Terminated
+srun: error: frontier06635: tasks 10152-10159: Terminated
+srun: error: frontier03532: tasks 5544-5551: Terminated
+srun: error: frontier01246: tasks 2608-2615: Terminated
+srun: error: frontier09134: tasks 15392-15399: Terminated
+srun: error: frontier05757: tasks 8552-8559: Terminated
+srun: error: frontier06994: tasks 10784-10791: Terminated
+srun: error: frontier00073: tasks 136-143: Terminated
+srun: error: frontier05364: tasks 7848-7855: Terminated
+srun: error: frontier08112: tasks 13088-13095: Terminated
+srun: error: frontier08380: tasks 13792-13799: Terminated
+srun: error: frontier00573: tasks 1104-1111: Terminated
+srun: error: frontier08161: tasks 13256-13263: Terminated
+srun: error: frontier01741: tasks 3408-3415: Terminated
+srun: error: frontier06504: tasks 9888-9895: Terminated
+srun: error: frontier05871: tasks 8648-8655: Terminated
+srun: error: frontier08481: tasks 13888-13895: Terminated
+srun: error: frontier02227: tasks 4040-4047: Terminated
+srun: error: frontier04217: tasks 6344-6351: Terminated
+srun: error: frontier02361: tasks 4208-4215: Terminated
+srun: error: frontier02917: tasks 4840-4847: Terminated
+srun: error: frontier04861: tasks 7144-7151: Terminated
+srun: error: frontier06301: tasks 9448-9455: Terminated
+srun: error: frontier00884: tasks 1904-1911: Terminated
+srun: error: frontier01618: tasks 3240-3247: Terminated
+srun: error: frontier08783: tasks 14688-14695: Terminated
+srun: error: frontier08503: tasks 14056-14063: Terminated
+srun: error: frontier04985: tasks 7312-7319: Terminated
+srun: error: frontier03058: tasks 5008-5015: Terminated
+srun: error: frontier07880: tasks 12552-12559: Terminated
+srun: error: frontier05474: tasks 7944-7951: Terminated
+srun: error: frontier00206: tasks 400-407: Terminated
+srun: error: frontier01270: tasks 2704-2711: Terminated
+srun: error: frontier09429: tasks 16192-16199: Terminated
+srun: error: frontier07510: tasks 11752-11759: Terminated
+srun: error: frontier07017: tasks 10952-10959: Terminated
+srun: error: frontier09146: tasks 15488-15495: Terminated
+srun: error: frontier03795: tasks 5808-5815: Terminated
+srun: error: frontier01775: tasks 3504-3511: Terminated
+srun: error: frontier06676: tasks 10248-10255: Terminated
+srun: error: frontier08234: tasks 13352-13359: Terminated
+srun: error: frontier07125: tasks 11048-11055: Terminated
+srun: error: frontier00585: tasks 1200-1207: Terminated
+srun: error: frontier00696: tasks 1368-1375: Terminated
+srun: error: frontier08884: tasks 14856-14863: Terminated
+srun: error: frontier05884: tasks 8744-8751: Terminated
+srun: error: frontier06000: tasks 8912-8919: Terminated
+srun: error: frontier09256: tasks 15656-15663: Terminated
+srun: error: frontier02425: tasks 4304-4311: Terminated
+srun: error: frontier00968: tasks 2000-2007: Terminated
+srun: error: frontier06364: tasks 9544-9551: Terminated
+srun: error: frontier04461: tasks 6608-6615: Terminated
+srun: error: frontier05589: tasks 8112-8119: Terminated
+srun: error: frontier07522: tasks 11848-11855: Terminated
+srun: error: frontier01010: tasks 2168-2175: Terminated
+srun: error: frontier06420: tasks 9712-9719: Terminated
+srun: error: frontier01374: tasks 2800-2807: Terminated
+srun: error: frontier07892: tasks 12648-12655: Terminated
+srun: error: frontier08902: tasks 14952-14959: Terminated
+srun: error: frontier03161: tasks 5104-5111: Terminated
+srun: error: frontier00335: tasks 664-671: Terminated
+srun: error: frontier07635: tasks 12016-12023: Terminated
+srun: error: frontier07981: tasks 12816-12823: Terminated
+srun: error: frontier01466: tasks 2968-2975: Terminated
+srun: error: frontier01855: tasks 3600-3607: Terminated
+srun: error: frontier08523: tasks 14152-14159: Terminated
+srun: error: frontier05101: tasks 7408-7415: Terminated
+srun: error: frontier03838: tasks 5904-5911: Terminated
+srun: error: frontier08247: tasks 13448-13455: Terminated
+srun: error: frontier06861: tasks 10512-10519: Terminated
+srun: error: frontier01984: tasks 3768-3775: Terminated
+srun: error: frontier09270: tasks 15752-15759: Terminated
+srun: error: frontier06035: tasks 9008-9015: Terminated
+srun: error: frontier03965: tasks 6072-6079: Terminated
+srun: error: frontier00717: tasks 1464-1471: Terminated
+srun: error: frontier09344: tasks 15920-15927: Terminated
+srun: error: frontier04517: tasks 6704-6711: Terminated
+srun: error: frontier08355: tasks 13616-13623: Terminated
+srun: error: frontier02678: tasks 4568-4575: Terminated
+srun: error: frontier01097: tasks 2264-2271: Terminated
+srun: error: frontier04716: tasks 6872-6879: Terminated
+srun: error: frontier08651: tasks 14416-14423: Terminated
+srun: error: frontier05117: tasks 7504-7511: Terminated
+srun: error: frontier07648: tasks 12112-12119: Terminated
+srun: error: frontier06490: tasks 9808-9815: Terminated
+srun: error: frontier05610: tasks 8208-8215: Terminated
+srun: error: frontier03327: tasks 5368-5375: Terminated
+srun: error: frontier06548: tasks 9976-9983: Terminated
+srun: error: frontier01510: tasks 3064-3071: Terminated
+srun: error: frontier00356: tasks 760-767: Terminated
+srun: error: frontier05244: tasks 7672-7679: Terminated
+srun: error: frontier07996: tasks 12912-12919: Terminated
+srun: error: frontier09022: tasks 15216-15223: Terminated
+srun: error: frontier06878: tasks 10608-10615: Terminated
+srun: error: frontier00072: tasks 128-135: Terminated
+srun: error: frontier06942: tasks 10776-10783: Terminated
+srun: error: frontier00740: tasks 1560-1567: Terminated
+srun: error: frontier08369: tasks 13712-13719: Terminated
+srun: error: frontier04079: tasks 6168-6175: Terminated
+srun: error: frontier02176: tasks 4032-4039: Terminated
+srun: error: frontier05744: tasks 8472-8479: Terminated
+srun: error: frontier09395: tasks 16016-16023: Terminated
+srun: error: frontier06235: tasks 9272-9279: Terminated
+srun: error: frontier07387: tasks 11576-11583: Terminated
+srun: error: frontier00850: tasks 1728-1735: Terminated
+srun: error: frontier02780: tasks 4664-4671: Terminated
+srun: error: frontier00451: tasks 928-935: Terminated
+srun: error: frontier00096: tasks 224-231: Terminated
+srun: error: frontier08745: tasks 14512-14519: Terminated
+srun: error: frontier02907: tasks 4832-4839: Terminated
+srun: error: frontier07713: tasks 12208-12215: Terminated
+srun: error: frontier02033: tasks 3864-3871: Terminated
+srun: error: frontier01231: tasks 2528-2535: Terminated
+srun: error: frontier05354: tasks 7768-7775: Terminated
+srun: error: frontier03451: tasks 5464-5471: Terminated
+srun: error: frontier07264: tasks 11408-11415: Terminated
+srun: error: frontier08781: tasks 14680-14687: Terminated
+srun: error: frontier07248: tasks 11312-11319: Terminated
+srun: error: frontier07775: tasks 12376-12383: Terminated
+srun: error: frontier06621: tasks 10072-10079: Terminated
+srun: error: frontier00480: tasks 1024-1031: Terminated
+srun: error: frontier03579: tasks 5632-5639: Terminated
+srun: error: frontier09038: tasks 15312-15319: Terminated
+srun: error: frontier01652: tasks 3328-3335: Terminated
+srun: error: frontier05797: tasks 8568-8575: Terminated
+srun: error: frontier09145: tasks 15480-15487: Terminated
+srun: error: frontier08123: tasks 13176-13183: Terminated
+srun: error: frontier07007: tasks 10872-10879: Terminated
+srun: error: frontier04733: tasks 6968-6975: Terminated
+srun: error: frontier07763: tasks 12280-12286: Terminated
+srun: error: frontier04334: tasks 6432-6439: Terminated
+srun: error: frontier02289: tasks 4128-4135: Terminated
+srun: error: frontier00863: tasks 1824-1831: Terminated
+srun: error: frontier09409: tasks 16112-16119: Terminated
+srun: error: frontier04133: tasks 6264-6271: Terminated
+srun: error: frontier06257: tasks 9368-9375: Terminated
+srun: error: frontier08493: tasks 13976-13983: Terminated
+srun: error: frontier06363: tasks 9536-9543: Terminated
+srun: error: frontier10157: tasks 16280-16287: Terminated
+srun: error: frontier04969: tasks 7232-7239: Terminated
+srun: error: frontier07408: tasks 11672-11679: Terminated
+srun: error: frontier02985: tasks 4928-4935: Terminated
+srun: error: frontier06637: tasks 10168-10175: Terminated
+srun: error: frontier01248: tasks 2624-2631: Terminated
+srun: error: frontier00217: tasks 488-495: Terminated
+srun: error: frontier07869: tasks 12472-12479: Terminated
+srun: error: frontier00184: tasks 320-327: Terminated
+srun: error: frontier01373: tasks 2792-2799: Terminated
+srun: error: frontier05495: tasks 8032-8039: Terminated
+srun: error: frontier05883: tasks 8736-8743: Terminated
+srun: error: frontier08869: tasks 14776-14783: Terminated
+srun: error: frontier06755: tasks 10336-10343: Terminated
+srun: error: frontier01743: tasks 3424-3431: Terminated
+srun: error: frontier09158: tasks 15576-15583: Terminated
+srun: error: frontier03704: tasks 5728-5735: Terminated
+srun: error: frontier07019: tasks 10968-10975: Terminated
+srun: error: frontier05979: tasks 8832-8839: Terminated
+srun: error: frontier02395: tasks 4224-4231: Terminated
+srun: error: frontier07136: tasks 11136-11143: Terminated
+srun: error: frontier08246: tasks 13440-13447: Terminated
+srun: error: frontier08505: tasks 14072-14079: Terminated
+srun: error: frontier00987: tasks 2088-2095: Terminated
+srun: error: frontier08192: tasks 13272-13279: Terminated
+srun: error: frontier02542: tasks 4392-4399: Terminated
+srun: error: frontier06379: tasks 9632-9639: Terminated
+srun: error: frontier04987: tasks 7328-7335: Terminated
+srun: error: frontier07552: tasks 11936-11943: Terminated
+srun: error: frontier00609: tasks 1288-1295: Terminated
+srun: error: frontier03198: tasks 5192-5199: Terminated
+srun: error: frontier01394: tasks 2888-2895: Terminated
+srun: error: frontier05116: tasks 7496-7503: Terminated
+srun: error: frontier08887: tasks 14872-14879: Terminated
+srun: error: frontier00319: tasks 584-591: Terminated
+srun: error: frontier08958: tasks 15040-15047: Terminated
+srun: error: frontier04349: tasks 6528-6535: Terminated
+srun: error: frontier05593: tasks 8128-8135: Terminated
+srun: error: frontier03949: tasks 5992-5999: Terminated
+srun: error: frontier05628: tasks 8296-8303: Terminated
+srun: error: frontier01902: tasks 3688-3695: Terminated
+srun: error: frontier07167: tasks 11232-11239: Terminated
+srun: error: frontier08262: tasks 13536-13543: Terminated
+srun: error: frontier00700: tasks 1384-1391: Terminated
+srun: error: frontier09283: tasks 15840-15847: Terminated
+srun: error: frontier08619: tasks 14240-14247: Terminated
+srun: error: frontier06003: tasks 8928-8935: Terminated
+srun: error: frontier07263: tasks 11400-11407: Terminated
+srun: error: frontier06767: tasks 10432-10439: Terminated
+srun: error: frontier01035: tasks 2184-2191: Terminated
+srun: error: frontier06124: tasks 9096-9103: Terminated
+srun: error: frontier02622: tasks 4488-4495: Terminated
+srun: error: frontier04603: tasks 6792-6799: Terminated
+srun: error: frontier07637: tasks 12032-12039: Terminated
+srun: error: frontier07969: tasks 12736-12743: Terminated
+srun: error: frontier01850: tasks 3592-3599: Terminated
+srun: error: frontier00053: tasks 48-55: Terminated
+srun: error: frontier06505: tasks 9896-9903: Terminated
+srun: error: frontier05231: tasks 7592-7599: Terminated
+srun: error: frontier01481: tasks 2984-2991: Terminated
+srun: error: frontier07672: tasks 12200-12207: Terminated
+srun: error: frontier07983: tasks 12832-12839: Terminated
+srun: error: frontier08637: tasks 14336-14343: Terminated
+srun: error: frontier09006: tasks 15136-15143: Terminated
+srun: error: frontier03446: tasks 5456-5463: Terminated
+srun: error: frontier01532: tasks 3152-3159: Terminated
+srun: error: frontier00439: tasks 848-855: Terminated
+srun: error: frontier08097: tasks 13000-13007: Terminated
+srun: error: frontier03298: tasks 5288-5295: Terminated
+srun: error: frontier05733: tasks 8392-8399: Terminated
+srun: error: frontier06892: tasks 10696-10703: Terminated
+srun: error: frontier03968: tasks 6088-6095: Terminated
+srun: error: frontier00739: tasks 1552-1559: Terminated
+srun: error: frontier09384: tasks 15936-15943: Terminated
+srun: error: frontier03067: tasks 5024-5031: Terminated
+srun: error: frontier01118: tasks 2352-2359: Terminated
+srun: error: frontier08359: tasks 13632-13639: Terminated
+srun: error: frontier00829: tasks 1648-1655: Terminated
+srun: error: frontier02149: tasks 3952-3959: Terminated
+srun: error: frontier08382: tasks 13800-13807: Terminated
+srun: error: frontier04720: tasks 6888-6895: Terminated
+srun: error: frontier06144: tasks 9192-9199: Terminated
+srun: error: frontier07366: tasks 11496-11503: Terminated
+srun: error: frontier01211: tasks 2448-2455: Terminated
+srun: error: frontier04843: tasks 7056-7063: Terminated
+srun: error: frontier04111: tasks 6256-6263: Terminated
+srun: error: frontier05246: tasks 7688-7695: Terminated
+srun: error: frontier00074: tasks 144-151: Terminated
+srun: error: frontier07765: tasks 12296-12303: Terminated
+srun: error: frontier00183: tasks 312-319: Terminated
+srun: error: frontier06610: tasks 9992-9999: Terminated
+srun: error: frontier09407: tasks 16104-16111: Terminated
+srun: error: frontier02814: tasks 4752-4759: Terminated
+srun: error: frontier05365: tasks 7856-7863: Terminated
+srun: error: frontier06636: tasks 10160-10167: Terminated
+srun: error: frontier08759: tasks 14600-14607: Terminated
+srun: error: frontier00454: tasks 944-951: Terminated
+srun: error: frontier08113: tasks 13096-13103: Terminated
+srun: error: frontier03544: tasks 5552-5559: Terminated
+srun: error: frontier06995: tasks 10792-10799: Terminated
+srun: error: frontier01620: tasks 3248-3255: Terminated
+srun: error: frontier07018: tasks 10960-10967: Terminated
+srun: error: frontier02235: tasks 4048-4055: Terminated
+srun: error: frontier04218: tasks 6352-6359: Terminated
+srun: error: frontier09464: tasks 16200-16207: Terminated
+srun: error: frontier05872: tasks 8656-8663: Terminated
+srun: error: frontier02363: tasks 4216-4223: Terminated
+srun: error: frontier00954: tasks 1912-1919: Terminated
+srun: error: frontier08482: tasks 13896-13903: Terminated
+srun: error: frontier07389: tasks 11592-11599: Terminated
+srun: error: frontier09135: tasks 15400-15407: Terminated
+srun: error: frontier06310: tasks 9456-9463: Terminated
+srun: error: frontier00852: tasks 1744-1751: Terminated
+srun: error: frontier07511: tasks 11760-11767: Terminated
+srun: error: frontier08793: tasks 14696-14703: Terminated
+srun: error: frontier04862: tasks 7152-7159: Terminated
+srun: error: frontier01359: tasks 2712-2719: Terminated
+srun: error: frontier08885: tasks 14864-14871: Terminated
+srun: error: frontier00574: tasks 1112-1119: Terminated
+srun: error: frontier07881: tasks 12560-12567: Terminated
+srun: error: frontier07784: tasks 12392-12399: Terminated
+srun: error: frontier00207: tasks 408-415: Terminated
+srun: error: frontier03065: tasks 5016-5023: Terminated
+srun: error: frontier06737: tasks 10256-10263: Terminated
+srun: error: frontier05475: tasks 7952-7959: Terminated
+srun: error: frontier09147: tasks 15496-15503: Terminated
+srun: error: frontier02918: tasks 4848-4855: Terminated
+srun: error: frontier00586: tasks 1208-1215: Terminated
+srun: error: frontier01776: tasks 3512-3519: Terminated
+srun: error: frontier08236: tasks 13360-13367: Terminated
+srun: error: frontier03582: tasks 5648-5655: Terminated
+srun: error: frontier05885: tasks 8752-8759: Terminated
+srun: error: frontier04339: tasks 6448-6455: Terminated
+srun: error: frontier07126: tasks 11056-11063: Terminated
+srun: error: frontier06001: tasks 8920-8927: Terminated
+srun: error: frontier02426: tasks 4312-4319: Terminated
+srun: error: frontier10160: tasks 16296-16303: Terminated
+srun: error: frontier07523: tasks 11856-11863: Terminated
+srun: error: frontier00969: tasks 2008-2015: Terminated
+srun: error: frontier08553: tasks 14160-14167: Terminated
+srun: error: frontier09257: tasks 15664-15671: Terminated
+srun: error: frontier00219: tasks 504-511: Terminated
+srun: error: frontier03180: tasks 5112-5119: Terminated
+srun: error: frontier06421: tasks 9720-9727: Terminated
+srun: error: frontier05104: tasks 7416-7423: Terminated
+srun: error: frontier07893: tasks 12656-12663: Terminated
+srun: error: frontier06757: tasks 10352-10359: Terminated
+srun: error: frontier03839: tasks 5912-5919: Terminated
+srun: error: frontier07982: tasks 12824-12831: Terminated
+srun: error: frontier01467: tasks 2976-2983: Terminated
+srun: error: frontier04466: tasks 6616-6623: Terminated
+srun: error: frontier01856: tasks 3608-3615: Terminated
+srun: error: frontier01375: tasks 2808-2815: Terminated
+srun: error: frontier00336: tasks 672-679: Terminated
+srun: error: frontier08250: tasks 13456-13463: Terminated
+srun: error: frontier01985: tasks 3776-3783: Terminated
+srun: error: frontier00718: tasks 1472-1479: Terminated
+srun: error: frontier06862: tasks 10520-10527: Terminated
+srun: error: frontier08356: tasks 13624-13631: Terminated
+srun: error: frontier09271: tasks 15760-15767: Terminated
+srun: error: frontier07250: tasks 11320-11327: Terminated
+srun: error: frontier04566: tasks 6712-6719: Terminated
+srun: error: frontier08904: tasks 14960-14967: Terminated
+srun: error: frontier08622: tasks 14256-14263: Terminated
+srun: error: frontier02679: tasks 4576-4583: Terminated
+srun: error: frontier03807: tasks 5816-5823: Terminated
+srun: error: frontier04719: tasks 6880-6887: Terminated
+srun: error: frontier01098: tasks 2272-2279: Terminated
+srun: error: frontier08652: tasks 14424-14431: Terminated
+srun: error: frontier06491: tasks 9816-9823: Terminated
+srun: error: frontier07649: tasks 12120-12127: Terminated
+srun: error: frontier05612: tasks 8216-8223: Terminated
+srun: error: frontier03362: tasks 5376-5383: Terminated
+srun: error: frontier01511: tasks 3072-3079: Terminated
+srun: error: frontier08993: tasks 15056-15063: Terminated
+srun: error: frontier07998: tasks 12920-12927: Terminated
+srun: error: frontier06036: tasks 9016-9023: Terminated
+srun: error: frontier00357: tasks 768-775: Terminated
+srun: error: frontier05245: tasks 7680-7687: Terminated
+srun: error: frontier09024: tasks 15224-15231: Terminated
+srun: error: frontier00453: tasks 936-943: Terminated
+srun: error: frontier02546: tasks 4408-4415: Terminated
+srun: error: frontier06880: tasks 10616-10623: Terminated
+srun: error: frontier05745: tasks 8480-8487: Terminated
+srun: error: frontier06365: tasks 9552-9559: Terminated
+srun: error: frontier04082: tasks 6176-6183: Terminated
+srun: error: frontier05673: tasks 8312-8319: Terminated
+srun: error: frontier09396: tasks 16024-16031: Terminated
+srun: error: frontier07265: tasks 11416-11423: Terminated
+srun: error: frontier02038: tasks 3872-3879: Terminated
+srun: error: frontier06129: tasks 9112-9119: Terminated
+srun: error: frontier00743: tasks 1568-1575: Terminated
+srun: error: frontier05118: tasks 7512-7519: Terminated
+srun: error: frontier00851: tasks 1736-1743: Terminated
+srun: error: frontier06236: tasks 9280-9287: Terminated
+srun: error: frontier07388: tasks 11584-11591: Terminated
+srun: error: frontier02784: tasks 4672-4679: Terminated
+srun: error: frontier01122: tasks 2368-2375: Terminated
+srun: error: frontier08746: tasks 14520-14527: Terminated
+srun: error: frontier00097: tasks 232-239: Terminated
+srun: error: frontier01232: tasks 2536-2543: Terminated
+srun: error: frontier08370: tasks 13720-13727: Terminated
+srun: error: frontier07754: tasks 12216-12223: Terminated
+srun: error: frontier03452: tasks 5472-5479: Terminated
+srun: error: frontier04734: tasks 6976-6983: Terminated
+srun: error: frontier05355: tasks 7776-7783: Terminated
+srun: error: frontier00481: tasks 1032-1039: Terminated
+srun: error: frontier06624: tasks 10080-10087: Terminated
+srun: error: frontier03580: tasks 5640-5647: Terminated
+srun: error: frontier09039: tasks 15320-15327: Terminated
+srun: error: frontier07008: tasks 10880-10887: Terminated
+srun: error: frontier08099: tasks 13016-13023: Terminated
+srun: error: frontier04134: tasks 6272-6279: Terminated
+srun: error: frontier08124: tasks 13184-13191: Terminated
+srun: error: frontier01653: tasks 3336-3343: Terminated
+srun: error: frontier09410: tasks 16120-16127: Terminated
+srun: error: frontier07776: tasks 12384-12391: Terminated
+srun: error: frontier05822: tasks 8576-8583: Terminated
+srun: error: frontier04338: tasks 6440-6447: Terminated
+srun: error: frontier07423: tasks 11680-11687: Terminated
+srun: error: frontier02290: tasks 4136-4143: Terminated
+srun: error: frontier06258: tasks 9376-9383: Terminated
+srun: error: frontier04845: tasks 7072-7079: Terminated
+srun: error: frontier08494: tasks 13984-13991: Terminated
+srun: error: frontier00864: tasks 1832-1839: Terminated
+srun: error: frontier01534: tasks 3168-3175: Terminated
+srun: error: frontier04970: tasks 7240-7247: Terminated
+srun: error: frontier00186: tasks 328-335: Terminated
+srun: error: frontier01250: tasks 2632-2639: Terminated
+srun: error: frontier02988: tasks 4936-4943: Terminated
+srun: error: frontier06638: tasks 10176-10183: Terminated
+srun: error: frontier05367: tasks 7872-7879: Terminated
+srun: error: frontier08871: tasks 14784-14791: Terminated
+srun: error: frontier00218: tasks 496-503: Terminated
+srun: error: frontier05496: tasks 8040-8047: Terminated
+srun: error: frontier03707: tasks 5736-5743: Terminated
+srun: error: frontier06756: tasks 10344-10351: Terminated
+srun: error: frontier10159: tasks 16288-16295: Terminated
+srun: error: frontier00576: tasks 1128-1135: Terminated
+srun: error: frontier07030: tasks 10976-10983: Terminated
+srun: error: frontier08215: tasks 13280-13287: Terminated
+srun: error: frontier01744: tasks 3432-3439: Terminated
+srun: error: frontier09160: tasks 15584-15591: Terminated
+srun: error: frontier00610: tasks 1296-1303: Terminated
+srun: error: frontier07870: tasks 12480-12487: Terminated
+srun: error: frontier05986: tasks 8840-8847: Terminated
+srun: error: frontier04350: tasks 6536-6543: Terminated
+srun: error: frontier02396: tasks 4232-4239: Terminated
+srun: error: frontier00959: tasks 1928-1935: Terminated
+srun: error: frontier08508: tasks 14080-14087: Terminated
+srun: error: frontier00988: tasks 2096-2103: Terminated
+srun: error: frontier02543: tasks 4400-4407: Terminated
+srun: error: frontier07513: tasks 11776-11783: Terminated
+srun: error: frontier03070: tasks 5032-5039: Terminated
+srun: error: frontier06383: tasks 9640-9647: Terminated
+srun: error: frontier04988: tasks 7336-7343: Terminated
+srun: error: frontier08621: tasks 14248-14255: Terminated
+srun: error: frontier07137: tasks 11144-11151: Terminated
+srun: error: frontier07582: tasks 11944-11951: Terminated
+srun: error: frontier03199: tasks 5200-5207: Terminated
+srun: error: frontier00320: tasks 592-599: Terminated
+srun: error: frontier05598: tasks 8136-8143: Terminated
+srun: error: frontier01395: tasks 2896-2903: Terminated
+srun: error: frontier08963: tasks 15048-15055: Terminated
+srun: error: frontier07970: tasks 12744-12751: Terminated
+srun: error: frontier05629: tasks 8304-8311: Terminated
+srun: error: frontier06768: tasks 10440-10447: Terminated
+srun: error: frontier03950: tasks 6000-6007: Terminated
+srun: error: frontier09259: tasks 15680-15687: Terminated
+srun: error: frontier09284: tasks 15848-15855: Terminated
+srun: error: frontier00702: tasks 1392-1399: Terminated
+srun: error: frontier03814: tasks 5832-5839: Terminated
+srun: error: frontier06004: tasks 8936-8943: Terminated
+srun: error: frontier08264: tasks 13544-13551: Terminated
+srun: error: frontier01905: tasks 3696-3703: Terminated
+srun: error: frontier08889: tasks 14880-14887: Terminated
+srun: error: frontier02634: tasks 4496-4503: Terminated
+srun: error: frontier01088: tasks 2192-2199: Terminated
+srun: error: frontier04604: tasks 6800-6807: Terminated
+srun: error: frontier07638: tasks 12040-12047: Terminated
+srun: error: frontier06125: tasks 9104-9111: Terminated
+srun: error: frontier08638: tasks 14344-14351: Terminated
+srun: error: frontier00054: tasks 56-63: Terminated
+srun: error: frontier01120: tasks 2360-2367: Terminated
+srun: error: frontier06508: tasks 9904-9911: Terminated
+srun: error: frontier06479: tasks 9736-9743: Terminated
+srun: error: frontier03308: tasks 5296-5303: Terminated
+srun: error: frontier01482: tasks 2992-2999: Terminated
+srun: error: frontier07984: tasks 12840-12847: Terminated
+srun: error: frontier05232: tasks 7600-7607: Terminated
+srun: error: frontier09007: tasks 15144-15151: Terminated
+srun: error: frontier06867: tasks 10536-10543: Terminated
+srun: error: frontier01533: tasks 3160-3167: Terminated
+srun: error: frontier08098: tasks 13008-13015: Terminated
+srun: error: frontier05734: tasks 8400-8407: Terminated
+srun: error: frontier09385: tasks 15944-15951: Terminated
+srun: error: frontier08360: tasks 13640-13647: Terminated
+srun: error: frontier08383: tasks 13808-13815: Terminated
+srun: error: frontier02161: tasks 3960-3967: Terminated
+srun: error: frontier02686: tasks 4592-4599: Terminated
+srun: error: frontier06164: tasks 9200-9207: Terminated
+srun: error: frontier00832: tasks 1656-1663: Terminated
+srun: error: frontier00440: tasks 856-863: Terminated
+srun: error: frontier07377: tasks 11504-11511: Terminated
+srun: error: frontier04722: tasks 6896-6903: Terminated
+srun: error: frontier04844: tasks 7064-7071: Terminated
+srun: error: frontier01991: tasks 3792-3799: Terminated
+srun: error: frontier06893: tasks 10704-10711: Terminated
+srun: error: frontier04006: tasks 6096-6103: Terminated
+srun: error: frontier06611: tasks 10000-10007: Terminated
+srun: error: frontier01212: tasks 2456-2463: Terminated
+srun: error: frontier00075: tasks 152-159: Terminated
+srun: error: frontier08761: tasks 14608-14615: Terminated
+srun: error: frontier08671: tasks 14440-14447: Terminated
+srun: error: frontier07766: tasks 12304-12311: Terminated
+srun: error: frontier07194: tasks 11240-11247: Terminated
+srun: error: frontier01621: tasks 3256-3263: Terminated
+srun: error: frontier05366: tasks 7864-7871: Terminated
+srun: error: frontier09136: tasks 15408-15415: Terminated
+srun: error: frontier03545: tasks 5560-5567: Terminated
+srun: error: frontier05747: tasks 8496-8503: Terminated
+srun: error: frontier05247: tasks 7696-7703: Terminated
+srun: error: frontier08114: tasks 13104-13111: Terminated
+srun: error: frontier05873: tasks 8664-8671: Terminated
+srun: error: frontier02815: tasks 4760-4767: Terminated
+srun: error: frontier00853: tasks 1752-1759: Terminated
+srun: error: frontier09465: tasks 16208-16215: Terminated
+srun: error: frontier00958: tasks 1920-1927: Terminated
+srun: error: frontier06239: tasks 9296-9303: Terminated
+srun: error: frontier07512: tasks 11768-11775: Terminated
+srun: error: frontier06325: tasks 9464-9471: Terminated
+srun: error: frontier02236: tasks 4056-4063: Terminated
+srun: error: frontier06996: tasks 10800-10807: Terminated
+srun: error: frontier01234: tasks 2552-2559: Terminated
+srun: error: frontier04863: tasks 7160-7167: Terminated
+srun: error: frontier02928: tasks 4856-4863: Terminated
+srun: error: frontier00456: tasks 952-959: Terminated
+srun: error: frontier00575: tasks 1120-1127: Terminated
+srun: error: frontier07799: tasks 12400-12407: Terminated
+srun: error: frontier08794: tasks 14704-14711: Terminated
+srun: error: frontier07882: tasks 12568-12575: Terminated
+srun: error: frontier04219: tasks 6360-6367: Terminated
+srun: error: frontier05478: tasks 7960-7967: Terminated
+srun: error: frontier01657: tasks 3352-3359: Terminated
+srun: error: frontier01360: tasks 2720-2727: Terminated
+srun: error: frontier00208: tasks 416-423: Terminated
+srun: error: frontier08483: tasks 13904-13911: Terminated
+srun: error: frontier03624: tasks 5656-5663: Terminated
+srun: error: frontier08126: tasks 13200-13207: Terminated
+srun: error: frontier01777: tasks 3520-3527: Terminated
+srun: error: frontier07390: tasks 11600-11607: Terminated
+srun: error: frontier08237: tasks 13368-13375: Terminated
+srun: error: frontier04340: tasks 6456-6463: Terminated
+srun: error: frontier03811: tasks 5824-5831: Terminated
+srun: error: frontier10162: tasks 16304-16311: Terminated
+srun: error: frontier05912: tasks 8760-8767: Terminated
+srun: error: frontier06742: tasks 10264-10271: Terminated
+srun: error: frontier02427: tasks 4320-4327: Terminated
+srun: error: frontier04468: tasks 6624-6631: Terminated
+srun: error: frontier00970: tasks 2016-2023: Terminated
+srun: error: frontier09148: tasks 15504-15511: Terminated
+srun: error: frontier07127: tasks 11064-11071: Terminated
+srun: error: frontier00587: tasks 1216-1223: Terminated
+srun: error: frontier06366: tasks 9560-9567: Terminated
+srun: error: frontier05105: tasks 7424-7431: Terminated
+srun: error: frontier00223: tasks 512-519: Terminated
+srun: error: frontier04972: tasks 7256-7263: Terminated
+srun: error: frontier06472: tasks 9728-9735: Terminated
+srun: error: frontier01376: tasks 2816-2823: Terminated
+srun: error: frontier06758: tasks 10360-10367: Terminated
+srun: error: frontier08906: tasks 14968-14975: Terminated
+srun: error: frontier03181: tasks 5120-5127: Terminated
+srun: error: frontier00342: tasks 680-687: Terminated
+srun: error: frontier07894: tasks 12664-12671: Terminated
+srun: error: frontier07524: tasks 11864-11871: Terminated
+srun: error: frontier06866: tasks 10528-10535: Terminated
+srun: error: frontier01857: tasks 3616-3623: Terminated
+srun: error: frontier00612: tasks 1312-1319: Terminated
+srun: error: frontier08608: tasks 14168-14175: Terminated
+srun: error: frontier03873: tasks 5920-5927: Terminated
+srun: error: frontier08251: tasks 13464-13471: Terminated
+srun: error: frontier07139: tasks 11160-11167: Terminated
+srun: error: frontier01986: tasks 3784-3791: Terminated
+srun: error: frontier00719: tasks 1480-1487: Terminated
+srun: error: frontier09272: tasks 15768-15775: Terminated
+srun: error: frontier06078: tasks 9024-9031: Terminated
+srun: error: frontier04567: tasks 6720-6727: Terminated
+srun: error: frontier07251: tasks 11328-11335: Terminated
+srun: error: frontier02547: tasks 4416-4423: Terminated
+srun: error: frontier02683: tasks 4584-4591: Terminated
+srun: error: frontier07627: tasks 11960-11967: Terminated
+srun: error: frontier08623: tasks 14264-14271: Terminated
+srun: error: frontier06492: tasks 9824-9831: Terminated
+srun: error: frontier09258: tasks 15672-15679: Terminated
+srun: error: frontier01101: tasks 2280-2287: Terminated
+srun: error: frontier03247: tasks 5216-5223: Terminated
+srun: error: frontier07650: tasks 12128-12135: Terminated
+srun: error: frontier01512: tasks 3080-3087: Terminated
+srun: error: frontier05119: tasks 7520-7527: Terminated
+srun: error: frontier00358: tasks 776-783: Terminated
+srun: error: frontier09025: tasks 15232-15239: Terminated
+srun: error: frontier08000: tasks 12928-12935: Terminated
+srun: error: frontier03363: tasks 5384-5391: Terminated
+srun: error: frontier03952: tasks 6016-6023: Terminated
+srun: error: frontier06881: tasks 10624-10631: Terminated
+srun: error: frontier09286: tasks 15864-15871: Terminated
+srun: error: frontier04084: tasks 6184-6191: Terminated
+srun: error: frontier00745: tasks 1576-1583: Terminated
+srun: error: frontier05675: tasks 8320-8327: Terminated
+srun: error: frontier05746: tasks 8488-8495: Terminated
+srun: error: frontier02039: tasks 3880-3887: Terminated
+srun: error: frontier08371: tasks 13728-13735: Terminated
+srun: error: frontier06130: tasks 9120-9127: Terminated
+srun: error: frontier08994: tasks 15064-15071: Terminated
+srun: error: frontier07266: tasks 11424-11431: Terminated
+srun: error: frontier04735: tasks 6984-6991: Terminated
+srun: error: frontier02785: tasks 4680-4687: Terminated
+srun: error: frontier09397: tasks 16032-16039: Terminated
+srun: error: frontier05613: tasks 8224-8231: Terminated
+srun: error: frontier06238: tasks 9288-9295: Terminated
+srun: error: frontier00060: tasks 72-79: Terminated
+srun: error: frontier07755: tasks 12224-12231: Terminated
+srun: error: frontier06510: tasks 9920-9927: Terminated
+srun: error: frontier00098: tasks 240-247: Terminated
+srun: error: frontier05356: tasks 7784-7791: Terminated
+srun: error: frontier01593: tasks 3176-3183: Terminated
+srun: error: frontier01233: tasks 2544-2551: Terminated
+srun: error: frontier03453: tasks 5480-5487: Terminated
+srun: error: frontier06625: tasks 10088-10095: Terminated
+srun: error: frontier01124: tasks 2376-2383: Terminated
+srun: error: frontier09042: tasks 15328-15335: Terminated
+srun: error: frontier08100: tasks 13024-13031: Terminated
+srun: error: frontier01654: tasks 3344-3351: Terminated
+srun: error: frontier08747: tasks 14528-14535: Terminated
+srun: error: frontier08669: tasks 14432-14439: Terminated
+srun: error: frontier07009: tasks 10888-10895: Terminated
+srun: error: frontier04182: tasks 6280-6287: Terminated
+srun: error: frontier02163: tasks 3976-3983: Terminated
+srun: error: frontier05846: tasks 8584-8591: Terminated
+srun: error: frontier08385: tasks 13824-13831: Terminated
+srun: error: frontier08125: tasks 13192-13199: Terminated
+srun: error: frontier00482: tasks 1040-1047: Terminated
+srun: error: frontier00865: tasks 1840-1847: Terminated
+srun: error: frontier04849: tasks 7080-7087: Terminated
+srun: error: frontier02293: tasks 4144-4151: Terminated
+srun: error: frontier07424: tasks 11688-11695: Terminated
+srun: error: frontier08495: tasks 13992-13999: Terminated
+srun: error: frontier02873: tasks 4776-4783: Terminated
+srun: error: frontier04971: tasks 7248-7255: Terminated
+srun: error: frontier02991: tasks 4944-4951: Terminated
+srun: error: frontier08765: tasks 14624-14631: Terminated
+srun: error: frontier06259: tasks 9384-9391: Terminated
+srun: error: frontier01256: tasks 2640-2647: Terminated
+srun: error: frontier07871: tasks 12488-12495: Terminated
+srun: error: frontier06639: tasks 10184-10191: Terminated
+srun: error: frontier05368: tasks 7880-7887: Terminated
+srun: error: frontier00188: tasks 336-343: Terminated
+srun: error: frontier08872: tasks 14792-14799: Terminated
+srun: error: frontier05497: tasks 8048-8055: Terminated
+srun: error: frontier00577: tasks 1136-1143: Terminated
+srun: error: frontier03709: tasks 5744-5751: Terminated
+srun: error: frontier09411: tasks 16128-16135: Terminated
+srun: error: frontier05876: tasks 8680-8687: Terminated
+srun: error: frontier01745: tasks 3440-3447: Terminated
+srun: error: frontier05988: tasks 8848-8855: Terminated
+srun: error: frontier08217: tasks 13288-13295: Terminated
+srun: error: frontier02397: tasks 4240-4247: Terminated
+srun: error: frontier04351: tasks 6544-6551: Terminated
+srun: error: frontier00960: tasks 1936-1943: Terminated
+srun: error: frontier08510: tasks 14088-14095: Terminated
+srun: error: frontier07514: tasks 11784-11791: Terminated
+srun: error: frontier07035: tasks 10984-10991: Terminated
+srun: error: frontier00993: tasks 2104-2111: Terminated
+srun: error: frontier06384: tasks 9648-9655: Terminated
+srun: error: frontier09161: tasks 15592-15599: Terminated
+srun: error: frontier07884: tasks 12584-12591: Terminated
+srun: error: frontier04990: tasks 7344-7351: Terminated
+srun: error: frontier00611: tasks 1304-1311: Terminated
+srun: error: frontier03200: tasks 5208-5215: Terminated
+srun: error: frontier00321: tasks 600-607: Terminated
+srun: error: frontier08890: tasks 14888-14895: Terminated
+srun: error: frontier01396: tasks 2904-2911: Terminated
+srun: error: frontier06769: tasks 10448-10455: Terminated
+srun: error: frontier03828: tasks 5840-5847: Terminated
+srun: error: frontier03071: tasks 5040-5047: Terminated
+srun: error: frontier07138: tasks 11152-11159: Terminated
+srun: error: frontier05599: tasks 8144-8151: Terminated
+srun: error: frontier08239: tasks 13384-13391: Terminated
+srun: error: frontier00703: tasks 1400-1407: Terminated
+srun: error: frontier09260: tasks 15688-15695: Terminated
+srun: error: frontier07971: tasks 12752-12759: Terminated
+srun: error: frontier01906: tasks 3704-3711: Terminated
+srun: error: frontier03951: tasks 6008-6015: Terminated
+srun: error: frontier08269: tasks 13552-13559: Terminated
+srun: error: frontier06005: tasks 8944-8951: Terminated
+srun: error: frontier04471: tasks 6640-6647: Terminated
+srun: error: frontier09285: tasks 15856-15863: Terminated
+srun: error: frontier01365: tasks 2736-2743: Terminated
+srun: error: frontier07618: tasks 11952-11959: Terminated
+srun: error: frontier07210: tasks 11248-11255: Terminated
+srun: error: frontier01089: tasks 2200-2207: Terminated
+srun: error: frontier04605: tasks 6808-6815: Terminated
+srun: error: frontier02635: tasks 4504-4511: Terminated
+srun: error: frontier07639: tasks 12048-12055: Terminated
+srun: error: frontier06480: tasks 9744-9751: Terminated
+srun: error: frontier08639: tasks 14352-14359: Terminated
+srun: error: frontier00056: tasks 64-71: Terminated
+srun: error: frontier05233: tasks 7608-7615: Terminated
+srun: error: frontier05109: tasks 7440-7447: Terminated
+srun: error: frontier01483: tasks 3000-3007: Terminated
+srun: error: frontier00344: tasks 696-703: Terminated
+srun: error: frontier06509: tasks 9912-9919: Terminated
+srun: error: frontier07985: tasks 12848-12855: Terminated
+srun: error: frontier06868: tasks 10544-10551: Terminated
+srun: error: frontier03310: tasks 5304-5311: Terminated
+srun: error: frontier00441: tasks 864-871: Terminated
+srun: error: frontier04007: tasks 6104-6111: Terminated
+srun: error: frontier06894: tasks 10712-10719: Terminated
+srun: error: frontier05735: tasks 8408-8415: Terminated
+srun: error: frontier02012: tasks 3800-3807: Terminated
+srun: error: frontier00728: tasks 1496-1503: Terminated
+srun: error: frontier09386: tasks 15952-15959: Terminated
+srun: error: frontier00838: tasks 1664-1671: Terminated
+srun: error: frontier07255: tasks 11344-11351: Terminated
+srun: error: frontier02162: tasks 3968-3975: Terminated
+srun: error: frontier06166: tasks 9208-9215: Terminated
+srun: error: frontier02687: tasks 4600-4607: Terminated
+srun: error: frontier04723: tasks 6904-6911: Terminated
+srun: error: frontier07378: tasks 11512-11519: Terminated
+srun: error: frontier09008: tasks 15152-15159: Terminated
+srun: error: frontier02871: tasks 4768-4775: Terminated
+srun: error: frontier08696: tasks 14448-14455: Terminated
+srun: error: frontier00077: tasks 160-167: Terminated
+srun: error: frontier03414: tasks 5400-5407: Terminated
+srun: error: frontier05248: tasks 7704-7711: Terminated
+srun: error: frontier07767: tasks 12312-12319: Terminated
+srun: error: frontier08764: tasks 14616-14623: Terminated
+srun: error: frontier09027: tasks 15248-15255: Terminated
+srun: error: frontier06612: tasks 10008-10015: Terminated
+srun: error: frontier08384: tasks 13816-13823: Terminated
+srun: error: frontier03553: tasks 5568-5575: Terminated
+srun: error: frontier01636: tasks 3264-3271: Terminated
+srun: error: frontier08361: tasks 13648-13655: Terminated
+srun: error: frontier00457: tasks 960-967: Terminated
+srun: error: frontier09137: tasks 15416-15423: Terminated
+srun: error: frontier08115: tasks 13112-13119: Terminated
+srun: error: frontier04089: tasks 6200-6207: Terminated
+srun: error: frontier06997: tasks 10808-10815: Terminated
+srun: error: frontier05875: tasks 8672-8679: Terminated
+srun: error: frontier00854: tasks 1760-1767: Terminated
+srun: error: frontier01213: tasks 2464-2471: Terminated
+srun: error: frontier05748: tasks 8504-8511: Terminated
+srun: error: frontier02237: tasks 4064-4071: Terminated
+srun: error: frontier06240: tasks 9304-9311: Terminated
+srun: error: frontier04220: tasks 6368-6375: Terminated
+srun: error: frontier08484: tasks 13912-13919: Terminated
+srun: error: frontier09400: tasks 16048-16055: Terminated
+srun: error: frontier01235: tasks 2560-2567: Terminated
+srun: error: frontier06326: tasks 9472-9479: Terminated
+srun: error: frontier02929: tasks 4864-4871: Terminated
+srun: error: frontier00107: tasks 256-263: Terminated
+srun: error: frontier08795: tasks 14712-14719: Terminated
+srun: error: frontier06628: tasks 10104-10111: Terminated
+srun: error: frontier01364: tasks 2728-2735: Terminated
+srun: error: frontier03625: tasks 5664-5671: Terminated
+srun: error: frontier00209: tasks 424-431: Terminated
+srun: error: frontier07883: tasks 12576-12583: Terminated
+srun: error: frontier04864: tasks 7168-7175: Terminated
+srun: error: frontier09466: tasks 16216-16223: Terminated
+srun: error: frontier07391: tasks 11608-11615: Terminated
+srun: error: frontier06743: tasks 10272-10279: Terminated
+srun: error: frontier09149: tasks 15512-15519: Terminated
+srun: error: frontier01778: tasks 3528-3535: Terminated
+srun: error: frontier01662: tasks 3360-3367: Terminated
+srun: error: frontier00588: tasks 1224-1231: Terminated
+srun: error: frontier08238: tasks 13376-13383: Terminated
+srun: error: frontier02301: tasks 4160-4167: Terminated
+srun: error: frontier04341: tasks 6464-6471: Terminated
+srun: error: frontier08497: tasks 14008-14015: Terminated
+srun: error: frontier10163: tasks 16312-16319: Terminated
+srun: error: frontier07801: tasks 12408-12415: Terminated
+srun: error: frontier04470: tasks 6632-6639: Terminated
+srun: error: frontier00971: tasks 2024-2031: Terminated
+srun: error: frontier02429: tasks 4328-4335: Terminated
+srun: error: frontier06367: tasks 9568-9575: Terminated
+srun: error: frontier04973: tasks 7264-7271: Terminated
+srun: error: frontier07525: tasks 11872-11879: Terminated
+srun: error: frontier08874: tasks 14808-14815: Terminated
+srun: error: frontier07128: tasks 11072-11079: Terminated
+srun: error: frontier05106: tasks 7432-7439: Terminated
+srun: error: frontier01377: tasks 2824-2831: Terminated
+srun: error: frontier08127: tasks 13208-13215: Terminated
+srun: error: frontier00226: tasks 520-527: Terminated
+srun: error: frontier08909: tasks 14976-14983: Terminated
+srun: error: frontier05960: tasks 8768-8775: Terminated
+srun: error: frontier05500: tasks 8064-8071: Terminated
+srun: error: frontier06759: tasks 10368-10375: Terminated
+srun: error: frontier00343: tasks 688-695: Terminated
+srun: error: frontier07897: tasks 12672-12679: Terminated
+srun: error: frontier05990: tasks 8864-8871: Terminated
+srun: error: frontier08254: tasks 13472-13479: Terminated
+srun: error: frontier08611: tasks 14176-14183: Terminated
+srun: error: frontier07140: tasks 11168-11175: Terminated
+srun: error: frontier01863: tasks 3624-3631: Terminated
+srun: error: frontier05614: tasks 8232-8239: Terminated
+srun: error: frontier03182: tasks 5128-5135: Terminated
+srun: error: frontier00720: tasks 1488-1495: Terminated
+srun: error: frontier04574: tasks 6728-6735: Terminated
+srun: error: frontier07254: tasks 11336-11343: Terminated
+srun: error: frontier05484: tasks 7968-7975: Terminated
+srun: error: frontier06085: tasks 9032-9039: Terminated
+srun: error: frontier00613: tasks 1320-1327: Terminated
+srun: error: frontier08625: tasks 14272-14279: Terminated
+srun: error: frontier01102: tasks 2288-2295: Terminated
+srun: error: frontier07628: tasks 11968-11975: Terminated
+srun: error: frontier03255: tasks 5224-5231: Terminated
+srun: error: frontier00995: tasks 2120-2127: Terminated
+srun: error: frontier06494: tasks 9832-9839: Terminated
+srun: error: frontier01518: tasks 3088-3095: Terminated
+srun: error: frontier08995: tasks 15072-15079: Terminated
+srun: error: frontier09273: tasks 15776-15783: Terminated
+srun: error: frontier07656: tasks 12136-12143: Terminated
+srun: error: frontier00359: tasks 784-791: Terminated
+srun: error: frontier06882: tasks 10632-10639: Terminated
+srun: error: frontier09288: tasks 15872-15879: Terminated
+srun: error: frontier08001: tasks 12936-12943: Terminated
+srun: error: frontier09026: tasks 15240-15247: Terminated
+srun: error: frontier02548: tasks 4424-4431: Terminated
+srun: error: frontier00746: tasks 1584-1591: Terminated
+srun: error: frontier02040: tasks 3888-3895: Terminated
+srun: error: frontier08372: tasks 13736-13743: Terminated
+srun: error: frontier07973: tasks 12768-12775: Terminated
+srun: error: frontier05159: tasks 7528-7535: Terminated
+srun: error: frontier04736: tasks 6992-6999: Terminated
+srun: error: frontier06131: tasks 9128-9135: Terminated
+srun: error: frontier04088: tasks 6192-6199: Terminated
+srun: error: frontier03877: tasks 5928-5935: Terminated
+srun: error: frontier05704: tasks 8328-8335: Terminated
+srun: error: frontier01398: tasks 2920-2927: Terminated
+srun: error: frontier02796: tasks 4688-4695: Terminated
+srun: error: frontier03953: tasks 6024-6031: Terminated
+srun: error: frontier00061: tasks 80-87: Terminated
+srun: error: frontier05235: tasks 7624-7631: Terminated
+srun: error: frontier00099: tasks 248-255: Terminated
+srun: error: frontier07757: tasks 12232-12239: Terminated
+srun: error: frontier06521: tasks 9928-9935: Terminated
+srun: error: frontier04647: tasks 6824-6831: Terminated
+srun: error: frontier07272: tasks 11432-11439: Terminated
+srun: error: frontier06626: tasks 10096-10103: Terminated
+srun: error: frontier03454: tasks 5488-5495: Terminated
+srun: error: frontier00443: tasks 880-887: Terminated
+srun: error: frontier06907: tasks 10728-10735: Terminated
+srun: error: frontier05357: tasks 7792-7799: Terminated
+srun: error: frontier01127: tasks 2384-2391: Terminated
+srun: error: frontier00485: tasks 1048-1055: Terminated
+srun: error: frontier08102: tasks 13032-13039: Terminated
+srun: error: frontier04191: tasks 6288-6295: Terminated
+srun: error: frontier02164: tasks 3984-3991: Terminated
+srun: error: frontier09399: tasks 16040-16047: Terminated
+srun: error: frontier01594: tasks 3184-3191: Terminated
+srun: error: frontier07010: tasks 10896-10903: Terminated
+srun: error: frontier00840: tasks 1680-1687: Terminated
+srun: error: frontier08748: tasks 14536-14543: Terminated
+srun: error: frontier09412: tasks 16136-16143: Terminated
+srun: error: frontier02299: tasks 4152-4159: Terminated
+srun: error: frontier06260: tasks 9392-9399: Terminated
+srun: error: frontier00866: tasks 1848-1855: Terminated
+srun: error: frontier03406: tasks 5392-5399: Terminated
+srun: error: frontier07453: tasks 11696-11703: Terminated
+srun: error: frontier08386: tasks 13832-13839: Terminated
+srun: error: frontier04850: tasks 7088-7095: Terminated
+srun: error: frontier08496: tasks 14000-14007: Terminated
+srun: error: frontier02874: tasks 4784-4791: Terminated
+srun: error: frontier09050: tasks 15336-15343: Terminated
+srun: error: frontier03021: tasks 4952-4959: Terminated
+srun: error: frontier01257: tasks 2648-2655: Terminated
+srun: error: frontier07381: tasks 11528-11535: Terminated
+srun: error: frontier08766: tasks 14632-14639: Terminated
+srun: error: frontier06640: tasks 10192-10199: Terminated
+srun: error: frontier03565: tasks 5584-5591: Terminated
+srun: error: frontier08873: tasks 14800-14807: Terminated
+srun: error: frontier07872: tasks 12496-12503: Terminated
+srun: error: frontier05857: tasks 8592-8599: Terminated
+srun: error: frontier09139: tasks 15432-15439: Terminated
+srun: error: frontier03710: tasks 5752-5759: Terminated
+srun: error: frontier00189: tasks 344-351: Terminated
+srun: error: frontier05499: tasks 8056-8063: Terminated
+srun: error: frontier05369: tasks 7888-7895: Terminated
+srun: error: frontier01747: tasks 3448-3455: Terminated
+srun: error: frontier00578: tasks 1144-1151: Terminated
+srun: error: frontier05877: tasks 8688-8695: Terminated
+srun: error: frontier08218: tasks 13296-13303: Terminated
+srun: error: frontier05989: tasks 8856-8863: Terminated
+srun: error: frontier10146: tasks 16232-16239: Terminated
+srun: error: frontier07036: tasks 10992-10999: Terminated
+srun: error: frontier04352: tasks 6552-6559: Terminated
+srun: error: frontier02401: tasks 4248-4255: Terminated
+srun: error: frontier00961: tasks 1944-1951: Terminated
+srun: error: frontier06328: tasks 9488-9495: Terminated
+srun: error: frontier07515: tasks 11792-11799: Terminated
+srun: error: frontier00994: tasks 2112-2119: Terminated
+srun: error: frontier08511: tasks 14096-14103: Terminated
+srun: error: frontier06385: tasks 9656-9663: Terminated
+srun: error: frontier01367: tasks 2744-2751: Terminated
+srun: error: frontier00322: tasks 608-615: Terminated
+srun: error: frontier03829: tasks 5848-5855: Terminated
+srun: error: frontier06746: tasks 10288-10295: Terminated
+srun: error: frontier07972: tasks 12760-12767: Terminated
+srun: error: frontier09162: tasks 15600-15607: Terminated
+srun: error: frontier06771: tasks 10456-10463: Terminated
+srun: error: frontier01397: tasks 2912-2919: Terminated
+srun: error: frontier01780: tasks 3544-3551: Terminated
+srun: error: frontier03118: tasks 5048-5055: Terminated
+srun: error: frontier07885: tasks 12592-12599: Terminated
+srun: error: frontier09261: tasks 15696-15703: Terminated
+srun: error: frontier00707: tasks 1408-1415: Terminated
+srun: error: frontier08891: tasks 14896-14903: Terminated
+srun: error: frontier08240: tasks 13392-13399: Terminated
+srun: error: frontier08270: tasks 13560-13567: Terminated
+srun: error: frontier07211: tasks 11256-11263: Terminated
+srun: error: frontier01907: tasks 3712-3719: Terminated
+srun: error: frontier04472: tasks 6648-6655: Terminated
+srun: error: frontier06006: tasks 8952-8959: Terminated
+srun: error: frontier05028: tasks 7352-7359: Terminated
+srun: error: frontier01090: tasks 2208-2215: Terminated
+srun: error: frontier05600: tasks 8152-8159: Terminated
+srun: error: frontier07641: tasks 12056-12063: Terminated
+srun: error: frontier04606: tasks 6816-6823: Terminated
+srun: error: frontier08641: tasks 14360-14367: Terminated
+srun: error: frontier05110: tasks 7448-7455: Terminated
+srun: error: frontier03312: tasks 5312-5319: Terminated
+srun: error: frontier05234: tasks 7616-7623: Terminated
+srun: error: frontier01490: tasks 3008-3015: Terminated
+srun: error: frontier02432: tasks 4344-4351: Terminated
+srun: error: frontier06869: tasks 10552-10559: Terminated
+srun: error: frontier08613: tasks 14192-14199: Terminated
+srun: error: frontier07986: tasks 12856-12863: Terminated
+srun: error: frontier04041: tasks 6112-6119: Terminated
+srun: error: frontier05621: tasks 8248-8255: Terminated
+srun: error: frontier02014: tasks 3808-3815: Terminated
+srun: error: frontier06481: tasks 9752-9759: Terminated
+srun: error: frontier02636: tasks 4512-4519: Terminated
+srun: error: frontier00729: tasks 1504-1511: Terminated
+srun: error: frontier05736: tasks 8416-8423: Terminated
+srun: error: frontier08362: tasks 13656-13663: Terminated
+srun: error: frontier06897: tasks 10720-10727: Terminated
+srun: error: frontier00345: tasks 704-711: Terminated
+srun: error: frontier07257: tasks 11352-11359: Terminated
+srun: error: frontier00839: tasks 1672-1679: Terminated
+srun: error: frontier10176: tasks 16376-16382: Terminated
+srun: error: frontier06214: tasks 9216-9223: Terminated
+srun: error: frontier07380: tasks 11520-11527: Terminated
+srun: error: frontier01112: tasks 2304-2311: Terminated
+srun: error: frontier01214: tasks 2472-2479: Terminated
+srun: error: frontier00442: tasks 872-879: Terminated
+srun: error: frontier08700: tasks 14456-14463: Terminated
+srun: error: frontier05282: tasks 7712-7719: Terminated
+srun: error: frontier00079: tasks 168-175: Terminated
+srun: error: frontier06613: tasks 10016-10023: Terminated
+srun: error: frontier07768: tasks 12320-12327: Terminated
+srun: error: frontier07658: tasks 12152-12159: Terminated
+srun: error: frontier03429: tasks 5408-5415: Terminated
+srun: error: frontier09028: tasks 15256-15263: Terminated
+srun: error: frontier02239: tasks 4072-4079: Terminated
+srun: error: frontier01520: tasks 3104-3111: Terminated
+srun: error: frontier09387: tasks 15960-15967: Terminated
+srun: error: frontier00460: tasks 968-975: Terminated
+srun: error: frontier04725: tasks 6912-6919: Terminated
+srun: error: frontier02688: tasks 4608-4615: Terminated
+srun: error: frontier01644: tasks 3272-3279: Terminated
+srun: error: frontier08003: tasks 12952-12959: Terminated
+srun: error: frontier09138: tasks 15424-15431: Terminated
+srun: error: frontier08116: tasks 13120-13127: Terminated
+srun: error: frontier06998: tasks 10816-10823: Terminated
+srun: error: frontier05749: tasks 8512-8519: Terminated
+srun: error: frontier04090: tasks 6208-6215: Terminated
+srun: error: frontier04221: tasks 6376-6383: Terminated
+srun: error: frontier09401: tasks 16056-16063: Terminated
+srun: error: frontier00855: tasks 1768-1775: Terminated
+srun: error: frontier04781: tasks 7008-7015: Terminated
+srun: error: frontier08485: tasks 13920-13927: Terminated
+srun: error: frontier09010: tasks 15160-15167: Terminated
+srun: error: frontier10144: tasks 16224-16231: Terminated
+srun: error: frontier06247: tasks 9312-9319: Terminated
+srun: error: frontier03564: tasks 5576-5583: Terminated
+srun: error: frontier06327: tasks 9480-9487: Terminated
+srun: error: frontier01237: tasks 2568-2575: Terminated
+srun: error: frontier07392: tasks 11616-11623: Terminated
+srun: error: frontier00108: tasks 264-271: Terminated
+srun: error: frontier04909: tasks 7176-7183: Terminated
+srun: error: frontier02932: tasks 4872-4879: Terminated
+srun: Force Terminated StepId=4937457.3
+[run] done -> /lustre/orion/csc678/scratch/graceli/rccl-frontier/results/N2048_job4937457

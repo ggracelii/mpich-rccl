@@ -1,0 +1,148 @@
+[env] PROJ=csc678 WORK=/lustre/orion/csc678/scratch/graceli/rccl-frontier ROCM=6.2.4
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=64
+Abort(271205519): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff729c, argv=0x7fffffff72b0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+### model=resnet50_fp32 bytes=102228128 N=64
+Abort(271205519): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff729c, argv=0x7fffffff72b0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+### model=bert_large_fp16 bytes=680000000 N=64
+Abort(271205519): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff729c, argv=0x7fffffff72b0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=64
+Abort(204096655): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff73cc, argv=0x7fffffff73e0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+### model=resnet50_fp32 bytes=102228128 N=64
+Abort(204096655): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff73cc, argv=0x7fffffff73e0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+### model=bert_large_fp16 bytes=680000000 N=64
+Abort(204096655): Fatal error in internal_Init: Other MPI error, error stack:
+internal_Init(79).................: MPI_Init(argc=0x7fffffff73cc, argv=0x7fffffff73e0) failed
+MPII_Init_thread(261).............: 
+MPID_Init(549)....................: 
+MPIDI_OFI_init_local(720).........: 
+MPIDI_OFI_create_vci_context(1040): 
+create_vci_domain(1216)...........: OFI call opendomain failed (default nic=cxi0: Function not implemented)
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400             3252.08           3245.48           3259.60          30
+### model=resnet50_fp32 bytes=102228128 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128           11825.84          11821.45          11831.06          30
+### model=bert_large_fp16 bytes=680000000 N=64
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+680000000           90742.72          90732.05          90806.41          30
+[ml] done -> /lustre/orion/csc678/scratch/graceli/rccl-frontier/results_ml/N64_job4939924
