@@ -16,11 +16,11 @@ LADDER=${1:-"1 8 64 512 1024 2048 4096"}
 REPS=${REPS:-3}
 
 for N in $LADDER; do
-  # Tight caps: RCCL (run first) finishes fast even at 4096; the slow CPU baseline may get
-  # clipped at scale, which is fine (RCCL is the result). 4096 runs in <4 min.
-  WT="-t 00:03:00"                          # 128-1024
-  [ "$N" -le 64 ]   && WT="-t 00:02:00"     # small
-  [ "$N" -ge 2048 ] && WT="-t 00:04:00"     # 2048 / 4096
+  # Order is C -> D -> B, so C (RCCL) and D (Cray) are captured before the slow CPU path.
+  # These caps give B room to finish too at <=512; at scale B (680 MB CPU) may still clip -- fine.
+  WT="-t 00:05:00"                          # 128-1024
+  [ "$N" -le 64 ]   && WT="-t 00:04:00"     # small
+  [ "$N" -ge 2048 ] && WT="-t 00:08:00"     # giants: B at 680 MB is very slow (no Cray here anyway)
   for r in $(seq 1 "$REPS"); do
     echo "submit ML N=$N rep=$r/$REPS $WT"
     sbatch $WT -N "$N" "$HERE/run_ml_sync.sbatch"

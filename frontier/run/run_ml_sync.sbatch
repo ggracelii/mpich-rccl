@@ -64,17 +64,8 @@ for e in "${ML[@]}"; do
     | tee -a "$RESULTS/C_mpich_rccl.txt" || true
 done
 
-# ---- B: MPICH CPU-on-device (host-staged) — slow at large sizes; may be clipped at scale ----
-load_mine
-for e in "${ML[@]}"; do
-  sz=${e##*:}
-  echo "### model=${e%%:*} bytes=$sz N=$NODES" | tee -a "$RESULTS/B_mpich_dev.txt"
-  MPIR_CVAR_DEVICE_COLLECTIVES=all \
-    $MPIEXEC "$BIND" "$OSU_MINE_BIN" -m ${sz}:${sz} -i "$ITERS" -x "$WARMUP" -d rocm -f 2>&1 \
-    | tee -a "$RESULTS/B_mpich_dev.txt" || true
-done
-
-# ---- D: Cray GPU-aware (only <=512 nodes; faults >4 MiB at >=1024) ----
+# ---- D: Cray GPU-aware (run BEFORE the slow CPU baseline so B can't starve it;
+#         only <=512 nodes — Cray faults >4 MiB at >=1024 and all ML sizes exceed 4 MiB) ----
 if [ "$NODES" -le 512 ]; then
   load_cray
   for e in "${ML[@]}"; do
@@ -89,5 +80,16 @@ else
   echo "N=$NODES > 512: skipping Cray (D) — faults >4 MiB, all ML sizes exceed that" \
     | tee "$RESULTS/D_cray_gpuaware.txt"
 fi
+
+# ---- B: MPICH CPU-on-device (host-staged) — SLOWEST, runs LAST so it can't starve C/D;
+#         if the walltime clips it that's fine (CPU is the impractical baseline) ----
+load_mine
+for e in "${ML[@]}"; do
+  sz=${e##*:}
+  echo "### model=${e%%:*} bytes=$sz N=$NODES" | tee -a "$RESULTS/B_mpich_dev.txt"
+  MPIR_CVAR_DEVICE_COLLECTIVES=all \
+    $MPIEXEC "$BIND" "$OSU_MINE_BIN" -m ${sz}:${sz} -i "$ITERS" -x "$WARMUP" -d rocm -f 2>&1 \
+    | tee -a "$RESULTS/B_mpich_dev.txt" || true
+done
 
 echo "[ml] done -> $RESULTS"
