@@ -1,0 +1,14 @@
+=== C_mpich_rccl : N=512 ranks=4096 ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+4                     154.34            105.14            170.55          50
+8                     151.47            102.06            167.36          50
+16                    136.79             88.70            151.98          50
+32                    136.80             88.58            152.20          50
+64                    150.47             95.80            166.91          50
+128                   228.10            139.42            252.98          50
+256                   234.00            143.34            259.58          50
+512                   241.93            147.48            268.37          50
+[2026-07-02T18:48:45.029] error: *** STEP 4932947.2 ON frontier00027 CANCELLED AT 2026-07-02T18:48:45 DUE TO TIME LIMIT ***

@@ -1,0 +1,133 @@
+[env] PROJ=csc678 WORK=/lustre/orion/csc678/scratch/graceli/rccl-frontier ROCM=6.2.4
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400              731.38            723.57            741.13          30
+### model=resnet50_fp32 bytes=102228128 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128            2174.87           2153.95           2194.74          30
+### model=bert_large_fp16 bytes=680000000 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+680000000           12431.44          12350.97          12491.60          30
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Activating Modules:
+  1) darshan-runtime/3.4.6-mpi
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400             2027.17           2026.25           2027.73          30
+### model=resnet50_fp32 bytes=102228128 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128            7509.69           7508.73           7510.40          30
+### model=bert_large_fp16 bytes=680000000 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+680000000           49786.90          49784.19          49789.14          30
+Running "module reset". Resetting modules to system default. The following $MODULEPATH directories have been removed: None
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+DefApps:
+   ROCm/5.x modules and HPE/Cray Programming Environment (CPE) versions <=
+   23.12 were removed on July 1, 2026. For more information regarding the
+   removal, please see https://docs.olcf.ornl.gov/software/software-news.html#frontier-software-changes-july-1-2026
+
+-------------------------------------------------------------------------------
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+
+Lmod is automatically replacing "cce/18.0.1" with "amd/6.2.4".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.6.0" with "PrgEnv-amd/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-libsci/24.11.0     2) cray-mpich/8.1.31     3) darshan-runtime/3.4.6-mpi
+
+### model=ddp_bucket_25MiB bytes=26214400 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400           296739.77         292317.44         301152.47          30
+### model=resnet50_fp32 bytes=102228128 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128         1191399.83        1171617.80        1211176.08          30
+### model=bert_large_fp16 bytes=680000000 N=2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+[2026-07-06T10:01:54.011] error: *** STEP 4947028.8 ON frontier08614 CANCELLED AT 2026-07-06T10:01:54 DUE TO TIME LIMIT ***
+[2026-07-06T10:01:54.013] error: *** JOB 4947028 ON frontier08614 CANCELLED AT 2026-07-06T10:01:54 DUE TO TIME LIMIT ***

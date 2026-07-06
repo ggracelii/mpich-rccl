@@ -4,3 +4,4 @@
 *.ipynb            linguist-documentation
 frontier/results/** linguist-generated
 frontier/out/**     linguist-generated
+frontier/archive/** linguist-generated
