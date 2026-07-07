@@ -19,7 +19,7 @@ BIND="$HERE/bind_frontier.sh"
 
 NODES=${SLURM_JOB_NUM_NODES:?}
 PPN=8; NRANKS=$((NODES * PPN))
-SZ=680000000          # BERT-Large fp16 gradient: 340 M params x 2 B
+SZ=${SZ:-680000000}   # BERT gradient bytes; override via --export=ALL,SZ=1360000000 for fp32
 ITERS=30; WARMUP=10   # match run_ml_sync.sbatch
 
 RESULTS=$WORK/results_ml/N${NODES}_job${SLURM_JOB_ID}
@@ -32,7 +32,8 @@ module load rccl-net-plugin
 MPIEXEC="mpiexec -bootstrap slurm -n $NRANKS -ppn $PPN -bind-to numa"
 OSU_MINE_BIN=$OSU_MINE/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 
-echo "### model=bert_large_fp16 bytes=$SZ N=$NODES" | tee -a "$RESULTS/C_mpich_rccl.txt"
+MODEL=bert_large_fp16; [ "$SZ" = 1360000000 ] && MODEL=bert_large_fp32
+echo "### model=$MODEL bytes=$SZ N=$NODES" | tee -a "$RESULTS/C_mpich_rccl.txt"
 MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=ccl MPIR_CVAR_ALLREDUCE_CCL=rccl MPIR_CVAR_DEVICE_COLLECTIVES=none \
   $MPIEXEC "$BIND" "$OSU_MINE_BIN" -m ${SZ}:${SZ} -i "$ITERS" -x "$WARMUP" -d rocm -f 2>&1 \
   | tee -a "$RESULTS/C_mpich_rccl.txt"
