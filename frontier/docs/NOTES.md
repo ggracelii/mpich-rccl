@@ -214,6 +214,29 @@ MPICH's collective selection (csel) natively supports the CCL leaf:
   Improving MPICH's small-message device path is future work that would make the selection
   genuinely size-dependent.
 
+### Per-communicator thresholds: why they worked at JLSE but not (as a staged hybrid) on Frontier
+The SULI paper (JLSE, **ch4:ucx**) had two thresholds — 8 KB single-node, 32 KB multi-node —
+routing `recursive_doubling` (small) vs RCCL (large) in the MPIR tuning tree. That mechanism is
+intact: `comm_size` + `avg_msg_size` branches in the MPIR tree are crash-free and per-communicator.
+The reason it doesn't reproduce here is the **interconnect/device layer**, not the tree:
+- **Small-alg probe (jobs 4953516/17, forced algorithm, 8 B–64 KiB, 1+2 nodes):** on Frontier
+  **ch4:ofi, NO pure-MPIR algorithm beats RCCL at any small size.** Best (recexch /
+  recursive_doubling) ≈ **117–160 µs at 8 B vs RCCL ≈ 53–56 µs** (2–3× slower); smp/tree/
+  reduce_scatter worse (to ~515 µs). Enabling GPU-direct RDMA (`FI_HMEM=1`) is a wash (118 vs 118).
+  JLSE's UCX rocm transport did GPU-direct pt2pt (fast small); Frontier's ofi path stages
+  GPU→host per communication round → log₂(P)× the tax → no MPIR algorithm is competitive.
+- **So on Frontier the ONLY sub-RCCL small path is the CPU-staged composition** (one bulk copy,
+  ~39 µs). That path is gated by a single global CVAR (`CH4_GPU_COLL_SWAP_BUFFER_SZ`), which must
+  equal the routing threshold (verified: decoupling them — per-comm ch4 branches + large global
+  swap — faults at the alpha→beta handoff, job 4953409, EXIT 9). **Hence per-communicator
+  thresholds for the *staged* hybrid are not realizable without a source change** (expose the
+  staged reduce as a per-comm tree algorithm, or make the swap buffer per-communicator).
+- **Production decision:** single **16 KiB** threshold (SWAP = ch4 split = mpir gate = 16 KiB) —
+  the only crash-free design. Measured per-scale optima (8 KiB @≤4 nodes, 16 KiB @8–1024,
+  64 KiB @2048) are reported as a **characterization result** motivating a per-communicator swap
+  buffer as future work. Contrast with JLSE, where per-node-class thresholds were both realizable
+  and beneficial because the small path (`recursive_doubling`) was itself fast.
+
 ### Giant-scale run hygiene (lessons)
 - Real run times are tiny (~2 min ≤1024, ~3–4 min at 2048/4096); a hung/faulting job otherwise
   burns to the walltime. Set the walltime to **8 min for ≥512 nodes** so a stall dies fast
