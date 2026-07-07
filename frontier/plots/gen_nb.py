@@ -18,7 +18,9 @@ each rep = mean over 50 iterations, 10 warm-ups). **Cell 2** defines the styling
 functions (collapse it to hide the code). Every cell after that is a **one-line call**.
 
 Each axis shows a small italic "lower/higher is better" note beside its label. Configs:
-MPICH (host CPU) / MPICH (device) / **MPICH-RCCL** / Cray MPICH.
+MPICH (host CPU) / MPICH (device) / **MPICH-RCCL** / Cray MPICH. The **Cray MPICH** plotted is
+the BLK=64 MB-tuned configuration (see NOTES); the default config crashes >4 MiB at ≥1024 nodes
+and is retired from the plots.
 
 Message-size coverage (intentional, not data gaps):
 - **MPICH-RCCL (C): 8 B → 1 GiB at every node count (1–4096).** 1 GiB is OSU's ceiling (32-bit message size).
@@ -36,9 +38,9 @@ RESULTS = "results_sweep" if os.path.isdir("results_sweep") else "../results_swe
 OSU_FILES = {"A":"A_mpich_host.txt","B":"B_mpich_dev.txt",
              "C":"C_mpich_rccl.txt","D":"D_cray_gpuaware.txt"}
 LABEL = {"A":"MPICH (host CPU)","B":"MPICH (device)","C":"MPICH-RCCL",
-         "D":"Cray MPICH","E":"RCCL (rccl-tests)",
+         "D":"Cray MPICH (default 8MB\\u2020)","E":"RCCL (rccl-tests)",
          "K":"Cray MPICH (kernel-off\\u2020)",   # \\u2020 = non-default workaround configs
-         "T":"Cray MPICH (BLK=64 MB\\u2020)"}   # tuned: kernel path + MPICH_GPU_ALLREDUCE_BLK_SIZE=64MB (rescues >4 MiB at >=1024)
+         "T":"Cray MPICH"}   # BLK=64MB tuned config = THE Cray line on all plots (detail in NOTES/report)
 
 def parse_osu(path):
     out = []
@@ -155,10 +157,12 @@ STYLE = {   # all data lines uniform: solid, circle markers, same weight (distin
     "D": dict(color="#7e4bbd", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["D"]),
     "K": dict(color="#b39ddb", marker="o", linestyle="--", linewidth=2, markersize=5,
               markerfacecolor="none", label=LABEL["K"]),   # lighter dashed purple: kernel-off workaround
-    "T": dict(color="#9575cd", marker="o", linestyle="-.", linewidth=2, markersize=5,
-              label=LABEL["T"]),                            # mid purple dash-dot: tuned (BLK=64MB) Cray
+    "T": dict(color="#7e4bbd", marker="o", linestyle="-", linewidth=2, markersize=5,
+              label=LABEL["T"]),                            # T is THE Cray line: original purple, solid
 }
-ORDER = ["A","B","C","D"]           # E (pure RCCL) parsed but not plotted
+ORDER = ["A","B","C"]               # default-D retired from plots (T = the Cray line); E parsed, not plotted
+def cray_cfg():                     # what "Cray MPICH" means on the plots
+    return "T" if (data.config == "T").any() else "D"
 
 def sci(x,_):
     if x <= 0: return "0"
@@ -218,18 +222,23 @@ def annotate_max(fig, ax_host, ax_data, x, y, text, boxcolor="black"):
         score = np.min(np.hypot(P[:,0]-cand[0], P[:,1]-cand[1])) if len(P) else 1e9
         if score > best_score:
             best_score, best = score, off
-    ax_data.annotate(text, xy=(x, y), xytext=best, textcoords="offset points",
-                     fontsize=15, ha="center", va="center",
+    # draw on the TOP axes (ax_host is composited above ax_data), else the latency
+    # lines paint over the white box; transform the anchor into host coordinates.
+    xh, yh = ax_host.transData.inverted().transform(anchor)
+    ax_host.annotate(text, xy=(xh, yh), xytext=best, textcoords="offset points",
+                     fontsize=15, ha="center", va="center", zorder=20,
                      bbox=dict(fc="white", ec=boxcolor, boxstyle="round,pad=0.3"),
                      arrowprops=dict(arrowstyle="->", color=boxcolor))
 
 def finish(fig):
     fig.patch.set_facecolor("white"); fig.tight_layout(); plt.show()
 
-def plot_latency_vs_size(nodes, speedup_over="D"):
+def plot_latency_vs_size(nodes, speedup_over=None):
+    if speedup_over is None: speedup_over = cray_cfg()
     fig, ax1 = plt.subplots(figsize=(16,10))
     xall = []
-    for cfg in ORDER + [c for c in ("K","T") if (data.config == c).any()]:
+    wcfg = "T" if (data.config == "T").any() else "K"   # tuned Cray preferred; kernel-off fallback
+    for cfg in ORDER + ([wcfg] if (data.config == wcfg).any() else []):
         x,y = series(nodes,cfg)
         if len(x): ax1.plot(x,y,**STYLE[cfg]); xall += [x.min(), x.max()]
     ax1.set_xscale("log", base=2); ax1.set_yscale("log")
@@ -250,12 +259,12 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
         ax2 = ax1.twinx()
         ax1.set_zorder(ax2.get_zorder()+1); ax1.patch.set_visible(False)   # data lines above the ax2 baseline
         ax2.plot(common, sc, marker="o", linestyle="--", color=SPEEDUP_COLOR, lw=2, label=f"{LABEL['C']} speedup vs {LABEL[speedup_over]}")
-        xk,yk = series(nodes,"K")           # second speedup: vs kernel-off Cray (light green), giants only
+        xk,yk = series(nodes,wcfg) if wcfg != speedup_over else (np.array([]), np.array([]))  # skip when it would duplicate the primary
         if len(xk):
             commonk = np.intersect1d(xc,xk)
             sck = np.array([yk[list(xk).index(s)]/yc[list(xc).index(s)] for s in commonk])
             ax2.plot(commonk, sck, marker="o", linestyle="--", color="#90d890", lw=2,
-                     label=f"{LABEL['C']} speedup vs {LABEL['K']}")
+                     label=f"{LABEL['C']} speedup vs {LABEL[wcfg]}")
         ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0); ax2.set_yscale("log", base=2)
         ylabel2(ax2, f"{LABEL['C']} speedup" if len(xk) else SPD_MAIN(speedup_over), "higher is better", "right")
         ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
@@ -270,7 +279,8 @@ def plot_latency_vs_size(nodes, speedup_over="D"):
         ax1.legend(loc="upper left", framealpha=1)
     finish(fig)
 
-def plot_speedup_vs_size(baseline="D"):
+def plot_speedup_vs_size(baseline=None):
+    if baseline is None: baseline = cray_cfg()
     fig, ax = plt.subplots(figsize=(16,10))
     xall = []
     for n in sorted(data.nodes.unique()):
@@ -298,7 +308,8 @@ def plot_speedup_vs_size(baseline="D"):
 def plot_scaling(size):
     size = parse_size(size)
     fig, ax = plt.subplots(figsize=(16,10))
-    for cfg in ORDER + [c for c in ("K","T") if (data.config == c).any()]:
+    wcfg = "T" if (data.config == "T").any() else "K"
+    for cfg in ORDER + ([wcfg] if (data.config == wcfg).any() else []):
         d = data[(data.config==cfg)&(data["size"]==size)].sort_values("nodes")
         if len(d): ax.plot(d.nodes, d.avg, **STYLE[cfg])
     ax.set_xscale("log", base=2); ax.set_yscale("log")
@@ -311,7 +322,8 @@ def plot_scaling(size):
     ax.legend(framealpha=1)
     finish(fig)
 
-def plot_crossover(baseline="D", annotate=True, vmax=None):
+def plot_crossover(baseline=None, annotate=True, vmax=None):
+    if baseline is None: baseline = cray_cfg()
     # linear diverging color centered at 1x (= equal); extremes saturate red/blue.
     # cell text = linear speedup (>1 = MPICH-RCCL faster). vmax caps the red end.
     pc = data[data.config=="C"].pivot_table(index="size", columns="nodes", values="avg")
@@ -372,7 +384,8 @@ ML_MODELS = [   # (label, exact gradient bytes, nearest power-of-2 in main sweep
     ("BERT-Large fp32: 1.36 GB",  1360000000, 1073741824, "#4477aa"),   # 340 M params x 4 B (near: ~1 GiB)
 ]
 
-def ml_sync_table(baseline="D", source="exact"):
+def ml_sync_table(baseline=None, source="exact"):
+    if baseline is None: baseline = cray_cfg()
     # source="exact" -> results_ml at exact model sizes; "near" -> main sweep at nearest power-of-2
     src = data_ml if source == "exact" else data
     r = []
@@ -400,11 +413,13 @@ SPD_NEON = {"#ee7733": "#ffb424",    # orange  -> bright amber
             "#aa3377": "#ff64c8",    # magenta -> hot pink
             "#4477aa": "#55c8ff"}    # blue    -> bright sky
 
-def plot_ml_sync(baseline="D", source="exact"):
+def plot_ml_sync(baseline=None, source="exact"):
+    if baseline is None: baseline = cray_cfg()
     from matplotlib.lines import Line2D
     if source == "exact" and data_ml is None:
         print("no results_ml loaded — call plot_ml_sync(source='near') for the main-sweep estimate"); return
     src = data_ml if source == "exact" else data
+    wc = "T" if (data.config == "T").any() else "K"
     df = ml_sync_table(baseline, source)
     fig, ax = plt.subplots(figsize=(16,10)); ax2 = ax.twinx()   # right axis = RCCL speedup vs baseline
     ax.set_zorder(ax2.get_zorder()+1); ax.patch.set_visible(False)   # data lines above the ax2 baseline
@@ -418,10 +433,10 @@ def plot_ml_sync(baseline="D", source="exact"):
         if len(bs): ax.plot(bs.nodes, bs.base_ms, marker="o", ls="--", lw=2, ms=6, color=col)            # baseline: dashed circle
         sp = s.dropna(subset=["speedup"])
         if len(sp): ax2.plot(sp.nodes, sp.speedup, marker="s", ls=":", lw=2, ms=6, color=SPD_NEON.get(col, col))  # speedup: neon, square
-        kn = s.dropna(subset=["knob_ms"]) if "knob_ms" in s else s.iloc[0:0]
+        kn = s.dropna(subset=["knob_ms"]) if ("knob_ms" in s and baseline != wc) else s.iloc[0:0]
         if len(kn): ax.plot(kn.nodes, kn.knob_ms, marker="o", ls="-.", lw=2, ms=6, color=col,
                             markerfacecolor="none")                                             # kernel-off Cray: dash-dot open circle
-        ks = s.dropna(subset=["knob_spd"]) if "knob_spd" in s else s.iloc[0:0]
+        ks = s.dropna(subset=["knob_spd"]) if ("knob_spd" in s and baseline != wc) else s.iloc[0:0]
         if len(ks): ax2.plot(ks.nodes, ks.knob_spd, marker="s", ls=":", lw=2, ms=6,
                              color=SPD_NEON.get(col, col), markerfacecolor="none")              # speedup vs kernel-off: neon OPEN square
     ax.set_xscale("log", base=2); ax.set_yscale("log")
@@ -442,26 +457,27 @@ def plot_ml_sync(baseline="D", source="exact"):
     # legend 2 (untitled): line meaning (upper left)
     sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
           Line2D([0],[0], color="#444444", lw=2, ls="--", marker="o"),
-          Line2D([0],[0], color="#444444", lw=2, ls="-.", marker="o", markerfacecolor="none"),
-          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s"),
-          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s", markerfacecolor="none")]
-    ax.legend(sh, [f"{LABEL['C']}", f"{LABEL[baseline]}",
-                   (LABEL["T"] if (src.config == "T").any() else LABEL["K"]),
-                   "RCCL speedup", "RCCL speedup vs workaround\\u2020"],
-              loc="upper right", framealpha=1)
+          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s")]
+    sl = [f"{LABEL['C']}", f"{LABEL[baseline]}", "RCCL speedup"]
+    if baseline != wc and (src.config == wc).any():   # extra workaround series only when distinct
+        sh.insert(2, Line2D([0],[0], color="#444444", lw=2, ls="-.", marker="o", markerfacecolor="none"))
+        sl.insert(2, f"{LABEL[wc]}")
+        sh.append(Line2D([0],[0], color="#bbbbbb", lw=2, ls=":", marker="s", markerfacecolor="none"))
+        sl.append(f"RCCL speedup vs {LABEL[wc]}")
+    ax.legend(sh, sl, loc="upper right", framealpha=1)
     finish(fig)
     return df''')
 
-code('''plot_latency_vs_size(128)          # node count: 1, 2, 4, 8, ... 1024, 2048, 4096''')
+code('''plot_latency_vs_size(32)          # node count: 1, 2, 4, 8, ... 1024, 2048, 4096''')
 
-code('''plot_speedup_vs_size("D")        # baseline: "D"=Cray, "B"=MPICH (device)''')
+code('''plot_speedup_vs_size("T")        # baseline: "D"=Cray, "B"=MPICH (device)''')
 
 code('''plot_scaling("1MiB")             # size: "1KiB", "16MiB", "1GiB", "2GiB", "4GiB", ... (raw bytes also ok)''')
 
-code('''plot_crossover("K")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
+code('''plot_crossover("T")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
 
 code('''# ML gradient-sync (2 plots). solid=RCCL, dashed=Cray (both circles); light dotted square = RCCL speedup (right axis)
-df_ml = plot_ml_sync("D", source="exact")   # (1) exact model sizes (results_ml)
+df_ml = plot_ml_sync(source="exact")   # (1) exact model sizes (results_ml)
 # plot_ml_sync("D", source="near")             # (2) nearest power-of-2 estimate (main sweep)
 df_ml.round(3)''')
 
