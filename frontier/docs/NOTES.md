@@ -131,6 +131,13 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
   production Cray crashes >4 MiB at ≥1024 nodes (unfixed through v9.0.0); a documented non-default
   tuning rescues it and is competitive to ~100 MB; RCCL needs no tuning, never crashes, and wins
   2–3× at the sizes where large-model gradients live (0.1–1.4 GB).*
+- **BLK=64MB is Pareto-better than the default even where the default works** (measured 1–64
+  nodes): identical below the 128 KiB kernel threshold, equal mid-range, and **up to 1.5×
+  faster at ≥256 MB** (2.5× at 64 MiB/N=64) — plus it doesn't crash at scale. There is no
+  size/scale where the default configuration is meaningfully better.
+- **Plot convention (repo-wide):** "Cray MPICH" on all plots = the **BLK=64MB tuned config**
+  (config T); the default config is retired from plots (explicitly callable, labeled
+  "default 8MB†"). READMEs and the paper define this once; graph labels stay clean.
 - **In flight:** tuned-Cray (BLK=64MB) full ladder **1→4096 nodes × 2 reps** (sweep 8 B→4 GiB +
   the 4 ML gradient sizes each) → `results_crayblk64/`, plotted as config **T** ("Cray
   (BLK=64 MB†)") with a `Dt` best-of-default/tuned composite heatmap. Open question the ladder

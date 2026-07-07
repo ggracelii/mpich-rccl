@@ -11,7 +11,10 @@ offloads `MPI_Allreduce` to RCCL so the reduction runs on the GPUs directly (XGM
 intra-node, libfabric/CXI inter-node). The current effort measures that backend on
 Frontier against:
 
-- **Cray MPICH** — the production GPU-aware MPI on Frontier,
+- **Cray MPICH** — the production GPU-aware MPI on Frontier (plotted as the
+  `MPICH_GPU_ALLREDUCE_BLK_SIZE=64MB`-tuned configuration: the default configuration
+  crashes above 4 MiB at ≥1024 nodes, unfixed through cray-mpich 9.0.0 — see
+  `frontier/docs/NOTES.md`),
 - **MPICH's own CPU path** — host buffers, and device buffers staged through host,
 - **pure RCCL** (`rccl-tests`) — a no-MPI ceiling,
 
