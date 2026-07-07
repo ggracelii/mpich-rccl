@@ -1,0 +1,28 @@
+### model=ddp_bucket_25MiB bytes=26214400 N=8
+srun: Step created for StepId=4952570.1
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+26214400             2014.23           1996.85           2036.47          20
+### model=resnet50_fp32 bytes=102228128 N=8
+srun: Step created for StepId=4952570.2
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+102228128            7932.71           7895.08           7963.97          20
+### model=bert_large_fp16 bytes=680000000 N=8
+srun: Step created for StepId=4952570.3
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+680000000           50276.08          50266.36          50283.96          20
+### model=bert_large_fp32 bytes=1360000000 N=8
+srun: Step created for StepId=4952570.4
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+1360000000         100114.18         100106.60         100121.28          20
