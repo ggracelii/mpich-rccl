@@ -110,8 +110,14 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
 - **Not a walltime artifact:** the job `COMPLETED` in ~2:48 (D died fast, the script continued) —
   a crash, not a timeout. Reproducible across all ≥1024-node reps.
 - Scope: this is the **production default** GPU-aware Cray (`MPICH_GPU_SUPPORT_ENABLED=1`); the
-  RCCL comparison uses the identical harness — a fair comparison. (Untested: whether a Cray
-  algorithm CVAR dodges the fault; the default-config result stands on its own.)
+  RCCL comparison uses the identical harness — a fair comparison.
+- **Knob probe (job 4948927, 8 MiB @1024, all documented GPU-path tunings):** default, `IPC_ENABLED=0`,
+  `COLL_STAGING_AREA_OPT=0`, `ALLREDUCE_USE_KERNEL=1`, `NO_ASYNC_COPY=1` all **FAULT**; only
+  **`MPICH_GPU_ALLREDUCE_USE_KERNEL=0` survives** — the faulting component is Cray's GPU-kernel
+  reduction path; disabling it falls back to a copy-based reduce. **The workaround costs 2.4×:**
+  7,824 µs vs RCCL's 3,250 µs at 8 MiB/1024 nodes. So at scale RCCL is faster than Cray's only
+  *working* large-message path, not just its (crashing) default. Non-default-Cray data measured
+  with this knob lives in `results_crayknob/` and is kept separate from default-D everywhere.
 
 **Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
 1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
