@@ -37,7 +37,8 @@ OSU_FILES = {"A":"A_mpich_host.txt","B":"B_mpich_dev.txt",
              "C":"C_mpich_rccl.txt","D":"D_cray_gpuaware.txt"}
 LABEL = {"A":"MPICH (host CPU)","B":"MPICH (device)","C":"MPICH-RCCL",
          "D":"Cray MPICH","E":"RCCL (rccl-tests)",
-         "K":"Cray MPICH (kernel-off\\u2020)"}   # \\u2020 = non-default MPICH_GPU_ALLREDUCE_USE_KERNEL=0 workaround
+         "K":"Cray MPICH (kernel-off\\u2020)",   # \\u2020 = non-default workaround configs
+         "T":"Cray MPICH (BLK=64 MB\\u2020)"}   # tuned: kernel path + MPICH_GPU_ALLREDUCE_BLK_SIZE=64MB (rescues >4 MiB at >=1024)
 
 def parse_osu(path):
     out = []
@@ -109,6 +110,28 @@ if knob_ml and data_ml is not None:
     data_ml = pd.concat([data_ml, _km[_km["avg"] > 0].groupby(["nodes","config","size"], as_index=False)
                          .agg(avg=("avg","median"), nreps=("job","nunique"))], ignore_index=True)
 
+# Tuned Cray: kernel path + BLK_SIZE=64MB (config "T", results_crayblk64) — same file pattern as K
+TUNED_RESULTS = "results_crayblk64" if os.path.isdir("results_crayblk64") else "../results_crayblk64"
+t_rows, t_ml = [], []
+for d in sorted(glob.glob(os.path.join(TUNED_RESULTS, "N*_job*"))):
+    m = re.match(r"N(\\d+)_job(\\d+)", os.path.basename(d))
+    if not m:
+        continue
+    n, job = int(m.group(1)), int(m.group(2))
+    for fn, sink in [("D_blk64_sweep.txt", t_rows), ("D_blk64_ml.txt", t_ml)]:
+        fp = os.path.join(d, fn)
+        if os.path.exists(fp):
+            for s, a, mn, mx in parse_osu(fp):
+                sink.append(dict(nodes=n, job=job, config="T", size=s, avg=a))
+if t_rows:
+    _t = pd.DataFrame(t_rows)
+    data = pd.concat([data, _t[_t["avg"] > 0].groupby(["nodes","config","size"], as_index=False)
+                      .agg(avg=("avg","median"), std=("avg","std"), nreps=("job","nunique"))], ignore_index=True)
+if t_ml and data_ml is not None:
+    _tm = pd.DataFrame(t_ml)
+    data_ml = pd.concat([data_ml, _tm[_tm["avg"] > 0].groupby(["nodes","config","size"], as_index=False)
+                         .agg(avg=("avg","median"), nreps=("job","nunique"))], ignore_index=True)
+
 print("main sweep nodes:", sorted(data.nodes.unique()), "| sizes:", data["size"].nunique(),
       "| ML Path-2:", ("loaded, nodes " + str(sorted(data_ml.nodes.unique()))) if data_ml is not None else "none (uses Path 1)")
 data.head()''')
@@ -131,7 +154,9 @@ STYLE = {   # all data lines uniform: solid, circle markers, same weight (distin
     "C": dict(color="#d62728", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["C"]),
     "D": dict(color="#7e4bbd", marker="o", linestyle="-", linewidth=2, markersize=5, label=LABEL["D"]),
     "K": dict(color="#b39ddb", marker="o", linestyle="--", linewidth=2, markersize=5,
-              markerfacecolor="none", label=LABEL["K"]),   # lighter dashed purple: non-default Cray workaround
+              markerfacecolor="none", label=LABEL["K"]),   # lighter dashed purple: kernel-off workaround
+    "T": dict(color="#9575cd", marker="o", linestyle="-.", linewidth=2, markersize=5,
+              label=LABEL["T"]),                            # mid purple dash-dot: tuned (BLK=64MB) Cray
 }
 ORDER = ["A","B","C","D"]           # E (pure RCCL) parsed but not plotted
 
@@ -204,7 +229,7 @@ def finish(fig):
 def plot_latency_vs_size(nodes, speedup_over="D"):
     fig, ax1 = plt.subplots(figsize=(16,10))
     xall = []
-    for cfg in ORDER + (["K"] if (data.config == "K").any() else []):
+    for cfg in ORDER + [c for c in ("K","T") if (data.config == c).any()]:
         x,y = series(nodes,cfg)
         if len(x): ax1.plot(x,y,**STYLE[cfg]); xall += [x.min(), x.max()]
     ax1.set_xscale("log", base=2); ax1.set_yscale("log")
@@ -273,7 +298,7 @@ def plot_speedup_vs_size(baseline="D"):
 def plot_scaling(size):
     size = parse_size(size)
     fig, ax = plt.subplots(figsize=(16,10))
-    for cfg in ORDER + (["K"] if (data.config == "K").any() else []):
+    for cfg in ORDER + [c for c in ("K","T") if (data.config == c).any()]:
         d = data[(data.config==cfg)&(data["size"]==size)].sort_values("nodes")
         if len(d): ax.plot(d.nodes, d.avg, **STYLE[cfg])
     ax.set_xscale("log", base=2); ax.set_yscale("log")
@@ -290,15 +315,18 @@ def plot_crossover(baseline="D", annotate=True, vmax=None):
     # linear diverging color centered at 1x (= equal); extremes saturate red/blue.
     # cell text = linear speedup (>1 = MPICH-RCCL faster). vmax caps the red end.
     pc = data[data.config=="C"].pivot_table(index="size", columns="nodes", values="avg")
-    if baseline == "Dk":   # composite: best surviving Cray (default D where it works, kernel-off K beyond)
+    if baseline in ("Dk", "Dt"):   # composite: best surviving Cray (default + workaround)
+        wcfg = "K" if baseline == "Dk" else "T"
         pd_ = data[data.config=="D"].pivot_table(index="size", columns="nodes", values="avg")
-        pk_ = data[data.config=="K"].pivot_table(index="size", columns="nodes", values="avg")
+        pk_ = data[data.config==wcfg].pivot_table(index="size", columns="nodes", values="avg")
         idxu = pd_.index.union(pk_.index); colu = pd_.columns.union(pk_.columns)
         pb = pd_.reindex(index=idxu, columns=colu).combine(pk_.reindex(index=idxu, columns=colu), np.fmin)
     else:
         pb = data[data.config==baseline].pivot_table(index="size", columns="nodes", values="avg")
-    cols = sorted(set(pc.columns)&set(pb.columns)); idx = sorted(set(pc.index)&set(pb.index))
-    lin = (pb.loc[idx,cols] / pc.loc[idx,cols])          # linear speedup: MPICH-RCCL / baseline (1 = equal)
+    if pb.size == 0 or not np.isfinite(pb.values).any():
+        print(f"no data for baseline {baseline!r} yet"); return
+    cols = sorted(pc.columns); idx = sorted(pc.index)    # full RCCL grid; baseline gaps show as gray
+    lin = (pb.reindex(index=idx, columns=cols) / pc.loc[idx,cols])   # linear speedup: MPICH-RCCL / baseline (1 = equal)
     lo = min(np.nanmin(lin.values), 0.99)
     hi = vmax if vmax is not None else max(np.nanmax(lin.values), 1.01)
     # color on a LOG scale so 1x = white and every doubling is an equally visible step
@@ -318,7 +346,8 @@ def plot_crossover(baseline="D", annotate=True, vmax=None):
                 if np.isnan(v): continue
                 ax.text(j, i, f"{v:.1f}", ha="center", va="center", fontsize=9,
                         color="white" if (v > 2.5 or v < 0.5) else "black")
-    blabel = "Cray MPICH (best of default / kernel-off\\u2020)" if baseline == "Dk" else LABEL[baseline]
+    blabel = ("Cray MPICH (best of default / kernel-off\\u2020)" if baseline == "Dk" else
+              "Cray MPICH (best of default / BLK=64 MB\\u2020)" if baseline == "Dt" else LABEL[baseline])
     ax.set_title(f"{LABEL['C']} vs {blabel}")
     cb = fig.colorbar(im, ax=ax)
     cbt = [t for t in [0.25, 0.5, 1, 2, 4, 8, 16, 32] if lo <= t <= hi]
@@ -353,13 +382,15 @@ def ml_sync_table(baseline="D", source="exact"):
             def lat(cfg):
                 d = src[(src.nodes==n) & (src.config==cfg) & (src["size"]==sz)]
                 return float(d.avg.iloc[0]) if len(d) else np.nan
-            c, base, b, k = lat("C"), lat(baseline), lat("B"), lat("K")
+            c, base, b = lat("C"), lat(baseline), lat("B")
+            k = lat("T") if not np.isnan(lat("T")) else lat("K")   # workaround Cray: tuned preferred over kernel-off
             r.append(dict(model=label, nodes=n,
                           rccl_ms  = c/1000.0,                                       # MPICH-RCCL per-step sync
                           base_ms  = base/1000.0,                                    # baseline per-step sync
                           knob_ms  = k/1000.0,                                       # Cray kernel-off (workaround) per-step sync
                           eff_GBps = (sz/(c*1e-6))/1e9 if c == c else np.nan,         # RCCL effective bus BW
                           speedup  = base/c if (c == c and base == base) else np.nan, # RCCL speedup vs baseline
+                          knob_spd = k/c if (c == c and k == k) else np.nan,           # RCCL speedup vs kernel-off Cray
                           vs_MPICH = b/c if (c == c and b == b) else np.nan))         # C/B (device-CPU)
     return pd.DataFrame(r)
 
@@ -390,6 +421,9 @@ def plot_ml_sync(baseline="D", source="exact"):
         kn = s.dropna(subset=["knob_ms"]) if "knob_ms" in s else s.iloc[0:0]
         if len(kn): ax.plot(kn.nodes, kn.knob_ms, marker="o", ls="-.", lw=2, ms=6, color=col,
                             markerfacecolor="none")                                             # kernel-off Cray: dash-dot open circle
+        ks = s.dropna(subset=["knob_spd"]) if "knob_spd" in s else s.iloc[0:0]
+        if len(ks): ax2.plot(ks.nodes, ks.knob_spd, marker="s", ls=":", lw=2, ms=6,
+                             color=SPD_NEON.get(col, col), markerfacecolor="none")              # speedup vs kernel-off: neon OPEN square
     ax.set_xscale("log", base=2); ax.set_yscale("log")
     ax.yaxis.set_major_formatter(FuncFormatter(lambda y,_: f"{y:g}"))   # plain 1, 10, 100 (not 10^0)
     ax2.set_yscale("log", base=2); ax2.axhline(1, color="#aaaaaa", ls="--", lw=1.5, zorder=0)
@@ -409,20 +443,22 @@ def plot_ml_sync(baseline="D", source="exact"):
     sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
           Line2D([0],[0], color="#444444", lw=2, ls="--", marker="o"),
           Line2D([0],[0], color="#444444", lw=2, ls="-.", marker="o", markerfacecolor="none"),
-          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s")]
-    ax.legend(sh, [f"{LABEL['C']}  (solid)", f"{LABEL[baseline]}  (dashed)",
-                   f"{LABEL['K']}  (dash-dot)", "RCCL speedup (right axis)"],
+          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s"),
+          Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s", markerfacecolor="none")]
+    ax.legend(sh, [f"{LABEL['C']}", f"{LABEL[baseline]}",
+                   (LABEL["T"] if (src.config == "T").any() else LABEL["K"]),
+                   "RCCL speedup", "RCCL speedup vs workaround\\u2020"],
               loc="upper right", framealpha=1)
     finish(fig)
     return df''')
 
-code('''plot_latency_vs_size(1024)          # node count: 1, 2, 4, 8, ... 1024, 2048, 4096''')
+code('''plot_latency_vs_size(128)          # node count: 1, 2, 4, 8, ... 1024, 2048, 4096''')
 
 code('''plot_speedup_vs_size("D")        # baseline: "D"=Cray, "B"=MPICH (device)''')
 
 code('''plot_scaling("1MiB")             # size: "1KiB", "16MiB", "1GiB", "2GiB", "4GiB", ... (raw bytes also ok)''')
 
-code('''plot_crossover("Dk")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
+code('''plot_crossover("K")              # crossover heatmap: red = MPICH-RCCL faster, gray = no Cray data''')
 
 code('''# ML gradient-sync (2 plots). solid=RCCL, dashed=Cray (both circles); light dotted square = RCCL speedup (right axis)
 df_ml = plot_ml_sync("D", source="exact")   # (1) exact model sizes (results_ml)
@@ -436,7 +472,7 @@ for i,(t,s) in enumerate(cells):
     c = {"cell_type": t, "metadata": {}, "source": s, "id": f"c{i}"}
     if t == "code":
         c["execution_count"] = None; c["outputs"] = []
-        if i in (1, 2):   # loader + functions cells open collapsed (source hidden)
+        if i in (1, 2):
             c["metadata"] = {"jupyter": {"source_hidden": True}}
     nb["cells"].append(c)
 
