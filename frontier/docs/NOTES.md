@@ -115,9 +115,27 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
   `COLL_STAGING_AREA_OPT=0`, `ALLREDUCE_USE_KERNEL=1`, `NO_ASYNC_COPY=1` all **FAULT**; only
   **`MPICH_GPU_ALLREDUCE_USE_KERNEL=0` survives** — the faulting component is Cray's GPU-kernel
   reduction path; disabling it falls back to a copy-based reduce. **The workaround costs 2.4×:**
-  7,824 µs vs RCCL's 3,250 µs at 8 MiB/1024 nodes. So at scale RCCL is faster than Cray's only
-  *working* large-message path, not just its (crashing) default. Non-default-Cray data measured
-  with this knob lives in `results_crayknob/` and is kept separate from default-D everywhere.
+  7,824 µs vs RCCL's 3,250 µs at 8 MiB/1024 nodes — and the gap explodes with size (kernel-off
+  1 GiB @1024 = **1,000 ms vs RCCL 43.7 ms, 23×**). Kernel-off data (full ladder, 2 reps, sweep +
+  ML sizes) lives in `results_crayknob/`, kept separate from default-D everywhere.
+- **Probe 2 (job 4952482, kernel path ON, 1024 nodes): `MPICH_GPU_ALLREDUCE_BLK_SIZE=64MB`
+  RESCUES the fast path.** The kernel path stages through a GPU-attached block buffer
+  (`BLK_SIZE`, default 8 MB); the fault tracks the payload≥block boundary at small blocks
+  (`BLK=4MB` → faults at 4 MiB; default 8 MB → faults at 8 MiB), yet **64 MB blocks (the man
+  page's own suggested value for large payloads) complete the entire 8 B→4 GiB range**. Newer
+  releases do NOT fix the default: **cray-mpich 8.1.32 and 9.0.0 both still fault at 8 MiB.**
+- **Tuned Cray (BLK=64MB) vs RCCL at 1024 nodes:** the rescued kernel path is fast — it *beats*
+  RCCL in the mid range (**8 MiB: 1,114 vs 3,253 µs = 2.9×; 64 MiB: 1.7×**) while **RCCL wins the
+  large regime (1 GiB: 43.7 vs 94.5 ms = 2.2×; 4 GiB: 3.1×)** — crossover ≈128–512 MB. It is also
+  ~25× faster than kernel-off, which is hereby obsolete as a workaround. Honest framing: *default
+  production Cray crashes >4 MiB at ≥1024 nodes (unfixed through v9.0.0); a documented non-default
+  tuning rescues it and is competitive to ~100 MB; RCCL needs no tuning, never crashes, and wins
+  2–3× at the sizes where large-model gradients live (0.1–1.4 GB).*
+- **In flight:** tuned-Cray (BLK=64MB) full ladder **1→4096 nodes × 2 reps** (sweep 8 B→4 GiB +
+  the 4 ML gradient sizes each) → `results_crayblk64/`, plotted as config **T** ("Cray
+  (BLK=64 MB†)") with a `Dt` best-of-default/tuned composite heatmap. Open question the ladder
+  answers: whether the BLK=64MB rescue holds at 2048/4096 (probe verified 1024 only — a
+  truncated sweep at another scale would itself be a finding).
 
 **Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
 1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
