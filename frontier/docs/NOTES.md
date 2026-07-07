@@ -62,7 +62,7 @@ Verified each config does what it claims, not just that it produces numbers:
 - **A = host CPU**: only HIP-API calls, no GPU kernels.
 - **D = Cray**: confirmed via `ldd` (links /opt/cray `libmpi_amd`); rocprof-under-srun hit a
   known ROCm-6.2 rocprof sqlite bug (tooling, not the config).
-Evidence: `results/confirm_4929423/` (NCCL logs + rocprof stats + SUMMARY.txt).
+Evidence: `archive/confirm_4929423/` (NCCL logs + rocprof stats + SUMMARY.txt).
 
 ## Preliminary results — 1–64 node sweep (jobs 4929427–4929448; 3 reps; 10 warmup/50 iters)
 Clean run (no failures in any file). Key finding: the RCCL(C)-vs-Cray(D) winner depends on

@@ -1,7 +1,7 @@
 # Archive — superseded runs & job logs (provenance only)
 
 **Do not analyze anything here as results.** The canonical dataset is
-`../results/sweep/` (main sweep, `4934xxx` + rerun jobs) and `../results_ml/`
+`../results_sweep/` (main sweep, `4934xxx` + rerun jobs) and `../results_ml/`
 (ML gradient-sync). This folder preserves the run history before the csc678
 allocation ended (2026-07-31, Lustre scratch purged).
 

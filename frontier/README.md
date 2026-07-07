@@ -69,7 +69,7 @@ watch -n 30 ./check/monitor.sh           # live health while the sweep drains
 
 ## Plotting
 Open `plots/plot.ipynb` in Jupyter or VSCode (Python + Jupyter extensions; needs
-`pandas numpy matplotlib`). Run cell 1 (loads `results/sweep/`), then any plot cell —
+`pandas numpy matplotlib`). Run cell 1 (loads `results_sweep/`), then any plot cell —
 `plot_latency_vs_size(nodes)`, `plot_speedup_vs_size("D")`, `plot_scaling(size)`,
 `plot_crossover("D")`. Re-run cell 1 after adding new results and every plot updates.
 

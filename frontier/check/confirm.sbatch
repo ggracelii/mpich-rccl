@@ -12,7 +12,7 @@
 #   rocprof    : C = RCCL collective kernels ; B = host-staging hipMemcpy ;
 #                A = no GPU kernels ; D = Cray GPU-aware path.
 #
-# Small evidence (NCCL logs, kernel-stats CSVs, SUMMARY) -> ./results/confirm_<id>/
+# Small evidence (NCCL logs, kernel-stats CSVs, SUMMARY) -> ./archive/confirm_<id>/
 # (committable). Full rocprof traces -> $WORK (scratch, large).
 #
 #   sbatch confirm.sbatch
@@ -28,7 +28,7 @@ OSU_CRAY_BIN=$OSU_CRAY/libexec/osu-micro-benchmarks/mpi/collective/osu_allreduce
 SZ=1048576                                   # 1 MiB — regime where RCCL wins
 RUN="-d rocm -m $SZ:$SZ -i 5 -x 2"           # few iters; we want traces, not timing
 
-REPO=$HERE/results/confirm_${SLURM_JOB_ID}   # small, commit this
+REPO=$HERE/archive/confirm_${SLURM_JOB_ID}   # small, commit this
 SCR=$WORK/results/confirm_${SLURM_JOB_ID}    # big rocprof traces
 mkdir -p "$REPO" "$SCR"
 

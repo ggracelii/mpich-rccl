@@ -1,8 +1,8 @@
 #!/bin/bash
 # check_results.sh — sanity-scan sweep result files so you don't eyeball each one.
 # Flags empty/truncated files and hidden error dumps, and prints key latencies.
-#   ./check_results.sh [dir]        (default: results/sweep)
-DIR=${1:-results/sweep}
+#   ./check_results.sh [dir]        (default: results_sweep)
+DIR=${1:-results_sweep}
 lat() { awk -v s="$2" '$1==s{print $2; exit}' "$1" 2>/dev/null; }   # OSU avg latency (col2) at size $1B
 
 echo "== health: data-rows / error-hits / max-size-reached (want err=0; A,B max=33554432; C,D max=1073741824) =="

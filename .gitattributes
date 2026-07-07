@@ -2,6 +2,6 @@
 # Notebooks are documentation; result/log dumps are generated. Submodules (mpich/)
 # are never counted by Linguist.
 *.ipynb            linguist-documentation
-frontier/results/** linguist-generated
+frontier/results*/** linguist-generated
 frontier/out/**     linguist-generated
 frontier/archive/** linguist-generated
