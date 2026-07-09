@@ -194,15 +194,13 @@ MPICH's collective selection (csel) natively supports the CCL leaf:
   (1 KiB–256 MiB) at every node count** — 2.3–4.7× even at 1 KiB, 18–50× at 256 MiB. Sub-1 KiB
   tail + 1024–4096 confirmation runs pending; v2 JSON (route all built-in-op device allreduce to
   ccl, runtime requirements-check falls back for host buffers/unsupported ops) to follow.
-- **Integration bug found (upstream-reportable): ccl fallback can infinitely recurse.**
-  `MPIR_Allreduce_intra_ccl`'s requirements-check fallback calls `MPIR_Allreduce_allcomm_auto`,
-  which re-enters csel. If the tuning tree maps that call back to ccl (as the all-ccl v2 tree
-  does), any allreduce that fails the requirements check — e.g. the HOST-swapped small messages
-  that `DEVICE_COLLECTIVES=all` compositions produce — recurses to stack overflow (SIGSEGV,
-  bisected: `=all` + all-ccl MPIR JSON segfaults with no CH4 JSON involved; `=none` is immune
-  because OSU device buffers always pass the check). Fix direction: the fallback should invoke a
-  concrete algorithm, not re-enter auto-selection. Workaround: threshold-gated MPIR tree for the
-  `=all`/hybrid world (`tuning/allreduce_mpir_hybrid.json`).
+- **Staged-hybrid crash (the real mechanism, corrected):** under `DEVICE_COLLECTIVES=all` the
+  all-ccl MPIR tree faults (bisected to `=all` + all-ccl MPIR JSON, no CH4 JSON needed). NOTE:
+  the ccl fallback is NOT the cause — `MPIR_Allreduce_intra_ccl` calls `recursive_doubling`
+  directly (not auto-selection), and `MPIR_RCCL_check_requirements_red_op` DOES reject host
+  buffers. The fault is the composition's host-swap path interacting with the ccl leaf when the
+  global swap buffer and the routing threshold disagree (see below). Workaround: keep the swap
+  buffer equal to the threshold (threshold-gated `tuning/allreduce_mpir_hybrid.json`).
 - **GPU-direct RDMA (`MPIR_CVAR_CH4_OFI_ENABLE_HMEM=1`) works but is insufficient:** ~13–25%
   faster than staging at both 2 and 64 nodes, yet still 2.5–3× slower than RCCL at 8 B and ~40×
   at 256 MiB — even MPICH's no-staging path never beats RCCL at any size.
@@ -231,11 +229,25 @@ The reason it doesn't reproduce here is the **interconnect/device layer**, not t
   swap — faults at the alpha→beta handoff, job 4953409, EXIT 9). **Hence per-communicator
   thresholds for the *staged* hybrid are not realizable without a source change** (expose the
   staged reduce as a per-comm tree algorithm, or make the swap buffer per-communicator).
+- **Measured staged-vs-RCCL crossover, all 13 node counts** (confirm runs; staged = alpha/CPU
+  composition, compared against committed RCCL per scale):
+
+  | N | thr | N | thr | N | thr |
+  |---|---|---|---|---|---|
+  | 1 | 16K | 32 | 16K | 512 | 16K |
+  | 2 | 8K | 64 | 16K | 1024 | 16K |
+  | 4 | 8K | 128 | 16K | **2048** | **64K** |
+  | 8 | 16K | 256 | 16K | **4096** | **32K** |
+  | 16 | 16K | | | | |
+
+  Shape: **flat ~16 KiB across the middle, 8 KiB at tiny scale, rising to 32–64 KiB at the
+  giants** (8× spread). The staged path's winning band widens at extreme scale — the opposite of
+  the plot-read guess, and a stronger "optima vary with scale" result than a flat threshold.
 - **Production decision:** single **16 KiB** threshold (SWAP = ch4 split = mpir gate = 16 KiB) —
-  the only crash-free design. Measured per-scale optima (8 KiB @≤4 nodes, 16 KiB @8–1024,
-  64 KiB @2048) are reported as a **characterization result** motivating a per-communicator swap
-  buffer as future work. Contrast with JLSE, where per-node-class thresholds were both realizable
-  and beneficial because the small path (`recursive_doubling`) was itself fast.
+  the only crash-free design (per-comm faults, job 4953409). The per-scale table above is the
+  **characterization result** motivating a per-communicator swap buffer as future work. Contrast
+  with JLSE, where per-node-class thresholds were both realizable and beneficial because the
+  small path (`recursive_doubling`) was itself fast.
 
 ### Giant-scale run hygiene (lessons)
 - Real run times are tiny (~2 min ≤1024, ~3–4 min at 2048/4096); a hung/faulting job otherwise
