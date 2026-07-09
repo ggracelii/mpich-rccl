@@ -1,0 +1,272 @@
+=== AUTO_hybrid (ch4: alpha<=32K / beta->MPIR->rccl) ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 2554871 RUNNING AT frontier02788
+=   EXIT CODE: 11
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:2@frontier00316] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:2@frontier00316] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:2@frontier00316] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:0@frontier00052] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:0@frontier00052] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0@frontier00052] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:9@frontier01210] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:9@frontier01210] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:9@frontier01210] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:10@frontier01344] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:10@frontier01344] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:10@frontier01344] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:28@frontier04095] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:28@frontier04095] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:28@frontier04095] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:32@frontier04714] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:32@frontier04714] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:32@frontier04714] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:25@frontier03323] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:25@frontier03323] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:25@frontier03323] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:18@frontier02398] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:18@frontier02398] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:18@frontier02398] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:36@frontier05345] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:36@frontier05345] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:36@frontier05345] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:49@frontier07153] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:49@frontier07153] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:49@frontier07153] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:45@frontier06646] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:45@frontier06646] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:45@frontier06646] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:6@frontier00824] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:6@frontier00824] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:6@frontier00824] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:50@frontier07249] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:50@frontier07249] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:50@frontier07249] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:62@frontier08753] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:62@frontier08753] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:62@frontier08753] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:24@frontier03197] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:24@frontier03197] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:24@frontier03197] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:1@frontier00172] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:1@frontier00172] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:1@frontier00172] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:33@frontier04861] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:33@frontier04861] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:33@frontier04861] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:51@frontier07337] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:51@frontier07337] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:51@frontier07337] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:42@frontier06244] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:42@frontier06244] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:42@frontier06244] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:44@frontier06522] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:44@frontier06522] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:44@frontier06522] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:15@frontier02014] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:15@frontier02014] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:15@frontier02014] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:54@frontier07794] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:54@frontier07794] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:54@frontier07794] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:52@frontier07522] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:52@frontier07522] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:52@frontier07522] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+[proxy:4@frontier00563] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:4@frontier00563] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:4@frontier00563] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:22@frontier02885] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:22@frontier02885] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:22@frontier02885] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:38@frontier05629] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:38@frontier05629] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:38@frontier05629] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:12@frontier01599] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:12@frontier01599] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:12@frontier01599] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:23@frontier03056] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:23@frontier03056] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:23@frontier03056] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:5@frontier00700] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:5@frontier00700] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:5@frontier00700] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:41@frontier06138] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:41@frontier06138] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:41@frontier06138] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:37@frontier05501] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:37@frontier05501] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:37@frontier05501] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:13@frontier01726] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:13@frontier01726] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:13@frontier01726] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:60@frontier08502] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:60@frontier08502] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:60@frontier08502] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:39@frontier05880] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:39@frontier05880] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:39@frontier05880] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:59@frontier08386] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:59@frontier08386] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:59@frontier08386] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:63@frontier08879] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:63@frontier08879] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:63@frontier08879] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:34@frontier05118] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:34@frontier05118] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:34@frontier05118] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:27@frontier03801] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:27@frontier03801] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:27@frontier03801] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:30@frontier04464] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:30@frontier04464] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:30@frontier04464] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:26@frontier03686] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:26@frontier03686] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:26@frontier03686] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:58@frontier08253] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:58@frontier08253] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:58@frontier08253] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:16@frontier02156] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:16@frontier02156] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:16@frontier02156] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:29@frontier04326] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:29@frontier04326] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:29@frontier04326] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:48@frontier07026] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:48@frontier07026] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:48@frontier07026] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:55@frontier07879] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:55@frontier07879] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:55@frontier07879] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:8@frontier01074] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:8@frontier01074] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:8@frontier01074] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:56@frontier08012] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:56@frontier08012] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:56@frontier08012] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:53@frontier07654] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:53@frontier07654] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:53@frontier07654] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:43@frontier06399] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:43@frontier06399] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:43@frontier06399] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:11@frontier01467] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:11@frontier01467] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:11@frontier01467] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:46@frontier06714] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:46@frontier06714] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:46@frontier06714] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:47@frontier06906] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:47@frontier06906] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:47@frontier06906] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:20@frontier02645] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:20@frontier02645] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:20@frontier02645] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:17@frontier02277] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:17@frontier02277] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:17@frontier02277] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:61@frontier08630] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:61@frontier08630] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:61@frontier08630] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:40@frontier06001] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:40@frontier06001] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:40@frontier06001] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:35@frontier05224] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:35@frontier05224] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:35@frontier05224] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:3@frontier00435] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:3@frontier00435] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:3@frontier00435] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:31@frontier04580] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:31@frontier04580] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:31@frontier04580] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:19@frontier02535] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:19@frontier02535] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:19@frontier02535] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:14@frontier01849] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:14@frontier01849] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:14@frontier01849] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:7@frontier00953] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:7@frontier00953] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:7@frontier00953] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[proxy:57@frontier08131] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:57@frontier08131] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:57@frontier08131] main (../../../../src/pm/hydra/proxy/pmip.c:183): demux engine error waiting for event
+[2026-07-06T16:40:23.822] error: Failed to destroy CXI Service ID 5 (cxi0): Device or resource busy
+srun: error: frontier00172: task 1: Exited with exit code 7
+srun: Terminating StepId=4949659.4
+srun: error: frontier07522: task 52: Exited with exit code 7
+[2026-07-06T16:40:23.829] error: *** STEP 4949659.4 ON frontier00052 CANCELLED AT 2026-07-06T16:40:23 DUE TO TASK FAILURE ***
+srun: error: frontier00700: task 5: Exited with exit code 7
+srun: error: frontier05629: task 38: Exited with exit code 7
+srun: error: frontier01599: task 12: Exited with exit code 7
+srun: error: frontier08012: task 56: Exited with exit code 7
+srun: error: frontier04095: task 28: Exited with exit code 7
+srun: error: frontier08502: task 60: Exited with exit code 7
+srun: error: frontier07879: task 55: Exited with exit code 7
+srun: error: frontier04464: task 30: Exited with exit code 7
+srun: error: frontier06399: task 43: Exited with exit code 7
+srun: error: frontier02156: task 16: Exited with exit code 7
+srun: error: frontier05501: task 37: Exited with exit code 7
+srun: error: frontier06138: task 41: Exited with exit code 7
+srun: error: frontier01074: task 8: Exited with exit code 7
+srun: error: frontier08630: task 61: Exited with exit code 7
+srun: error: frontier05118: task 34: Exited with exit code 7
+srun: error: frontier03056: task 23: Exited with exit code 7
+srun: error: frontier02398: task 18: Exited with exit code 7
+srun: error: frontier00563: task 4: Exited with exit code 7
+srun: error: frontier08253: task 58: Exited with exit code 7
+srun: error: frontier01467: task 11: Exited with exit code 7
+srun: error: frontier08879: task 63: Exited with exit code 7
+srun: error: frontier02645: task 20: Exited with exit code 7
+srun: error: frontier07337: task 51: Exited with exit code 7
+srun: error: frontier03801: task 27: Exited with exit code 7
+srun: error: frontier06001: task 40: Exited with exit code 7
+srun: error: frontier06906: task 47: Exited with exit code 7
+srun: error: frontier08386: task 59: Exited with exit code 7
+srun: error: frontier02535: task 19: Exited with exit code 7
+srun: error: frontier03323: task 25: Exited with exit code 7
+srun: error: frontier02885: task 22: Exited with exit code 7
+srun: error: frontier04861: task 33: Exited with exit code 7
+srun: error: frontier06714: task 46: Exited with exit code 7
+srun: error: frontier00953: task 7: Exited with exit code 7
+srun: error: frontier04326: task 29: Exited with exit code 7
+srun: error: frontier06522: task 44: Exited with exit code 7
+srun: error: frontier02277: task 17: Exited with exit code 7
+srun: error: frontier07026: task 48: Exited with exit code 7
+srun: error: frontier05880: task 39: Exited with exit code 7
+srun: error: frontier01726: task 13: Exited with exit code 7
+srun: error: frontier07654: task 53: Exited with exit code 7
+srun: error: frontier05224: task 35: Exited with exit code 7
+srun: error: frontier08131: task 57: Exited with exit code 7
+srun: error: frontier07794: task 54: Exited with exit code 7
+srun: error: frontier00435: task 3: Exited with exit code 7
+srun: error: frontier04580: task 31: Exited with exit code 7
+srun: error: frontier08753: task 62: Exited with exit code 7
+srun: error: frontier03197: task 24: Exited with exit code 7
+srun: error: frontier01849: task 14: Exited with exit code 7
+srun: error: frontier03686: task 26: Exited with exit code 7
+srun: error: frontier00316: task 2: Exited with exit code 7
+srun: error: frontier06244: task 42: Exited with exit code 7
+srun: error: frontier07249: task 50: Exited with exit code 7
+srun: error: frontier00052: task 0: Exited with exit code 7
+srun: error: frontier06646: task 45: Exited with exit code 7
+srun: error: frontier02014: task 15: Exited with exit code 7
+srun: error: frontier04714: task 32: Exited with exit code 7
+srun: error: frontier05345: task 36: Exited with exit code 7
+srun: error: frontier00824: task 6: Exited with exit code 7
+srun: error: frontier01210: task 9: Exited with exit code 7
+srun: error: frontier07153: task 49: Exited with exit code 7
+srun: error: frontier01344: task 10: Exited with exit code 7
+[mpiexec@frontier00052] HYDT_bscu_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/utils/bscu_wait.c:110): one of the processes terminated badly; aborting
+[mpiexec@frontier00052] HYDT_bsci_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/src/bsci_wait.c:21): launcher returned error waiting for completion
+[mpiexec@frontier00052] HYD_pmci_wait_for_completion (../../../../src/pm/hydra/mpiexec/pmiserv_pmci.c:196): launcher returned error waiting for completion
+[mpiexec@frontier00052] main (../../../../src/pm/hydra/mpiexec/mpiexec.c:270): process manager error waiting for completion
