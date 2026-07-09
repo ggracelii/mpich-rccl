@@ -1,0 +1,26 @@
+=== HYBRID (per-comm tree, SWAP=64K) ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+1024                   52.47             51.37             54.28          30
+2048                   54.32             53.02             55.82          30
+4096                   58.21             56.97             59.86          30
+8192                   64.53             63.29             66.07          30
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1937606 RUNNING AT frontier03575
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:0@frontier00784] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:0@frontier00784] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0@frontier00784] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+srun: error: frontier00784: task 0: Exited with exit code 7
+srun: Terminating StepId=4953409.0
+[mpiexec@frontier00784] HYDT_bscu_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/utils/bscu_wait.c:110): one of the processes terminated badly; aborting
+[mpiexec@frontier00784] HYDT_bsci_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/src/bsci_wait.c:21): launcher returned error waiting for completion
+[mpiexec@frontier00784] HYD_pmci_wait_for_completion (../../../../src/pm/hydra/mpiexec/pmiserv_pmci.c:196): launcher returned error waiting for completion
+[mpiexec@frontier00784] main (../../../../src/pm/hydra/mpiexec/mpiexec.c:270): process manager error waiting for completion

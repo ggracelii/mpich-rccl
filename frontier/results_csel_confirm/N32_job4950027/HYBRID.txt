@@ -1,0 +1,11 @@
+=== HYBRID (alpha<=65536) ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+2048                  115.81            111.08            125.03          30
+4096                  119.31            114.63            129.09          30
+8192                  130.58            124.88            140.95          30
+16384                 157.68            149.44            171.21          30
+32768                 209.95            199.37            228.97          30
+65536                 309.56            298.27            325.09          30

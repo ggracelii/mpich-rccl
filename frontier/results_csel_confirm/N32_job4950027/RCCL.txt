@@ -1,0 +1,11 @@
+=== RCCL ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+2048                  186.28            120.26            209.65          30
+4096                  181.85            121.98            201.56          30
+8192                  170.63            109.74            189.94          30
+16384                 174.50            113.80            193.42          30
+32768                 191.44            182.47            198.67          30
+65536                 223.21            214.03            230.42          30

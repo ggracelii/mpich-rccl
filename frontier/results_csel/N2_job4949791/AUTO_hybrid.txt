@@ -1,0 +1,35 @@
+=== AUTO_hybrid (ch4: alpha<=32K / beta->MPIR(>32K)->rccl) ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+8                      44.12             42.76             47.07          30
+16                     43.55             42.20             46.63          30
+32                     43.52             42.26             46.49          30
+64                     43.89             42.63             46.64          30
+128                    44.80             43.01             47.11          30
+256                    47.54             45.30             51.46          30
+512                    47.76             45.52             51.73          30
+1024                   48.85             46.70             52.79          30
+2048                   50.29             48.30             54.01          30
+4096                   52.76             50.74             56.53          30
+8192                   59.12             57.51             62.24          30
+16384                  78.21             76.42             81.35          30
+32768                 111.56            107.86            116.03          30
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 3328868 RUNNING AT frontier01535
+=   EXIT CODE: 11
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:1@frontier01536] HYD_pmcd_pmip_control_cmd_cb (../../../../src/pm/hydra/proxy/pmip_cb.c:490): assert (!closed) failed
+[proxy:1@frontier01536] HYDT_dmxu_poll_wait_for_event (../../../../src/pm/hydra/lib/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:1@frontier01536] main (../../../../src/pm/hydra/proxy/pmip.c:123): demux engine error waiting for event
+srun: error: frontier01536: task 1: Exited with exit code 7
+srun: Terminating StepId=4949791.4
+[mpiexec@frontier01535] HYDT_bscu_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/utils/bscu_wait.c:110): one of the processes terminated badly; aborting
+[mpiexec@frontier01535] HYDT_bsci_wait_for_completion (../../../../src/pm/hydra/lib/tools/bootstrap/src/bsci_wait.c:21): launcher returned error waiting for completion
+[mpiexec@frontier01535] HYD_pmci_wait_for_completion (../../../../src/pm/hydra/mpiexec/pmiserv_pmci.c:196): launcher returned error waiting for completion
+[mpiexec@frontier01535] main (../../../../src/pm/hydra/mpiexec/mpiexec.c:270): process manager error waiting for completion
