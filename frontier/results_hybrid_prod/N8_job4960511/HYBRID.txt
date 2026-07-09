@@ -1,0 +1,14 @@
+=== HYBRID_prod (16K threshold, SWAP=16K) ===
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+1024                   84.09             80.99             88.50          30
+2048                   85.58             82.20             88.86          30
+4096                   90.08             86.31             95.47          30
+8192                   98.41             93.92            104.30          30
+16384                 121.71            117.61            127.71          30
+32768                 144.61            140.30            150.14          30
+65536                 150.90            145.89            154.55          30
+131072                184.81            180.12            187.57          30
+262144                251.66            247.48            254.92          30
