@@ -1,0 +1,6 @@
+### model=bert_large_fp32 bytes=1360000000 N=4096
+
+# OSU MPI-ROCM Allreduce Latency Test v7.5
+# Datatype: MPI_INT.
+# Size       Avg Latency(us)   Min Latency(us)   Max Latency(us)  Iterations
+1360000000          51596.57          48531.24          52897.66          30
