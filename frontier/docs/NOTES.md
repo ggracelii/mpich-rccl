@@ -151,21 +151,24 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
 **Rep status (final):** **3 reps at every node count, 1–4096.** **Top scale = 4096 nodes = 32,768 GCDs.**
 All kept reps have complete RCCL (C) data to 1 GiB; jobs that hung during config C or at startup were discarded.
 The 3rd 4096 rep (job 4939751) is RCCL-complete to 1 GiB; its Cray (D) reached only 2 MiB (Cray faulted *at*
-4 MiB that allocation vs 8 MiB in the other two — the fault threshold varies around ~4 MiB). **8192 not pursued**
-(comm-init wall + budget — see below). The loader averages over whatever reps exist per size and records `nreps`.
+4 MiB that allocation vs 8 MiB in the other two — the fault threshold varies around ~4 MiB). **8192: RCCL
+init succeeds (~3 min); large-message flagship run in progress — see below.** The loader averages over whatever reps exist per size and records `nreps`.
 
-### 8192 attempted, abandoned (near-full-machine limit)
-Both 8192-node jobs (65,536 GCDs) timed out at 12 min. Config C printed its OSU header but completed
-**zero sizes** — the *first* allreduce (8 B) stalled in **RCCL communicator init across 65,536 GCDs** and
-never returned. Two compounding causes:
-- **CPU baselines starve the fast config.** Run order is A→B→C→D, and at 65,536 ranks the CPU allreduce is
-  catastrophic (**config B = 445 ms/op at 32 MiB**), so A+B consumed much of the walltime before C ran.
-- **RCCL comm-init does not complete in a practical walltime at 65,536 GCDs.** A run long enough for C to
-  finish would have exceeded the remaining csc678 allocation, so 8192 was dropped.
-- **Lesson if ever retried:** run **C-only** (or C first) at extreme scale so the RCCL bootstrap gets the full
-  walltime — don't let the slow CPU baselines run ahead of it. Each 8192 timeout costs ~1,640 node-hrs.
-This is itself a result: the RCCL backend completes 8 B→1 GiB at 4096 nodes, but its communicator bootstrap
-hits a practical wall at 8192 (near-full Frontier) within a 12-min budget.
+### 8192 (65,536 GCDs) — NOT a comm-init wall; it's sweep length (corrected)
+Earlier 8192 jobs (A→B→C→D order, or full C sweep) timed out, and we initially blamed **RCCL
+communicator init**. That was WRONG. The C-only single-launch retry (job 4948914, 10-min cap)
+**proved RCCL initializes fine at 65,536 GCDs**: init took ~3 min, then it produced real data —
+8 sizes (4 B–512 B) before the cap. It timed out on **sweep length, not bootstrap**:
+- **Init works** (~3 min at 8192) — the "wall" was a misdiagnosis from earlier runs where the
+  slow CPU baselines (A→B) ate the walltime before C even started (config B = 445 ms/op at 32 MiB
+  at this scale), so C's *init* never got a turn. C-only removes that.
+- **Tiny sizes are sync-bound at 65,536 ranks** (~50 s each — the per-iteration barrier across
+  65,536 ranks dominates), so a 50-iter full 4 B→4 GiB sweep can't finish in ~10 min.
+- **Fix / flagship run:** `run_rccl_8192_big.sbatch` — C-only, **1 MiB→4 GiB only**, i=10, 15-min
+  cap. Skips the sync-bound small sizes; captures the bandwidth regime where RCCL's advantage is
+  the whole story. The 8 small-size rows from 4948914 are kept as a partial.
+So the honest 8192 result is: **RCCL scales to 65,536 GCDs — init succeeds and it runs**; the only
+constraint is that a full fine-grained sweep doesn't fit a short walltime at near-full-machine scale.
 
 ## 2–4 GiB extension (patched OSU) — the win grows with size
 OSU's silent 1 GiB cap was a **32-bit `int` size loop** in `osu_allreduce.c` (`size *= 2`
