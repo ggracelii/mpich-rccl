@@ -1,14 +1,15 @@
 #!/bin/bash
 #SBATCH -A csc678
 #SBATCH -J rccl-8192
-#SBATCH -t 00:25:00
+#SBATCH -t 00:10:00
 #SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 #
 # Fire-and-forget: full RCCL allreduce curve at 8192 nodes (65,536 GCDs), 8 B -> 4 GiB.
 # C-ONLY, SINGLE LAUNCH — the prior 8192 failures starved RCCL's communicator init
 # (CPU baselines ran first / multiple launches); here one comm-init gets the whole
-# walltime, and the measurement itself is only ~3 min. 25-min cap bounds a hang.
+# walltime, and the measurement itself is only ~3 min. 10-min cap bounds a hang
+# (~1,365 node-hr worst case) while leaving ~7 min for a slow-but-real init.
 # Queue reality: needs ~87% of Frontier + we're deprioritized past allocation —
 # it may never schedule; scancel it before 7/31 if still pending.
 
