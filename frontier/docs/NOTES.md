@@ -138,11 +138,17 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
 - **Plot convention (repo-wide):** "Cray MPICH" on all plots = the **BLK=64MB tuned config**
   (config T); the default config is retired from plots (explicitly callable, labeled
   "default 8MB†"). READMEs and the paper define this once; graph labels stay clean.
-- **In flight:** tuned-Cray (BLK=64MB) full ladder **1→4096 nodes × 2 reps** (sweep 8 B→4 GiB +
+- **Ladder result:** tuned-Cray (BLK=64MB) full ladder **1→4096 nodes × 2 reps** (sweep 8 B→4 GiB +
   the 4 ML gradient sizes each) → `results_crayblk64/`, plotted as config **T** ("Cray
-  (BLK=64 MB†)") with a `Dt` best-of-default/tuned composite heatmap. Open question the ladder
-  answers: whether the BLK=64MB rescue holds at 2048/4096 (probe verified 1024 only — a
-  truncated sweep at another scale would itself be a finding).
+  (BLK=64 MB†)") with a `Dt` best-of-default/tuned composite heatmap. **The rescue holds all the
+  way to 4096** (4096 sweep reaches 4 GiB, 493 ms; job 4952562).
+- **…but the BLK=64MB rescue BREAKS at 8192 (job 4967908) — a scale cliff.** At 65,536 GCDs the
+  tuned sweep completes only **1 KiB → 32 MiB (16 rows)**, then faults trying **64 MiB (= the BLK
+  size, 2^26)**; the ML run confirms it — only the 25 MiB bucket survives, ResNet/BERT (all
+  ≥102 MB > 32 MiB) crash. So the enlarged staging buffer cannot hold the kernel path together at
+  full-machine scale: **4096 → 4 GiB clean, 8192 → dies at 64 MiB.** RCCL is the only backend that
+  completes ≥102 MB at 8192. (A bigger-BLK probe — 128 MB / 256 MB — is queued to test whether the
+  ceiling merely tracks BLK; `run_cray_blkbig_8192.sbatch`.)
 
 **Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
 1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
@@ -181,6 +187,63 @@ fits MPI's 32-bit count). Findings (2 nodes; ladder in progress):
 - **Cray survives 2–4 GiB at small scale** (160/321 ms at 2 nodes) → its >4 MiB crash at ≥1024
   nodes is **scale-triggered, not size-triggered**.
 - **RCCL vs Cray at 4 GiB: 4.3×** — the headline speedup grows with message size.
+
+## ML gradient-sync: the RCCL⇄Cray crossover (size × node count) + cost model
+At real model-gradient sizes, RCCL is **not** a blanket win over tuned Cray (BLK=64 MB). The
+winner depends on **both** message size and node count. Ratio = Cray_ms / RCCL_ms (>1 = RCCL
+faster, <1 = RCCL slower):
+
+| gradient            | 1 node | 64   | 512  | 4096 | 8192           |
+|---------------------|--------|------|------|------|----------------|
+| DDP bucket 25 MiB   | 3.30×  | 0.75×| 0.40×| 0.31×| 0.28×          |
+| ResNet-50 102 MB    | 3.85×  | 1.15×| 0.79×| 0.56×| — (Cray faulted)|
+| BERT-Large fp16 680 MB | 3.95× | 2.14×| 1.97×| 1.67×| — (faulted)   |
+| BERT-Large fp32 1.36 GB | 3.94× | 2.36×| 2.55×| 2.92×| — (faulted)  |
+
+- **Small gradients (bucket, ResNet) cross over to Cray as P grows** — bucket flips to Cray by
+  ~16–64 nodes, ResNet by ~256–512 nodes, and Cray's lead *widens* with scale (bucket: 0.75×→0.28×).
+- **Large gradients (both BERTs) stay RCCL-favored at every node count >1** (1.7–3×).
+- At **1 node** (8 GCDs, no network) Cray's intra-node kernel is ~3–4× faster for all sizes.
+- **8192 caveat:** tuned Cray faults >32 MiB at 8192 (job 4967908, above), so only the 25 MiB
+  bucket has a Cray point there — RCCL is the *only* backend that runs ResNet/BERT at 65,536 GCDs.
+
+### Why — the α–β–γ (Hockney) cost model
+```
+T(N, P)  ≈   α · f(P)   +   β · N · g(P)   +   γ · N
+             └ latency ┘     └ bandwidth ┘     └ compute ┘
+```
+- **P** = participating ranks (GCDs; 65,536 at 8192 nodes); **N** = message bytes.
+- **α** = latency per communication round (fixed network-hop startup, ~1–10 µs on Slingshot).
+- **β** = per-byte transfer time = 1/bandwidth; **γ** = per-byte GPU reduction (small, usually ignorable).
+- **f(P)** = number of rounds: ring (bandwidth-optimal) `2(P−1)`, grows linearly with P;
+  recursive-doubling (latency-optimal) `log₂P`, grows slowly.
+- **g(P)** = bandwidth factor: ring `2(P−1)/P → 2` (≈ constant in P); recursive-doubling `log₂P`.
+
+**Two regimes fall straight out:**
+- **Small N** (bucket): `β·N` tiny → the `α·f(P)` latency term dominates → **latency-bound**, grows
+  with P. Measured: bucket 0.43 ms→9.40 ms, **22×** across 1→8192. Whoever has the smaller f(P) wins.
+- **Large N** (BERT-fp32): `β·N` huge → the `β·N·g(P)` bandwidth term dominates, and ring's
+  g(P)≈2 is P-independent → **nearly flat**. Measured: BERT-fp32 17.6 ms→52.3 ms, only **3×**.
+
+### Why Cray wins small-N at large P
+Both run the same equation; Cray shrinks the expensive `α·f(P)` term three ways:
+1. **Hierarchical (SMP-aware) reduction** — reduces the 8 GCDs *within* a node first (fast on-package
+   xGMI), so only ~P/8 leaders enter the network phase: effectively `f(P/8)` for the costly
+   inter-node rounds, vs RCCL-through-MPICH doing a flatter reduction over more of the GCD set.
+2. **Latency-optimal small-message algorithm** — `f(P)=log₂P` instead of RCCL's bandwidth-first
+   ring `2(P−1)`; RCCL's small-message latency term therefore grows faster with P.
+3. **Lower per-call overhead** — every MPICH→RCCL allreduce pays GPU kernel launch + stream sync +
+   `ccl`-dispatch + ring setup; for a ~2 ms/25 MiB reduction that fixed cost is a big fraction.
+
+For large N the flip is automatic: `β·N·g(P)` rules, ring's g(P)≈2 is P-flat, and RCCL moves bytes
+GPU-direct at line rate while Cray's staging path bottlenecks on chunked host copies (the same
+staging design that faults it >32 MiB at 8192). This is the empirical companion to the csel
+"no crossover vs MPICH, but a real one vs Cray" note below: Cray's ~60 µs small-message floor is
+exactly the faster path that re-introduces a size/scale-dependent threshold.
+
+*(Rigor caveat: Cray's exact internal algorithm is inferred, not traced — this is the standard
+model and is consistent with the data, since the gap widens with P only for the small messages.
+Forcing RCCL's algorithm / profiling Cray's collective would make it airtight; treated as optional.)*
 
 ## csel: JSON-driven automatic backend selection (the summer "auto" TODO, closed)
 MPICH's collective selection (csel) natively supports the CCL leaf:

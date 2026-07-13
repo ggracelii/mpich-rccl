@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # Generator for plot.ipynb. Edit here (not the .ipynb), then run: python3 gen_nb.py
-# Writes plot.ipynb next to this script. Lives in the repo so it is version-controlled.
-# NOTE: plot.ipynb is the source of truth (Grace hand-edits it); this file is kept in
-# sync FROM the notebook. Regenerating overwrites outputs — only do it if asked.
+# plot.ipynb is the source of truth; this is synced FROM it. Regen overwrites outputs.
 import json, os
-
-cells = []
-def md(s): cells.append(("markdown", s))
-def code(s): cells.append(("code", s))
+cells=[]
+def md(s): cells.append(("markdown",s))
+def code(s): cells.append(("code",s))
 
 md('''# Frontier RCCL-Allreduce — Plots
 
@@ -253,12 +250,12 @@ def plot_latency_vs_size(nodes, speedup_over=None):
     ax1.set_title(f"Allreduce latency: {nodes} node(s)")
     ax1.yaxis.set_major_formatter(FuncFormatter(sci)); ax1.grid(True, which="both", ls="--", alpha=0.4)
     xc,yc = series(nodes,"C"); xb,yb = series(nodes,speedup_over)
-    if len(xc) and len(xb):
-        common = np.intersect1d(xc,xb)
+    common = np.intersect1d(xc, xb) if (len(xc) and len(xb)) else np.array([])
+    if len(common):                       # need sizes present in BOTH series (sparse/partial data may not overlap)
         sc = np.array([yb[list(xb).index(s)]/yc[list(xc).index(s)] for s in common])
         ax2 = ax1.twinx()
         ax1.set_zorder(ax2.get_zorder()+1); ax1.patch.set_visible(False)   # data lines above the ax2 baseline
-        ax2.plot(common, sc, marker="o", linestyle="--", color=SPEEDUP_COLOR, lw=2, label=f"{LABEL['C']} speedup vs {LABEL[speedup_over]}")
+        ax2.plot(common, sc, marker="o", linestyle="--", color=SPEEDUP_COLOR, lw=2, label=f"RCCL speedup vs Cray")
         xk,yk = series(nodes,wcfg) if wcfg != speedup_over else (np.array([]), np.array([]))  # skip when it would duplicate the primary
         if len(xk):
             commonk = np.intersect1d(xc,xk)
@@ -270,7 +267,7 @@ def plot_latency_vs_size(nodes, speedup_over=None):
         ax2.yaxis.set_major_formatter(FuncFormatter(lambda y,_: (f"{y:g}" if y>=1 else "")))
         i = int(np.argmax(sc))
         annotate_max(fig, ax1, ax2, common[i], sc[i], f"{sc[i]:.1f}\\u00d7", boxcolor=SPEEDUP_COLOR)
-        if len(xk):
+        if len(xk) and len(sck):
             ik = int(np.argmax(sck))
             annotate_max(fig, ax1, ax2, commonk[ik], sck[ik], f"{sck[ik]:.1f}\\u00d7", boxcolor="#90d890")
         h1,l1 = ax1.get_legend_handles_labels(); h2,l2 = ax2.get_legend_handles_labels()
@@ -362,8 +359,11 @@ def plot_crossover(baseline=None, annotate=True, vmax=None):
               "Cray MPICH (best of default / BLK=64 MB\\u2020)" if baseline == "Dt" else LABEL[baseline])
     ax.set_title(f"{LABEL['C']} vs {blabel}")
     cb = fig.colorbar(im, ax=ax)
-    cbt = [t for t in [0.25, 0.5, 1, 2, 4, 8, 16, 32] if lo <= t <= hi]
-    cb.set_ticks([np.log2(t) for t in cbt]); cb.set_ticklabels([f"{t:g}" for t in cbt])
+    cbt = [t for t in [0.25, 0.5, 1, 2, 4, 8, 16, 32] if lo < t < hi]
+    ends = {lo, hi}                                # endpoints get 2-sig-fig labels; interior powers of 2 clean
+    cbt = sorted(set([lo] + cbt + [hi]))          # always label the bar's endpoints (min + max)
+    cb.set_ticks([np.log2(t) for t in cbt])
+    cb.set_ticklabels([f"{t:.2g}" if t in ends else f"{t:g}" for t in cbt])
     cb.set_label(f"speedup: {LABEL['C']} / {blabel}", rotation=270, labelpad=22)
     # same styled note as the axis labels, beside the colorbar label (clip off so the narrow bar doesn't hide it)
     cb.ax.annotate(f"1 = equal;  red = {LABEL['C']} faster;  gray = no baseline data", xy=(0.5,0.5),
@@ -448,13 +448,17 @@ def plot_ml_sync(baseline=None, source="exact"):
     ax.set_xlabel("Nodes (weak scaling)")
     ylabel2(ax, "Per-step gradient-sync (ms, log)", "lower is better", "left")
     ylabel2(ax2, SPD_MAIN(baseline), "higher is better", "right")
-    ax.set_title("Gradient-allreduce at model scales")
+    ax.set_title("Gradient-allreduce at model scales", pad=98)   # room for legends placed above the axes
     ax.grid(True, which="both", ls="--", alpha=0.4)
-    # legend 1: model = color (lower right)
+    # Legends go ABOVE the plot: under weak scaling the latency lines climb into the
+    # upper-right and the speedup curves into the top, so any in-axes legend would sit
+    # on the 8192 end. Placing both above the axes keeps every line uncovered.
+    # legend 1: model = color (above, left)
     mh = [Line2D([0],[0], color=col, lw=2) for _,_,_,col in ML_MODELS]
-    leg1 = ax.legend(mh, labels, title="model gradient", loc="lower right", framealpha=1)
+    leg1 = ax.legend(mh, labels, title="model gradient", ncol=2,
+                     loc="lower left", bbox_to_anchor=(0.0, 1.005), framealpha=1)
     ax.add_artist(leg1)
-    # legend 2 (untitled): line meaning (upper left)
+    # legend 2 (untitled): line meaning (above, right)
     sh = [Line2D([0],[0], color="#444444", lw=2, ls="-",  marker="o"),
           Line2D([0],[0], color="#444444", lw=2, ls="--", marker="o"),
           Line2D([0],[0], color="#bbbbbb", lw=2, ls=":",  marker="s")]
@@ -464,7 +468,7 @@ def plot_ml_sync(baseline=None, source="exact"):
         sl.insert(2, f"{LABEL[wc]}")
         sh.append(Line2D([0],[0], color="#bbbbbb", lw=2, ls=":", marker="s", markerfacecolor="none"))
         sl.append(f"RCCL speedup vs {LABEL[wc]}")
-    ax.legend(sh, sl, loc="upper right", framealpha=1)
+    ax.legend(sh, sl, ncol=len(sl), loc="lower right", bbox_to_anchor=(1.0, 1.005), framealpha=1)
     finish(fig)
     return df''')
 
@@ -481,18 +485,11 @@ df_ml = plot_ml_sync(source="exact")   # (1) exact model sizes (results_ml)
 # plot_ml_sync("D", source="near")             # (2) nearest power-of-2 estimate (main sweep)
 df_ml.round(3)''')
 
-
-nb = {"cells": [], "metadata": {"kernelspec": {"display_name":"Python 3","language":"python","name":"python3"},
-      "language_info": {"name":"python"}}, "nbformat": 4, "nbformat_minor": 5}
+nb={"cells":[],"metadata":{"kernelspec":{"display_name":"Python 3","language":"python","name":"python3"},"language_info":{"name":"python"}},"nbformat":4,"nbformat_minor":5}
 for i,(t,s) in enumerate(cells):
-    c = {"cell_type": t, "metadata": {}, "source": s, "id": f"c{i}"}
-    if t == "code":
-        c["execution_count"] = None; c["outputs"] = []
-        if i in (1, 2):
-            c["metadata"] = {"jupyter": {"source_hidden": True}}
+    c={"cell_type":t,"metadata":{},"source":s,"id":f"c{i}"}
+    if t=="code":
+        c["execution_count"]=None; c["outputs"]=[]
+        if i in (1,2): c["metadata"]={"jupyter":{"source_hidden":True}}
     nb["cells"].append(c)
-
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "plot.ipynb")
-with open(out, "w") as f:
-    json.dump(nb, f, indent=1)
-print("wrote", out, "with", len(cells), "cells")
+open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"plot.ipynb"),"w").write(json.dumps(nb,indent=1))
