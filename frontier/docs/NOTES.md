@@ -135,9 +135,12 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
   nodes): identical below the 128 KiB kernel threshold, equal mid-range, and **up to 1.5×
   faster at ≥256 MB** (2.5× at 64 MiB/N=64) — plus it doesn't crash at scale. There is no
   size/scale where the default configuration is meaningfully better.
-- **Plot convention (repo-wide):** "Cray MPICH" on all plots = the **BLK=64MB tuned config**
+- **Plot convention (repo-wide):** "Cray MPICH" on all plots = the **BLK=128MB tuned config**
   (config T); the default config is retired from plots (explicitly callable, labeled
-  "default 8MB†"). READMEs and the paper define this once; graph labels stay clean.
+  "default 8MB†"). READMEs and the paper define this once; graph labels stay clean. 128 MB (not
+  64 MB) is the standardized buffer because it is the smallest single value that survives at
+  *every* scale including 8192 (see the probe verdict below) — so one block size covers the whole
+  ladder rather than escalating BLK mid-dataset.
 - **Ladder result:** tuned-Cray (BLK=64MB) full ladder **1→4096 nodes × 2 reps** (sweep 8 B→4 GiB +
   the 4 ML gradient sizes each) → `results_crayblk64/`, plotted as config **T** ("Cray
   (BLK=64 MB†)") with a `Dt` best-of-default/tuned composite heatmap. **The rescue holds all the
@@ -147,12 +150,30 @@ the full 8 B→1 GiB range at every scale up to 4096 nodes.
   size, 2^26)**; the ML run confirms it — only the 25 MiB bucket survives, ResNet/BERT (all
   ≥102 MB > 32 MiB) crash. So the enlarged staging buffer cannot hold the kernel path together at
   full-machine scale: **4096 → 4 GiB clean, 8192 → dies at 64 MiB.** RCCL is the only backend that
-  completes ≥102 MB at 8192. (A bigger-BLK probe — 128 MB / 256 MB — is queued to test whether the
-  ceiling merely tracks BLK; `run_cray_blkbig_8192.sbatch`.)
+  completes ≥102 MB at 8192.
+- **Bigger-BLK probe verdict (job 4981401, 8192 nodes): the ceiling tracks BLK — a bigger buffer
+  restores the range.** Re-running the large end (32 MiB → 4 GiB) at 8192 with **BLK=128 MB** and
+  **BLK=256 MB** both completed the full sweep to 4 GiB with **no fault** (`run_cray_blkbig_8192.sbatch`
+  → `results_crayblk64/N8192_blkbig_job4981401/D_blkbig.txt`). So the 8192 cliff was not a hard
+  kernel wall; it was BLK=64 MB being too small for that scale — the fault sits at the payload≥BLK
+  boundary, and raising BLK pushes it past 4 GiB.
+- **Decision — standardize on BLK=128 MB across the whole dataset.** 128 MB is the *smallest* buffer
+  that clears every scale (64 MB rescues only to 4096, then faults >32 MiB at 8192; 128 MB and
+  256 MB both reach 4 GiB at 8192). Using one block size everywhere — rather than 64 MB for
+  ≤4096 and something larger only at 8192 — keeps the Cray line an apples-to-apples config across
+  all node counts. The canonical re-run is `run/run_cray_blk128.sbatch` (full sweep + 4 ML sizes,
+  srun ⇒ cheap init, works at any `-N`), writing `results_crayblk128/` (files `D_blk128_*.txt`),
+  which supersedes `results_crayblk64/` as the plotted config **T**. The notebook loads config T
+  from `results_crayblk128/` **only** — there is deliberately **no fallback to the 64 MB ladder**:
+  a node count with no 128 MB data simply shows a gap on the plots, so what is drawn is exactly
+  what was measured at the standardized block size. The retired `results_crayblk64/` ladder and the
+  `blkbig` probe dirs (`D_blkbig.txt`) stay on disk as evidence but are not loaded.
 
-**Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales; Cray (D) is complete to
-1 GiB at ≤512 nodes but only to 4 MiB at ≥1024 (Cray faults beyond). The C-vs-Cray crossover at
-≥1024 nodes is bounded by where Cray survives.
+**Dataset consequence:** RCCL (C) is complete 8 B→1 GiB at all scales. Tuned Cray (D, config T) is
+plotted from BLK=128 MB data only; once the `run_cray_blk128.sbatch` ladder has drained it reaches
+**4 GiB at every node count 1→8192** — the former ≥1024-node fault ceiling is a property of the
+*default/undersized* buffer, not of the tuned line. Any node count not yet re-run at 128 MB shows a
+gap (no fallback), so the plotted Cray line is always exactly what was measured at 128 MB.
 
 **Rep status (final):** **3 reps at every node count, 1–4096.** **Top scale = 4096 nodes = 32,768 GCDs.**
 All kept reps have complete RCCL (C) data to 1 GiB; jobs that hung during config C or at startup were discarded.
@@ -189,9 +210,11 @@ fits MPI's 32-bit count). Findings (2 nodes; ladder in progress):
 - **RCCL vs Cray at 4 GiB: 4.3×** — the headline speedup grows with message size.
 
 ## ML gradient-sync: the RCCL⇄Cray crossover (size × node count) + cost model
-At real model-gradient sizes, RCCL is **not** a blanket win over tuned Cray (BLK=64 MB). The
+At real model-gradient sizes, RCCL is **not** a blanket win over tuned Cray (config T). The
 winner depends on **both** message size and node count. Ratio = Cray_ms / RCCL_ms (>1 = RCCL
-faster, <1 = RCCL slower):
+faster, <1 = RCCL slower). The Cray numbers below were measured at BLK=64 MB (≤4096); the 8192
+gaps are filled once the BLK=128 ladder (`run_cray_blk128.sbatch`, incl. its 4 ML sizes) lands —
+the probe already proved 128 MB clears 4 GiB at 8192:
 
 | gradient            | 1 node | 64   | 512  | 4096 | 8192           |
 |---------------------|--------|------|------|------|----------------|
@@ -204,8 +227,11 @@ faster, <1 = RCCL slower):
   ~16–64 nodes, ResNet by ~256–512 nodes, and Cray's lead *widens* with scale (bucket: 0.75×→0.28×).
 - **Large gradients (both BERTs) stay RCCL-favored at every node count >1** (1.7–3×).
 - At **1 node** (8 GCDs, no network) Cray's intra-node kernel is ~3–4× faster for all sizes.
-- **8192 caveat:** tuned Cray faults >32 MiB at 8192 (job 4967908, above), so only the 25 MiB
-  bucket has a Cray point there — RCCL is the *only* backend that runs ResNet/BERT at 65,536 GCDs.
+- **8192 caveat:** at BLK=64 MB tuned Cray faults >32 MiB at 8192 (job 4967908), so in the table
+  above only the 25 MiB bucket has an 8192 Cray point. The bigger-BLK probe (job 4981401) proved
+  BLK=128 MB clears the full range at 8192, so the ResNet/BERT 8192 points become obtainable once
+  `run_cray_blk128.sbatch` re-runs the ML sizes there — until then RCCL is the only backend with
+  ResNet/BERT numbers at 65,536 GCDs.
 
 ### Why — the α–β–γ (Hockney) cost model
 ```

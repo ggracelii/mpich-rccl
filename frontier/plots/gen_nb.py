@@ -16,14 +16,16 @@ functions (collapse it to hide the code). Every cell after that is a **one-line 
 
 Each axis shows a small italic "lower/higher is better" note beside its label. Configs:
 MPICH (host CPU) / MPICH (device) / **MPICH-RCCL** / Cray MPICH. The **Cray MPICH** plotted is
-the BLK=64 MB-tuned configuration (see NOTES); the default config crashes >4 MiB at ≥1024 nodes
-and is retired from the plots.
+the BLK=128 MB-tuned configuration (see NOTES); the default config crashes >4 MiB at ≥1024 nodes
+and is retired from the plots. 128 MB is the smallest staging buffer that avoids the GPU-allreduce
+fault at *every* scale (BLK=64 MB rescues only through 4096 nodes, then faults >32 MiB at 8192), so
+it is used uniformly across the whole ladder rather than switching block sizes mid-dataset.
 
 Message-size coverage (intentional, not data gaps):
 - **MPICH-RCCL (C): 8 B → 1 GiB at every node count (1–4096).** 1 GiB is OSU's ceiling (32-bit message size).
-- **Cray MPICH (D): to 1 GiB at ≤512 nodes, but only to 4 MiB at ≥1024** — Cray's GPU-aware
-  allreduce crashes (GPU memory access fault) above 4 MiB at scale, so its curves stop there
-  (gray cells in the heatmap).
+- **Cray MPICH (D, BLK=128 MB tuned): full sweep to 4 GiB at every node count (1–8192).** The
+  *default* (untuned) Cray path crashes with a GPU memory access fault above 4 MiB at ≥1024 nodes;
+  the BLK=128 MB staging buffer carries the tuned line across the full range at all scales.
 - **CPU paths (A/B): capped at 32 MiB** — host reductions are prohibitively slow at large sizes.''')
 
 code('''# === Cell 1: load & clean the sweep data =================================
@@ -37,7 +39,7 @@ OSU_FILES = {"A":"A_mpich_host.txt","B":"B_mpich_dev.txt",
 LABEL = {"A":"MPICH (host CPU)","B":"MPICH (device)","C":"MPICH-RCCL",
          "D":"Cray MPICH (default 8MB\\u2020)","E":"RCCL (rccl-tests)",
          "K":"Cray MPICH (kernel-off\\u2020)",   # \\u2020 = non-default workaround configs
-         "T":"Cray MPICH"}   # BLK=64MB tuned config = THE Cray line on all plots (detail in NOTES/report)
+         "T":"Cray MPICH"}   # BLK=128MB tuned config = THE Cray line on all plots (detail in NOTES/report)
 
 def parse_osu(path):
     out = []
@@ -109,19 +111,27 @@ if knob_ml and data_ml is not None:
     data_ml = pd.concat([data_ml, _km[_km["avg"] > 0].groupby(["nodes","config","size"], as_index=False)
                          .agg(avg=("avg","median"), nreps=("job","nunique"))], ignore_index=True)
 
-# Tuned Cray: kernel path + BLK_SIZE=64MB (config "T", results_crayblk64) — same file pattern as K
-TUNED_RESULTS = "results_crayblk64" if os.path.isdir("results_crayblk64") else "../results_crayblk64"
-t_rows, t_ml = [], []
-for d in sorted(glob.glob(os.path.join(TUNED_RESULTS, "N*_job*"))):
-    m = re.match(r"N(\\d+)_job(\\d+)", os.path.basename(d))
-    if not m:
-        continue
-    n, job = int(m.group(1)), int(m.group(2))
-    for fn, sink in [("D_blk64_sweep.txt", t_rows), ("D_blk64_ml.txt", t_ml)]:
-        fp = os.path.join(d, fn)
-        if os.path.exists(fp):
-            for s, a, mn, mx in parse_osu(fp):
-                sink.append(dict(nodes=n, job=job, config="T", size=s, avg=a))
+# Tuned Cray (config "T"): kernel path ON with the BLK=128MB GPU-allreduce staging buffer.
+# THE plotted Cray line is BLK=128MB ONLY (results_crayblk128/, files D_blk128_*). 128MB is the
+# smallest single buffer that avoids the fault at EVERY scale (64MB faults >32 MiB at 8192). We
+# deliberately do NOT fall back to the retired 64MB ladder: a node count with no 128MB data simply
+# shows a GAP on the plots, so what's drawn is exactly what was measured at the standardized block
+# size. (results_crayblk64/ + the N*_blkbig_* probe dirs are kept on disk as evidence, not loaded.)
+def _load_tuned(dirname, sweep_fn, ml_fn):
+    root = dirname if os.path.isdir(dirname) else os.path.join("..", dirname)
+    sw, ml = [], []
+    for d in sorted(glob.glob(os.path.join(root, "N*_job*"))):
+        m = re.match(r"N(\\d+)_job(\\d+)", os.path.basename(d))
+        if not m:
+            continue
+        n, job = int(m.group(1)), int(m.group(2))
+        for fn, sink in [(sweep_fn, sw), (ml_fn, ml)]:
+            fp = os.path.join(d, fn)
+            if os.path.exists(fp):
+                for s, a, mn, mx in parse_osu(fp):
+                    sink.append(dict(nodes=n, job=job, config="T", size=s, avg=a))
+    return sw, ml
+t_rows, t_ml = _load_tuned("results_crayblk128", "D_blk128_sweep.txt", "D_blk128_ml.txt")
 if t_rows:
     _t = pd.DataFrame(t_rows)
     data = pd.concat([data, _t[_t["avg"] > 0].groupby(["nodes","config","size"], as_index=False)

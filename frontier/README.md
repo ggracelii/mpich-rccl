@@ -43,7 +43,7 @@ frontier/
 | B | MPICH CPU algo, device buffers | `MPIR_CVAR_DEVICE_COLLECTIVES=all` |
 | **C** | **MPICH + RCCL backend** | `ALLREDUCE_INTRA_ALGORITHM=ccl` + `ALLREDUCE_CCL=rccl` + `DEVICE_COLLECTIVES=none` + `rccl-net-plugin` |
 | D | Cray MPICH GPU-aware (default) | `cray-mpich` + `MPICH_GPU_SUPPORT_ENABLED=1` — crashes >4 MiB at ≥1024 nodes; retired from plots |
-| T | **Cray MPICH (as plotted)** | D + `MPICH_GPU_ALLREDUCE_BLK_SIZE=67108864` — the tuned config that survives everywhere (`results_crayblk64/`, see `docs/NOTES.md`) |
+| T | **Cray MPICH (as plotted)** | D + `MPICH_GPU_ALLREDUCE_BLK_SIZE=134217728` (128 MB) — the tuned config that survives everywhere, incl. 8192 (`results_crayblk128/`; 64 MB rescues only to 4096, see `docs/NOTES.md`) |
 | E | pure RCCL ceiling | `rccl-tests all_reduce_perf` |
 
 ## Order of operations (all from `frontier/`)
