@@ -1,17 +1,19 @@
 #!/bin/bash
 #SBATCH -A csc678
 #SBATCH -J rccl8192full
-#SBATCH -t 00:45:00
+#SBATCH -t 01:00:00
 #SBATCH --network=single_node_vni
 #SBATCH -o %x-%j.out
 #
 # RCCL 8192-node (65,536 GCD) FULL sweep — 1 KiB -> 4 GiB at the canonical ladder
 # measurement protocol (i=50 x=10, from run_allreduce.sbatch). The 0-512 B tiny end
 # is already captured by partial job 4948914, so combined this is a complete 4 B ->
-# 4 GiB ladder point. It does NOT fit a 20-min cap: RCCL comm-init at this scale is
-# a 3-19 min lottery (the earlier i=10 attempt got only 1 row before the cap), and a
-# full i=50 sweep adds ~15-25 min. 45 min absorbs a worst-case init plus the whole
-# sweep. Single launch => one init for the entire ladder.
+# 4 GiB ladder point. It does NOT fit a short cap: RCCL comm-init (ncclCommInitRank,
+# fired lazily on the first collective) at 65,536 ranks is a lottery — usually ~2 min
+# (see ML job 4980915: two inits in <5 min) but occasionally catastrophic: job 4973420
+# drew a ~30-min init and timed out a 30-min cap with only the 1024 B row. The sweep
+# itself is only a few minutes once init lands, so wall time is pure init insurance.
+# 60 min absorbs even a worst-case draw. Single launch => one init for the entire ladder.
 # tee -a is incremental, so even a walltime clip preserves every completed size.
 
 set -o pipefail
