@@ -19,6 +19,12 @@
 # walltime clip drops only small sizes (cheap, and partly covered by 4948914), never the GB end.
 # Each size is timestamped and mpiexec flushes on exit, so `tail -f` shows live per-size progress
 # and any stall is pinned to an exact size — no stdout block-buffering blind spot.
+#
+# CHUNKING: 8192 nodes is ~87% of Frontier, so a long job schedules terribly — short jobs backfill
+# far better. Pass a subset of sizes as ARGS to run just those (each still one init), e.g.
+#   sbatch -N 8192 -t 00:25:00 run/run_rccl_8192_sweep.sbatch 4294967296 2147483648 1073741824
+# With no args it runs the full 4 GiB->1 KiB ladder. Each chunk writes its own N8192_job<id> dir;
+# the notebook merges all such dirs by size, so chunks (and resubmits) compose into one 8192 row.
 
 set -o pipefail
 HERE=${FRONTIER_HOME:-${SLURM_SUBMIT_DIR:-$(cd "$(dirname "$0")" && pwd)}}
@@ -31,10 +37,15 @@ NODES=${SLURM_JOB_NUM_NODES:?}
 PPN=8; NRANKS=$((NODES * PPN))
 ITERS=50; WARMUP=10          # match the main ladder (config C is i=50 elsewhere)
 
-# Power-of-2 ladder, 2^32 (4 GiB) DOWN to 2^10 (1 KiB). Largest-first (see header).
-SIZES=( 4294967296 2147483648 1073741824 536870912 268435456 134217728 67108864 \
-        33554432 16777216 8388608 4194304 2097152 1048576 524288 262144 131072 \
-        65536 32768 16384 8192 4096 2048 1024 )
+# Sizes: a subset passed as args (a chunk), else the full 2^32 (4 GiB) -> 2^10 (1 KiB) ladder,
+# largest-first (see header). Passing a chunk lets short jobs backfill on this near-full-machine run.
+if [ "$#" -gt 0 ]; then
+  SIZES=( "$@" )
+else
+  SIZES=( 4294967296 2147483648 1073741824 536870912 268435456 134217728 67108864 \
+          33554432 16777216 8388608 4194304 2097152 1048576 524288 262144 131072 \
+          65536 32768 16384 8192 4096 2048 1024 )
+fi
 
 RESULTS=$WORK/results/N${NODES}_job${SLURM_JOB_ID}
 mkdir -p "$RESULTS"
