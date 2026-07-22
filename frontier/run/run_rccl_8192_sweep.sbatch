@@ -35,7 +35,11 @@ BIND="$HERE/bind_frontier.sh"
 
 NODES=${SLURM_JOB_NUM_NODES:?}
 PPN=8; NRANKS=$((NODES * PPN))
-ITERS=50; WARMUP=10          # match the main ladder (config C is i=50 elsewhere)
+# Iterations default to i=50 (matches the main ladder), but are overridable via env: a 4 GiB
+# allreduce at 65,536 ranks costs seconds PER CALL, so 60 calls (i=50 x=10) blew a 25-min cap
+# on the giants. Export SWEEP_ITERS/SWEEP_WARMUP to cut iters for the giant sizes, e.g.
+#   sbatch ... --export=ALL,SWEEP_ITERS=2,SWEEP_WARMUP=1 run/run_rccl_8192_sweep.sbatch 4294967296
+ITERS=${SWEEP_ITERS:-50}; WARMUP=${SWEEP_WARMUP:-10}
 
 # Sizes: a subset passed as args (a chunk), else the full 2^32 (4 GiB) -> 2^10 (1 KiB) ladder,
 # largest-first (see header). Passing a chunk lets short jobs backfill on this near-full-machine run.
